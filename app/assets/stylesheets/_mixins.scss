@@ -1,0 +1,19 @@
+// COLOR PALLETE //
+// http://www.colourlovers.com/palette/694737/Thought_Provoking //
+
+$eggplant: #542437;
+$blue: #53777A;
+$pink: #C02942;
+$orange: #D95B43;
+$light-brown: #ECD078;
+
+
+@mixin openlets-button($color) {
+  @include button(1rem, $color, 5px);
+  box-shadow: none;
+}
+
+@mixin social-button($color) {
+  @include button(1rem, $color, 5px, true);
+  box-shadow: none;  
+}

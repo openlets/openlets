@@ -1,0 +1,17 @@
+- unless user_signed_in?
+  .hero
+    .row
+      .large-12.columns.center
+        h1= t 'splash.title'
+        h4= t 'splash.p1'
+        br
+        .center 
+          = link_to "Signup", new_user_registration_path, class: 'button radius signup-button'
+          br
+          | or 
+          = link_to "Login", new_user_session_path, class: ''
+
+.row
+  .large-12.columns
+  	h1 Marketplace
+  	= render 'items/table', items: @items

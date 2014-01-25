@@ -1,0 +1,12 @@
+table.responsive
+  thead
+    tr
+      th title
+      th price
+
+  tbody
+    - @items.each do |item|
+      tr
+        td= item.title
+      tr
+        td= item.price        

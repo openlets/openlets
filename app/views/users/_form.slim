@@ -1,0 +1,23 @@
+= simple_form_for @user do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .large-6.columns
+        = f.input :name, :required => true, :autofocus => true
+        = f.input :locale, :required => true, collection: User::LOCALES
+      .large-6.columns
+        = f.simple_fields_for :locations do |l|
+          = l.input :address
+        .panel.callout#map
+
+  .form-actions
+    = f.button :submit
+div
+  h1 Connect Account
+  - ['facebook', 'linkedin', 'google_oauth2'].each do |provider|
+    - if current_user.authorizations.pluck(:provider).include?(provider.to_s)
+      = provider.to_s.titleize
+      | Connected
+    - else
+      = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path('user', provider)
+    br

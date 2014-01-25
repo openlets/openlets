@@ -1,0 +1,12 @@
+- if flash[:notice]
+  .alert-box.success data-alert=""
+    = flash[:notice]
+    a.close href="" x
+- if flash[:error]
+  .notice
+    = flash[:error]
+    a.close href="" x
+- if flash[:alert]
+  .alert-box.alert data-alert=""
+    = flash[:alert]
+    a.close href="" x

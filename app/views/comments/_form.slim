@@ -1,0 +1,9 @@
+= simple_form_for([@item, @comment], defaults: { label: false }) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message  
+  .row.collapse
+    .small-10.columns
+      = f.input :content, placeholder: 'Comment'
+    .small-2.columns
+      = f.submit 'Submit', class: 'button postfix'

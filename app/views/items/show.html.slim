@@ -1,0 +1,33 @@
+.row
+  .item-panel
+    .large-3.columns
+      p= image_tag(@item.image)
+    .large-5.columns
+      h1= @item.title
+      p= link_to @item.user.name, @item.user
+      p
+        strong= @item.description
+      p
+        strong Price:
+        = @item.price
+      p
+        strong Status:
+        = @item.workflow_state  
+    .large-4.columns
+      - if @item.user != current_user
+        = link_to "Purchase for #{@item.price} #{curreny_name.capitalize.pluralize}", purchase_item_path(@item), class: 'button radius right expand large', method: :post, id: 'purchase-button'
+    
+    .row
+      .large-12.columns
+        - if can? :update, @item
+          = link_to 'Edit', edit_item_path(@item), class: 'button radius secondary tiny'        
+        - if can? :update, @item
+          td = link_to 'Edit', edit_item_path(@item), class: 'button radius tiny'
+        - if can? :pause, @item
+          td = link_to 'Pause', pause_item_path(@item), confirm: 'Are you sure?', method: :put, class: 'button radius tiny alert'
+        - if can? :activate, @item
+          td = link_to 'Reactivate', activate_item_path(@item), method: :put, class: 'button radius tiny'
+
+.row#comments
+  .large-12.columns
+    = render 'comments/list'

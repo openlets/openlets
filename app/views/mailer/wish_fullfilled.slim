@@ -1,0 +1,8 @@
+h1= "Hey #{@wisher.name},"
+
+p
+
+  = "#{@item.user.name} just offered to fulfill your wish - #{@wish.title} for #{@item.price} points"
+
+p
+  = link_to "Check it out!", item_url(@item) 

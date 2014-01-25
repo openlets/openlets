@@ -1,0 +1,18 @@
+= simple_form_for(@wish, defaults: { label: false }) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message
+
+  .field
+    = f.input :title, placeholder: 'Title'   
+  .field
+    = f.input :description, placeholder: 'Description'
+  .field
+    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => 'Categories' }
+  - unless @wish.new_record?
+    .field
+      = image_tag(@wish.image, size: "50x50")
+  br
+  .field
+    = f.input :image
+  .actions = f.submit 'Save', class: 'button radius expand'

@@ -1,0 +1,9 @@
+.row
+  .large-12.columns
+    h2 Forgot your password?
+    = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, defaults: { label: false }) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :email, required: true, autofocus: true, placeholder: 'Whats your email?'
+      .form-actions
+        = f.button :submit, "Recover Password", class: 'button radius large expand'

@@ -1,0 +1,35 @@
+h3= "users Awaiting Approval"
+.panel_contents
+  table border="0" cellpadding="0" cellspacing="0"
+    thead
+      tr
+        th.id             Id
+        th.image          Image
+        th.name           Name
+        th.email          Email
+        th.authorizations Authorizations
+        th.actions        Actions
+    tbody
+      - User.awaiting_approval.each_with_index do |user, i|
+        tr class=["#{i.odd? ? 'even' : 'odd'}"]
+          td.id= user.id
+          td.image= image_tag(user.image, height: 50)
+          td.name
+            = link_to user.name, send("admin_user_path", (user.id))
+          td.email
+            span = mail_to user.email
+          td.authorizations
+            - user.authorizations.each do |auth|
+              - if auth.provider == 'facebook'
+                span
+                  = link_to auth.provider, "http://www.facebook.com/#{auth.username}", target: :blank
+                  |  
+              - elsif auth.provider == 'linkedin'
+                span
+                  = link_to auth.provider, " http://www.linkedin.com/x/profile/#{GLOBAL[:linkedin_key]}/#{auth.uid}", target: :blank
+                  |  
+              - elsif auth.provider == 'google_oauth2'
+                span= link_to 'google', " https://plus.google.com/#{auth.uid}", target: :blank
+          td.actions
+            = link_to 'Approve', approve_admin_user_path(user.id), class: 'button'
+            = link_to 'Disapprove', ban_admin_user_path(user.id),  class: 'button alert'

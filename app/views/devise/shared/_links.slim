@@ -1,0 +1,27 @@
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+  br
+- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
+  br
+
+- if devise_mapping.omniauthable?
+  .row.social-links
+    - resource_class.omniauth_providers.each do |provider|
+      - if provider == :facebook
+        .large-4.small-4.columns
+          = link_to omniauth_authorize_path(resource_name, provider), class: 'facebook-button social-login expand'
+            .i.fa.fa-facebook-square
+            span= " Facebook"
+
+      - if provider == :linkedin
+        .large-4.small-4.columns    
+          = link_to omniauth_authorize_path(resource_name, provider), class: 'linkedin-button social-login expand'
+            .i.fa.fa-linkedin-square
+            span= " Linkedin"
+
+      - if provider == :google_oauth2
+        .large-4.small-4.columns
+          = link_to omniauth_authorize_path(resource_name, provider), class: 'google-button social-login expand'
+            .i.fa.fa-google-plus-square
+            span= " Google"

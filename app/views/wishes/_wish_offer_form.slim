@@ -1,0 +1,18 @@
+= simple_form_for(@item, url: create_wish_offer_wish_path, method: :post, defaults: { label: false }) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message
+
+  .field
+    = f.input :title, placeholder: 'Title'   
+  .field
+    = f.input :description, placeholder: 'Description'
+  .field
+    = f.association :categories, input_html: { class: 'chzn-select' }
+  .field
+    = f.input :price, placeholder: 'Price'
+  .field
+    = image_tag(@wish.image, size: "50x50")
+  .field
+    = f.input :image
+  .actions = f.submit 'Save'

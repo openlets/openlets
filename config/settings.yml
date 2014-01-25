@@ -1,0 +1,30 @@
+common: &common
+  storage_type: :file
+
+production:
+  <<: *common
+  site_url:        'http://openlets.herokuapp.com'
+  aws_bucket:      'openlets'
+  storage_type:    :fog
+  aws_key:         <%= (ENV['OPENLETS_AWS_KEY']            || 'your_aws_key').to_s %>
+  aws_secret:      <%= (ENV['OPENLETS_AWS_SECRET']         || 'your_aws_secret').to_s %>
+  facebook_key:    <%= (ENV['OPENLETS_FB_PROD_KEY']        || 'fb_app_key').to_s %>
+  facebook_secret: <%= (ENV['OPENLETS_FB_PROD_SECRET']     || 'fb_app_secret').to_s %>
+  linkedin_key:    <%= (ENV['OPENLETS_LI_PROD_KEY']        || 'linkedin_app_key').to_s %>
+  linkedin_secret: <%= (ENV['OPENLETS_LI_PROD_SECRET']     || 'linkedin_app_secret').to_s %>
+  google_key:      <%= (ENV['OPENLETS_GOOGLE_PROD_KEY']    || 'google_app_key').to_s %>
+  google_secret:   <%= (ENV['OPENLETS_GOOGLE_PROD_SECRET'] || 'google_app_secret').to_s %>
+
+development:
+  <<: *common
+  site_url:        'example.com:3000'
+  facebook_key:    <%= (ENV['OPENLETS_FB_DEVELOP_KEY']        || 'fb_app_key').to_s %>
+  facebook_secret: <%= (ENV['OPENLETS_FB_DEVELOP_SECRET']     || 'fb_app_secret').to_s %>
+  linkedin_key:    <%= (ENV['OPENLETS_LI_DEVELOP_KEY']        || 'linkedin_app_key').to_s %>
+  linkedin_secret: <%= (ENV['OPENLETS_LI_DEVELOP_SECRET']     || 'linkedin_app_secret').to_s %>
+  google_key:      <%= (ENV['OPENLETS_GOOGLE_DEVELOP_KEY']    || 'google_app_key').to_s %>
+  google_secret:   <%= (ENV['OPENLETS_GOOGLE_DEVELOP_SECRET'] || 'google_app_secret').to_s %>  
+
+test:
+  <<: *common
+  site_url: 'localhost:3000'

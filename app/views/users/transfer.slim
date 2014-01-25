@@ -1,0 +1,9 @@
+- if @user != current_user
+  h1= "Send #{@user.name} Some blablas"
+  = simple_form_for([@user, @transaction], url: direct_transfer_user_path(@user) , defaults: { label: false }) do |f|
+    = f.error_notification
+    - f.object.errors.full_messages.each do |message|
+      p= message  
+
+    = f.input :amount, placeholder: 'amount'
+    = f.submit 'Submit', class: 'button radius'

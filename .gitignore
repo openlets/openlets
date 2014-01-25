@@ -1,0 +1,7 @@
+.localeapp
+.bundle
+.localeapp
+/tmp
+/log
+/public/carrierwave
+/public/uploads

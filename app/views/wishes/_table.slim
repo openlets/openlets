@@ -1,0 +1,18 @@
+table
+  tr
+    th Title
+    th Image
+    th User
+    th
+    th
+    th
+
+  - wishes.each do |wish|
+    tr
+      td = wish.title
+      td = image_tag(wish.image, size: "40x40")
+      td = wish.user_id
+      td = link_to 'Show', wish
+      - if can? :update, wish
+        td = link_to 'Edit', edit_wish_path(wish)
+        td = link_to 'Close', close_wish_path(wish), confirm: 'Are you sure?', method: :put

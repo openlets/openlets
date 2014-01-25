@@ -1,0 +1,19 @@
+= simple_form_for(@item, defaults: { label: false }) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message
+
+  .field
+    = f.input :title, placeholder: 'Title'   
+  .field
+    = f.input :description, placeholder: 'Description'
+  .field
+    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => 'Categories' }
+  .field
+    = f.input :price, placeholder: 'Price'
+  - unless @item.new_record?
+    .field
+      = image_tag(@item.image, size: "50x50")
+  .field
+    = f.input :image
+  .actions = f.submit 'Save', class: 'button radius expand'

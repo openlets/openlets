@@ -1,0 +1,44 @@
+.fixed
+  nav.top-bar data-topbar=""
+    ul.title-area
+      li.name
+        h1#logo
+          = link_to root_path
+            = image_tag('float-logo-1.png', size: "30x30")
+            span penLETS
+
+      li.toggle-topbar.menu-icon
+        a href="#"
+          span
+    section.top-bar-section
+      ul.right
+        - if user_signed_in?
+          li= link_to new_item_path
+            i.fa.fa-plus
+            |  Add Item
+          li.divider
+          li= link_to "Make a Wish", new_wish_path
+          li.divider
+          li= link_to items_path
+            i.fa.fa-shopping-cart
+            |  Market
+          li.divider        
+          li= link_to wishes_path
+            i.fa.fa-magic
+            |  Wishes
+          li.divider
+          li=link_to current_user
+            i.fa.fa-user
+            |  Profile
+          li.divider
+          li= link_to conversations_path
+            i.fa.fa-inbox
+            |  Inbox
+          li.divider
+          li= link_to destroy_user_session_path
+            i.fa.fa-sign-out
+            |  Logout
+        - else
+          li= link_to new_user_session_path
+            i.fa.fa-sign-in
+            |  Login

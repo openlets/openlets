@@ -1,0 +1,26 @@
+- items.each do |item|
+  .row.marketplace
+    .item-panel
+      .large-3.small-3.columns      
+        = image_tag(item.image)
+      .large-6.small-6.columns  
+        h3= link_to item.title, item
+        p= "Price: #{item.price} #{Setting[:currency_name].capitalize.pluralize}"
+        = link_to item.user.try(:name), item.user
+      .large-3.small-3.columns
+        .row
+          .large-12.columns
+          - if item.user != current_user
+              = link_to "Purchase", purchase_item_path(item), class: 'button radius right small', method: :post, confirm: 'Are you sure?'
+        .row
+          .large-12.columns
+            - if can? :update, item
+              td= link_to edit_item_path(item), class: 'button radius tiny right'
+                .i.fa.fa-edit
+            - if can? :pause, item
+              td= link_to pause_item_path(item), confirm: 'Are you sure?', method: :put, class: 'button radius tiny right alert'
+                .i.fa.fa-pause
+            - if can? :activate, item
+              td= link_to activate_item_path(item), method: :put, class: 'button radius tiny right'
+                .i.fa.fa-play
+      .clear-both

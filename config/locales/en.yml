@@ -1,0 +1,11 @@
+en:
+  unauthorized:
+    purchase:
+      item: You must be approved in order to make a purchase.
+    new:
+      conversation: You must be approved in order to send messages.
+    transfer:
+      user: You must be approved in order to transfer funds.
+  splash:
+    title: Welcome to the OpenLETS Demo!
+    p1: OpenLETS is an open source platform built to allow communities to easily start and manage a marketplace to trade goods and services with their own currency.

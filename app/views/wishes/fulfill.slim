@@ -1,4 +1,4 @@
-h1= "Fulfill #{@wish.user.name.pluralize} Wish"
+h1= "Fulfill #{@wish.user.try(:name)} Wish"
 h3= "Wish Title: #{@wish.title}"
 h3= "Wish Title: #{@wish.description}"
 

@@ -32,7 +32,6 @@ class UsersController < ApplicationController
 
   def direct_transfer
     @transaction = @user.sales.new(params[:transaction])
-    @transaction.transaction_type = 'direct_transfer'
     @transaction.buyer_id = current_user.id
     if @transaction.save
       flash[:notice] = "successfully transfered funds"

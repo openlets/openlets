@@ -25,8 +25,6 @@ class User < ActiveRecord::Base
   has_many :locations, as: :locationable, dependent: :destroy
   accepts_nested_attributes_for :locations
 
-  after_create :registration_gift
-
   scope :awaiting_approval, lambda { where(workflow_state: 'awaiting_approval') }
   scope :approved,          lambda { where(workflow_state: 'approved') }
   scope :banned,            lambda { where(workflow_state: 'banned') }
@@ -44,6 +42,14 @@ class User < ActiveRecord::Base
     state :banned do
       event :approve, transitions_to: :approved
     end
+  end
+
+  def needed_funds(item)
+    account_balance + price
+  end
+
+  def transactions
+    Transaction.where("buyer_id = ? OR seller_id = ?", id, id)
   end
 
   def conversations
@@ -88,9 +94,4 @@ class User < ActiveRecord::Base
     authorization.user
   end
 
-  private
-
-    def registration_gift
-      Transaction.registration_gift(self)
-    end
 end

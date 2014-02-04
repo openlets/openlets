@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     else
       @comments = @item.comments.order(:created_at)
       @comment  = @item.comments.new
-      flash[:alert] = "Insufficient Funds"
+      flash[:alert] = "Insufficient Funds. This transaction would cause you to cross the maximum debit limit. "
       render 'show'
     end
   end

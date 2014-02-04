@@ -17,8 +17,6 @@ class Item < ActiveRecord::Base
   validates_presence_of :description, :price, :title
   validates_numericality_of :price
 
-  after_create :item_gift
-
   scope :of_approved_users, lambda { where(user_id: User.approved.pluck(:id)) }
 
   workflow do
@@ -36,19 +34,13 @@ class Item < ActiveRecord::Base
     end
   end
   workflow_scopes
-  
+
   def purchase!(buyer)
-    if buyer.account_balance >= price
+    if (buyer.account_balance - price) >= Setting[:maximum_debit].to_i
       Transaction.purchase!(buyer, user, self)
     else
       false
     end
   end
-
-  private
-
-    def item_gift
-      Transaction.item_gift(self)
-    end
 
 end

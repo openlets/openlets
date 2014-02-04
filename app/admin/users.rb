@@ -30,6 +30,8 @@ ActiveAdmin.register User do
     column :about
     column :account_balance
     column(:suspend) { |u| link_to 'Suspend', ban_admin_user_path(u), class: 'button alert', confirm: 'Are you sure?' }
+    column(:approve) { |u| link_to 'Approve', approve_admin_user_path(u.id), class: 'button' if u.awaiting_approval? }
+    
     default_actions
   end
 

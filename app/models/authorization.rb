@@ -1,7 +1,7 @@
 class Authorization < ActiveRecord::Base
 	belongs_to :user
 
-	after_create :fetch_details, :grant_gift
+	after_create :fetch_details
 
 	PROVIDERS = %w(facebook linkedin google_oauth2)
 	PROVIDERS.each do |provider|
@@ -30,15 +30,5 @@ class Authorization < ActiveRecord::Base
 	def fetch_details_from_google_oauth2
 
 	end
-
-	private
-
-		def grant_gift
-			Transaction.social_login_gift(self) unless got_gift?
-		end
-
-		def got_gift?
-			user.authorizations.send(provider).count != 1
-		end
 
 end

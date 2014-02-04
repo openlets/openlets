@@ -1,7 +1,7 @@
 OpenLETS
 ========
 
-### Open Source Ruby on Rails Web Application for managing Local Currencies
+### Open Source Ruby on Rails Web Application for managing Local Currencies using [Mutual Credit](http://en.wikipedia.org/wiki/Mutual_credit)
 
 
 ## Demos

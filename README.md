@@ -45,27 +45,18 @@ NOTE: If you try installing and encounter problems, please report them for examp
 * [Login to github](https://github.com/)
 * [Fork the repo on github](https://help.github.com/articles/fork-a-repo)
 * Open the Git Bash command line
-* Clone the repository to your computer by typing `git clone http://git@elanperach/openlets`
+* Clone the repository to your computer by typing `git clone git@github.com:[username]/openlets.git`
 * Then type `cd openlets` to move into the newly cloned apps folder
 * Login to [Heroku](http://heroku.com)
 * Install the [Heroku Toolbelt](https://toolbelt.heroku.com)
 * You will need to add a credit card to your heroku account in order to be able to use some of the [Heroku SAAS AddOns](https://addons.heroku.com) needed for this app. (which have free plans)
 * Login to heroku in your git bash command line (you may need to close and open it after installing the toolbelt) in order to be able to run heroku commands from git bash.
-* Login to [AWS](https://aws.amazon.com/) - This app uses [Amazon S3](http://aws.amazon.com/s3/) for uploading and serving images. 
-* You will need to add a credit card to your amazon aws account in order to be able to use the S3 service. (although you can use the S3 service for free quit a bit before it starts costing money).
-* [Get your aws_key, aws_secret](http://www.cloudberrylab.com/blog/how-to-find-your-aws-access-key-id-and-secret-access-key-and-register-with-cloudberry-s3-explorer/) and put them in the settings.yml file. 
-* Create a Facebook App key and secret at - https://developers.facebook.com/apps and put the credentials in the settings.yml file.
-* [Create a Google APP Project](https://cloud.google.com/console/project), Enable Google + API, get yout API Key and Secret and put them in the settings.yml file.
-* [Get yout Login with Linkedin Credentials](https://developer.linkedin.com/documents/authentication) and put them in the settings.yml file.
-* **IMPORTANT NOTICE** - if you plan to leave your repository public make sure to put all of your keys and secret in [ENVIRONMENT VARIABLES]
-  * [How to add ENV Variables Tutorial](http://support.microsoft.com/kb/310519)
-  * [How to add ENV Variables to your Heroku app](https://devcenter.heroku.com/articles/config-vars) - Example `heroku config:set OPENLETS_AWS_KEY=123456qwerty`
 * Create a new app in Heroku by typing `heroku create your_lets_community_name'
 * Push the OpenLETS code to heroku by typing `git push heroku master`
 * Migrate your database schema by typing `heroku run rake db:migrate`
 * Create your database seed data by typing `heroku run rake db:seed`
 * Open your newly created app by typing `heroku open`
-* Login to the admin panel with email - 'example@admin.com' - password - 'password'
+* Login to the yourapp.herokuapp.com\admin panel with email - 'admin@example.com' - password - 'password'
 * Configure your community_name, currency_name and gift amounts by going to Configurations > Settings
 * Add the New Relic Heroku Addon (for app performance analytics) by typing `heroku addons:add newrelic`
 * In order to configure the New Relic Addon
@@ -83,8 +74,20 @@ NOTE: If you try installing and encounter problems, please report them for examp
 * Add the Mandrill Heroku Addon (Email SMTP - for sending emails) by typing `heroku addons:add mandrill`
 * If you would like to configure a custom domain name - Go to "Settings > Domains" and add you custom domain names (You will also need to [configure your domain DNS](https://devcenter.heroku.com/articles/custom-domains) pointing at your heroku app)
 * Set your default "From" email in the 'config/initializers/devise.rb file around line #9
-* Set your default "From" email in the 'mailers/mailer.rb file around line #2
+* Set your default "From" email in the 'app/mailers/mailer.rb file around line #2
 * Commit your changes and push to heroku
+
+* Login to [AWS](https://aws.amazon.com/) - This app uses [Amazon S3](http://aws.amazon.com/s3/) for uploading and serving images. 
+* You will need to add a credit card to your amazon aws account in order to be able to use the S3 service. (although you can use the S3 service for free quit a bit before it starts costing money).
+* [Get your aws_key, aws_secret](http://www.cloudberrylab.com/blog/how-to-find-your-aws-access-key-id-and-secret-access-key-and-register-with-cloudberry-s3-explorer/) and put them in the settings.yml file. 
+* Edit your AWS bucket name in the settings.yml file.
+* Create a Facebook App key and secret at - https://developers.facebook.com/apps and put the credentials in the settings.yml file.
+* [Create a Google APP Project](https://cloud.google.com/console/project), Enable Google + API, get yout API Key and Secret and put them in the settings.yml file. After creating the Google Client ID make sure that your "Authorized redirect URI" is "http://youapp.herokuapp.com/users/auth/google_oauth2/callback"
+* [Get yout Login with Linkedin Credentials](https://developer.linkedin.com/documents/authentication) and put them in the settings.yml file.
+* **IMPORTANT NOTICE** - if you plan to leave your repository public make sure to put all of your keys and secret in [ENVIRONMENT VARIABLES]
+  * [How to add ENV Variables Tutorial](http://support.microsoft.com/kb/310519)
+  * [How to add ENV Variables to your Heroku app](https://devcenter.heroku.com/articles/config-vars) - Example `heroku config:set OPENLETS_AWS_KEY=123456qwerty`
+
 
 ## Contributing to the development of the OpenLETS Web Application
 

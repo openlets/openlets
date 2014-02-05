@@ -52,8 +52,11 @@ NOTE: If you try installing and encounter problems, please report them for examp
 * You will need to add a credit card to your heroku account in order to be able to use some of the [Heroku SAAS AddOns](https://addons.heroku.com) needed for this app. (which have free plans)
 * Login to heroku in your git bash command line (you may need to close and open it after installing the toolbelt) in order to be able to run heroku commands from git bash.
 * Create a new app in Heroku by typing `heroku create your_lets_community_name'
+* Go to config/initializers/active_admin.rb and comment out the line `Setting.find_by_name('community_name')` and unomment it after you run your migrations
+* Commit your changes by `git commit -am 'commented out config'
 * Push the OpenLETS code to heroku by typing `git push heroku master`
 * Migrate your database schema by typing `heroku run rake db:migrate`
+* Uncomment the Setting code from before.
 * Create your database seed data by typing `heroku run rake db:seed`
 * Open your newly created app by typing `heroku open`
 * Login to the yourapp.herokuapp.com\admin panel with email - 'admin@example.com' - password - 'password'
@@ -76,7 +79,6 @@ NOTE: If you try installing and encounter problems, please report them for examp
 * Set your default "From" email in the 'config/initializers/devise.rb file around line #9
 * Set your default "From" email in the 'app/mailers/mailer.rb file around line #2
 * Commit your changes and push to heroku
-
 * Login to [AWS](https://aws.amazon.com/) - This app uses [Amazon S3](http://aws.amazon.com/s3/) for uploading and serving images. 
 * You will need to add a credit card to your amazon aws account in order to be able to use the S3 service. (although you can use the S3 service for free quit a bit before it starts costing money).
 * [Get your aws_key, aws_secret](http://www.cloudberrylab.com/blog/how-to-find-your-aws-access-key-id-and-secret-access-key-and-register-with-cloudberry-s3-explorer/) and put them in the settings.yml file. 

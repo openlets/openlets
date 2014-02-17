@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def set_locale
-    @locale = I18n.locale = params[:locale] || current_user.try(:locale) || I18n.default_locale
+    @locale = I18n.locale = params[:locale] || (current_user.locale unless current_user.try(:locale).blank?) || I18n.default_locale
     @dir = @locale.to_s == "he" ? "rtl" : "ltr"
   end
 

@@ -14,6 +14,26 @@ en:
     login: Login
     marketplace: Marketplace
     price: Price
-    purchase: |
-      Purchase
+    purchase: Purchase
     signup: Signup
+    transactions: Transactions
+    wishes: Wishes
+  conversation:
+    send_message: Send Message
+    send_money: Transfer Funds
+  user:
+    items_for_sale: Items for Sale
+    edit_profile: Edit Profile
+    balance: Balance
+    connect_social_networks: Connect your social networks
+  simple_form:
+    labels:
+      user:
+        locale: Language
+        name: Name
+        locations:
+          address: Address
+  helpers:
+    submit:
+      user:
+        update: Update

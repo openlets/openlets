@@ -4,29 +4,29 @@
 			= (image_tag @user.image_url(:thumb).to_s)
 		.large-6.small-8.columns
 			h1= @user.name
-			h3= "Balance: #{@user.account_balance}"
+			h3= "#{t('user.balance')}: #{@user.account_balance}"
 			- if can? :update, @user
-				= link_to "Edit Profile", edit_user_path(@user), class: 'button radius tiny'
+				= link_to t('user.edit_profile'), edit_user_path(@user), class: 'button radius tiny'
 		.large-4.columns
 			br
 			br
 			- if @conversation
 				.small-12.columns
-			  	= link_to "Send Message", conversation_messages_path(@conversation), class: 'button radius large expand'
+			  	= link_to t('conversation.send_message'), conversation_messages_path(@conversation), class: 'button radius large expand'
 			- if cannot? :update, @user
 				.small-6.columns
-					= link_to "Send Message", new_conversations_path(@user), class: 'button radius expand'
+					= link_to t('conversation.send_message'), new_conversations_path(@user), class: 'button radius expand'
 				.small-6.columns
-					= link_to "Send Money", transfer_user_path(@user), class: 'button radius expand'
+					= link_to t('conversation.send_money'), transfer_user_path(@user), class: 'button radius expand'
 		.clear-both
 	  
 .row
 	.large-12.columns
-		h1.text-center Items for Sale
+		h1.text-center= t('user.items_for_sale')
 		= render 'items/table', items: @user.items
 
-		h1 Wishes
+		h1= t('common.wishes')
 		= render 'wishes/table', wishes: @user.wishes
 
-		h1 Transactions
+		h1= t('common.transactions')
 		= render 'transactions/table', transactions: @user.transactions

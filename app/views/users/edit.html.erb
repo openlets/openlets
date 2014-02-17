@@ -1,23 +1,23 @@
 <div class="row">
   <div class="large-12 columns">
 
-    <h1>Editing user</h1>
+    <h1><%= t('user.edit_profile') %></h1>
 
     <%= render 'form' %>
 
   </div>
 
 </div>
+
+
 <script>
-
-$(function() {
-  $('input#user_locations_attributes_0_address').geocomplete({
-    map: "#map",
-    markerOptions: {
-      draggable: true
-    },
-    location: "<%= current_user.locations.first.try(:address) %>"
+  $(function() {
+    $('input#user_locations_attributes_0_address').geocomplete({
+      map: "#map",
+      markerOptions: {
+        draggable: true
+      },
+      location: "<%= current_user.locations.first.try(:address) %>"
+    });
   });
-});
-
 </script>

@@ -12,3 +12,24 @@ he:
     price: מחיר
     purchase: קנה עכשיו
     signup: הרשמה
+    transactions: עסקאות
+    wishes: משאלות
+  conversation:
+    send_message: שלח\י הודעה
+    send_money: שלח\י כסף
+  user:
+    items_for_sale: פריטים למכירה
+    edit_profile: ערוך פרופיל
+    balance: מאזן
+    connect_social_networks: התחבר עם עוד חשבונות
+  simple_form:
+    labels:
+      user:
+        locale: שפה
+        name: שם
+        locations:
+          address: כתובת
+  helpers:
+    submit:
+      user:
+        update: עידכון

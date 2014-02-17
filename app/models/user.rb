@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     sales.sum(&:amount) - purchases.sum(&:amount)
   end
 
+  def connected_with?(provider)
+    authorizations.pluck(:provider).include?(provider.to_s)
+  end
+
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|

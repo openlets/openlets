@@ -12,12 +12,24 @@
 
   .form-actions
     = f.button :submit
-div
-  h1 Connect Account
-  - ['facebook', 'linkedin', 'google_oauth2'].each do |provider|
-    - if current_user.authorizations.pluck(:provider).include?(provider.to_s)
-      = provider.to_s.titleize
-      | Connected
-    - else
-      = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path('user', provider)
-    br
+
+.row.social-links
+  h1= t('user.connect_social_networks')
+  - [:facebook, :linkedin, :google_oauth2].each do |provider|
+    - if provider == :facebook
+      .large-4.small-4.columns
+        = link_to (current_user.connected_with?(provider) ? "#" : omniauth_authorize_path('user', provider)), class: "social-login expand #{current_user.connected_with?(provider.to_s) ? 'disabled button radius' : 'facebook-button'}"
+          .i.fa.fa-facebook-square
+          span= " Facebook"
+
+    - if provider == :linkedin
+      .large-4.small-4.columns
+        = link_to (current_user.connected_with?(provider) ? "#" : omniauth_authorize_path('user', provider)), class: "social-login expand #{current_user.connected_with?(provider.to_s) ? 'disabled button radius' : 'linkedin-button'}"
+          .i.fa.fa-linkedin-square
+          span= " Linkedin"
+
+    - if provider == :google_oauth2
+      .large-4.small-4.columns
+        = link_to (current_user.connected_with?(provider) ? "#" : omniauth_authorize_path('user', provider)), class: "social-login expand #{current_user.connected_with?(provider.to_s) ? 'disabled button radius' : 'google-button'}"
+          .i.fa.fa-google-plus-square
+          span= " Google"    

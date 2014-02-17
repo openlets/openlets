@@ -23,7 +23,7 @@ credentials for logging in to admin:
 * Make a wish
 * Fulfill a wish
 * Admin panel with market velocity graph, user management, item management
-* Admin Settings to determine credit creation / gifts for differenct actions (signup, creating an item etc'...)
+* Admin Settings to determine maximum debit limit, currency name and community name
 * Responsive design with Zurb Foundation 4
 
 
@@ -119,21 +119,7 @@ NOTE: If you try installing and encounter problems, please report them for examp
 
 ## License
 
-The MIT License (MIT)
+AGPL license
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+OpenLETS is under the AGPL Lisence.
+[Click here for more info](https://github.com/openlets/openlets/wiki/Agpl-license)

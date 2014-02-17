@@ -1,8 +1,4 @@
-h1 Listing wishes
-= render 'table', wishes: @wishes
-
-br
-
-= link_to new_wish_path, class: "small button"
-	i.fa.fa-magic
-	'  New Wish
+.row
+  .large-12.columns
+    h1 Wishes
+    = render 'table', wishes: @wishes

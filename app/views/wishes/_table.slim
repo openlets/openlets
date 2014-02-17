@@ -1,18 +1,20 @@
-table
-  tr
-    th Title
-    th Image
-    th User
-    th
-    th
-    th
-
-  - wishes.each do |wish|
-    tr
-      td = wish.title
-      td = image_tag(wish.image, size: "40x40")
-      td = wish.user_id
-      td = link_to 'Show', wish
-      - if can? :update, wish
-        td = link_to 'Edit', edit_wish_path(wish)
-        td = link_to 'Close', close_wish_path(wish), confirm: 'Are you sure?', method: :put
+- wishes.each do |wish|
+  .row.marketplace
+    .item-panel
+      .large-3.small-3.columns      
+        = image_tag(wish.image)
+      .large-6.small-6.columns  
+        h3= wish.title
+        = link_to wish.user.try(:name), wish.user
+      .large-3.small-3.columns
+        .row
+          .large-12.columns
+            = link_to "Show", wish, class: 'button radius right small'
+        .row
+          .large-12.columns
+            - if can? :update, wish
+              td= link_to 'Edit', edit_wish_path(wish)
+                .i.fa.fa-edit
+              td= link_to 'Close', close_wish_path(wish), confirm: 'Are you sure?', method: :put
+                .i.fa.fa-pause
+      .clear-both        

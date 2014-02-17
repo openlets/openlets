@@ -1,28 +1,23 @@
-p#notice = notice
-
-= link_to 'fulfill the wish', fulfill_wish_path(@wish), class: 'button radius large' if can? :fulfill, @wish
-
-p
-  strong Title:
-  = @wish.title
-p
-  strong Description:
-  = @wish.description
-p
-  strong Image:
-  = image_tag(@wish.image, size: "50x50")
-p
-  strong User:
-  = @wish.user_id
+.row
+  .item-panel
+    .large-3.columns
+      p= image_tag(@wish.image)
+    .large-5.columns
+      h1= @wish.title
+      p= link_to @wish.user.name, @wish.user
+      p
+        strong= @wish.description
+    .large-4.columns
+      = link_to 'fulfill the wish', fulfill_wish_path(@wish), class: 'button radius large' if can? :fulfill, @wish
 
 
 
-= link_to 'Edit', edit_wish_path(@wish), class: 'button radius secondary' if can? :update, @wish
-= link_to 'Back', wishes_path, class: 'button radius'
+    .row
+      .large-12.columns
+        = link_to 'Edit', edit_wish_path(@wish), class: 'button radius secondary' if can? :update, @wish
 
-br
-br
 
-h3 Wish Propositions
-
-= render 'items/table', items: @wish.items
+.row
+  .large-12.columns
+    h3 Wish Propositions
+    = render 'items/table', items: @wish.items

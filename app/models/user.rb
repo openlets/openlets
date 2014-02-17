@@ -44,6 +44,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def trust_rank
+    @rank ||= authorizations.map(&:provider).uniq.count + 1
+  end
+
+  def max_debit
+    @max_devit ||= (trust_rank * Setting[:maximum_debit].to_i)
+  end
+
   def needed_funds(item)
     account_balance + price
   end

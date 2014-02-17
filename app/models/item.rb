@@ -36,7 +36,7 @@ class Item < ActiveRecord::Base
   workflow_scopes
 
   def purchase!(buyer)
-    if (buyer.account_balance - price) >= Setting[:maximum_debit].to_i
+    if (buyer.account_balance - price) >= buyer.max_debit
       Transaction.purchase!(buyer, user, self)
     else
       false

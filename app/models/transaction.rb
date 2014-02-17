@@ -41,7 +41,7 @@ class Transaction < ActiveRecord::Base
   private
 
     def sufficient_funds
-  	  errors.add :base, "insufficient funds" if (buyer.account_balance - amount) < Setting[:maximum_debit].to_i
+  	  errors.add :base, "insufficient funds" if (buyer.account_balance - amount) < buyer.max_debit
     end
 
     def not_self

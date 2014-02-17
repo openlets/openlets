@@ -37,58 +37,8 @@ credentials for logging in to admin:
 * [Active Admin](http://activeadmin.info)
 
 
-## Installation Instructions For Windows Users
+## [Installation Instructions For Windows Users](https://github.com/openlets/openlets/wiki/Installation-Instructions-for-Windows)
 
-NOTE: If you try installing and encounter problems, please report them for example in Issues. We try to help you and enhance the documentation.
-
-* [Install Git](http://www.git-scm.com)
-* [Login to github](https://github.com/)
-* [Fork the repo on github](https://help.github.com/articles/fork-a-repo)
-* Open the Git Bash command line
-* Clone the repository to your computer by typing `git clone git@github.com:[username]/openlets.git`
-* Then type `cd openlets` to move into the newly cloned apps folder
-* Login to [Heroku](http://heroku.com)
-* Install the [Heroku Toolbelt](https://toolbelt.heroku.com)
-* You will need to add a credit card to your heroku account in order to be able to use some of the [Heroku SAAS AddOns](https://addons.heroku.com) needed for this app. (which have free plans)
-* Login to heroku in your git bash command line (you may need to close and open it after installing the toolbelt) in order to be able to run heroku commands from git bash.
-* Create a new app in Heroku by typing `heroku create your_lets_community_name'
-* Go to config/initializers/active_admin.rb and comment out the line `Setting.find_by_name('community_name')` and unomment it after you run your migrations
-* Commit your changes by `git commit -am 'commented out config'
-* Push the OpenLETS code to heroku by typing `git push heroku master`
-* Migrate your database schema by typing `heroku run rake db:migrate`
-* Uncomment the Setting code from before.
-* Create your database seed data by typing `heroku run rake db:seed`
-* Open your newly created app by typing `heroku open`
-* Login to the yourapp.herokuapp.com\admin panel with email - 'admin@example.com' - password - 'password'
-* Configure your community_name, currency_name and gift amounts by going to Configurations > Settings
-* Add the New Relic Heroku Addon (for app performance analytics) by typing `heroku addons:add newrelic`
-* In order to configure the New Relic Addon
-  * Go to your [Heroku Dashboard](https://dashboard.heroku.com/apps)
-  * Click on your app name
-  * Click on the New Relic Addon
-  * Click "Get Started"
-  * Click "Generate License Key"
-  * Download the newrelic.yml file to your app/config folder (replacing the existing one)
-  * After you do this you will need to commit the changes in git and push them to heroku.
-  * Example of committing changes -  `git commit -am "added new relic license key"`
-  * RePushing the changes to heroku - `git push heroku master`
-  * After pushing your changes to heroku go to the new relic dashboard, click on your app, go to "Settings > Availability Monitoring" and add your application url to monitor.
-* Add the Log Entries Heroku Addon (for saving and viewing production logs) by typing `heroku addons:add logentries` 
-* Add the Mandrill Heroku Addon (Email SMTP - for sending emails) by typing `heroku addons:add mandrill`
-* If you would like to configure a custom domain name - Go to "Settings > Domains" and add you custom domain names (You will also need to [configure your domain DNS](https://devcenter.heroku.com/articles/custom-domains) pointing at your heroku app)
-* Set your default "From" email in the 'config/initializers/devise.rb file around line #9
-* Set your default "From" email in the 'app/mailers/mailer.rb file around line #2
-* Commit your changes and push to heroku
-* Login to [AWS](https://aws.amazon.com/) - This app uses [Amazon S3](http://aws.amazon.com/s3/) for uploading and serving images. 
-* You will need to add a credit card to your amazon aws account in order to be able to use the S3 service. (although you can use the S3 service for free quit a bit before it starts costing money).
-* [Get your aws_key, aws_secret](http://www.cloudberrylab.com/blog/how-to-find-your-aws-access-key-id-and-secret-access-key-and-register-with-cloudberry-s3-explorer/) and put them in the settings.yml file. 
-* Edit your AWS bucket name in the settings.yml file.
-* Create a Facebook App key and secret at - https://developers.facebook.com/apps and put the credentials in the settings.yml file.
-* [Create a Google APP Project](https://cloud.google.com/console/project), Enable Google + API, get yout API Key and Secret and put them in the settings.yml file. After creating the Google Client ID make sure that your "Authorized redirect URI" is "http://youapp.herokuapp.com/users/auth/google_oauth2/callback"
-* [Get yout Login with Linkedin Credentials](https://developer.linkedin.com/documents/authentication) and put them in the settings.yml file.
-* **IMPORTANT NOTICE** - if you plan to leave your repository public make sure to put all of your keys and secret in [ENVIRONMENT VARIABLES]
-  * [How to add ENV Variables Tutorial](http://support.microsoft.com/kb/310519)
-  * [How to add ENV Variables to your Heroku app](https://devcenter.heroku.com/articles/config-vars) - Example `heroku config:set OPENLETS_AWS_KEY=123456qwerty`
 
 
 ## Contributing to the development of the OpenLETS Web Application

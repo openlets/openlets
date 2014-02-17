@@ -5,3 +5,10 @@ he:
   unauthorized:
     purchase:
       item: לא ניתן לרכוש פריטים ללא הרשמה למערכת.
+  common:
+    are_you_sure: את\ה בטוח\ה?
+    login: כניסה
+    marketplace: לוח מכירות
+    price: מחיר
+    purchase: קנה עכשיו
+    signup: הרשמה

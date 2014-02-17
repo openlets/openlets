@@ -30,4 +30,19 @@ ActiveAdmin.register Item do
     default_actions
   end
 
+  form do |f|
+    f.inputs do
+      f.input :user, input_html: { disabled: true }
+      f.input :title
+      f.input :description
+      f.input :price
+      f.input :image
+      f.input :categories
+      f.input :wish
+    end
+
+    f.actions
+  end
+
+
 end

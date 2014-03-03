@@ -40,13 +40,13 @@ gem 'newrelic_rpm'
 gem 'mandrill-api'
 gem "chartkick"
 gem 'geocoder'
+gem 'localeapp'
 
 group :production do
   gem 'rollbar'
 end
 
 group :development do
-  gem 'localeapp'
   gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -8,10 +8,10 @@
             span penLETS
 
       li.toggle-topbar.menu-icon
-        a href="#"
+        a href="#" class=(top_bar_direction)
           span
     section.top-bar-section
-      ul.right
+      ul class=(top_bar_direction)
         - if user_signed_in?
           li= link_to new_item_path
             i.fa.fa-plus

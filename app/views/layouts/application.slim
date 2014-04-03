@@ -4,7 +4,7 @@ doctype
 /![if IE 7 ] <html class="ie7" lang="en">
 /![if IE 8 ] <html class="ie8" lang="en">
 /! [if (gte IE 9)|!(IE)]><!
-html lang="en"
+html lang=(current_locale)
   /! <![endif]
   head
     meta charset="utf-8"
@@ -14,7 +14,8 @@ html lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title= content_for?(:title) ? yield(:title) : Setting.find_by_name('community_name').value
 
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}"
+
     script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
     = javascript_include_tag "application"
     = csrf_meta_tags

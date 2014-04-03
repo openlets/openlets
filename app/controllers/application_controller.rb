@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  helper_method :filter_params, :users_for_filter, :categories_for_filter
+
   before_filter :set_locale
 
   def set_locale
@@ -12,4 +14,17 @@ class ApplicationController < ActionController::Base
     @dir = @locale.to_s == "he" ? "rtl" : "ltr"
   end
 
+  private
+
+    def filter_params
+      params["filter"] ||= {}
+    end
+
+    def users_for_filter
+      @user ||= User.all
+    end
+
+    def categories_for_filter
+      @categories ||= Category.all
+    end
 end

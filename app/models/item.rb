@@ -1,7 +1,5 @@
 class Item < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
-  include Workflow
-  include WorkflowExtended
+  include Transactionable
 
   attr_accessible :description, :price, :title, :image, :category_ids, :wish_id
 
@@ -16,24 +14,6 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :description, :price, :title
   validates_numericality_of :price
-
-  scope :of_approved_users, lambda { where(user_id: User.approved.pluck(:id)) }
-
-  workflow do
-    state :active do
-      event :ban,     transitions_to: :banned
-      event :pause,   transitions_to: :paused
-    end
-    state :paused do
-      event :activate, transitions_to: :active
-      event :ban,     transitions_to: :banned
-    end
-    state :banned do
-      event :activate, transitions_to: :active
-      event :pause,   transitions_to: :paused      
-    end
-  end
-  workflow_scopes
 
   def purchase!(buyer)
     if (buyer.account_balance - price) >= buyer.max_debit

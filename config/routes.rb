@@ -25,6 +25,8 @@ OpenLets::Application.routes.draw do
   
   resources :wishes do
     member do
+      put  'pause'
+      put  'activate'
       get  'fulfill'
       put  'close'
       post 'create_wish_offer'

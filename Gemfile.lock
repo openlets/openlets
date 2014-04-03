@@ -326,8 +326,6 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     temple (0.6.7)
-    textacular (3.1.0)
-      activerecord (>= 3.0, < 4.1)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -403,7 +401,6 @@ DEPENDENCIES
   slim
   slim-rails
   spork
-  textacular (~> 3.0)
   thin
   uglifier (>= 1.0.3)
   unf

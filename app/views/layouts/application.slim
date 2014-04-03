@@ -13,7 +13,6 @@ html lang="en"
     /! Set the viewport width to device width for mobile
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title= content_for?(:title) ? yield(:title) : Setting.find_by_name('community_name').value
-    link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'
 
     = stylesheet_link_tag    "application"
     script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"

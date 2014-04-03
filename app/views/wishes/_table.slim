@@ -13,8 +13,12 @@
         .row
           .large-12.columns
             - if can? :update, wish
-              td= link_to 'Edit', edit_wish_path(wish)
+              td= link_to edit_wish_path(wish), class: 'button radius tiny right'
                 .i.fa.fa-edit
-              td= link_to 'Close', close_wish_path(wish), confirm: 'Are you sure?', method: :put
+            - if can? :pause, wish
+              td= link_to pause_wish_path(wish), confirm: t('common.are_you_sure'), method: :put, class: 'button radius tiny right alert'
                 .i.fa.fa-pause
+            - if can? :activate, wish
+              td= link_to activate_wish_path(wish), method: :put, class: 'button radius tiny right'
+                .i.fa.fa-play
       .clear-both        

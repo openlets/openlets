@@ -4,4 +4,8 @@ jQuery(document).ready(function($) {
     allow_single_deselect: true,
     no_results_text: 'No results matched'
   });
+
+  $('a.auto-submit').click(function(){
+    $("form#search-form").submit();
+  });
 });

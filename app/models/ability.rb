@@ -11,16 +11,23 @@ class Ability
     cannot :create, Item
     
     if user # logged in user
+
       can    :create,            Item
       can    :crud,              user.items        { |i| i.user == user }
       can    :pause,             user.items        { |i| i.active? }
       cannot :pause,             Item.paused       { true }
       can    :activate,          user.items.paused { true }
       cannot :activate,          Item.active       { |i| i.active? }
-      can    :crud,              user.wishes       { |w| w.user == user }
+      
+      can    :create,            Wish
+      can    :crud,              user.wishes        { |i| i.user == user }
+      can    :pause,             user.wishes        { |i| i.active? }
+      cannot :pause,             Wish.paused        { true }
+      can    :activate,          user.wishes.paused { true }
+      cannot :activate,          Wish.active        { |i| i.active? }
       can    :fulfill,           Wish
       can    :create_wish_offer, Wish
-      can    :create,            Wish
+      
       can    :show,              User
       can    :crud,              user
     end

@@ -1,4 +1,6 @@
 .row
   .large-12.columns
-    h1 Wishes
+    br
+    h1.text-center.bold Wishes
+    = render 'shared/filter_form'
     = render 'table', wishes: @wishes

@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
 	load_and_authorize_resource
-	before_filter :load_wish, :only => [:show, :create_wish_offer, :fulfill]
+	before_filter :load_wish, :only => [:show, :create_wish_offer, :fulfill, :pause, :activate]
 
 	def new
 		@wish = current_user.wishes.new
@@ -24,7 +24,7 @@ class WishesController < ApplicationController
 	end
 
 	def index
-		@wishes = Wish.of_approved_users.active - current_user.wishes
+		@wishes = Wish.filter_by(filter_params)
 	end
 
 	def edit
@@ -39,6 +39,18 @@ class WishesController < ApplicationController
 			render 'edit'
 		end
 	end
+
+  def pause
+    @wish.pause!
+    flash[:notice] = "Wish is paused"
+    redirect_to @wish
+  end
+
+  def activate
+    @wish.activate!
+    flash[:notice] = "Wish is active!"
+    redirect_to @wish
+  end
 
 	def fulfill
 		@item = current_user.items.new(title: @wish.title, image: @wish.image.url, 

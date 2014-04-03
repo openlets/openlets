@@ -1,0 +1,14 @@
+.row
+  .item-panel
+    br
+    = form_tag send("#{params[:controller]}_path"), method: :get, id: 'search-form' do
+      .large-5.columns
+        = select_tag "filter[category_ids]", options_from_collection_for_select(categories_for_filter, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => 'Select categories'
+      .large-3.columns
+        = collection_select(:filter, :user_id, users_for_filter, :id, :name, {prompt: 'By User', selected: filter_params[:user_id] })
+      .large-3.columns
+        = text_field_tag 'filter[search]', filter_params[:search], placeholder: "Search"
+      .large-1.columns
+        a.button.round.expand.search-button.auto-submit href= "#"
+          i.fa.fa-search
+    .clear-both 

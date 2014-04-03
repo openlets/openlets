@@ -57,7 +57,9 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.of_approved_users.active
+    @items = Item.filter_by(filter_params)
+    @categories = Category.all
+    @users = User.all
   end
 
   private

@@ -87,3 +87,21 @@ label.right {
 #comments {
   margin-bottom: 60px;
 }
+
+.bold { font-weight: bold; }
+
+.chzn-container-multi .chzn-choices .search-field { 
+  height: 34px; 
+  input { height: 34px !important; }
+}
+
+.chzn-container-multi .chzn-choices li.search-choice { padding: 6px 20px 6px 5px; }
+
+.button.search-button {
+  margin: 0;
+  display: block;
+  top: -7px;
+  height: 51px;
+}
+
+fa.fa-search { font-size: 25px; }

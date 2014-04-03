@@ -40,7 +40,7 @@ gem 'newrelic_rpm'
 gem 'mandrill-api'
 gem "chartkick"
 gem 'geocoder'
-gem 'localeapp'
+# gem 'localeapp'
 
 group :production do
   gem 'rollbar'

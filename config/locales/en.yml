@@ -18,6 +18,7 @@ en:
     signup: Signup
     transactions: Transactions
     wishes: Wishes
+    logout: Logout
   conversation:
     send_message: Send Message
     send_money: Transfer Funds
@@ -33,7 +34,346 @@ en:
         name: Name
         locations:
           address: Address
+          edit:
+            address: 
+        edit:
+          locale: 
+          name: 
+    hints:
+      user:
+        edit:
+          locale: 
+          name: 
+        locations:
+          edit:
+            address: 
+        new:
+          email: 
+          password: 
+          password_confirmation: 
+      item:
+        new:
+          categories: 
+          description: 
+          image: 
+          price: 
+          title: 
+    placeholders:
+      user:
+        edit:
+          name: 
+        locations:
+          edit:
+            address: 
+    required:
+      html: <abbr title="required">*</abbr>
+      mark: 
+      text: 
   helpers:
     submit:
       user:
         update: Update
+    label:
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+          new:
+            email: 
+            password: 
+      q:
+        meta_search/searches/category:
+          index:
+            category_connections: 
+            created_at: 
+            items: 
+            name: 
+            parent_category: 
+            subcategories: 
+            updated_at: 
+        meta_search/searches/setting:
+          index:
+            created_at: 
+            name: 
+            updated_at: 
+            value: 
+        meta_search/searches/transaction:
+          index:
+            amount: 
+            buyer: 
+            created_at: 
+            item: 
+            seller: 
+            state_changed_at: 
+            transaction_type: 
+            updated_at: 
+            workflow_state: 
+        meta_search/searches/user:
+          index:
+            about: 
+            authentication_token: 
+            authorizations: 
+            comments: 
+            confirmation_sent_at: 
+            confirmation_token: 
+            confirmed_at: 
+            created_at: 
+            current_sign_in_at: 
+            current_sign_in_ip: 
+            email: 
+            encrypted_password: 
+            image: 
+            items: 
+            last_sign_in_at: 
+            last_sign_in_ip: 
+            locale: 
+            location: 
+            locations: 
+            messages: 
+            name: 
+            purchases: 
+            remember_created_at: 
+            reset_password_sent_at: 
+            reset_password_token: 
+            sales: 
+            state_changed_at: 
+            transactions: 
+            unconfirmed_email: 
+            updated_at: 
+            user_conversations: 
+            username: 
+            wishes: 
+            workflow_state: 
+  activerecord:
+    attributes:
+      admin_user:
+        email: Email
+        password: Password
+      category:
+        category_connections: Category connections
+        created_at: Created at
+        id: Id
+        items: Items
+        name: Name
+        parent: Parent
+        parent_category: Parent category
+        subcategories: Subcategories
+        updated_at: Updated at
+      setting:
+        created_at: Created at
+        id: Id
+        name: Name
+        updated_at: Updated at
+        value: Value
+      transaction:
+        amount: Amount
+        buyer: Buyer
+        cancel: Cancel
+        created_at: Created at
+        id: Id
+        item: Item
+        seller: Seller
+        state_changed_at: State changed at
+        transaction_type: Transaction type
+        updated_at: Updated at
+        workflow_state: Workflow state
+      user:
+        about: About
+        account_balance: Account Balance
+        approve: Approve
+        authentication_token: Authentication Token
+        authorizations: Authorizations
+        comments: Comments
+        confirmation_sent_at: Confirmation Sent At
+        confirmation_token: Confirmation Token
+        confirmed_at: Confirmed At
+        created_at: Created At
+        current_sign_in_at: Current Sign In At
+        current_sign_in_ip: Current Sign In Ip
+        email: Email
+        encrypted_password: Encrypted Password
+        id: Id
+        image: Image
+        items: Items
+        last_sign_in_at: Last Sign In At
+        last_sign_in_ip: Last Sign In Ip
+        locale: Locale
+        location: Location
+        locations: Locations
+        messages: Messages
+        name: Name
+        purchases: Purchases
+        remember_created_at: Remember Created At
+        reset_password_sent_at: Reset Password Sent At
+        reset_password_token: Reset Password Token
+        sales: Sales
+        sign_in_count: Sign In Count
+        state_changed_at: State Changed At
+        suspend: Suspend
+        transactions: Transactions
+        unconfirmed_email: Unconfirmed Email
+        updated_at: Updated At
+        user_conversations: User conversations
+        username: Username
+        wishes: Wishes
+        workflow_state: Workflow State
+    models:
+      admin: Admin
+      admin_user: Admin Users
+      category: Categories
+      item: Items
+      item_comment: Item Comments
+      setting: Settings
+      transaction: Transactions
+      user: Users
+  devise:
+    sessions:
+      user:
+        signed_out: 
+  formtastic:
+    hints:
+      active_admin_comment:
+        active_admin/comment:
+          show:
+            body: 
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+            remember_me: 
+          new:
+            email: 
+            password: 
+            remember_me: 
+    labels:
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+          new:
+            email: 
+            password: 
+      q:
+        meta_search/searches/category:
+          index:
+            category_connections: 
+            created_at: 
+            items: 
+            name: 
+            parent_category: 
+            subcategories: 
+            updated_at: 
+        meta_search/searches/setting:
+          index:
+            created_at: 
+            name: 
+            updated_at: 
+            value: 
+        meta_search/searches/transaction:
+          index:
+            amount: 
+            buyer: 
+            created_at: 
+            item: 
+            seller: 
+            state_changed_at: 
+            transaction_type: 
+            updated_at: 
+            workflow_state: 
+        meta_search/searches/user:
+          index:
+            about: 
+            authentication_token: 
+            authorizations: 
+            comments: 
+            confirmation_sent_at: 
+            confirmation_token: 
+            confirmed_at: 
+            created_at: 
+            current_sign_in_at: 
+            current_sign_in_ip: 
+            email: 
+            encrypted_password: 
+            image: 
+            items: 
+            last_sign_in_at: 
+            last_sign_in_ip: 
+            locale: 
+            location: 
+            locations: 
+            messages: 
+            name: 
+            purchases: 
+            remember_created_at: 
+            reset_password_sent_at: 
+            reset_password_token: 
+            sales: 
+            state_changed_at: 
+            transactions: 
+            unconfirmed_email: 
+            updated_at: 
+            user_conversations: 
+            username: 
+            wishes: 
+            workflow_state: 
+    placeholders:
+      active_admin_comment:
+        active_admin/comment:
+          show:
+            body: 
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+          new:
+            email: 
+            password: 
+      q:
+        meta_search/searches/category:
+          index:
+            name: 
+        meta_search/searches/setting:
+          index:
+            name: 
+            value: 
+        meta_search/searches/transaction:
+          index:
+            amount: 
+            transaction_type: 
+            workflow_state: 
+        meta_search/searches/user:
+          index:
+            about: 
+            authentication_token: 
+            confirmation_token: 
+            current_sign_in_ip: 
+            email: 
+            encrypted_password: 
+            image: 
+            last_sign_in_ip: 
+            locale: 
+            location: 
+            name: 
+            reset_password_token: 
+            unconfirmed_email: 
+            username: 
+            workflow_state: 
+    required: required
+  top_bar:
+    add_item: Add Item
+    inbox: Inbox
+    logout: Logout
+    make_a_wish: Make a Wish
+    market: Market
+    profile: Profile
+    wishes: Wishes
+  wishes:
+    by_user: By User
+    search: Search
+    select_categories: Select Categories
+    show: Show
+    title: Wishes

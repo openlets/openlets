@@ -3,10 +3,7 @@
     ul.title-area
       li.name
         h1#logo
-          = link_to root_path
-            = image_tag('float-logo-1.png', size: "30x30")
-            span penLETS
-
+          = link_to Setting.find_by_name('community_name').try(:value), root_path
       li.toggle-topbar.menu-icon
         a href="#" class=(top_bar_direction)
           span
@@ -15,30 +12,30 @@
         - if user_signed_in?
           li= link_to new_item_path
             i.fa.fa-plus
-            |  Add Item
+            = t('top_bar.add_item')
           li.divider
-          li= link_to "Make a Wish", new_wish_path
+          li= link_to t('top_bar.make_a_wish'), new_wish_path
           li.divider
           li= link_to items_path
             i.fa.fa-shopping-cart
-            |  Market
+            = t('top_bar.market')
           li.divider        
           li= link_to wishes_path
             i.fa.fa-magic
-            |  Wishes
+            = t('top_bar.wishes')
           li.divider
           li=link_to current_user
             i.fa.fa-user
-            |  Profile
+            = t('top_bar.profile')
           li.divider
           li= link_to conversations_path
             i.fa.fa-inbox
-            |  Inbox
+            = t('top_bar.inbox')
           li.divider
           li= link_to destroy_user_session_path
             i.fa.fa-sign-out
-            |  Logout
+            = t('common.logout')
         - else
           li= link_to new_user_session_path
             i.fa.fa-sign-in
-            |  Login
+            = t('common.login')

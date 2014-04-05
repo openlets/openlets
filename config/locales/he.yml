@@ -14,6 +14,7 @@ he:
     signup: הרשמה
     transactions: עסקאות
     wishes: משאלות
+    logout: יציאה
   conversation:
     send_message: שלח\י הודעה
     send_money: שלח\י כסף
@@ -29,7 +30,490 @@ he:
         name: שם
         locations:
           address: כתובת
+          edit:
+            address: 
+        edit:
+          locale: 
+          name: 
+    hints:
+      user:
+        edit:
+          locale: 
+          name: 
+        locations:
+          edit:
+            address: 
+        new:
+          email: 
+          password: 
+          password_confirmation: 
+      item:
+        new:
+          categories: 
+          description: 
+          image: 
+          price: 
+          title: 
+    placeholders:
+      user:
+        edit:
+          name: 
+        locations:
+          edit:
+            address: 
+    required:
+      html: 
+      mark: 
+      text: 
   helpers:
     submit:
       user:
         update: עידכון
+    label:
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+          new:
+            email: 
+            password: 
+      q:
+        meta_search/searches/category:
+          index:
+            category_connections: 
+            created_at: 
+            items: 
+            name: 
+            parent_category: 
+            subcategories: 
+            updated_at: 
+        meta_search/searches/setting:
+          index:
+            created_at: 
+            name: 
+            updated_at: 
+            value: 
+        meta_search/searches/transaction:
+          index:
+            amount: 
+            buyer: 
+            created_at: 
+            item: 
+            seller: 
+            state_changed_at: 
+            transaction_type: 
+            updated_at: 
+            workflow_state: 
+        meta_search/searches/user:
+          index:
+            about: 
+            authentication_token: 
+            authorizations: 
+            comments: 
+            confirmation_sent_at: 
+            confirmation_token: 
+            confirmed_at: 
+            created_at: 
+            current_sign_in_at: 
+            current_sign_in_ip: 
+            email: 
+            encrypted_password: 
+            image: 
+            items: 
+            last_sign_in_at: 
+            last_sign_in_ip: 
+            locale: 
+            location: 
+            locations: 
+            messages: 
+            name: 
+            purchases: 
+            remember_created_at: 
+            reset_password_sent_at: 
+            reset_password_token: 
+            sales: 
+            state_changed_at: 
+            transactions: 
+            unconfirmed_email: 
+            updated_at: 
+            user_conversations: 
+            username: 
+            wishes: 
+            workflow_state: 
+  active_admin:
+    access_denied:
+      message: אין לך הרשאות לבצע פעולה זו
+    any: Any
+    batch_actions:
+      action_label: '%{title} נבחר'
+      button_label: פעולות מרובות
+      delete_confirmation: האם הנך בטוח שאתה רוצה למרוח את %{plural_model}? לא תוכל לבטל את המחיקה.
+      labels:
+        destroy: מחק
+      link: צור
+      selection_toggle_explanation: (שינוי בחירה)
+      succesfully_destroyed:
+        few: '%{count} %{plural_model} נמחק בהצלחה'
+        many: '%{count} %{plural_model} נמחק בהצלחה'
+        one: 1 %{model} נמחק בהצלחה
+        other: '%{count} %{plural_model} נמחק בהצלחה'
+    blank_slate:
+      content: כרגע אין עוד אף %{resource_name}.
+      entry: 
+      link: צור אחד
+    cancel: ביטול
+    clear_filters: 
+    comments:
+      add: הוסף תגובה
+      author: נוצר ע"י
+      author_type: עוד סוג
+      body: תוכן
+      errors:
+        empty_text: התגובה לא נשמרה, שדה התוכן ריק.
+      no_comments_yet: אין עדיין תגובות.
+      resource: Resource
+      resource_type: סוג הישות
+      title: תגובה
+      title_content: תגובות (%{count})
+    contains: 
+    create_model: יצירת %{model} חדש
+    dashboard: פנל ניהול
+    dashboard_welcome:
+      call_to_action: כדי להוסיף אזורים בפנל הניהול, אנא בדוק את,  'app/admin/dashboard.rb'
+      welcome: ברוכים הבאים לאקטיב אדמין. זהו פנל הניהול
+    delete: מחיקה
+    delete_confirmation: האם אתה בטוח שאתה רוצה למחוק את זה?
+    delete_model: מחיקת %{model}
+    details: פרטים על %{model}
+    devise:
+      change_password:
+        submit: שנה את הסיסמא שלי
+        title: שנה את הסיסמא שלך
+      links:
+        forgot_your_password: שכחת את הסיסמא שלך?
+        sign_in: כניסה
+        sign_in_with_omniauth_provider: '%{provider} היכנס עם'
+      login:
+        remember_me: זכור אותי
+        submit: הכנס
+        title: כניסה
+      reset_password:
+        submit: אפס את הסיסמא שלי
+        title: שכחת סיסמא?
+      unlock:
+        submit: שלח מחדש הוראות פתיחה
+        title: 
+    download: 'הורד:'
+    edit: עריכה
+    edit_model: ערוך %{model}
+    empty: ריק
+    ends_with: 
+    equal_to: 
+    filter: 
+    filters:
+      buttons:
+        clear: איפוס שדות
+        filter: סינון
+      predicates:
+        contains: מכיל
+        ends_with: מסתיים ב
+        equals: שווה ל
+        greater_than: גדול מ
+        less_than: פחות מ
+        starts_with: מתחיל עם
+    greater_than: 
+    has_many_delete: מחיקה
+    has_many_new: הוספת %{model} חדש
+    has_many_remove: להסיר
+    index_list:
+      block: רשימה
+      blog: בלוג
+      grid: 
+      table: טבלה
+    less_than: 
+    logout: התנתקות
+    main_content: Please implement %{model}#main_content to display content.
+    new_model: '%{model} חדש'
+    next: הבא
+    pagination:
+      empty: אין %{model} בנמצא
+      entry:
+        one: רשומה בודדה
+        other: רשומות
+      multiple: מציג %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> מתוך <b>%{total}</b> בסך הכל
+      one_page: הצגת <b>כל %{n}</b> %{model}
+    powered_by: Powered by %{active_admin} %{version}
+    previous: הקודם
+    sidebars:
+      filters: סינון
+    starts_with: 
+    update_model: עדכון %{model}
+    view: צפייה
+  activerecord:
+    attributes:
+      admin_user:
+        created_at: 
+        current_sign_in_at: 
+        current_sign_in_ip: 
+        email: 
+        encrypted_Password: סיסמא מוצפנת
+        id: 
+        last_sign_in_at: כניסה אחרונה ב
+        last_sign_in_ip: 
+        remember_created_at: 
+        reset_password_sent_at: 
+        reset_password_token: 
+        sign_in_count: מספר כניסות
+        updated_at: עודכן בתאריך
+        password: 
+      category:
+        category_connections: 
+        created_at: 
+        id: 
+        items: 
+        name: 
+        parent: 
+        parent_category: 
+        subcategories: 
+        updated_at: 
+      setting:
+        created_at: 
+        id: 
+        name: 
+        updated_at: 
+        value: 
+      transaction:
+        amount: 
+        buyer: 
+        cancel: 
+        created_at: 
+        id: 
+        item: 
+        seller: 
+        state_changed_at: 
+        transaction_type: 
+        updated_at: 
+        workflow_state: 
+      user:
+        about: 
+        account_balance: 
+        approve: 
+        authentication_token: 
+        authorizations: 
+        comments: 
+        confirmation_sent_at: 
+        confirmation_token: 
+        confirmed_at: 
+        created_at: 
+        current_sign_in_at: 
+        current_sign_in_ip: 
+        email: 
+        encrypted_password: 
+        id: 
+        image: 
+        items: 
+        last_sign_in_at: 
+        last_sign_in_ip: 
+        locale: 
+        location: 
+        locations: 
+        messages: 
+        name: 
+        purchases: 
+        remember_created_at: 
+        reset_password_sent_at: 
+        reset_password_token: 
+        sales: 
+        sign_in_count: 
+        state_changed_at: 
+        suspend: 
+        transactions: 
+        unconfirmed_email: 
+        updated_at: 
+        user_conversations: 
+        username: 
+        wishes: 
+        workflow_state: 
+    models:
+      admin_user: 
+      admin: 
+      category: 
+      item: 
+      item_comment: 
+      setting: 
+      transaction: 
+      user: 
+  devise:
+    failure:
+      admin_user:
+        invalid: לא תקין
+        unauthenticated: 
+    sessions:
+      admin_user:
+        signed_in: 
+      user:
+        signed_out: 
+  formtastic:
+    actions:
+      create: שמירה
+      update: עידכון
+    cancel: ביטול
+    create: שמירה
+    'false': 
+    required: 
+    reset: 
+    submit: שמירה
+    'true': אמת
+    update: עידכון
+    hints:
+      active_admin_comment:
+        active_admin/comment:
+          show:
+            body: 
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+            remember_me: 
+          new:
+            email: 
+            password: 
+            remember_me: 
+    labels:
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+          new:
+            email: 
+            password: 
+      q:
+        meta_search/searches/category:
+          index:
+            category_connections: 
+            created_at: 
+            items: 
+            name: 
+            parent_category: 
+            subcategories: 
+            updated_at: 
+        meta_search/searches/setting:
+          index:
+            created_at: 
+            name: 
+            updated_at: 
+            value: 
+        meta_search/searches/transaction:
+          index:
+            amount: 
+            buyer: 
+            created_at: 
+            item: 
+            seller: 
+            state_changed_at: 
+            transaction_type: 
+            updated_at: 
+            workflow_state: 
+        meta_search/searches/user:
+          index:
+            about: 
+            authentication_token: 
+            authorizations: 
+            comments: 
+            confirmation_sent_at: 
+            confirmation_token: 
+            confirmed_at: 
+            created_at: 
+            current_sign_in_at: 
+            current_sign_in_ip: 
+            email: 
+            encrypted_password: 
+            image: 
+            items: 
+            last_sign_in_at: 
+            last_sign_in_ip: 
+            locale: 
+            location: 
+            locations: 
+            messages: 
+            name: 
+            purchases: 
+            remember_created_at: 
+            reset_password_sent_at: 
+            reset_password_token: 
+            sales: 
+            state_changed_at: 
+            transactions: 
+            unconfirmed_email: 
+            updated_at: 
+            user_conversations: 
+            username: 
+            wishes: 
+            workflow_state: 
+    placeholders:
+      active_admin_comment:
+        active_admin/comment:
+          show:
+            body: 
+      admin_user:
+        admin_user:
+          create:
+            email: 
+            password: 
+          new:
+            email: 
+            password: 
+      q:
+        meta_search/searches/category:
+          index:
+            name: 
+        meta_search/searches/setting:
+          index:
+            name: 
+            value: 
+        meta_search/searches/transaction:
+          index:
+            amount: 
+            transaction_type: 
+            workflow_state: 
+        meta_search/searches/user:
+          index:
+            about: 
+            authentication_token: 
+            confirmation_token: 
+            current_sign_in_ip: 
+            email: 
+            encrypted_password: 
+            image: 
+            last_sign_in_ip: 
+            locale: 
+            location: 
+            name: 
+            reset_password_token: 
+            unconfirmed_email: 
+            username: 
+            workflow_state: 
+  views:
+    pagination:
+      first: ראשון
+      last: אחרון
+      next: הבא
+      previous: הקודם
+      truncate: 
+  top_bar:
+    add_item: פרסם מודעה
+    inbox: הודעות
+    logout: יציאה
+    make_a_wish: בקש משאלה
+    market: שוק
+    profile: פרופיל
+    wishes: משאלות
+  wishes:
+    by_user: לפי משתמש
+    search: חיפוש
+    select_categories: סנן לפי קטגוריות
+    show: צפייה
+    title: משאלות

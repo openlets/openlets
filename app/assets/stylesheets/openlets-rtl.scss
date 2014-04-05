@@ -1,111 +1,28 @@
 $text-direction: rtl;
-// $opposite-direction: right;
-// $default-float: left;
+$body-font-family: 'Alef', sans-serif;
 
 @import 'foundation_and_overrides';
 @import 'mixins';
+@import 'common';
 
-.chzn-container-multi .chzn-choices .search-field input { height: 27px; }
-
-#item_category_ids_chzn { margin-bottom: 14px; }
-
-.clear-both { clear: both;}
-
-.center { text-align: center; }
-
-.item-panel, .comment-panel { 
-  @include panel(white, 10px);
-  border-radius: 5px; 
-  padding: 10px 5px;
-  margin: 10px 5px 5px 10px;
+@font-face {
+    font-family: 'Alef';
+    src: url('../assets/Alef-Bold.eot');
+    src: url('../assets/Alef-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../assets/Alef-Bold.woff') format('woff'),
+         url('../assets/Alef-Bold.ttf') format('truetype'),
+         url('../assets/Alef-Bold.svg#alefbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
 }
 
-.center{
-  text-align: center;
+@font-face {
+    font-family: 'Alef';
+    src: url('../assets/Alef-Regular.eot');
+    src: url('../assets/Alef-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../assets/Alef-Regular.woff') format('woff'),
+         url('../assets/Alef-Regular.ttf') format('truetype'),
+         url('../assets/Alef-Regular.svg#alefregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
-
-h1#logo {
-  font-size: 1.6em;
-  img {
-    position: relative;
-    top: -1;
-  }
-}
-
-.top-bar .name h1 a { width: 205px; }
-
-.hero {
-  background: url("/assets/city.jpg") no-repeat top center;
-  width: 100%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; 
-  margin-bottom: 20px;
-  color:#fff;
-  padding-top: 36px;
-  padding-bottom: 40px;
-  h1{
-    font-size: 3.5em;
-    color: #0e574e;
-  }
-  h4 {
-    background: #3c5923;
-    border-radius: 50px;
-    padding: 15px;
-    color: white;
-  }
-  &.login-signup { height: 400px; }
-}
-
-.signup-button {
-  @include openlets-button(#FF9900);
-  font-size: 1.4em;
-}
-
-.facebook-button { @include social-button(#4b67a1); }
-.linkedin-button { @include social-button(#1b86bc); }
-.google-button   { @include social-button(#db4f31); }
-
-.social-login { 
-  padding: 10px 0px 10px 7px;
-  font-size: 1em;
-  text-align: left;
-  .fa { font-size: 1.25em; }
-  span { position: relative; top: 1px; }
-}
-
-.social-links .columns { padding: 0em 0.2em }
-
-label.right {
-  padding-right: 10px;
-}
-
-#map { height: 400px; }
-
-.marketplace {
-  .item-panel img { max-height: 150px; }
-}
-.button.tiny { margin: 5px; }
-
-#comments {
-  margin-bottom: 60px;
-}
-
-.bold { font-weight: bold; }
-
-.chzn-container-multi .chzn-choices .search-field { 
-  height: 34px; 
-  input { height: 34px !important; }
-}
-
-.chzn-container-multi .chzn-choices li.search-choice { padding: 6px 20px 6px 5px; }
-
-.button.search-button {
-  margin: 0;
-  display: block;
-  top: -7px;
-  height: 51px;
-}
-
-fa.fa-search { font-size: 25px; }

@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
 
   def full_name
-    [parent_category.try(:name), name].compact.join(' > ')
+    name
   end
 
 end

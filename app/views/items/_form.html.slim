@@ -4,16 +4,16 @@
     p= message
 
   .field
-    = f.input :title, placeholder: 'Title'   
+    = f.input :title, placeholder: t('items.title')
   .field
-    = f.input :description, placeholder: 'Description'
+    = f.input :description, placeholder: t('items.description')
   .field
-    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => 'Categories' }
+    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
   .field
-    = f.input :price, placeholder: 'Price'
+    = f.input :price, placeholder: t('common.price')
   - unless @item.new_record?
     .field
       = image_tag(@item.image, size: "50x50")
   .field
     = f.input :image
-  .actions = f.submit 'Save', class: 'button radius expand'
+  .actions = f.submit t('common.save'), class: 'button radius expand'

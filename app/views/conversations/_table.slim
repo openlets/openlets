@@ -3,4 +3,4 @@ table
     tr
       td= image_tag(conversation.other_user(current_user).image, size: '50x50')
       td= conversation.other_user(current_user).name
-      td= link_to "View", conversation_messages_path(conversation), class: 'button radius tiny'
+      td= link_to ('common.show'), conversation_messages_path(conversation), class: 'button radius tiny'

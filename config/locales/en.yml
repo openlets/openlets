@@ -19,6 +19,9 @@ en:
     transactions: Transactions
     wishes: Wishes
     logout: Logout
+    save: Save
+    categories: Categories
+    show: View
   conversation:
     send_message: Send Message
     send_money: Transfer Funds
@@ -57,6 +60,12 @@ en:
           description: 
           image: 
           price: 
+          title: 
+      wish:
+        new:
+          categories: 
+          description: 
+          image: 
           title: 
     placeholders:
       user:
@@ -372,8 +381,29 @@ en:
     profile: Profile
     wishes: Wishes
   wishes:
+    show: Show
+    title: Wishes
+    make_a_wish: Make a Wish
+    new: 
+  items:
+    add_an_item: Add An Item
+    description: Descriptioמ
+    title: Title
+  market:
+    title: Marketplace
+  filter:
     by_user: By User
     search: Search
     select_categories: Select Categories
-    show: Show
-    title: Wishes
+  tables:
+    buyer: Buyer
+    id: Id
+    item: Item
+    price: Price
+    seller: Seller
+    type: Type
+  forms:
+    send: Send
+  inbox:
+    send_message: 'Send #{name} a Message'
+    title: Inbox

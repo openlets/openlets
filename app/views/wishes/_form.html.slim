@@ -4,15 +4,15 @@
     p= message
 
   .field
-    = f.input :title, placeholder: 'Title'   
+    = f.input :title, placeholder: t('items.title') 
   .field
-    = f.input :description, placeholder: 'Description'
+    = f.input :description, placeholder: t('items.description')
   .field
-    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => 'Categories' }
+    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
   - unless @wish.new_record?
     .field
       = image_tag(@wish.image, size: "50x50")
   br
   .field
     = f.input :image
-  .actions = f.submit 'Save', class: 'button radius expand'
+  .actions = f.submit t('common.save'), class: 'button radius expand'

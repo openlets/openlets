@@ -1,7 +1,7 @@
 .row
   .item-panel
     .large-12.columns
-      h2= "Send #{@user.name} a Message"
+      h2= t('inbox.send_message'), name: @user.name
       br
       = simple_form_for(@conversation, url: :create_conversations, defaults: { label: false }) do |f|
         = f.error_notification
@@ -11,8 +11,8 @@
         .row.collapse
           .small-10.columns
             = f.simple_fields_for :messages do |m|
-              = m.input :text, placeholder: 'Hey, I was wondering...'
+              = m.input :text
           .small-2.columns
-            = f.submit 'Send', class: 'button postfix'
+            = f.submit t('forms.send'), class: 'button postfix'
             
     .clear-both

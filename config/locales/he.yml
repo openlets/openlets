@@ -15,6 +15,9 @@ he:
     transactions: עסקאות
     wishes: משאלות
     logout: יציאה
+    save: שמירה
+    categories: קטגוריות
+    show: צפייה
   conversation:
     send_message: שלח\י הודעה
     send_money: שלח\י כסף
@@ -53,6 +56,12 @@ he:
           description: 
           image: 
           price: 
+          title: 
+      wish:
+        new:
+          categories: 
+          description: 
+          image: 
           title: 
     placeholders:
       user:
@@ -512,8 +521,29 @@ he:
     profile: פרופיל
     wishes: משאלות
   wishes:
+    show: צפייה
+    title: משאלות
+    make_a_wish: בקש משאלה
+    new: 
+  items:
+    add_an_item: הוספת מודעה
+    description: תיאור
+    title: כותרת
+  market:
+    title: שוק
+  filter:
     by_user: לפי משתמש
     search: חיפוש
     select_categories: סנן לפי קטגוריות
-    show: צפייה
-    title: משאלות
+  tables:
+    buyer: קונה
+    id: מספר
+    item: מודעה
+    price: מחיר
+    seller: מוכר
+    type: סוג עסקא
+  forms:
+    send: שליחה
+  inbox:
+    send_message: שלח הודעה ל#{name}
+    title: הודעות

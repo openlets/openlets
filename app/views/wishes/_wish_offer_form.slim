@@ -4,15 +4,15 @@
     p= message
 
   .field
-    = f.input :title, placeholder: 'Title'   
+    = f.input :title, placeholder: t('items.title')
   .field
-    = f.input :description, placeholder: 'Description'
+    = f.input :description, placeholder: t('items.description')
   .field
     = f.association :categories, input_html: { class: 'chzn-select' }
   .field
-    = f.input :price, placeholder: 'Price'
+    = f.input :price, placeholder: t('common.price')
   .field
     = image_tag(@wish.image, size: "50x50")
   .field
     = f.input :image
-  .actions = f.submit 'Save'
+  .actions = f.submit t('common.save')

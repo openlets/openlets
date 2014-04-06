@@ -1,8 +1,4 @@
-h1 Editing item
-
-== render 'form'
-
-= link_to 'Show', @item
-'|
-= link_to 'Back', items_path
-
+.row
+  .large-12.columns
+    h1.text-center= t('items.edit_item')
+    == render 'form'

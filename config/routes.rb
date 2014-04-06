@@ -1,6 +1,6 @@
 OpenLets::Application.routes.draw do
 
-  root :to => 'pages#home'
+  root :to => 'items#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -43,6 +43,5 @@ OpenLets::Application.routes.draw do
 
   get "pages/terms"
   get "pages/welcome"
-  get "pages/home"
 
 end

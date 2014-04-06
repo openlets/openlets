@@ -10,4 +10,9 @@ class Wish < ActiveRecord::Base
   has_one    :location,  as: :locationable, dependent: :destroy
 
   validates_presence_of :title
+
+  def any_wish_propositions?
+    items.any?
+  end
+
 end

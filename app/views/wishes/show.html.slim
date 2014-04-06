@@ -8,16 +8,13 @@
       p
         strong= @wish.description
     .large-4.columns
-      = link_to 'fulfill the wish', fulfill_wish_path(@wish), class: 'button radius large' if can? :fulfill, @wish
-
-
-
+      = link_to t('wishes.fulfill'), fulfill_wish_path(@wish), class: 'button radius large' if can? :fulfill, @wish
     .row
       .large-12.columns
-        = link_to 'Edit', edit_wish_path(@wish), class: 'button radius secondary' if can? :update, @wish
+        = link_to t('forms.edit'), edit_wish_path(@wish), class: 'button radius secondary' if can? :update, @wish
 
-
-.row
-  .large-12.columns
-    h3 Wish Propositions
-    = render 'items/table', items: @wish.items
+- if @wish.any_wish_propositions?
+  .row
+    .large-12.columns
+      h1.text-center= t('wishes.propositions')
+      = render 'items/table', items: @wish.items

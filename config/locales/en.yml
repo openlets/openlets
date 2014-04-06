@@ -6,6 +6,12 @@ en:
       conversation: You must be approved in order to send messages.
     transfer:
       user: You must be approved in order to transfer funds.
+    default: You are not authorized to access this page.
+    transaction:
+      transfer:
+        amount: 
+    user:
+      signed_out: 
   splash:
     title: Welcome to the OpenLETS Demo!
     p1: OpenLETS is an open source platform built to allow communities to easily start and manage a marketplace to trade goods and services with their own currency.
@@ -22,6 +28,7 @@ en:
     save: Save
     categories: Categories
     show: View
+    status: Status
   conversation:
     send_message: Send Message
     send_money: Transfer Funds
@@ -61,12 +68,24 @@ en:
           image: 
           price: 
           title: 
+        edit:
+          categories: 
+          description: 
+          image: 
+          price: 
+          title: 
       wish:
         new:
           categories: 
           description: 
           image: 
           title: 
+      comment:
+        show:
+          content: 
+      transaction:
+        transfer:
+          amount: 
     placeholders:
       user:
         edit:
@@ -385,10 +404,13 @@ en:
     title: Wishes
     make_a_wish: Make a Wish
     new: 
+    fulfill: Fulfill the wish
+    propositions: Wish Propositions
   items:
     add_an_item: Add An Item
     description: Descriptioמ
     title: Title
+    edit_item: Edit Item Details
   market:
     title: Marketplace
   filter:
@@ -404,6 +426,13 @@ en:
     type: Type
   forms:
     send: Send
+    edit: Edit
+    submit: Submit
+    pause: Pause
+    activate: Activate
   inbox:
     send_message: 'Send #{name} a Message'
     title: Inbox
+  comments:
+    title: Comments
+    comment: Comment

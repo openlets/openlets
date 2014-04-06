@@ -8,11 +8,9 @@
       p
         strong= @item.description
       p
-        strong Price:
-        = @item.price
+        strong= "#{t('common.price')}: #{@item.price}"
       p
-        strong Status:
-        = @item.workflow_state  
+        strong= "#{t('common.status')}: #{@item.workflow_state}"
     .large-4.columns
       - if @item.user != current_user
         = link_to "Purchase for #{@item.price} #{curreny_name.capitalize.pluralize}", purchase_item_path(@item), class: 'button radius right expand large', method: :post, id: 'purchase-button'
@@ -20,13 +18,11 @@
     .row
       .large-12.columns
         - if can? :update, @item
-          = link_to 'Edit', edit_item_path(@item), class: 'button radius secondary tiny'        
-        - if can? :update, @item
-          td = link_to 'Edit', edit_item_path(@item), class: 'button radius tiny'
+          td = link_to t('forms.edit'), edit_item_path(@item), class: 'button radius tiny'
         - if can? :pause, @item
-          td = link_to 'Pause', pause_item_path(@item), confirm: 'Are you sure?', method: :put, class: 'button radius tiny alert'
+          td = link_to t('forms.pause'), pause_item_path(@item), confirm: 'Are you sure?', method: :put, class: 'button radius tiny alert'
         - if can? :activate, @item
-          td = link_to 'Reactivate', activate_item_path(@item), method: :put, class: 'button radius tiny'
+          td = link_to t('forms.activate'), activate_item_path(@item), method: :put, class: 'button radius tiny'
 
 .row#comments
   .large-12.columns

@@ -13,5 +13,6 @@
 
 .row
   .large-12.columns
-  	h1= t 'common.marketplace'
+  	h1.text-center.bold= t('market.title')
+    = render 'shared/filter_form'
   	= render 'items/table', items: @items

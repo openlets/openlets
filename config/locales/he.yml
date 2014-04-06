@@ -5,6 +5,12 @@ he:
   unauthorized:
     purchase:
       item: לא ניתן לרכוש פריטים ללא הרשמה למערכת.
+    default: 
+    transaction:
+      transfer:
+        amount: 
+    user:
+      signed_out: 
   common:
     are_you_sure: את\ה בטוח\ה?
     login: כניסה
@@ -18,6 +24,7 @@ he:
     save: שמירה
     categories: קטגוריות
     show: צפייה
+    status: סטטוס
   conversation:
     send_message: שלח\י הודעה
     send_money: שלח\י כסף
@@ -57,12 +64,24 @@ he:
           image: 
           price: 
           title: 
+        edit:
+          categories: 
+          description: 
+          image: 
+          price: 
+          title: 
       wish:
         new:
           categories: 
           description: 
           image: 
           title: 
+      comment:
+        show:
+          content: 
+      transaction:
+        transfer:
+          amount: 
     placeholders:
       user:
         edit:
@@ -525,10 +544,13 @@ he:
     title: משאלות
     make_a_wish: בקש משאלה
     new: 
+    fulfill: הגשם את המשאלה
+    propositions: הצעות להגשמת המשאלה
   items:
     add_an_item: הוספת מודעה
     description: תיאור
     title: כותרת
+    edit_item: עריכת מודעה
   market:
     title: שוק
   filter:
@@ -544,6 +566,13 @@ he:
     type: סוג עסקא
   forms:
     send: שליחה
+    edit: עריכה
+    submit: שליחה
+    pause: השהייה
+    activate: הפעלה
   inbox:
     send_message: שלח הודעה ל#{name}
     title: הודעות
+  comments:
+    title: תגובות
+    comment: תגובה

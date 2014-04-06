@@ -4,6 +4,6 @@
     p= message  
   .row.collapse
     .small-10.columns
-      = f.input :content, placeholder: 'Comment'
+      = f.input :content, placeholder: t('comments.comment')
     .small-2.columns
-      = f.submit 'Submit', class: 'button postfix'
+      = f.submit t('forms.submit'), class: 'button postfix'

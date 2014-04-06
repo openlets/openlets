@@ -5,8 +5,4 @@ class PagesController < ApplicationController
   def welcome
   end
 
-  def home
-    @items = Item.of_approved_users.active
-  end
-
 end

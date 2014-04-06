@@ -58,7 +58,7 @@ module OpenLets
 
     config.assets.initialize_on_precompile = false
 
-    config.assets.precompile = %w(application.css application.js) + %w[*.png *.jpg *.jpeg *.gif *.eot *.svg *.ttf *.woff]    
+    config.assets.precompile = %w(application.css application-rtl.css application.js) + %w[*.png *.jpg *.jpeg *.gif *.eot *.svg *.ttf *.woff]    
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

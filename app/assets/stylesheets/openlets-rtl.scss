@@ -6,25 +6,39 @@ $body-font-family: 'Alef', sans-serif;
 @import 'common';
 
 @font-face {
-    font-family: 'Alef';
-    src: url('../assets/Alef-Bold.eot');
-    src: url('../assets/Alef-Bold.eot?#iefix') format('embedded-opentype'),
-         url('../assets/Alef-Bold.woff') format('woff'),
-         url('../assets/Alef-Bold.ttf') format('truetype'),
-         url('../assets/Alef-Bold.svg#alefbold') format('svg');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'Alef';
+  src: url('../assets/Alef-Bold.eot');
+  src: url('../assets/Alef-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../assets/Alef-Bold.woff') format('woff'),
+  url('../assets/Alef-Bold.ttf') format('truetype'),
+  url('../assets/Alef-Bold.svg#alefbold') format('svg');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Alef';
-    src: url('../assets/Alef-Regular.eot');
-    src: url('../assets/Alef-Regular.eot?#iefix') format('embedded-opentype'),
-         url('../assets/Alef-Regular.woff') format('woff'),
-         url('../assets/Alef-Regular.ttf') format('truetype'),
-         url('../assets/Alef-Regular.svg#alefregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Alef';
+  src: url('../assets/Alef-Regular.eot');
+  src: url('../assets/Alef-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/Alef-Regular.woff') format('woff'),
+  url('../assets/Alef-Regular.ttf') format('truetype'),
+  url('../assets/Alef-Regular.svg#alefregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .chzn-container-multi .chzn-choices li { float: right; }
+table.responsive {
+  td { text-align: right; }
+  
+  .button-group.radius > *:last-child, .button-group.radius > *:last-child > a, .button-group.radius > *:last-child > button, .button-group.radius > *:last-child > .button {
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+  }
+  .button-group.radius > *:first-child, .button-group.radius > *:first-child > a, .button-group.radius > *:first-child > button, .button-group.radius > *:first-child > .button {
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+  }
+}

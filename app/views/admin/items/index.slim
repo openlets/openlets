@@ -1,0 +1,3 @@
+.large-12.columns
+  h1.bold= t('activerecord.models.item')
+  = render 'admin/common/table', model_name: 'Item', columns: [:id, :image, :user_id, :title, :description, :price, :workflow_state, :wish_id, :created_at]

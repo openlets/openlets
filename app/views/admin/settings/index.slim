@@ -1,0 +1,3 @@
+.large-12.columns
+  h1.bold= t('activerecord.models.setting')
+  = render 'admin/common/table', model_name: 'Setting', columns: [:name, :value, :created_at]

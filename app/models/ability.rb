@@ -10,6 +10,10 @@ class Ability
     can :read,      Wish
     cannot :create, Item
     
+    if user.has_role :admin
+      can :manage, :all
+    end
+
     if user # logged in user
 
       can    :create,            Item

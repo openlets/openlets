@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   include Workflow
   include WorkflowExtended
 

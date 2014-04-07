@@ -284,7 +284,7 @@ he:
         created_at: 
         current_sign_in_at: 
         current_sign_in_ip: 
-        email: 
+        email: אימייל
         encrypted_Password: סיסמא מוצפנת
         id: 
         last_sign_in_at: כניסה אחרונה ב
@@ -364,14 +364,16 @@ he:
         wishes: 
         workflow_state: 
     models:
-      admin_user: 
-      admin: 
-      category: 
-      item: 
-      item_comment: 
-      setting: 
-      transaction: 
-      user: 
+      admin_user: משתמש מנהל
+      admin: מנהל
+      category: קטגוריות
+      item: מודעות
+      item_comment: תגובו
+      setting: הגדרות
+      transaction: עסקאות
+      user: משתמשים
+      wish: משאלות
+      comment: תגובות
   devise:
     failure:
       admin_user:
@@ -539,6 +541,7 @@ he:
     market: שוק
     profile: פרופיל
     wishes: משאלות
+    admin: ממשק ניהול
   wishes:
     show: צפייה
     title: משאלות
@@ -562,17 +565,80 @@ he:
     id: מספר
     item: מודעה
     price: מחיר
+    amount: כמות
     seller: מוכר
     type: סוג עסקא
+    image: תמונה
+    name: שם
+    email: אימייל
+    username: שם משתמש
+    status: 
+    locale: שפה
+    sign_in_count: מספר כניסות
+    created_at: תאריך יצירה
+    title: כותרת
+    description: תיאור
+    wish: 
+    actions: פעולות
+    user: משתמש
+    amount: 
+    parent_id: קטגוריית על
+    workflow_state: סטטוס
+    user_id: משתמש
+    wish_id: משאלה
+    item_id: מודעה
+    buyer_id: קונה
+    commentable_id: מזהה של התגובה
+    commentable_type: תגובה על
+    content: תגובה
+    '[:created_at, "Created At"]': 
+    '[:description, "Description"]': 
+    '[:id, "ID"]': 
+    '[:image, "Image"]': 
+    '[:price, "Price"]': 
+    seller_id: מוכר
+    '[:title, "Title"]': 
+    transaction_type: סוג
+    '[:user_id, "User"]': 
+    value: ערך
+    '[:wish_id, "Wish"]': 
+    '[:workflow_state, "Status"]': 
   forms:
     send: שליחה
     edit: עריכה
     submit: שליחה
     pause: השהייה
     activate: הפעלה
+    delete_confirm: 
+    delete: מחיקה
+    show: פרטים
   inbox:
     send_message: שלח הודעה ל#{name}
     title: הודעות
   comments:
     title: תגובות
     comment: תגובה
+  admin:
+    sidebar:
+      comments: תגובות
+      items: מודעות
+      settings: הגדרות
+      transactions: עסקאות
+      users: משתמשים
+      wishes: משאלות
+      dashboard: לוח בקרה
+      categories: קטגוריות
+      admin_panel: פנל ניהול
+    settings:
+      community_name: שם הקהילה
+      currency_name: שם המטבע
+      maximum_debit: חוב מקסימלי
+  flash:
+    admin:
+      items:
+        destroy:
+          notice_html: 
+  settings:
+    community_name: 
+    currency_name: 
+    maximum_debit: 

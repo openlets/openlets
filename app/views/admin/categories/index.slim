@@ -1,0 +1,3 @@
+.large-12.columns
+  h1.bold= t('activerecord.models.category')
+  = render 'admin/common/table', model_name: 'Category', columns: [:id, :name, :parent_id, :created_at]

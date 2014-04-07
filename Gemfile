@@ -35,13 +35,16 @@ gem 'carrierwave'
 gem 'fog'
 gem 'unf' 
 gem "chosen-rails"
-gem 'activeadmin'
-gem "meta_search", '>= 1.1.0.pre'
+gem 'will_paginate-foundation'
+# gem 'activeadmin'
+# gem "meta_search", '>= 1.1.0.pre'
 gem 'newrelic_rpm'
 gem 'mandrill-api'
 gem "chartkick"
 gem 'geocoder'
-# gem 'localeapp'
+gem 'localeapp'
+gem "rolify"
+gem 'inherited_resources'
 
 group :production do
   gem 'rollbar'

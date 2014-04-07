@@ -2,9 +2,6 @@ OpenLets::Application.routes.draw do
 
   root :to => 'items#index'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   resources :users do
@@ -39,6 +36,17 @@ OpenLets::Application.routes.draw do
       get  '/:user_id/new',    to: 'conversations#new',    as: :new
       post '/:user_id/create', to: 'conversations#create', as: :create
     end
+  end
+
+  namespace :admin do
+    get '/',  to: "admin#dashboard", as: :dashboard
+    resources :items
+    resources :wishes
+    resources :comments
+    resources :users
+    resources :settings
+    resources :transactions
+    resources :categories
   end
 
   get "pages/terms"

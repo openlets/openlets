@@ -1,0 +1,38 @@
+table.responsive
+  thead
+    tr
+      - columns.each do |name|
+        th= sortable(name, t("tables.#{name.to_s}"))
+      th= t('tables.actions')
+  tbody
+    - eval("@#{model_name.downcase.pluralize}").each do |instance|
+      tr
+        - columns.each do |name|
+          - attribute = instance.send(name)
+          td
+            - if name == :image 
+              = image_tag(attribute, size: '50x50') 
+            - elsif name == :name && model_name == 'Setting'
+              = t("admin.settings.#{attribute}")
+            - elsif name == :created_at
+              = attribute.strftime("%d/%m/%Y")
+            - elsif [:user_id, :buyer_id, :seller_id].include?(name)
+              = link_to User.find(attribute).name, admin_user_path(attribute)
+            - elsif attribute.present? && name == :wish_id
+              = link_to admin_wish_path(attribute)
+                = Wish.find(attribute).title
+            - elsif attribute.present? && name == :item_id
+              = link_to admin_item_path(attribute)
+                = Item.find(attribute).title rescue nil
+            - else
+              = attribute
+        td.actions
+          ul.button-group.radius.tiny
+            li= link_to eval("admin_#{model_name.downcase}_path(instance.id)"), class: 'button small success', title: t('forms.show')
+              i.fa.fa-info
+            li= link_to eval("edit_admin_#{model_name.downcase}_path(instance.id)"), class: 'button small', title: t('forms.edit')
+              i.fa.fa-edit
+            li= link_to eval("admin_#{model_name.downcase}_path(instance.id)"), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
+              i.fa.fa-trash-o
+
+= will_paginate eval("@#{model_name.downcase.pluralize}"), next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

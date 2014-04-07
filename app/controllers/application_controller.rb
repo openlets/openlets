@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     @dir = @locale.to_s == "he" ? "rtl" : "ltr"
   end
 
+  def resource_class
+    params[:controller].singularize.classify
+  end  
+
   private
 
     def filter_params

@@ -32,6 +32,11 @@
             i.fa.fa-inbox
             = t('top_bar.inbox')
           li.divider
+          - if current_user.has_role? :admin
+            li= link_to admin_dashboard_path
+              i.fa.fa-dashboard
+              = t('top_bar.admin')
+          li.divider          
           li= link_to destroy_user_session_path
             i.fa.fa-sign-out
             = t('common.logout')

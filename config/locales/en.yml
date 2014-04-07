@@ -255,6 +255,8 @@ en:
       setting: Settings
       transaction: Transactions
       user: Users
+      wish: Wishes
+      comment: Comments
   devise:
     sessions:
       user:
@@ -399,6 +401,7 @@ en:
     market: Market
     profile: Profile
     wishes: Wishes
+    admin: Admin Panel
   wishes:
     show: Show
     title: Wishes
@@ -419,20 +422,82 @@ en:
     select_categories: Select Categories
   tables:
     buyer: Buyer
-    id: Id
+    id: ID
     item: Item
     price: Price
     seller: Seller
     type: Type
+    image: Image
+    name: Name
+    email: Email
+    username: Username
+    status: Status
+    locale: Langauge
+    sign_in_count: Sign in Count
+    created_at: Created At
+    title: Title
+    description: Description
+    wish: Wish
+    actions: Actions
+    user: User
+    amount: Amount
+    parent_id: Parent
+    workflow_state: Status
+    '[:image, "Image"]': 
+    user_id: User
+    wish_id: Wishe
+    item_id: Item
+    buyer_id: Buyer
+    commentable_id: Id of Commentable
+    commentable_type: Comment for
+    content: Content
+    '[:created_at, "Created At"]': 
+    '[:description, "Description"]': 
+    '[:id, "ID"]': 
+    '[:price, "Price"]': 
+    seller_id: Seller
+    '[:title, "Title"]': 
+    transaction_type: Type
+    '[:user_id, "User"]': 
+    value: Value
+    '[:wish_id, "Wish"]': 
+    '[:workflow_state, "Status"]': 
   forms:
     send: Send
     edit: Edit
     submit: Submit
     pause: Pause
     activate: Activate
+    delete_confirm: 
+    delete: Delete
+    show: Show
   inbox:
     send_message: 'Send #{name} a Message'
     title: Inbox
   comments:
     title: Comments
     comment: Comment
+  admin:
+    sidebar:
+      comments: Comments
+      items: Items
+      settings: Settings
+      transactions: Transactions
+      users: Users
+      wishes: Wishes
+      dashboard: Dashboard
+      categories: Catgories
+      admin_panel: Admin Panel
+    settings:
+      community_name: Community Name
+      currency_name: Currency Name
+      maximum_debit: Maximum Debit
+  flash:
+    admin:
+      items:
+        destroy:
+          notice_html: 
+  settings:
+    community_name: 
+    currency_name: 
+    maximum_debit: 

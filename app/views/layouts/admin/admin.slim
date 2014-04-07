@@ -1,0 +1,30 @@
+doctype
+/! paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/![if lt IE 7 ] <html class="ie6" lang="en">
+/![if IE 7 ] <html class="ie7" lang="en">
+/![if IE 8 ] <html class="ie8" lang="en">
+/! [if (gte IE 9)|!(IE)]><!
+html lang=(current_locale)
+  /! <![endif]
+  head
+    meta charset="utf-8"
+    /! Uncomment to make IE8 render like IE7
+    /! <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    /! Set the viewport width to device width for mobile
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title= content_for?(:title) ? yield(:title) : Setting.find_by_name('community_name').value
+
+    = stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}"
+    = stylesheet_link_tag "admin"
+
+    script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body[class="#{@dir}" ]
+    = render 'layouts/top_bar'
+    .large-2.medium-2.columns.sideabar
+        = render 'layouts/admin/sidebar'
+    .large-10.medium-10.columns
+        = render 'layouts/flash_messages'
+        = yield

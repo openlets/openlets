@@ -1,0 +1,25 @@
+/*
+ *= require responsive-tables
+ */
+
+@import 'variables';
+
+.large-2.columns.sideabar { 
+  padding: 0; 
+  height: 100%;
+  background: #efefef;
+  .accordion dd > a { font-weight: bold; }
+  .accordion dd.active > a { background: $light-blue; color: white; }
+  .accordion dd.title > a { 
+    background: $dark-blue; color: white; 
+    font-size: 1.8em; padding: 7px 16px;
+  }
+}
+
+table {
+  width: 100%;
+  .actions ul.button-group {
+    a { margin: 0; padding: 10px 0; width: 45px; }
+    i.fa { font-size: 1.4em; }
+  }
+}

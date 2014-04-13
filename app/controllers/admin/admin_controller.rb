@@ -1,13 +1,15 @@
 class Admin::AdminController < ApplicationController
   before_filter :authenticate_admin_user!
-  helper_method :sort_column, :sort_direction, :resource, :resources
+  helper_method :sort_column, :sort_direction
 
   def dashboard
     
   end
 
   def authenticate_admin_user!
-    redirect_to root_path, alert: "You are not authorized to access this page" unless current_user.has_role? :admin
+    unless current_user && current_user.is_admin?
+      redirect_to root_path, alert: "You are not authorized to access this page" 
+    end
   end
 
   def sort_column
@@ -16,10 +18,6 @@ class Admin::AdminController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
-  def resource
-    @resource ||= resource_class.find(params[:id])
   end
 
 end

@@ -4,7 +4,7 @@ doctype
 /![if IE 7 ] <html class="ie7" lang="en">
 /![if IE 8 ] <html class="ie8" lang="en">
 /! [if (gte IE 9)|!(IE)]><!
-html lang=(current_locale)
+html#admin lang=(current_locale)
   /! <![endif]
   head
     meta charset="utf-8"
@@ -23,8 +23,8 @@ html lang=(current_locale)
 
   body[class="#{@dir}" ]
     = render 'layouts/top_bar'
-    .large-2.medium-2.columns.sideabar
+    .large-1.medium-2.columns.sideabar
         = render 'layouts/admin/sidebar'
-    .large-10.medium-10.columns
+    .large-11.medium-10.columns
         = render 'layouts/flash_messages'
         = yield

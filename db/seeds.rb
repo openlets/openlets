@@ -1,5 +1,5 @@
 { 'currency_name' => 'dodo', 'maximum_debit' => '-100',
-  'community_name' => 'OpenLETS'}.each do |name, value|
+  'community_name' => 'OpenLETS', 'app_domain' => 'www.example.com'}.each do |name, value|
     Setting.find_or_create_by_name(name: name, value: value)
 end
 

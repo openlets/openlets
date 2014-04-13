@@ -49,6 +49,17 @@ en:
         edit:
           locale: 
           name: 
+      item:
+        edit:
+          categories: 
+          description: 
+          price: 
+          title: 
+          wish: 
+          workflow_state: 
+      wish:
+        edit:
+          categories: 
     hints:
       user:
         edit:
@@ -74,12 +85,21 @@ en:
           image: 
           price: 
           title: 
+          wish: 
+          workflow_state: 
       wish:
         new:
           categories: 
           description: 
           image: 
           title: 
+        edit:
+          categories: 
+          description: 
+          title: 
+          user: 
+          user_id: 
+          workflow_state: 
       comment:
         show:
           content: 
@@ -93,6 +113,20 @@ en:
         locations:
           edit:
             address: 
+      item:
+        edit:
+          description: 
+          price: 
+          title: 
+          wish: 
+          workflow_state: 
+      wish:
+        edit:
+          description: 
+          title: 
+          user: 
+          wish: 
+          workflow_state: 
     required:
       html: <abbr title="required">*</abbr>
       mark: 
@@ -101,6 +135,8 @@ en:
     submit:
       user:
         update: Update
+      item:
+        update: 
     label:
       admin_user:
         admin_user:
@@ -246,6 +282,15 @@ en:
         username: Username
         wishes: Wishes
         workflow_state: Workflow State
+      item:
+        categories: 
+        description: 
+        price: 
+        title: 
+        wish: 
+        workflow_state: 
+      wish:
+        categories: 
     models:
       admin: Admin
       admin_user: Admin Users
@@ -257,6 +302,8 @@ en:
       user: Users
       wish: Wishes
       comment: Comments
+    model:
+      user: User
   devise:
     sessions:
       user:
@@ -471,6 +518,15 @@ en:
     delete_confirm: 
     delete: Delete
     show: Show
+    edit_resource: Edit {name}
+    description: Description
+    price: Price
+    title: Title
+    update: Update
+    wish: Wish
+    workflow_state: Status
+    save: Save
+    user: User
   inbox:
     send_message: 'Send #{name} a Message'
     title: Inbox

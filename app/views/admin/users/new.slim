@@ -1,0 +1,2 @@
+h1.bold= t('forms.new_resource', name: t("activerecord.models.#{resource_class.name.downcase}"))
+= render "form", attributes: [:email, :password, :password_confirmation, :name, :about, :locale], resource: resource_class.new

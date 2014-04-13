@@ -45,6 +45,17 @@ he:
         edit:
           locale: 
           name: 
+      item:
+        edit:
+          categories: 
+          description: 
+          price: 
+          title: 
+          wish: 
+          workflow_state: 
+      wish:
+        edit:
+          categories: 
     hints:
       user:
         edit:
@@ -70,12 +81,21 @@ he:
           image: 
           price: 
           title: 
+          wish: 
+          workflow_state: 
       wish:
         new:
           categories: 
           description: 
           image: 
           title: 
+        edit:
+          categories: 
+          description: 
+          title: 
+          user: 
+          user_id: 
+          workflow_state: 
       comment:
         show:
           content: 
@@ -89,6 +109,20 @@ he:
         locations:
           edit:
             address: 
+      item:
+        edit:
+          description: 
+          price: 
+          title: 
+          wish: 
+          workflow_state: 
+      wish:
+        edit:
+          description: 
+          title: 
+          user: 
+          wish: 
+          workflow_state: 
     required:
       html: 
       mark: 
@@ -97,6 +131,8 @@ he:
     submit:
       user:
         update: עידכון
+      item:
+        update: 
     label:
       admin_user:
         admin_user:
@@ -363,6 +399,15 @@ he:
         username: 
         wishes: 
         workflow_state: 
+      item:
+        categories: 
+        description: 
+        price: 
+        title: 
+        wish: 
+        workflow_state: 
+      wish:
+        categories: 
     models:
       admin_user: משתמש מנהל
       admin: מנהל
@@ -371,9 +416,16 @@ he:
       item_comment: תגובו
       setting: הגדרות
       transaction: עסקאות
-      user: משתמשים
+      user: 
+        one: משתמש
+        other: משתמשים
       wish: משאלות
       comment: תגובות
+      economy:
+        one: כלכלה
+        other: כלכלות
+    model:
+      user: משתמש
   devise:
     failure:
       admin_user:
@@ -561,6 +613,12 @@ he:
     search: חיפוש
     select_categories: סנן לפי קטגוריות
   tables:
+    workflow_actions: פעולות סטטוס
+    economy_type: סוג כלכלה
+    currency_name: שם המטבע
+    currency_type: סוג מטבע
+    domain: דומיין 
+    roles: תפקידים
     buyer: קונה
     id: מספר
     item: מודעה
@@ -581,7 +639,6 @@ he:
     wish: 
     actions: פעולות
     user: משתמש
-    amount: 
     parent_id: קטגוריית על
     workflow_state: סטטוס
     user_id: משתמש
@@ -591,36 +648,39 @@ he:
     commentable_id: מזהה של התגובה
     commentable_type: תגובה על
     content: תגובה
-    '[:created_at, "Created At"]': 
-    '[:description, "Description"]': 
-    '[:id, "ID"]': 
-    '[:image, "Image"]': 
-    '[:price, "Price"]': 
     seller_id: מוכר
-    '[:title, "Title"]': 
     transaction_type: סוג
-    '[:user_id, "User"]': 
     value: ערך
-    '[:wish_id, "Wish"]': 
-    '[:workflow_state, "Status"]': 
   forms:
     send: שליחה
     edit: עריכה
     submit: שליחה
     pause: השהייה
     activate: הפעלה
-    delete_confirm: 
+    delete_confirm: האם אתה בטוח שברצונך למחוק?
     delete: מחיקה
     show: פרטים
+    edit_resource: עריכת %{name}
+    description: תיאור
+    price: מחיר
+    title: כותרת
+    update: עידכון
+    wish: משאלה
+    workflow_state: סטטוס
+    save: שמירה
+    user: משתמש
+    create_button: צור %{name}
   inbox:
-    send_message: שלח הודעה ל#{name}
+    send_message: שלח הודעה ל%{name}
     title: הודעות
   comments:
     title: תגובות
     comment: תגובה
   admin:
     sidebar:
+      managers: הרשאות
       comments: תגובות
+      economies: כלכלות
       items: מודעות
       settings: הגדרות
       transactions: עסקאות
@@ -633,6 +693,7 @@ he:
       community_name: שם הקהילה
       currency_name: שם המטבע
       maximum_debit: חוב מקסימלי
+      app_domain: דומיין ראשי
   flash:
     admin:
       items:
@@ -642,3 +703,6 @@ he:
     community_name: 
     currency_name: 
     maximum_debit: 
+  workflow_state:
+    approve: אישור
+    ban: השהייה

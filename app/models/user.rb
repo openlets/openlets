@@ -15,17 +15,19 @@ class User < ActiveRecord::Base
   has_many :authorizations, dependent: :destroy
   has_many :items,          dependent: :destroy
   has_many :wishes,         dependent: :destroy
-  has_many :transactions,   dependent: :destroy
-  has_many :purchases, foreign_key: 'buyer_id',  class_name: 'Transaction'
-  has_many :sales,     foreign_key: 'seller_id', class_name: 'Transaction'
 
   has_many :user_conversations, class_name: 'Conversation', foreign_key: 'user_id'
   has_many :messages
   has_many :comments
 
+  has_many :memberships, class_name: 'Member'
+  has_many :economies, through: :memberships
+
   has_many :locations, as: :locationable, dependent: :destroy
   accepts_nested_attributes_for :locations
 
+
+  scope :by_economy_id,     lambda { |id| joins(:memberships).where('members.economy_id = ?', id)}
   scope :awaiting_approval, lambda { where(workflow_state: 'awaiting_approval') }
   scope :approved,          lambda { where(workflow_state: 'approved') }
   scope :banned,            lambda { where(workflow_state: 'banned') }
@@ -43,6 +45,16 @@ class User < ActiveRecord::Base
     state :banned do
       event :approve, transitions_to: :approved
     end
+  end
+
+  def is_admin?
+    !(["admin", "economy_manager"] & self.roles.map(&:name)).empty?
+  end
+
+  def full_name
+    return username unless username.blank?
+    return name     unless name.blank?
+    email.split("@")[0]
   end
 
   def trust_rank

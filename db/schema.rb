@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140406112940) do
+ActiveRecord::Schema.define(:version => 20140413185356) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -62,7 +62,10 @@ ActiveRecord::Schema.define(:version => 20140406112940) do
     t.integer  "parent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "economy_id"
   end
+
+  add_index "categories", ["economy_id"], :name => "index_categories_on_economy_id"
 
   create_table "category_connections", :force => true do |t|
     t.string   "categoriable_type"
@@ -97,6 +100,17 @@ ActiveRecord::Schema.define(:version => 20140406112940) do
   add_index "conversations", ["second_user_id"], :name => "index_conversations_on_second_user_id"
   add_index "conversations", ["user_id"], :name => "index_conversations_on_user_id"
 
+  create_table "economies", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "economy_type"
+    t.string   "currency_name"
+    t.string   "currency_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "domain"
+  end
+
   create_table "items", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -127,6 +141,18 @@ ActiveRecord::Schema.define(:version => 20140406112940) do
   end
 
   add_index "locations", ["locationable_id"], :name => "index_locations_on_locationable_id"
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "economy_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "workflow_state"
+    t.datetime "state_changed_at"
+  end
+
+  add_index "members", ["economy_id"], :name => "index_members_on_economy_id"
+  add_index "members", ["user_id"], :name => "index_members_on_user_id"
 
   create_table "messages", :force => true do |t|
     t.string   "text"
@@ -159,19 +185,19 @@ ActiveRecord::Schema.define(:version => 20140406112940) do
 
   create_table "transactions", :force => true do |t|
     t.integer  "amount"
-    t.integer  "buyer_id"
-    t.integer  "seller_id"
+    t.integer  "sending_wallet_id"
+    t.integer  "receiving_wallet_id"
     t.string   "workflow_state"
     t.datetime "state_changed_at"
     t.integer  "item_id"
     t.string   "transaction_type"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
-  add_index "transactions", ["buyer_id"], :name => "index_transactions_on_buyer_id"
   add_index "transactions", ["item_id"], :name => "index_transactions_on_item_id"
-  add_index "transactions", ["seller_id"], :name => "index_transactions_on_seller_id"
+  add_index "transactions", ["receiving_wallet_id"], :name => "index_transactions_on_seller_id"
+  add_index "transactions", ["sending_wallet_id"], :name => "index_transactions_on_buyer_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -212,6 +238,17 @@ ActiveRecord::Schema.define(:version => 20140406112940) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "wallets", :force => true do |t|
+    t.integer  "walletable_id"
+    t.string   "walletable_type"
+    t.integer  "economy_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "wallets", ["economy_id"], :name => "index_wallets_on_economy_id"
+  add_index "wallets", ["walletable_id"], :name => "index_wallets_on_walletable_id"
 
   create_table "wishes", :force => true do |t|
     t.string   "title"

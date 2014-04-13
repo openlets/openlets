@@ -1,0 +1,16 @@
+.large-12
+  h1.bold= t('forms.edit_resource', name: t("activerecord.models.#{resource.class.name.downcase}"))
+  = simple_form_for resource do |f|
+    = f.error_notification
+    .form-inputs
+      .row
+        .large-6.columns
+          = f.input :name, :required => true, :autofocus => true
+          = f.input :locale, :required => true, collection: User::LOCALES
+        .large-6.columns
+          = f.simple_fields_for :locations do |l|
+            = l.input :address
+          .panel.callout#map
+
+    .form-actions
+      = f.button :submit

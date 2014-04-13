@@ -23,4 +23,10 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
 
+  def top_bar_title
+    link_to root_path do
+      current_economy ? current_economy.title : 'OpenLETS'
+    end
+  end
+
 end

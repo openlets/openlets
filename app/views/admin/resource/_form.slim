@@ -1,0 +1,4 @@
+= simple_form_for [:admin, resource] do |f|
+  - attributes.each do |attr|
+    = f.input attr, label: t("forms.#{attr}")
+  = f.button :submit, t('forms.update'), class: 'button'

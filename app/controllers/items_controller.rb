@@ -57,9 +57,9 @@ class ItemsController < ApplicationController
   end
 
   def index
+    filter_params
+    set_filter_param('economy_id', current_economy.id) if current_economy
     @items = Item.filter_by(filter_params)
-    @categories = Category.all
-    @users = User.all
   end
 
   private

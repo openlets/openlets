@@ -3,40 +3,41 @@
     ul.title-area
       li.name
         h1#logo
-          = link_to Setting.find_by_name('community_name').try(:value), root_path
+          = top_bar_title
       li.toggle-topbar.menu-icon
         a href="#" class=(top_bar_direction)
           span
     section.top-bar-section
       ul class=(top_bar_direction)
         - if user_signed_in?
-          li= link_to new_item_path
-            i.fa.fa-plus
-            = t('top_bar.add_item')
-          li.divider
-          li= link_to t('top_bar.make_a_wish'), new_wish_path
-          li.divider
-          li= link_to items_path
-            i.fa.fa-shopping-cart
-            = t('top_bar.market')
-          li.divider        
-          li= link_to wishes_path
-            i.fa.fa-magic
-            = t('top_bar.wishes')
-          li.divider
-          li=link_to current_user
-            i.fa.fa-user
-            = t('top_bar.profile')
-          li.divider
-          li= link_to conversations_path
-            i.fa.fa-inbox
-            = t('top_bar.inbox')
-          li.divider
-          - if current_user.has_role? :admin
-            li= link_to admin_dashboard_path
-              i.fa.fa-dashboard
-              = t('top_bar.admin')
-          li.divider          
+          - unless params[:controller].split('/').include?('admin')
+            li= link_to new_item_path
+              i.fa.fa-plus
+              = t('top_bar.add_item')
+            li.divider
+            li= link_to t('top_bar.make_a_wish'), new_wish_path
+            li.divider
+            li= link_to items_path
+              i.fa.fa-shopping-cart
+              = t('top_bar.market')
+            li.divider        
+            li= link_to wishes_path
+              i.fa.fa-magic
+              = t('top_bar.wishes')
+            li.divider
+            li=link_to current_user
+              i.fa.fa-user
+              = t('top_bar.profile')
+            li.divider
+            li= link_to conversations_path
+              i.fa.fa-inbox
+              = t('top_bar.inbox')
+            li.divider
+            - if current_user.has_role?(:admin) or current_user.has_role?(:economy_manager, current_economy)
+              li= link_to admin_dashboard_path
+                i.fa.fa-dashboard
+                = t('top_bar.admin')
+              li.divider          
           li= link_to destroy_user_session_path
             i.fa.fa-sign-out
             = t('common.logout')

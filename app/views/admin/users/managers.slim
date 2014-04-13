@@ -1,0 +1,7 @@
+= render "index", attributes: [:id, :image, :name, :email, :username, :workflow_state, :locale, :sign_in_count, :created_at], collection: @users
+
+.large-3.columns
+  h3.bold Add a Manager
+  = form_tag add_manager_admin_users_path, method: :put do |f|
+    = select_tag "chosen_user_id", options_from_collection_for_select(@rest_of_users, "id", "name")
+    = submit_tag 'Add Manager'

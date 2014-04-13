@@ -3,9 +3,11 @@ table.responsive
     tr
       - columns.each do |name|
         th= sortable(name, t("tables.#{name.to_s}"))
+      - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
+        th= t('tables.roles')
       th= t('tables.actions')
   tbody
-    - eval("@#{model_name.downcase.pluralize}").each do |instance|
+    - collection.each do |instance|
       tr
         - columns.each do |name|
           - attribute = instance.send(name)
@@ -26,6 +28,12 @@ table.responsive
                 = Item.find(attribute).title rescue nil
             - else
               = attribute
+        - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
+          td.roles
+            - instance.roles.each do |role|
+              span.label.radius
+                = role.name
+
         td.actions
           ul.button-group.radius.tiny
             li= link_to eval("admin_#{model_name.downcase}_path(instance.id)"), class: 'button small success', title: t('forms.show')
@@ -35,4 +43,4 @@ table.responsive
             li= link_to eval("admin_#{model_name.downcase}_path(instance.id)"), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
               i.fa.fa-trash-o
 
-= will_paginate eval("@#{model_name.downcase.pluralize}"), next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails
+= will_paginate collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

@@ -1,11 +1,11 @@
 class Transaction < ActiveRecord::Base
   include Workflow
-  attr_accessible :amount, :buyer_id, :seller_id, :item_id, :transaction_type
+  attr_accessible :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type
   belongs_to :item
-  belongs_to :buyer,  class_name: 'User'
-  belongs_to :seller, class_name: 'User'
+  belongs_to :receiving_wallet, class_name: 'Wallet'
+  belongs_to :sending_wallet,   class_name: 'Wallet'
 
-  validates_presence_of :seller_id, :amount, :buyer_id
+  validates_presence_of :receiving_wallet_id, :amount, :sending_wallet_id
   validates_numericality_of :amount
 
   validate :sufficient_funds, :not_self
@@ -31,11 +31,11 @@ class Transaction < ActiveRecord::Base
   end
 
   def self.purchase!(buyer, seller, item)
-  	self.create!(buyer_id: buyer.id, seller_id: seller.id, item_id: item.id, amount: item.price)
+  	self.create!(sending_wallet_id: buyer.id, receiving_wallet_id: seller.id, item_id: item.id, amount: item.price)
   end
 
   def transaction_type_name(user)
-    seller_id == user.id ? "Sale" : "Purchase"
+    receiving_wallet_id == user.id ? "Sale" : "Purchase"
   end
 
   private
@@ -45,7 +45,7 @@ class Transaction < ActiveRecord::Base
     end
 
     def not_self
-      errors.add :base, "can't transfer to yourself" if buyer_id == seller_id
+      errors.add :base, "can't transfer to yourself" if sending_wallet_id == receiving_wallet_id
     end
 
 end

@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
 
     alias_action :create, :read, :update, :destroy, to: :crud
 
@@ -10,9 +11,9 @@ class Ability
     can :read,      Wish
     cannot :create, Item
     
-    if user.has_role :admin
-      can :manage, :all
-    end
+    # if user.has_role :admin
+    #   can :manage, :all
+    # end
 
     if user # logged in user
 

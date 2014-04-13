@@ -4,6 +4,8 @@ OpenLets::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
+  # resources :economies
+
   resources :users do
     member do
       post 'direct_transfer'
@@ -38,12 +40,24 @@ OpenLets::Application.routes.draw do
     end
   end
 
+
   namespace :admin do
-    get '/',  to: "admin#dashboard", as: :dashboard
+    root to: "admin#dashboard", as: :dashboard
+    resources :economies
+    resources :users do
+      member do
+        put :approve
+        put :ban
+      end
+      collection do
+        get 'managers'
+        put 'add_manager'
+        delete 'remove_manager'
+      end      
+    end
     resources :items
     resources :wishes
     resources :comments
-    resources :users
     resources :settings
     resources :transactions
     resources :categories

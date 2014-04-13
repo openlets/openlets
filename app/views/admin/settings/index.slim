@@ -1,3 +1,8 @@
+.large-10.columns
+  h1.bold= t("activerecord.models.#{resource_class.name.downcase}", count: 1)
+.large-2.columns
 .large-12.columns
-  h1.bold= t('activerecord.models.setting')
-  = render 'admin/common/table', model_name: 'Setting', columns: [:name, :value, :created_at]
+  - current_economy.attributes.each do |k,v|
+    div
+      strong= "#{k}: "
+      = v

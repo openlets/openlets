@@ -1,3 +1,2 @@
-class Admin::SettingsController < Admin::AdminController
-  inherit_resources
+class Admin::SettingsController < Admin::ResourceController
 end

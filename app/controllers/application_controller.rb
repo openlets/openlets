@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  helper_method :filter_params, :users_for_filter, :categories_for_filter
+  helper_method :filter_params, :users_for_filter, :categories_for_filter, :current_economy, :current_member
 
   before_filter :set_locale
 
@@ -16,7 +16,11 @@ class ApplicationController < ActionController::Base
 
   def resource_class
     params[:controller].singularize.classify
-  end  
+  end
+
+  def set_filter_param(k,v)
+    filter_params[k] = v
+  end
 
   private
 
@@ -25,10 +29,19 @@ class ApplicationController < ActionController::Base
     end
 
     def users_for_filter
-      @user ||= User.all
+      @users ||= (current_economy.blank? ? User.all : current_economy.users)
     end
 
     def categories_for_filter
-      @categories ||= Category.all
+      @categories ||= (current_economy.blank? ? Category.all : current_economy.categories )
     end
+
+    def current_economy
+      @economy ||= Economy.find_by_domain("http://#{request.host}")
+    end
+
+    def current_member
+      @member ||= current_user.memberships.where(economy_id: current_economy.id).first
+    end
+        
 end

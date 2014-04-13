@@ -4,7 +4,7 @@
 
 @import 'variables';
 
-.large-2.columns.sideabar { 
+.large-1.columns.sideabar { 
   padding: 0; 
   height: 100%;
   background: #efefef;
@@ -22,4 +22,13 @@ table {
     a { margin: 0; padding: 10px 0; width: 45px; }
     i.fa { font-size: 1.4em; }
   }
+  .workflow_actions ul.button-group a { width: 75px; }
+}
+
+.clear-both {
+  clear: both;
+}
+
+#admin {
+  .new-button { margin: 10px 0; }
 }

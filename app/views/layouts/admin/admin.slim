@@ -17,7 +17,7 @@ html#admin lang=(current_locale)
     = stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}"
     = stylesheet_link_tag "admin"
 
-    script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+    / script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
     = javascript_include_tag "application"
     = csrf_meta_tags
 

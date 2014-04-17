@@ -411,7 +411,9 @@ he:
     models:
       admin_user: משתמש מנהל
       admin: מנהל
-      category: קטגוריות
+      category:
+        one: קטגוריה
+        other: קטגוריות
       item: מודעות
       item_comment: תגובו
       setting: הגדרות
@@ -613,6 +615,7 @@ he:
     search: חיפוש
     select_categories: סנן לפי קטגוריות
   tables:
+    economy_id: כלכלה
     workflow_actions: פעולות סטטוס
     economy_type: סוג כלכלה
     currency_name: שם המטבע
@@ -670,6 +673,7 @@ he:
     save: שמירה
     user: משתמש
     create_button: צור %{name}
+    new_resource: צור %{name}
   inbox:
     send_message: שלח הודעה ל%{name}
     title: הודעות
@@ -694,6 +698,13 @@ he:
       currency_name: שם המטבע
       maximum_debit: חוב מקסימלי
       app_domain: דומיין ראשי
+    managers:
+      add_managers: הוסף מנהלים
+      add_manager: הוסף מנהל
+      remove_managers: הסר מנהלים
+      remove_manager: הסר מנהל
+      title: הרשאות מנהל
+      choose_user: בחירת משתמש
   flash:
     admin:
       items:

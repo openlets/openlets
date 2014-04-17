@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
   before_filter :load_item, :only => [:edit, :update, :show, :purchase, :pause, :activate]
 
   def purchase
-    if @item.purchase!(current_user)
+    if @item.purchase!(current_member)
       flash[:notice] = "Payment was successful"
-      Mailer.item_purchased(@item, current_user).deliver
+      Mailer.item_purchased(@item, current_member).deliver
       redirect_to @item
     else
       @comments = @item.comments.order(:created_at)
@@ -22,12 +22,13 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = current_user.items.new
+    @item = current_member.items.new
     @categories = Category.all
   end
 
   def create
-    @item = current_user.items.new(params[:item])
+    binding.pry
+    @item = current_member.items.new(params[:item])
     if @item.save
       flash[:notice] = "Created item successfuly"
       redirect_to @item

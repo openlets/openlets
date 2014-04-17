@@ -1,20 +1,21 @@
 table.responsive
   thead
     tr
-      - columns.each do |name|
+      - attributes.each do |name|
         th= sortable(name, t("tables.#{name.to_s}"))
       - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
         th= t('tables.roles')
       th= t('tables.actions')
   tbody
-    - collection.each do |instance|
+    - collection.each do |resource|
       tr
-        - columns.each do |name|
-          - attribute = instance.send(name)
+        - attributes.each do |name|
+          - attribute = resource.send(name)
+          - name = name.to_sym
           td
             - if name == :image 
               = image_tag(attribute, size: '50x50') 
-            - elsif name == :name && model_name == 'Setting'
+            - elsif name == :name && resource_class.name == 'Setting'
               = t("admin.settings.#{attribute}")
             - elsif name == :created_at
               = attribute.strftime("%d/%m/%Y")
@@ -26,21 +27,29 @@ table.responsive
             - elsif attribute.present? && name == :item_id
               = link_to admin_item_path(attribute)
                 = Item.find(attribute).title rescue nil
+            - elsif name == :workflow_state && params[:controller] =='admin/users'
+              span.label.radius
+                = current_member.workflow_state
+            - elsif name == :domain
+              = link_to attribute, attribute, target: :blank
+            - elsif name == :economy_id && attribute
+              - economy = Economy.find(attribute)
+              = link_to economy.title, economy.domain, target: :blank
             - else
               = attribute
         - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
           td.roles
-            - instance.roles.each do |role|
+            - resource.roles.each do |role|
               span.label.radius
                 = role.name
 
         td.actions
           ul.button-group.radius.tiny
-            li= link_to eval("admin_#{model_name.downcase}_path(instance.id)"), class: 'button small success', title: t('forms.show')
+            li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')
               i.fa.fa-info
-            li= link_to eval("edit_admin_#{model_name.downcase}_path(instance.id)"), class: 'button small', title: t('forms.edit')
+            li= link_to edit_resource_path(resource), class: 'button small', title: t('forms.edit')
               i.fa.fa-edit
-            li= link_to eval("admin_#{model_name.downcase}_path(instance.id)"), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
+            li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
               i.fa.fa-trash-o
 
 = will_paginate collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

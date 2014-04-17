@@ -1,4 +1,9 @@
 class PagesController < ApplicationController
+
+  def home
+    @economies = Economy.all
+  end
+
   def terms
   end
 

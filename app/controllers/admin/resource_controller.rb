@@ -1,6 +1,5 @@
 class Admin::ResourceController < Admin::AdminController
   inherit_resources
-  self.responder = Admin::Responder
 
   def create(options={}, &block)
     object = build_resource

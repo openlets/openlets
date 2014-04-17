@@ -3,11 +3,11 @@ class WishesController < ApplicationController
 	before_filter :load_wish, :only => [:show, :create_wish_offer, :fulfill, :pause, :activate]
 
 	def new
-		@wish = current_user.wishes.new
+		@wish = current_member.wishes.new
 	end
 
 	def create
-		@wish = current_user.wishes.new(params[:wish])
+		@wish = current_member.wishes.new(params[:wish])
 		if @wish.save 
 			redirect_to @wish
 		else 
@@ -28,11 +28,11 @@ class WishesController < ApplicationController
 	end
 
 	def edit
-		@wish = current_user.wishes.find(params[:id])
+		@wish = current_member.wishes.find(params[:id])
 	end
 
 	def update
-		@wish = current_user.wishes.find(params[:id])
+		@wish = current_member.wishes.find(params[:id])
 		if @wish.update_attributes(params[:wish])
 			redirect_to @wish
 		else
@@ -53,12 +53,12 @@ class WishesController < ApplicationController
   end
 
 	def fulfill
-		@item = current_user.items.new(title: @wish.title, image: @wish.image.url, 
+		@item = current_member.items.new(title: @wish.title, image: @wish.image.url, 
 														description: @wish.description, wish_id: @wish.id)
 	end
 
 	def create_wish_offer
-    @item = current_user.items.new(params[:item])
+    @item = current_member.items.new(params[:item])
     @item.wish_id = params[:id]
     @item.image = @wish.image unless @item.image.present?
     if @item.save

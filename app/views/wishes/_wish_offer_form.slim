@@ -8,7 +8,7 @@
   .field
     = f.input :description, placeholder: t('items.description')
   .field
-    = f.association :categories, input_html: { class: 'chzn-select' }
+    = f.association :categories, collection: current_economy.categories, input_html: { class: 'chzn-select' }
   .field
     = f.input :price, placeholder: t('common.price')
   .field

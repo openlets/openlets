@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140413185356) do
+ActiveRecord::Schema.define(:version => 20140417162558) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -117,14 +117,15 @@ ActiveRecord::Schema.define(:version => 20140413185356) do
     t.integer  "price"
     t.string   "image"
     t.string   "workflow_state"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.datetime "state_changed_at"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "wish_id"
   end
 
-  add_index "items", ["user_id"], :name => "index_items_on_user_id"
+  add_index "items", ["member_id"], :name => "index_items_on_member_id"
+  add_index "items", ["member_id"], :name => "index_items_on_user_id"
   add_index "items", ["wish_id"], :name => "index_items_on_wish_id"
 
   create_table "locations", :force => true do |t|
@@ -153,6 +154,13 @@ ActiveRecord::Schema.define(:version => 20140413185356) do
 
   add_index "members", ["economy_id"], :name => "index_members_on_economy_id"
   add_index "members", ["user_id"], :name => "index_members_on_user_id"
+
+  create_table "members_roles", :id => false, :force => true do |t|
+    t.integer "member_id"
+    t.integer "role_id"
+  end
+
+  add_index "members_roles", ["member_id", "role_id"], :name => "index_members_roles_on_member_id_and_role_id"
 
   create_table "messages", :force => true do |t|
     t.string   "text"
@@ -253,7 +261,7 @@ ActiveRecord::Schema.define(:version => 20140413185356) do
   create_table "wishes", :force => true do |t|
     t.string   "title"
     t.string   "image"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "workflow_state"
@@ -261,6 +269,7 @@ ActiveRecord::Schema.define(:version => 20140413185356) do
     t.text     "description"
   end
 
-  add_index "wishes", ["user_id"], :name => "index_wishes_on_user_id"
+  add_index "wishes", ["member_id"], :name => "index_wishes_on_member_id"
+  add_index "wishes", ["member_id"], :name => "index_wishes_on_user_id"
 
 end

@@ -1,4 +1,4 @@
-= simple_form_for(@item, defaults: { label: false }) do |f|
+= simple_form_for(@item) do |f|
   = f.error_notification
   - f.object.errors.full_messages.each do |message|
     p= message
@@ -8,7 +8,7 @@
   .field
     = f.input :description, placeholder: t('items.description')
   .field
-    = f.association :categories, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
+    = f.association :categories, label_method: :full_name, collection: current_economy.categories, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
   .field
     = f.input :price, placeholder: t('common.price')
   - unless @item.new_record?

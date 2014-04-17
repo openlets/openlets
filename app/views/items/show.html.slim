@@ -4,7 +4,7 @@
       p= image_tag(@item.image)
     .large-5.columns
       h1= @item.title
-      p= link_to @item.user.name, @item.user
+      p= link_to @item.member.name, @item.member
       p
         strong= @item.description
       p
@@ -12,7 +12,7 @@
       p
         strong= "#{t('common.status')}: #{@item.workflow_state}"
     .large-4.columns
-      - if @item.user != current_user
+      - if @item.member != current_member
         = link_to "Purchase for #{@item.price} #{curreny_name.capitalize.pluralize}", purchase_item_path(@item), class: 'button radius right expand large', method: :post, id: 'purchase-button'
     
     .row

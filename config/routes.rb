@@ -1,12 +1,24 @@
 OpenLets::Application.routes.draw do
+  
 
-  root :to => 'items#index'
+  constraints DomainConstraint.new('http://raanana.example.com:3000') do
+    root :to => 'items#index'
+  end
 
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  root to: 'pages#home'
 
-  # resources :economies
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: "registrations" }
+
+  resources :economies
 
   resources :users do
+    member do
+      post 'direct_transfer'
+      get  'transfer'
+    end
+  end
+
+  resources :members do
     member do
       post 'direct_transfer'
       get  'transfer'
@@ -52,7 +64,9 @@ OpenLets::Application.routes.draw do
       collection do
         get 'managers'
         put 'add_manager'
+        put 'add_admin'
         delete 'remove_manager'
+        delete 'remove_admin'
       end      
     end
     resources :items

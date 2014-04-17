@@ -3,7 +3,7 @@ class Wish < ActiveRecord::Base
 
   attr_accessible :image, :title, :user_id, :description, :category_ids
 
-  belongs_to :user
+  belongs_to :member
   has_many   :category_connections, as: :categoriable, dependent: :destroy
   has_many   :categories, through: :category_connections
   has_many   :items

@@ -83,6 +83,7 @@ class User < ActiveRecord::Base
   end
 
   def account_balance
+    
     sales.sum(&:amount) - purchases.sum(&:amount)
   end
 

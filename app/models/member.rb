@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  rolify
   include Workflow
   include WorkflowExtended
 
@@ -6,8 +7,13 @@ class Member < ActiveRecord::Base
   belongs_to :economy
 
   has_one :wallet, as: :walletable
+  has_many :items
+  has_many :wishes
 
   validates_uniqueness_of :user_id, scope: [:economy_id]
+
+  delegate :account_balance, to: :wallet
+  delegate :name, to: :user
 
   after_create do
     Wallet.create(walletable_type: 'Member', walletable_id: self.id, economy_id: self.economy_id)
@@ -25,5 +31,9 @@ class Member < ActiveRecord::Base
       event :approve, transitions_to: :approved
     end
   end  
+
+  def conversations
+    Conversation.where("user_id = ? OR second_user_id = ?", id, id)
+  end
 
 end

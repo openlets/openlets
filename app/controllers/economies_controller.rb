@@ -1,4 +1,4 @@
 class EconomiesController < ApplicationController
-  before_filter :authenticate_user!
-  load_and_authorize_resource
+  load_resource
+  inherit_resources
 end

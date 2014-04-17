@@ -11,7 +11,7 @@
 .large-4.columns
   h3.bold= t('admin.managers.add_managers')
   .row
-    = form_tag add_manager_admin_users_path, method: :put do |f|
+    = form_tag add_admin_admin_users_path, method: :put do |f|
       .small-8.columns
         = select_tag "chosen_user_id", options_from_collection_for_select(@rest_of_users, "id", "name"), class: 'chzn-select', prompt: t('admin.managers.choose_user')
       .small-4.columns
@@ -19,7 +19,7 @@
 .large-4.columns
   h3.bold= t('admin.managers.remove_managers')
   .row
-    = form_tag remove_manager_admin_users_path, method: :delete do |f|
+    = form_tag remove_admin_admin_users_path, method: :delete do |f|
       .small-8.columns
         = select_tag "chosen_user_id", options_from_collection_for_select(@admins_for_removal, "id", "name"), class: 'chzn-select', prompt: t('admin.managers.choose_user')
       .small-4.columns

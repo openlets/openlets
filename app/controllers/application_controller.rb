@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
   rescue_from CanCan::AccessDenied do |exception|
     Rails.logger.debug "Access denied on #{exception.action} #{exception.subject}"
     redirect_to root_url, :alert => exception.message
@@ -7,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :filter_params, :users_for_filter, :categories_for_filter, :current_economy, :current_member
 
-  before_filter :set_locale
+  before_filter :set_locale, :current_economy
 
   def set_locale
     @locale = I18n.locale = params[:locale] || (current_user.locale unless current_user.try(:locale).blank?) || I18n.default_locale
@@ -21,6 +22,7 @@ class ApplicationController < ActionController::Base
   def set_filter_param(k,v)
     filter_params[k] = v
   end
+
 
   private
 
@@ -37,11 +39,13 @@ class ApplicationController < ActionController::Base
     end
 
     def current_economy
-      @economy ||= Economy.find_by_domain("http://#{request.host}")
+      @current_economy ||= Economy.find_by_domain("http://#{request.host_with_port}")
     end
 
     def current_member
-      @member ||= current_user.memberships.where(economy_id: current_economy.id).first
+      if current_user
+        @member ||= (current_economy ? current_user.memberships.where(economy_id: current_economy.id).first : current_user)
+      end
     end
         
 end

@@ -292,6 +292,9 @@ en:
       wish:
         categories: 
     models:
+      economy:
+        one: economy
+        other: Economies
       admin: Admin
       admin_user: Admin Users
       category: Categories

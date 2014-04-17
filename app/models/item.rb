@@ -1,9 +1,9 @@
 class Item < ActiveRecord::Base
   include Transactionable
 
-  attr_accessible :description, :price, :title, :image, :category_ids, :wish_id
+  attr_accessible :description, :price, :title, :image, :category_ids, :wish_id, :member_id
 
-  belongs_to :user
+  belongs_to :member
   belongs_to :wish
   has_many   :category_connections, as: :categoriable, dependent: :destroy
   has_many   :categories, through: :category_connections

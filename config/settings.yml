@@ -27,4 +27,4 @@ development:
 
 test:
   <<: *common
-  site_url: 'localhost:3000'
+  site_url: 'localhost:3000'  

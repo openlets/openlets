@@ -1,0 +1,9 @@
+.row
+  .large-12.columns
+    h1.bold= @economy.title
+    p= @economy.description
+    p= "Members: #{@economy.members.count}"
+    p= "Economy Type: #{@economy.economy_type}"
+    p= "Currency Name: #{@economy.currency_name}"
+    p= "Economic Model: #{@economy.currency_type.titleize}"
+    = link_to "Join", @economy.domain, class: 'button radius'    

@@ -4,7 +4,7 @@
       p= image_tag(@wish.image)
     .large-5.columns
       h1= @wish.title
-      p= link_to @wish.user.name, @wish.user
+      p= link_to @wish.member.try(:name), @wish.member
       p
         strong= @wish.description
     .large-4.columns

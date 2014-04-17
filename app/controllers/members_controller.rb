@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class MembersController < ApplicationController
   load_and_authorize_resource
   before_filter :set_user
   before_filter :validate_authorization_for_user, only: [:edit, :update]
@@ -8,10 +8,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user
-      id = current_user.id
-      @conversation = Conversation.where("user_id = ? AND second_user_id = ? OR user_id = ? AND second_user_id = ?", id, id, id, id).first
-    end
+    # if current_member
+    #   id = current_member.id
+    #   @conversation = Conversation.where("user_id = ? AND second_user_id = ? OR user_id = ? AND second_user_id = ?", id, id, id, id).first
+    # end
   end
 
   def edit
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def direct_transfer
     @transaction = @user.sales.new(params[:transaction])
-    @transaction.buyer_id = current_user.id
+    @transaction.buyer_id = current_member.id
     if @transaction.save
       flash[:notice] = "successfully transfered funds"
       redirect_to @user
@@ -44,11 +44,11 @@ class UsersController < ApplicationController
   private
 
     def set_user
-      @user = User.find(params[:id])
+      @user = Member.find(params[:id])
     end
 
     def validate_authorization_for_user
-       redirect_to root_path unless @user == current_user
+      redirect_to root_path unless @user == current_member
     end
 
 end

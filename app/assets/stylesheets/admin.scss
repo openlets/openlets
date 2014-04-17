@@ -31,4 +31,17 @@ table {
 
 #admin {
   .new-button { margin: 10px 0; }
+
+  form {
+    .small-8.columns { padding: 0; }
+    #chosen_user_id_chzn.chzn-container {
+      width: 360px;
+      height: 47px;
+      font-size: 1.5em;
+      a.chzn-single {
+        height: 47px;
+        padding: 10px 0px;
+      }
+    }
+  }
 }

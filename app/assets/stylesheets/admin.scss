@@ -12,7 +12,7 @@
   .accordion dd.active > a { background: $light-blue; color: white; }
   .accordion dd.title > a { 
     background: $dark-blue; color: white; 
-    font-size: 1.8em; padding: 7px 16px;
+    font-size: 1.2em; padding: 7px 16px;
   }
 }
 
@@ -43,5 +43,9 @@ table {
         padding: 10px 0px;
       }
     }
+  }
+
+  form#settings_form {
+    input { margin: 0; }
   }
 }

@@ -1,7 +1,7 @@
 .row
   .item-panel
     br
-    = form_tag send("#{params[:controller]}_path"), method: :get, id: 'search-form' do
+    = form_tag filter_path_helper, method: :get, id: 'search-form' do
       .large-5.columns
         = select_tag "filter[category_ids]", options_from_collection_for_select(categories_for_filter, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => t('filter.select_categories')
       .large-3.columns

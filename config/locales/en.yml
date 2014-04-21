@@ -302,7 +302,9 @@ en:
       item_comment: Item Comments
       setting: Settings
       transaction: Transactions
-      user: Users
+      user: 
+        one: User
+        other: Users
       wish: Wishes
       comment: Comments
     model:
@@ -471,6 +473,8 @@ en:
     search: Search
     select_categories: Select Categories
   tables:
+    roles: Roles
+    workflow_actions: Status Actions
     buyer: Buyer
     id: ID
     item: Item
@@ -513,6 +517,7 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    create_button: 'Create %{name}'
     send: Send
     edit: Edit
     submit: Submit
@@ -521,7 +526,7 @@ en:
     delete_confirm: 
     delete: Delete
     show: Show
-    edit_resource: Edit {name}
+    edit_resource: 'Edit %{name}'
     description: Description
     price: Price
     title: Title
@@ -531,13 +536,15 @@ en:
     save: Save
     user: User
   inbox:
-    send_message: 'Send #{name} a Message'
+    send_message: 'Send %{name} a Message'
     title: Inbox
   comments:
     title: Comments
     comment: Comment
   admin:
     sidebar:
+      managers: Managers
+      economies: Economies
       comments: Comments
       items: Items
       settings: Settings
@@ -560,3 +567,6 @@ en:
     community_name: 
     currency_name: 
     maximum_debit: 
+  workflow_states:
+    actions:
+      ban: Ban

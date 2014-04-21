@@ -1,0 +1,22 @@
+h1 Edit App Settings
+= form_tag mass_update_admin_settings_path, method: :put, id: 'settings_form' do
+  - @settings.each do |setting|
+    = fields_for "settings[]", setting do |f|
+      .row
+        .small-3.columns
+          label.right.inline[for="settings_#{setting.id}_#{setting.value.blank? ? 'array' : 'value' }" ]
+            = setting.name.titleize
+        .small-9.columns
+          - if f.object.name == "allow_anyone_to_create_economy"
+            = f.check_box :value, checked: f.object.value == "1"
+          - elsif f.object.name == "domain"
+            = f.url_field :value
+          - elsif f.object.name == "allowed_currency_types"
+            = f.select(:array, options_for_select(Setting::ALLOWED_CURRENCY_TYPES.map { |s| [s.titleize, s] }, f.object.array), {include_blank: false}, { multiple: true, class: 'chzn-select'})
+          - elsif f.object.name == "allowed_economy_types"
+            = f.select(:array, options_for_select(Setting::ALLOWED_ECONOMY_TYPES.map { |s| [s.titleize, s] }, f.object.array), {include_blank: false}, { multiple: true, class: 'chzn-select'})
+          - else
+            = f.text_field :value
+          - if f.object.errors.any?
+            small.error= (f.object.errors.messages[:array].try(:first) || f.object.errors.messages[:value].try(:first))
+  = submit_tag "Save", class: 'button radius'

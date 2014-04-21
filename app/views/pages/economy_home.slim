@@ -1,0 +1,19 @@
+- unless user_signed_in?
+  .hero
+    .row
+      .large-12.columns.center
+        h1= t 'splash.title'
+        h4= t 'splash.p1'
+        br
+        .center 
+          = link_to t('common.signup'), new_user_registration_path, class: 'button radius signup-button'
+          br
+          | or 
+          = link_to t('common.login'), new_user_session_path, class: ''
+
+.row
+  .large-12.columns
+    br
+    h1.text-center.bold= t('market.title')
+    = render 'shared/filter_form'
+    = render 'items/table', items: @items

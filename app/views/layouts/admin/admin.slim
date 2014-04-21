@@ -12,7 +12,7 @@ html#admin lang=(current_locale)
     /! <meta http-equiv="X-UA-Compatible" content="IE=7" />
     /! Set the viewport width to device width for mobile
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    title= content_for?(:title) ? yield(:title) : Setting.find_by_name('community_name').value
+    title= meta_title
 
     = stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}"
     = stylesheet_link_tag "admin"
@@ -21,7 +21,7 @@ html#admin lang=(current_locale)
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  body[class="#{@dir}" ]
+  body[class="#{locale_direction}" ]
     = render 'layouts/top_bar'
     .large-1.medium-2.columns.sideabar
         = render 'layouts/admin/sidebar'

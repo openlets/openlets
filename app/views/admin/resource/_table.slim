@@ -10,33 +10,8 @@ table.responsive
     - collection.each do |resource|
       tr
         - attributes.each do |name|
-          - attribute = resource.send(name)
           - name = name.to_sym
-          td
-            - if name == :image 
-              = image_tag(attribute, size: '50x50') 
-            - elsif name == :name && resource_class.name == 'Setting'
-              = t("admin.settings.#{attribute}")
-            - elsif name == :created_at
-              = attribute.strftime("%d/%m/%Y")
-            - elsif [:user_id, :buyer_id, :seller_id].include?(name)
-              = link_to User.find(attribute).name, admin_user_path(attribute)
-            - elsif attribute.present? && name == :wish_id
-              = link_to admin_wish_path(attribute)
-                = Wish.find(attribute).title
-            - elsif attribute.present? && name == :item_id
-              = link_to admin_item_path(attribute)
-                = Item.find(attribute).title rescue nil
-            - elsif name == :workflow_state && params[:controller] =='admin/users'
-              span.label.radius
-                = current_member.workflow_state
-            - elsif name == :domain
-              = link_to attribute, attribute, target: :blank
-            - elsif name == :economy_id && attribute
-              - economy = Economy.find(attribute)
-              = link_to economy.title, economy.domain, target: :blank
-            - else
-              = attribute
+          td= table_attribute_cell(name, resource.send(name))
         - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
           td.roles
             - resource.roles.each do |role|

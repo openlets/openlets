@@ -1,8 +1,7 @@
 OpenLets::Application.routes.draw do
   
-
   constraints DomainConstraint.new('http://raanana.example.com:3000') do
-    root :to => 'items#index'
+    root :to => 'pages#economy_home'
   end
 
   root to: 'pages#home'
@@ -72,7 +71,12 @@ OpenLets::Application.routes.draw do
     resources :items
     resources :wishes
     resources :comments
-    resources :settings
+    resources :settings do
+      collection do
+        get 'mass_edit'
+        put 'mass_update'
+      end
+    end
     resources :transactions
     resources :categories
   end

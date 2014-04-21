@@ -4,16 +4,16 @@ module ApplicationHelper
     @currency_name ||= Setting[:currency_name]
   end
 
-  def rtl?
-    I18n.locale == :he
+  def current_locale
+    @locale ||= I18n.locale
   end
 
-  def current_locale
-    I18n.locale
+  def rtl?
+    @rtl ||= current_locale == :he
   end
 
   def top_bar_direction
-    I18n.locale == :he ? 'left' : 'right'
+    @dir ||= current_locale == :he ? 'left' : 'right'
   end
 
   def sortable(column, title = nil)

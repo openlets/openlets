@@ -305,6 +305,9 @@ en:
       user: 
         one: User
         other: Users
+      member:
+        one: Member
+        other: Members
       wish: Wishes
       comment: Comments
     model:
@@ -517,6 +520,12 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    allow_anyone_to_create_wishes: Allow Anyone to Create Wishes
+    allow_anyone_to_create_items: Allow Anyone to Create Items
+    currency_name: Currency Name
+    domain: Domain
+    currency_type: Currency Type
+    economy_type: Economy Type
     create_button: 'Create %{name}'
     send: Send
     edit: Edit
@@ -554,10 +563,23 @@ en:
       dashboard: Dashboard
       categories: Catgories
       admin_panel: Admin Panel
+      members: Members
     settings:
       community_name: Community Name
       currency_name: Currency Name
       maximum_debit: Maximum Debit
+      app_name: App Name
+      domain: Domain
+      allow_anyone_to_create_economy: Allow Anyone to create an Economy?
+      allowed_currency_types: Allowed Curreny Types
+      allowed_economy_types: Allowed Economy Types
+    managers:
+      title: Managers
+      add_managers: Add Managers
+      add_manager: Add Manager
+      remove_managers: Remove Managers
+      remove_manager: Remove Manager
+      choose_user: Choose User
   flash:
     admin:
       items:
@@ -567,6 +589,6 @@ en:
     community_name: 
     currency_name: 
     maximum_debit: 
-  workflow_states:
-    actions:
-      ban: Ban
+  workflow_state:
+    ban: Ban
+    approve: Approve

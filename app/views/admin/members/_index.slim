@@ -1,0 +1,4 @@
+.large-12.columns
+  h1.bold= t("activerecord.models.#{resource_class.name.downcase}", count: 2)
+.large-12.columns
+  = render 'table', attributes: attributes

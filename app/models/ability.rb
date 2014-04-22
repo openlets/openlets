@@ -1,51 +1,54 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    can :manage, :all
+  def initialize(user, member, economy)
+    user   ||= User.new
+    member ||= user.memberships.new
 
-    # alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :create, :read, :update, :destroy, to: :crud
 
-    # can :read,      Item
-    # can :index,     Item
-    # can :read,      Wish
-    # cannot :create, Item
-    
+    can    :read,              Item
+    can    :index,             Item
+    can    :read,              Wish
+    cannot :create,            Item
+
+    if member.persisted? # logged in member
+      can    :create,            Item
+      can    :crud,              member.items         { |i| i.member == member }
+      can    :pause,             member.items         { |i| i.active? }
+      cannot :pause,             Item.paused          { true }
+      can    :activate,          member.items.paused  { true }
+      cannot :activate,          Item.active          { |i| i.active? }
+      
+      can    :create,            Wish
+      can    :crud,              member.wishes        { |i| i.member == member }
+      can    :pause,             member.wishes        { |i| i.active? }
+      cannot :pause,             Wish.paused          { true }
+      can    :activate,          member.wishes.paused { true }
+      cannot :activate,          Wish.active          { |i| i.active? }
+      can    :fulfill,           Wish
+      can    :create_wish_offer, Wish
+      
+      can    :show,              Member
+      can    :crud,              member
+      can    :show,              User
+      can    :crud,              user      
+    end
+
+    if member.persisted? and member.approved? 
+      can    :purchase, Item.active                  { |i| i.member != member }
+      cannot :purchase, member.items                 { true }
+      can    :fulfill,  Wish.active.not_mine(member) { |w| w.member != member }
+      cannot :fulfill,  member.wishes                { |w| w.member == member }
+      can    :crud,     Conversation
+      can    :crud,     Message
+      can    :create,   Comment
+      can    :view,     Comment
+      can    :direct_transfer, Member.all              { |u| u != member }
+      can    :transfer, Member.all { |u| u != member }
+    end
+
     # if user.has_role :admin
-    # end
-
-    # if user # logged in user
-    #   can    :create,            Item
-    #   can    :crud,              user.items        { |i| i.user == user }
-    #   can    :pause,             user.items        { |i| i.active? }
-    #   cannot :pause,             Item.paused       { true }
-    #   can    :activate,          user.items.paused { true }
-    #   cannot :activate,          Item.active       { |i| i.active? }
-      
-    #   can    :create,            Wish
-    #   can    :crud,              user.wishes        { |i| i.user == user }
-    #   can    :pause,             user.wishes        { |i| i.active? }
-    #   cannot :pause,             Wish.paused        { true }
-    #   can    :activate,          user.wishes.paused { true }
-    #   cannot :activate,          Wish.active        { |i| i.active? }
-    #   can    :fulfill,           Wish
-    #   can    :create_wish_offer, Wish
-      
-    #   can    :show,              User
-    #   can    :crud,              user
-    # end
-
-    # if user and user.approved? 
-    #   can    :purchase, Item.active { |i| i.user != user }
-    #   cannot :purchase, user.items  { true }
-    #   can    :fulfill,  Wish.active.not_mine(user) { |w| w.user != user }
-    #   cannot :fulfill,  user.wishes { |w| w.user == user }
-    #   can    :crud,     Conversation
-    #   can    :crud,     Message
-    #   can    :create,   Comment
-    #   can    :view,     Comment
-    #   can    :direct_transfer, User.all { |u| u != user }
-    #   can    :transfer, User.all { |u| u != user }
     # end
 
   end

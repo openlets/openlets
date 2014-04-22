@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421164525) do
+ActiveRecord::Schema.define(:version => 20140422205348) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -106,10 +106,13 @@ ActiveRecord::Schema.define(:version => 20140421164525) do
     t.string   "economy_type"
     t.string   "currency_name"
     t.string   "currency_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.string   "domain"
     t.string   "name"
+    t.integer  "max_debit",                     :default => -100
+    t.boolean  "allow_anyone_to_create_items"
+    t.boolean  "allow_anyone_to_create_wishes"
   end
 
   create_table "items", :force => true do |t|

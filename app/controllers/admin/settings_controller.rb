@@ -14,7 +14,7 @@ class Admin::SettingsController < Admin::ResourceController
     @settings = Setting.update(params[:settings].keys, params[:settings].values).reject { |p| p.errors.empty? }
     if @settings.empty?
       flash[:notice] = "Settings updated"
-      redirect_to mass_edit_admin_settings_path
+      redirect_to admin_settings_path
     else
       @settings = @settings.concat(Setting.all - Setting.where(id: @settings.map(&:id)))
       render "mass_edit"

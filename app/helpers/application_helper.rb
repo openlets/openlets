@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def curreny_name
-    @currency_name ||= Setting[:currency_name]
+    @currency_name ||= current_economy.currency_name
   end
 
   def current_locale
@@ -25,7 +25,7 @@ module ApplicationHelper
 
   def top_bar_title
     link_to root_path do
-      current_economy ? current_economy.title : 'OpenLETS'
+      current_economy ? current_economy.title : Setting[:app_name]
     end
   end
 

@@ -4,7 +4,7 @@
 			= (image_tag current_user.image_url(:thumb).to_s)
 		.large-6.small-8.columns
 			h1= current_user.name
-			- if can? :update, current_user
+			- if can? :update, current_member
 				h3= "#{t('user.balance')}: #{current_member.account_balance}"
 				= link_to t('user.edit_profile'), edit_user_path(@user), class: 'button radius tiny'
 		.large-4.columns
@@ -18,7 +18,7 @@
 		/ 			= link_to t('conversation.send_message'), new_conversations_path(@user), class: 'button radius expand'
 		/ 		.small-6.columns
 		/ 			= link_to t('conversation.send_money'), transfer_user_path(@user), class: 'button radius expand'
-		/ .clear-both
+		.clear-both
 	  
 .row
 	.large-12.columns

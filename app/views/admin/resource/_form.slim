@@ -1,4 +1,7 @@
-= simple_form_for [:admin, resource] do |f|
+= simple_form_for([:admin, resource], wrapper: :foundation_inline) do |f|
   - attributes.each do |attr|
     = f.input attr, label: t("forms.#{attr}")
-  = f.button :submit, t('forms.update'), class: 'button'
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit, t('forms.update')

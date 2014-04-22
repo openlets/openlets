@@ -1,0 +1,10 @@
+table.responsive
+  thead
+    tr
+      th= t("tables.name")
+      th= t("tables.value")
+  tbody
+    - collection.each do |resource|
+      tr
+        td= t("admin.settings.#{resource.name}")
+        td= table_attribute_cell(resource.name.to_sym, resource, (resource.value || resource.array))

@@ -11,7 +11,7 @@ table.responsive
     - collection.each do |resource|
       tr
         - attributes.each do |name|
-          td= table_attribute_cell(name, resource.send(name))
+          td= table_attribute_cell(name, resource)
           
         - if current_user.has_role?(:admin)
           td.roles
@@ -20,12 +20,12 @@ table.responsive
                 = role.name
         td.workflow_actions.actions
           ul.button-group.radius.tiny
-            - unless current_member.approved?
+            - unless resource.member_for_economy(current_economy).approved?
               li= link_to approve_admin_user_path(resource), method: :put, class: 'button small', title: t('workflow_state.approve')
                 i.fa.fa-check
                 |  
                 = t('workflow_state.approve')
-            - unless current_member.banned?                  
+            - unless resource.member_for_economy(current_economy).banned?
               li= link_to ban_admin_user_path(resource), method: :put, class: 'button small alert', title: t('workflow_state.ban')
                 i.fa.fa-exclamation-circle
                 |  

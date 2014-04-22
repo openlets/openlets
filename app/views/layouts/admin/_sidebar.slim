@@ -6,6 +6,8 @@ dl.accordion
     = link_to t('admin.sidebar.dashboard'), admin_dashboard_path
   dd class=(sidebar_link_class('admin/users', 'index'))
     = link_to t('admin.sidebar.users'), admin_users_path
+  dd class=(sidebar_link_class('admin/members', 'index'))
+    = link_to t('admin.sidebar.members'), admin_members_path  
   dd class=(sidebar_link_class('admin/items', 'index'))
     = link_to t('admin.sidebar.items'), admin_items_path
   dd class=(sidebar_link_class('admin/wishes', 'index'))

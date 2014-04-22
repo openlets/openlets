@@ -1,7 +1,7 @@
 OpenLets::Application.routes.draw do
   
-  constraints DomainConstraint.new('http://raanana.example.com:3000') do
-    root :to => 'pages#economy_home'
+  constraints DomainConstraint.new do
+    root to: 'pages#economy_home'
   end
 
   root to: 'pages#home'
@@ -55,6 +55,7 @@ OpenLets::Application.routes.draw do
   namespace :admin do
     root to: "admin#dashboard", as: :dashboard
     resources :economies
+    resources :members
     resources :users do
       member do
         put :approve

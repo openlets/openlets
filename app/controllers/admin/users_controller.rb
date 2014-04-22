@@ -3,19 +3,22 @@ class Admin::UsersController < Admin::ResourceController
   def create
     create! do |success, failure|
       success.html do
-        @user.economies << current_economy rescue nil
-        redirect_to admin_user_path(@user)
+        binding.pry
+        resource.economies << current_economy rescue nil
+        redirect_to admin_user_path(resource)
       end
     end
   end
 
   def approve
-    current_member.approve!
+    resource.member_for_economy(current_economy).approve!
+    flash[:notice] = "User has was approved"
     redirect_to admin_user_path(resource)
   end
 
   def ban
-    current_member.ban!
+    resource.member_for_economy(current_economy).ban!
+    flash[:notice] = "User has was banned"
     redirect_to admin_user_path(resource)
   end
 
@@ -37,26 +40,34 @@ class Admin::UsersController < Admin::ResourceController
   end
 
   def add_manager
-    @user = User.find(params[:chosen_user_id])
-    @user.add_role :economy_manager, current_economy
+    unless params[:chosen_user_id].blank?
+      @user = User.find(params[:chosen_user_id])
+      @user.add_role :economy_manager, current_economy
+    end
     redirect_to managers_admin_users_path
   end
 
   def remove_manager
-    @user = User.find(params[:chosen_user_id])
-    @user.remove_role :economy_manager, current_economy
+    unless params[:chosen_user_id].blank?
+      @user = User.find(params[:chosen_user_id])
+      @user.remove_role :economy_manager, current_economy
+    end
     redirect_to managers_admin_users_path
   end
 
   def add_admin
-    @user = User.find(params[:chosen_user_id])
-    @user.add_role :admin
+    unless params[:chosen_user_id].blank?  
+      @user = User.find(params[:chosen_user_id])
+      @user.add_role :admin
+    end
     redirect_to managers_admin_users_path
   end
 
   def remove_admin
-    @user = User.find(params[:chosen_user_id])
-    @user.remove_role :admin
+    unless params[:chosen_user_id].blank?
+      @user = User.find(params[:chosen_user_id])
+      @user.remove_role :admin
+    end
     redirect_to managers_admin_users_path
   end  
 

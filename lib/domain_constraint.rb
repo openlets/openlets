@@ -1,5 +1,5 @@
 class DomainConstraint
-  def initialize(domain)
+  def initialize
     @domains = Economy.all.map(&:domain)
   end
 

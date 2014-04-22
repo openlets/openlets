@@ -12,20 +12,19 @@ class User < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
-  has_many :authorizations, dependent: :destroy
-  has_many :items,          dependent: :destroy
-  has_many :wishes,         dependent: :destroy
-
+  has_many :authorizations
+  
   has_many :user_conversations, class_name: 'Conversation', foreign_key: 'user_id'
   has_many :messages
   has_many :comments
 
   has_many :memberships, class_name: 'Member'
   has_many :economies, through: :memberships
+  has_many :items,     through: :memberships
+  has_many :wishes,    through: :memberships
 
   has_many :locations, as: :locationable, dependent: :destroy
   accepts_nested_attributes_for :locations
-
 
   scope :by_economy_id,     lambda { |id| joins(:memberships).where('members.economy_id = ?', id)}
   scope :awaiting_approval, lambda { where(workflow_state: 'awaiting_approval') }
@@ -47,6 +46,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def member_for_economy(economy)
+    memberships.find_by_economy_id(economy.id)
+  end
+
   def is_admin?
     !(["admin", "economy_manager"] & self.roles.map(&:name)).empty?
   end
@@ -57,22 +60,6 @@ class User < ActiveRecord::Base
     email.split("@")[0]
   end
 
-  def trust_rank
-    @rank ||= authorizations.map(&:provider).uniq.count + 1
-  end
-
-  def max_debit
-    @max_devit ||= (trust_rank * Setting[:maximum_debit].to_i)
-  end
-
-  def needed_funds(item)
-    account_balance + price
-  end
-
-  def transactions
-    Transaction.where("buyer_id = ? OR seller_id = ?", id, id)
-  end
-
   def conversations
     Conversation.where("user_id = ? OR second_user_id = ?", id, id)
   end
@@ -80,11 +67,6 @@ class User < ActiveRecord::Base
   def allowed_messages
     cids = conversations.map(&:id)
     Message.where(conversation_id: cids)
-  end
-
-  def account_balance
-    
-    sales.sum(&:amount) - purchases.sum(&:amount)
   end
 
   def connected_with?(provider)

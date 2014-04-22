@@ -4,14 +4,14 @@ class ItemsController < ApplicationController
   before_filter :load_item, :only => [:edit, :update, :show, :purchase, :pause, :activate]
 
   def purchase
-    if @item.purchase!(current_member)
+    if @item.purchase(current_member)
       flash[:notice] = "Payment was successful"
       Mailer.item_purchased(@item, current_member).deliver
       redirect_to @item
     else
       @comments = @item.comments.order(:created_at)
       @comment  = @item.comments.new
-      flash[:alert] = "Insufficient Funds. This transaction would cause you to cross the maximum debit limit. "
+      flash[:alert] = "Insufficient Funds."
       render 'show'
     end
   end
@@ -27,7 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = current_member.items.new(params[:item])
     if @item.save
       flash[:notice] = "Created item successfuly"

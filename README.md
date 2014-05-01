@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/openlets/openlets.png?label=ready&title=Ready)](https://waffle.io/openlets/openlets)
 OpenLETS
 ========
 

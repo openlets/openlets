@@ -21,7 +21,7 @@ html lang=(current_locale)
     = csrf_meta_tags
 
   body[class="#{locale_direction}" ]
-    = render 'layouts/dynamic_css'
+    = render 'layouts/dynamic_css' if current_economy
     = render 'layouts/top_bar'
     = render 'layouts/flash_messages'
     = yield

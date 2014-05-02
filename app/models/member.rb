@@ -1,7 +1,7 @@
 class Member < ActiveRecord::Base
-  rolify
   include Workflow
   include WorkflowExtended
+  rolify
 
   belongs_to :user
   belongs_to :economy
@@ -19,6 +19,8 @@ class Member < ActiveRecord::Base
     Wallet.create(walletable_type: 'Member', walletable_id: self.id, economy_id: self.economy_id)
   end
 
+  delegate :image, :email, :authorizations, to: :user
+
   workflow do
     state :awaiting_approval do
       event :approve, transitions_to: :approved
@@ -30,7 +32,8 @@ class Member < ActiveRecord::Base
     state :banned do
       event :approve, transitions_to: :approved
     end
-  end  
+  end
+  workflow_scopes
 
   def conversations
     Conversation.where("user_id = ? OR second_user_id = ?", id, id)

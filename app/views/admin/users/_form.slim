@@ -1,0 +1,10 @@
+= simple_form_for([:admin, resource], wrapper: :foundation_inline) do |f|
+  - attributes.each do |attr|
+    - if attr == :locale
+      = f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']
+    -else 
+      = f.input attr, label: t("forms.#{attr}")
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit, t('forms.update')

@@ -15,11 +15,11 @@ class User < ActiveRecord::Base
   has_many :authorizations
   
   has_many :user_conversations, class_name: 'Conversation', foreign_key: 'user_id'
-  has_many :messages
-  has_many :comments
+  has_many :messages, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
-  has_many :memberships, class_name: 'Member'
   has_many :economies, through: :memberships
+  has_many :memberships, class_name: 'Member', dependent: :destroy
   has_many :items,     through: :memberships
   has_many :wishes,    through: :memberships
 

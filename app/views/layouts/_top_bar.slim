@@ -33,10 +33,10 @@
               i.fa.fa-user
               = t('top_bar.profile')
             li.divider
-            li= link_to conversations_path
-              i.fa.fa-inbox
-              = t('top_bar.inbox')
-            li.divider
+            / li= link_to conversations_path
+            /   i.fa.fa-inbox
+            /   = t('top_bar.inbox')
+            / li.divider
             - if current_user.has_role?(:admin) or current_user.has_role?(:economy_manager, current_economy)
               li= link_to admin_dashboard_path
                 i.fa.fa-dashboard

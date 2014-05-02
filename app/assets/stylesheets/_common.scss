@@ -37,6 +37,7 @@ h1#logo {
 .hero {
   background: url("/assets/city.jpg") no-repeat top center;
   width: 100%;
+  background-size: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -101,4 +102,7 @@ label.right {
 
 fa.fa-search { font-size: 25px; }
 
-.top-bar i.fa { margin: 5px; }
+.top-bar {
+  i.fa { margin: 5px; }
+  #logo img { margin-top: 19px; height: 25px; }
+}

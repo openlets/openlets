@@ -1,8 +1,28 @@
-.large-10.columns
-  h1.bold= t("activerecord.models.#{resource_class.name.downcase}", count: 1)
-.large-2.columns
-.large-12.columns
-  - current_economy.attributes.each do |k,v|
-    div
-      strong= "#{k}: "
-      = v
+h1.bold.text-center Edit Economy Settings
+= simple_form_for [:admin, current_economy], wrapper: :foundation_inline do |f|
+  = f.error_notification
+
+  = f.input :title,         required: true, autofocus: true, label: t('forms.title')
+  = f.input :description,   required: true, label: t('forms.description')
+  = f.input :currency_name, required: true, label: t('forms.currency_name')
+  
+  = render 'boolean', attribute: "allow_anyone_to_create_items", f: f
+  = render 'boolean', attribute: "allow_anyone_to_create_wishes", f: f
+  = render 'boolean', attribute: "invite_only", f: f
+
+  = f.input :domain,        required: true, label: t('forms.domain'),as: :url
+  - if current_economy.persisted?
+    = f.input :currency_type, required: true, label: t('forms.currency_type'), disabled: true, input_html: { value: f.object.currency_type.titleize }
+    = f.input :economy_type,  required: true, label: t('forms.economy_type'), disabled: true, input_html: { value: f.object.economy_type.titleize }
+    - if f.object.currency_type == "mutual_credit"
+      = f.input :max_debit
+  - else
+    = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: [['Mututal Credit', 'mutual_credit'], ['Fiat', 'fiat'], ['Backed by', 'backed']]
+    = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: [['Community', 'community'], ['Cooperative', 'cooperative'], ['Business', 'business'], ['Non Profit', 'non_profit']]
+    
+  = f.input :logo
+  = f.input :bg_image
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit, t('forms.update')

@@ -4,8 +4,6 @@ dl.accordion
       = t('admin.sidebar.admin_panel')
   dd class=(sidebar_link_class('admin/admin', 'dashboard'))
     = link_to t('admin.sidebar.dashboard'), admin_dashboard_path
-  dd class=(sidebar_link_class('admin/users', 'index'))
-    = link_to t('admin.sidebar.users'), admin_users_path
   dd class=(sidebar_link_class('admin/members', 'index'))
     = link_to t('admin.sidebar.members'), admin_members_path  
   dd class=(sidebar_link_class('admin/items', 'index'))
@@ -14,8 +12,6 @@ dl.accordion
     = link_to t('admin.sidebar.wishes'), admin_wishes_path
   dd class=(sidebar_link_class('admin/transactions', 'index'))
     = link_to t('admin.sidebar.transactions'), admin_transactions_path
-  dd class=(sidebar_link_class('admin/comments', 'index'))
-    = link_to t('admin.sidebar.comments'), admin_comments_path
   dd class=(sidebar_link_class('admin/categories', 'index'))
     = link_to t('admin.sidebar.categories'), admin_categories_path
   dd class=(sidebar_link_class('admin/settings', 'index'))
@@ -23,6 +19,8 @@ dl.accordion
   dd class=(sidebar_link_class('admin/users', 'managers'))
     = link_to t('admin.sidebar.managers'), managers_admin_users_path    
 
-  - if current_user.has_role? :admin
+  - if current_user.has_role? :admin && current_economy.blank?
     dd class=(sidebar_link_class('admin/economies', 'index'))
       = link_to t('admin.sidebar.economies'), admin_economies_path
+    dd class=(sidebar_link_class('admin/users', 'index'))
+      = link_to t('admin.sidebar.users'), admin_users_path

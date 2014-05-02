@@ -25,7 +25,11 @@ module ApplicationHelper
 
   def top_bar_title
     link_to root_path do
-      current_economy ? current_economy.title : Setting[:app_name]
+      if current_economy 
+        image_tag(current_economy.logo) || current_economy.title
+      else 
+        Setting[:app_name]
+      end
     end
   end
 

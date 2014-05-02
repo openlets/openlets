@@ -3,7 +3,6 @@ class Admin::UsersController < Admin::ResourceController
   def create
     create! do |success, failure|
       success.html do
-        binding.pry
         resource.economies << current_economy rescue nil
         redirect_to admin_user_path(resource)
       end
@@ -11,6 +10,7 @@ class Admin::UsersController < Admin::ResourceController
   end
 
   def approve
+    binding.pry
     resource.member_for_economy(current_economy).approve!
     flash[:notice] = "User has was approved"
     redirect_to admin_user_path(resource)

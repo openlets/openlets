@@ -1,0 +1,34 @@
+table.responsive
+  thead
+    tr
+      - attributes.each do |name|
+        th= sortable(name, t("tables.#{name.to_s}"))
+      - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
+        th= t('tables.roles')
+      th= t('tables.approve_ban')
+      th= t('tables.actions')
+  tbody
+    - collection.each do |resource|
+      tr
+        - attributes.each do |name|
+          - name = name.to_sym
+          td= table_attribute_cell(name, resource)
+        - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
+          td.roles
+            - resource.roles.each do |role|
+              span.label.radius
+                = role.name
+
+        td.actions
+          ul.button-group.radius.tiny
+            li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')
+              i.fa.fa-info
+            li= link_to edit_resource_path(resource), class: 'button small', title: t('forms.edit')
+              i.fa.fa-edit
+            li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
+              i.fa.fa-trash-o
+        td.approve-ban
+          = link_to 'Approve', admin_member_approve_path(resource), method: :put, class: 'button tiny' unless resource.approved?
+          = link_to 'Disapprove', admin_member_ban_path(resource), method: :put,  class: 'button alert tiny' unless resource.banned?
+
+= will_paginate collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

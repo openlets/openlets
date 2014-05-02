@@ -13,7 +13,10 @@ class Transaction < ActiveRecord::Base
 
   validate :not_self
 
+  delegate :economy, to: :buyer
+
   scope :commerce, lambda { where(transaction_type: ['purchase', 'direct_transfer']) }
+  scope :for_economy, lambda { |economy| where('receiving_wallet_id IN (:wallet_ids) OR sending_wallet_id IN (:wallet_ids)', wallet_ids: economy.wallet_ids) }
 
   workflow do
     state :done do
@@ -30,10 +33,6 @@ class Transaction < ActiveRecord::Base
     receiving_wallet.walletable
   end
 
-  def economy
-    buyer.economy
-  end
-
   def self.market_velocity
     transactions = Transaction # TODO scope by commerce type transactions
     start_date = transactions.order('created_at ASC').first.created_at.to_date
@@ -46,11 +45,8 @@ class Transaction < ActiveRecord::Base
   end
 
   def self.transfer(buyer, seller, item)
-  	if self.create(sending_wallet_id: buyer.wallet.id, receiving_wallet_id: seller.wallet.id, item_id: item.id, amount: item.price)
-      true
-    else
-      false
-    end
+    t = self.new(sending_wallet_id: buyer.wallet.id, receiving_wallet_id: seller.wallet.id, item_id: item.id, amount: item.price)
+  	t.save ? true : false
   end
 
   def transaction_type_name(user)

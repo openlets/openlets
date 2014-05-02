@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140422205348) do
+ActiveRecord::Schema.define(:version => 20140501134905) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -113,6 +113,9 @@ ActiveRecord::Schema.define(:version => 20140422205348) do
     t.integer  "max_debit",                     :default => -100
     t.boolean  "allow_anyone_to_create_items"
     t.boolean  "allow_anyone_to_create_wishes"
+    t.boolean  "invite_only"
+    t.string   "logo"
+    t.string   "bg_image"
   end
 
   create_table "items", :force => true do |t|

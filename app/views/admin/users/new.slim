@@ -1,4 +1,4 @@
 .row
   .large-12.columns
-    h1.bold.text-center= t('forms.new_resource', name: t("activerecord.models.#{resource_class.name.downcase}"))
-    = render "form", attributes: [:email, :password, :password_confirmation, :name, :about, :locale]
+    h1.bold.text-center= t('forms.new_resource', name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
+    = render "form", attributes: [:email, :name, :about, :locale, :password, :password_confirmation]

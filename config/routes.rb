@@ -55,7 +55,10 @@ OpenLets::Application.routes.draw do
   namespace :admin do
     root to: "admin#dashboard", as: :dashboard
     resources :economies
-    resources :members
+    resources :members do
+      put :approve
+      put :ban
+    end
     resources :users do
       member do
         put :approve

@@ -3,7 +3,7 @@ class Admin::AdminController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def dashboard
-    
+    @members = current_economy.members
   end
 
   def authenticate_admin_user!

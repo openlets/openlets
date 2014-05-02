@@ -520,6 +520,7 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    new_resource: 'Create a new %{name}'
     allow_anyone_to_create_wishes: Allow Anyone to Create Wishes
     allow_anyone_to_create_items: Allow Anyone to Create Items
     currency_name: Currency Name

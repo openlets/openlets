@@ -1,6 +1,24 @@
 class Admin::MembersController < Admin::ResourceController
 
+  before_filter :load_member, only: [:approve, :ban]
+
+  def approve
+    @member.approve!
+    flash[:notice] = "Member has was approved"
+    redirect_to admin_member_path(@member)
+  end
+
+  def ban
+    @member.ban!
+    flash[:notice] = "Member has was banned"
+    redirect_to admin_member_path(@member)
+  end
+
   private
+
+    def load_member
+      @member = Member.find(params[:member_id])
+    end
 
     def collection
       if current_economy

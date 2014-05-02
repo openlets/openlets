@@ -1,8 +1,8 @@
 OpenLets::Application.routes.draw do
   
-  # constraints DomainConstraint.new do
-  #   root to: 'pages#economy_home'
-  # end
+  constraints DomainConstraint.new do
+    root to: 'pages#economy_home'
+  end
 
   root to: 'pages#home'
 

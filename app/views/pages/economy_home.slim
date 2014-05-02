@@ -6,7 +6,7 @@
         h4= t 'splash.p1'
         br
         .center
-          - unless current_economy.invite_only
+          - unless invite_only
             = link_to t('common.signup'), new_user_registration_path, class: 'button radius signup-button'
             br
             | or 

@@ -3,7 +3,7 @@
     h1.text-center.bold Login
 .row.center
   .large-6.columns.large-centered
-    = render "devise/shared/links" unless current_economy.invite_only
+    = render "devise/shared/links" unless invite_only
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { label: false }) do |f|
       .form-inputs
         = f.input :email, required: false, autofocus: true, placeholder: 'Email'
@@ -11,7 +11,7 @@
       .form-actions
         = f.button :submit, "Login", class: 'button expand radius'
       
-      - if devise_mapping.registerable? && controller_name != 'registrations' && !current_economy.invite_only
+      - if devise_mapping.registerable? && controller_name != 'registrations' && !invite_only
         span Don't have an account yet? 
         = link_to "Sign up", new_registration_path(resource_name)
         br

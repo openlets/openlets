@@ -42,13 +42,13 @@ gem "chartkick"
 gem 'geocoder'
 gem "rolify"
 gem 'inherited_resources'
+gem 'localeapp'
 
 group :production do
   gem 'rollbar'
 end
 
 group :development do
-  gem 'localeapp'
   gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'

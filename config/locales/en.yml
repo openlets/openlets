@@ -520,6 +520,7 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    invite_only: Invite Only
     new_resource: 'Create a new %{name}'
     allow_anyone_to_create_wishes: Allow Anyone to Create Wishes
     allow_anyone_to_create_items: Allow Anyone to Create Items

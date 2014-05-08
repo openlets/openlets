@@ -19,7 +19,9 @@ class Member < ActiveRecord::Base
     Wallet.create(walletable_type: 'Member', walletable_id: self.id, economy_id: self.economy_id)
   end
 
-  delegate :image, :email, :authorizations, to: :user
+  delegate :image, :email, :authorizations, :unique_authorizations, to: :user
+
+  attr_accessible :user_id
 
   workflow do
     state :awaiting_approval do

@@ -1,18 +1,24 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, member, economy)
+  def initialize(user, member = nil, economy = nil)
     user   ||= User.new
     member ||= user.memberships.new
 
-    alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :view, :create, :read, :update, :destroy, to: :crud
 
     can    :read,              Item
     can    :index,             Item
     can    :read,              Wish
     cannot :create,            Item
 
-    if member.persisted? # logged in member
+    if user.persisted?
+      can :create, Economy
+      can :crud,                 user.economies       { |i| i.user == user }
+      can :show, User
+    end
+
+    if member.persisted? # logged in an economy
       can    :create,            Item
       can    :crud,              member.items         { |i| i.member == member }
       can    :pause,             member.items         { |i| i.active? }

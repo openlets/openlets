@@ -22,6 +22,6 @@ html lang=(current_locale)
 
   body[class="#{locale_direction}" ]
     = render 'layouts/dynamic_css' if current_economy
-    = render 'layouts/top_bar'
+    = render "layouts/#{'economy_' if current_economy}top_bar"
     = render 'layouts/flash_messages'
     = yield

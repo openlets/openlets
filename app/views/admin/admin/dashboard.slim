@@ -19,15 +19,15 @@
           td.email
             span = mail_to member.email
           td.authorizations
-            - member.authorizations.each do |auth|
+            - member.unique_authorizations.each do |auth|
               - if auth.provider == 'facebook'
                 span
                   = link_to auth.provider, "http://www.facebook.com/#{auth.username}", target: :blank
-                  |  
+                  | , 
               - elsif auth.provider == 'linkedin'
                 span
                   = link_to auth.provider, " http://www.linkedin.com/x/profile/#{GLOBAL[:linkedin_key]}/#{auth.uid}", target: :blank
-                  |  
+                  | , 
               - elsif auth.provider == 'google_oauth2'
                 span= link_to 'google', " https://plus.google.com/#{auth.uid}", target: :blank
           td.actions

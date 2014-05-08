@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, 
          :rememberable, :trackable, :validatable, :omniauthable, :token_authenticatable
   
-  attr_accessible :email, :password, :password_confirmation, :name, :about, :locale, :locations_attributes
+  attr_accessible :email, :password, :password_confirmation, :name, :about, :locale, :locations_attributes, :image
   
   validates_presence_of :email
   
@@ -18,8 +18,9 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :economies, through: :memberships
+  has_many :economies
   has_many :memberships, class_name: 'Member', dependent: :destroy
+  # has_many :member_of_economies, through: :memberships
   has_many :items,     through: :memberships
   has_many :wishes,    through: :memberships
 
@@ -44,6 +45,14 @@ class User < ActiveRecord::Base
     state :banned do
       event :approve, transitions_to: :approved
     end
+  end
+
+  def editable_attribute_names
+    %w(name email about locale image)
+  end
+
+  def unique_authorizations
+    authorizations.inject({}) {|h,e| h[e.provider]=e; h}.values
   end
 
   def member_for_economy(economy)

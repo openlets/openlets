@@ -6,6 +6,9 @@ class Admin::AdminController < ApplicationController
     @members = current_economy.members
   end
 
+  def realm_dashboard
+  end
+
   def authenticate_admin_user!
     unless current_user && current_user.is_admin?
       redirect_to root_path, alert: "You are not authorized to access this page" 

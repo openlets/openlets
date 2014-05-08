@@ -1,5 +1,23 @@
 class Admin::ItemsController < Admin::ResourceController
 
+  def activate
+    resource.approve!
+    flash[:notice] = "Item was approved"
+    redirect_to admin_item_path(resource)
+  end
+
+  def pause
+    resource.pause!
+    flash[:notice] = "Item was paused"
+    redirect_to admin_item_path(resource)
+  end
+
+  def ban
+    resource.ban!
+    flash[:notice] = "Item was banned"
+    redirect_to admin_item_path(resource)
+  end
+
   private
     
     def collection

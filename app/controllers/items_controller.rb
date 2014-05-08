@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   before_filter :load_item, :only => [:edit, :update, :show, :purchase, :pause, :activate]
 
   def purchase
-    # binding.pry
     if @item.purchase(current_member)
       flash[:notice] = "Payment was successful"
       Mailer.item_purchased(@item, current_member).deliver

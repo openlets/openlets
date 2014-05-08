@@ -1,0 +1,15 @@
+.row
+  .large-12.columns
+    h1.text-center.bold= t('activerecord.models.economy', count: 3)
+    ul.small-block-grid-3
+      - economies.each do |economy|
+        li.panel
+          h3.bold= economy.title
+          p= economy.description
+          p= "Members: #{economy.members.count}"
+          p= "Economy Type: #{economy.economy_type}"
+          p= "Currency Name: #{economy.currency_name}"
+          p= "Economic Model: #{economy.currency_type.titleize}"
+          = link_to "Join", economy.domain, class: 'button radius'
+          - if can? :edit, economy
+            = link_to "Edit", edit_economy_path(economy), class: 'button radius'

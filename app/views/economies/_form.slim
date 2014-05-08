@@ -1,4 +1,4 @@
-= simple_form_for(@economy) do |f|
+= simple_form_for(@economy, wrapper: :foundation_inline) do |f|
   = f.error_notification
   - f.object.errors.full_messages.each do |message|
     p= message

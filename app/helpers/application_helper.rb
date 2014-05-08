@@ -33,4 +33,12 @@ module ApplicationHelper
     end
   end
 
+  def economy_title
+    current_economy.title || "Join our Economy!"
+  end
+
+  def economy_description
+    current_economy.description || "Checkout all the great things you can trade on our marketplace"
+  end
+
 end

@@ -1,16 +1,18 @@
 class Admin::UsersController < Admin::ResourceController
 
+  def show
+  end
+
   def create
     create! do |success, failure|
       success.html do
-        resource.economies << current_economy rescue nil
+        current_economy.members.create(user_id: resource.id)
         redirect_to admin_user_path(resource)
       end
     end
   end
 
   def approve
-    binding.pry
     resource.member_for_economy(current_economy).approve!
     flash[:notice] = "User has was approved"
     redirect_to admin_user_path(resource)

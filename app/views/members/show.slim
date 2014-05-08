@@ -6,7 +6,7 @@
 			h1= current_user.name
 			- if can? :update, current_member
 				h3= "#{t('user.balance')}: #{current_member.account_balance}"
-				= link_to t('user.edit_profile'), edit_user_path(@user), class: 'button radius tiny'
+				= link_to t('user.edit_profile'), edit_user_path(current_user), class: 'button radius tiny'
 		.large-4.columns
 		/ 	br
 		/ 	br

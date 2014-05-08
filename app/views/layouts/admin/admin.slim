@@ -24,7 +24,7 @@ html#admin lang=(current_locale)
   body[class="#{locale_direction}" ]
     = render 'layouts/top_bar'
     .large-1.medium-2.columns.sideabar
-        = render 'layouts/admin/sidebar'
+        = render "layouts/admin/#{'realm_' if current_economy.blank?}sidebar"
     .large-11.medium-10.columns
         = render 'layouts/flash_messages'
         = yield

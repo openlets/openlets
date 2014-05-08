@@ -1,5 +1,7 @@
 en:
   unauthorized:
+    create:
+      economy: You signup in order to create an economy
     purchase:
       item: You can not purchase Items until you have been approved.
     new:
@@ -591,6 +593,7 @@ en:
     community_name: 
     currency_name: 
     maximum_debit: 
-  workflow_state:
+  workflow_state_actions:
+    pause: Pause
     ban: Ban
     approve: Approve

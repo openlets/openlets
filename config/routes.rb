@@ -2,6 +2,10 @@ OpenLets::Application.routes.draw do
   
   constraints DomainConstraint.new do
     root to: 'pages#economy_home'
+
+    namespace :admin do
+      root to: "admin#dashboard", as: :dashboard
+    end
   end
 
   root to: 'pages#home'
@@ -51,9 +55,8 @@ OpenLets::Application.routes.draw do
     end
   end
 
-
   namespace :admin do
-    root to: "admin#dashboard", as: :dashboard
+    root to: "admin#realm_dashboard", as: :realm_dashboard
     resources :economies
     resources :members do
       put :approve
@@ -72,7 +75,13 @@ OpenLets::Application.routes.draw do
         delete 'remove_admin'
       end      
     end
-    resources :items
+    resources :items do
+      member do
+        put :activate
+        put :pause
+        put :ban
+      end
+    end
     resources :wishes
     resources :comments
     resources :settings do

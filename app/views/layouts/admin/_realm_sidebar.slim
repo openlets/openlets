@@ -4,6 +4,13 @@ dl.accordion
       = t('admin.sidebar.admin_panel')
   dd class=(sidebar_link_class('admin/admin', 'dashboard'))
     = link_to t('admin.sidebar.dashboard'), admin_dashboard_path
+
+  - if current_user.has_role? :admin
+    dd class=(sidebar_link_class('admin/economies', 'index'))
+      = link_to t('admin.sidebar.economies'), admin_economies_path
+    dd class=(sidebar_link_class('admin/users', 'index'))
+      = link_to t('admin.sidebar.users'), admin_users_path
+
   dd class=(sidebar_link_class('admin/members', 'index'))
     = link_to t('admin.sidebar.members'), admin_members_path  
   dd class=(sidebar_link_class('admin/items', 'index'))
@@ -17,4 +24,4 @@ dl.accordion
   dd class=(sidebar_link_class('admin/settings', 'index'))
     = link_to t('admin.sidebar.settings'), admin_settings_path
   dd class=(sidebar_link_class('admin/users', 'managers'))
-    = link_to t('admin.sidebar.managers'), managers_admin_users_path
+    = link_to t('admin.sidebar.managers'), managers_admin_users_path    

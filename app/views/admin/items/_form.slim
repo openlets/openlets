@@ -1,0 +1,13 @@
+= simple_form_for [:admin, resource], wrapper: :foundation_inline do |f|
+  = f.error_notification
+
+  = f.input :title,         required: true, autofocus: true, label: t('forms.title')
+  = f.input :description,   required: true, label: t('forms.description')
+  = f.input :price, required: true, label: t('forms.price')
+  = f.input :image, label: t('forms.image')
+  = f.input :member, collection: current_economy.members, required: true, label: t('forms.member')
+    
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit

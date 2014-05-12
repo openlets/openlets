@@ -37,7 +37,7 @@
             /   i.fa.fa-inbox
             /   = t('top_bar.inbox')
             / li.divider
-            - if current_user.has_role?(:admin) or current_user.has_role?(:economy_manager, current_economy)
+            - if current_user.has_role?(:admin) or current_user.has_role?(:manager, current_economy)
               li= link_to admin_dashboard_path
                 i.fa.fa-dashboard
                 = t('top_bar.admin')

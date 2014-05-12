@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :economy
+  belongs_to :manager, class_name: 'User', foreign_key: 'manager_id'
 
   has_one :wallet, as: :walletable
   has_many :items
@@ -13,15 +14,15 @@ class Member < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: [:economy_id]
 
   delegate :account_balance, to: :wallet
-  delegate :name, to: :user
+  delegate :full_name, to: :user
 
   after_create do
     Wallet.create(walletable_type: 'Member', walletable_id: self.id, economy_id: self.economy_id)
   end
 
-  delegate :image, :email, :authorizations, :unique_authorizations, to: :user
+  delegate :image, :email, :authorizations, :unique_authorizations, :full_name, to: :user
 
-  attr_accessible :user_id
+  attr_accessible :user_id, :member_id
 
   workflow do
     state :awaiting_approval do

@@ -37,6 +37,7 @@ en:
   user:
     items_for_sale: Items for Sale
     edit_profile: Edit Profile
+    edit_password: Edit Password
     balance: Balance
     connect_social_networks: Connect your social networks
   simple_form:
@@ -478,6 +479,8 @@ en:
     search: Search
     select_categories: Select Categories
   tables:
+    member_id: Member
+    economy_id: Economy
     roles: Roles
     workflow_actions: Status Actions
     buyer: Buyer
@@ -504,7 +507,7 @@ en:
     workflow_state: Status
     '[:image, "Image"]': 
     user_id: User
-    wish_id: Wishe
+    wish_id: Wish
     item_id: Item
     buyer_id: Buyer
     commentable_id: Id of Commentable
@@ -522,6 +525,27 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    image: Profile Image
+    national_id: National ID
+    address: Address
+    phone: Phone Number
+    cellphone: Cell Phone Number
+    fax: Fax
+    birth_date: Birth Date
+    profession: Profession
+    job: Job
+    relationship_status: Relationship Status
+    first_name: First Name
+    last_name: Last Name
+    username: User Name
+    member_id: Member
+    email: Email
+    about: About
+    locale: Language
+    password: Password
+    password_confirmation: Password Confirmation
+    parent_id: Parent Category
+    name: Category Name
     invite_only: Invite Only
     new_resource: 'Create a new %{name}'
     allow_anyone_to_create_wishes: Allow Anyone to Create Wishes
@@ -597,3 +621,4 @@ en:
     pause: Pause
     ban: Ban
     approve: Approve
+    activate: Activate

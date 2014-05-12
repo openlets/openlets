@@ -1,4 +1,4 @@
-= simple_form_for [:admin, resource] do |f|
+= simple_form_for [:admin, resource], wrapper: :foundation_inline do |f|
 
   = f.input :name, label: t("forms.name")
   - if current_economy

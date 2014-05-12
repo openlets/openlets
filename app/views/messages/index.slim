@@ -4,14 +4,14 @@
     = render 'conversations/table', conversations: @conversations
   .large-9.small-12.columns
     h3
-     = @user.name
+     = @user.full_name
 
     table
       - @messages.each do |message|
         - unless message.new_record?
           tr
             td= image_tag(message.user.image, size: '50x50')
-            td= link_to message.user.name, message.user
+            td= link_to message.user.full_name, message.user
             td= message.text
             td= message.created_at
 

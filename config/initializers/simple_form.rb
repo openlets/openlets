@@ -34,7 +34,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
   config.error_notification_tag = :div
   config.browser_validations = false
-  config.label_class ='text-right inline'
+  config.label_class ='inline'
   config.button_class = 'button expand radius'
   config.error_notification_class = 'alert-box alert'
   

@@ -1,7 +1,7 @@
 .row
   .item-panel
     .large-12.columns
-      h2= t('inbox.send_message'), name: @user.name
+      h2= t('inbox.send_message'), name: @user.full_name
       br
       = simple_form_for(@conversation, url: :create_conversations, defaults: { label: false }) do |f|
         = f.error_notification

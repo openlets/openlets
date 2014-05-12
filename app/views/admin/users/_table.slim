@@ -24,12 +24,12 @@ table.responsive
               li= link_to approve_admin_user_path(resource), method: :put, class: 'button small', title: t('workflow_state.approve')
                 i.fa.fa-check
                 |  
-                = t('workflow_state.approve')
+                = t('workflow_state_actions.approve')
             - unless resource.member_for_economy(current_economy).banned?
               li= link_to ban_admin_user_path(resource), method: :put, class: 'button small alert', title: t('workflow_state.ban')
                 i.fa.fa-exclamation-circle
                 |  
-                = t('workflow_state.ban')
+                = t('workflow_state_actions.ban')
         td.actions
           ul.button-group.radius.tiny
             li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')

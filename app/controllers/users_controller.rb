@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_filter :set_user
-  before_filter :validate_authorization_for_user, only: [:edit, :update]
 
   def items
     @items = @user.items
@@ -20,7 +19,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user.member_for_economy(current_economy), notice: 'Profile was successfully updated.'
     else
       render action: 'edit'
     end
@@ -45,10 +44,6 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
-    end
-
-    def validate_authorization_for_user
-       redirect_to root_path unless @user == current_user
     end
 
 end

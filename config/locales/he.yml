@@ -655,6 +655,22 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    image: תמונה
+    first_name: שם פרטי
+    last_name: שם משפחה
+    username: שם משתמש
+    email: אימייל
+    about: אודות
+    national_id: תעודת זהות
+    address: כתובת
+    phone: טלפון
+    cellphone: פלאפון
+    fax: פקס
+    birth_date: תאריך לידה
+    profession: מקצוע
+    job: עיסוק
+    relationship_status: מצב משפחתי
+    locale: שפת אם
     send: שליחה
     edit: עריכה
     submit: שליחה

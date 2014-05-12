@@ -4,7 +4,7 @@
       p= image_tag(@item.image)
     .large-5.columns
       h1= @item.title
-      p= link_to @item.member.name, @item.member
+      p= link_to @item.member.full_name, @item.member
       p
         strong= @item.description
       p

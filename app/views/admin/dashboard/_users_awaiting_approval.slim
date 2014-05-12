@@ -15,7 +15,7 @@ h3= "users Awaiting Approval"
           td.id= user.id
           td.image= image_tag(user.image, height: 50)
           td.name
-            = link_to user.name, send("admin_user_path", (user.id))
+            = link_to user.full_name, send("admin_user_path", (user.id))
           td.email
             span = mail_to user.email
           td.authorizations

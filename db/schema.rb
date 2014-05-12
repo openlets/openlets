@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140503195503) do
+ActiveRecord::Schema.define(:version => 20140512112627) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20140503195503) do
     t.datetime "updated_at",       :null => false
     t.string   "workflow_state"
     t.datetime "state_changed_at"
+    t.integer  "manager_id"
   end
 
   add_index "members", ["economy_id"], :name => "index_members_on_economy_id"
@@ -186,7 +187,6 @@ ActiveRecord::Schema.define(:version => 20140503195503) do
   add_index "transactions", ["sending_wallet_id"], :name => "index_transactions_on_buyer_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "image"
     t.string   "location"
     t.string   "username"
@@ -211,6 +211,17 @@ ActiveRecord::Schema.define(:version => 20140503195503) do
     t.string   "unconfirmed_email"
     t.string   "authentication_token"
     t.string   "locale"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "national_id"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "cellphone"
+    t.string   "fax"
+    t.date     "birth_date"
+    t.string   "profession"
+    t.string   "job"
+    t.string   "relationship_status"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

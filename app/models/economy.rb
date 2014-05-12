@@ -21,7 +21,7 @@ class Economy < ActiveRecord::Base
   end
 
   def add_admin_role
-    self.user.add_role :economy_manager, self
+    self.user.add_role :manager, self
   end
 
 end

@@ -23,7 +23,7 @@ table.responsive
           ul.button-group.radius.tiny
             li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')
               i.fa.fa-info
-            li= link_to edit_resource_path(resource), class: 'button small', title: t('forms.edit')
+            li= link_to edit_admin_user_path(resource.user), class: 'button small', title: t('forms.edit')
               i.fa.fa-edit
             li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
               i.fa.fa-trash-o

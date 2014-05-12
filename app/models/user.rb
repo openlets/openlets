@@ -3,10 +3,14 @@ class User < ActiveRecord::Base
   include Workflow
   include WorkflowExtended
 
-  devise :database_authenticatable, :registerable, :recoverable, 
-         :rememberable, :trackable, :validatable, :omniauthable, :token_authenticatable
+  devise  :database_authenticatable, :registerable, :recoverable, 
+          :rememberable, :trackable, :validatable, :omniauthable, 
+          :token_authenticatable
   
-  attr_accessible :email, :password, :password_confirmation, :name, :about, :locale, :locations_attributes, :image
+  attr_accessible :first_name, :last_name, :username, :email, :about, 
+                  :locale, :image, :password, :password_confirmation,
+                  :national_id, :address, :phone, :cellphone, :fax,
+                  :birth_date, :profession, :job, :relationship_status
   
   validates_presence_of :email
   
@@ -15,12 +19,12 @@ class User < ActiveRecord::Base
   has_many :authorizations
   
   has_many :user_conversations, class_name: 'Conversation', foreign_key: 'user_id'
+  has_many :managed_members, class_name: 'Member', foreign_key: 'manager_id'
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   has_many :economies
   has_many :memberships, class_name: 'Member', dependent: :destroy
-  # has_many :member_of_economies, through: :memberships
   has_many :items,     through: :memberships
   has_many :wishes,    through: :memberships
 
@@ -48,7 +52,9 @@ class User < ActiveRecord::Base
   end
 
   def editable_attribute_names
-    %w(name email about locale image)
+    %w(image first_name last_name username email about national_id 
+       address phone cellphone fax birth_date profession job 
+       relationship_status locale)
   end
 
   def unique_authorizations
@@ -60,12 +66,12 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    !(["admin", "economy_manager"] & self.roles.map(&:name)).empty?
+    !(["admin", "manager"] & self.roles.map(&:name)).empty?
   end
 
   def full_name
+    return "#{first_name.titleize} #{last_name.titleize}" if first_name and last_name
     return username unless username.blank?
-    return name     unless name.blank?
     email.split("@")[0]
   end
 
@@ -99,9 +105,9 @@ class User < ActiveRecord::Base
       user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
       if user.blank?
         user = User.new
-        user.password = Devise.friendly_token[0,10]
-        user.name = auth.info.name
-        user.email = auth.info.email
+        user.password   = Devise.friendly_token[0,10]
+        user.first_name = auth.info.name
+        user.email      = auth.info.email
         user.save
       end
       authorization.username = auth.info.nickname

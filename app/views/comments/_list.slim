@@ -7,7 +7,7 @@ h1.text-center= t('comments.title')
           .large-2.small-4.columns
             = image_tag(comment.user.image, size: '100x100')
           .large-10.small-8.columns
-            h4= link_to comment.user.name, comment.user
+            h4= link_to comment.user.full_name, comment.user
             p=  comment.created_at
             p=  comment.content
 = render 'comments/form'

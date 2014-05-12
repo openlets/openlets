@@ -6,7 +6,7 @@
     = " "
     = t("forms.create_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
 .large-12.columns
-  = render 'table', attributes: [:id, :image, :name, :email, :username, :workflow_state, :locale, :sign_in_count, :created_at], collection: @users
+  = render 'table', attributes: [:id, :image, :name, :email, :username], collection: @users
 
 .large-4.columns
   h3.bold= t('admin.managers.add_managers')

@@ -17,6 +17,7 @@ gem 'devise', '2.2.5'
 gem 'cancan'
 gem 'foundation-rails'
 gem "jquery-rails", "< 3.0.0"
+gem 'jquery-ui-rails'
 gem 'json'
 gem 'koala'
 gem 'linkedin'

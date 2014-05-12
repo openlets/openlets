@@ -9,7 +9,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if current_economy
         current_economy.users << user unless current_economy.users.include?(user)
       end
-			flash[:notice] = "You are in..!!! Go to edit profile to see the status for the accounts"
+			flash[:notice] = "Login was successful"
 			sign_in_and_redirect(user)
 		else
 			session["devise.user_attributes"] = user.attributes

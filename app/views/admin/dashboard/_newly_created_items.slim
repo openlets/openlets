@@ -14,5 +14,5 @@ h3= "Last 10 Items"
           td= item.id
           td= image_tag(item.image, height: 50)
           td= link_to item.title, admin_item_path(item)
-          td= link_to item.user.name, admin_user_path(item.user)
+          td= link_to item.user.full_name, admin_user_path(item.user)
           td= link_to 'Ban', ban_admin_item_path(item.id), class: 'button alert', confirm: 'Are you sure?' if item.active?

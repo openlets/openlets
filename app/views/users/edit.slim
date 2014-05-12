@@ -1,2 +1,2 @@
-h1.bold.text-center Edit Profile
+h1.bold.text-center= t('forms.edit_resource', name: t("activerecord.models.user", count: 1))
 = render 'form', attributes: current_user.editable_attribute_names

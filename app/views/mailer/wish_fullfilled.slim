@@ -1,5 +1,5 @@
-h1= "Hey #{@wisher.name},"
+h1= "Hey #{@wisher.full_name},"
 
-p= "#{@item.user.try(:name)} just offered to fulfill your wish - #{@wish.title} for #{@item.price} points"
+p= "#{@item.user.try(:full_name)} just offered to fulfill your wish - #{@wish.title} for #{@item.price} points"
 
 p= link_to "Check it out!", item_url(@item) 

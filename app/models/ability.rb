@@ -15,7 +15,7 @@ class Ability
     if user.persisted?
       can :create, Economy
       can :crud,                 user.economies       { |i| i.user == user }
-      can :show, User
+      can :crud, user
     end
 
     if member.persisted? # logged in an economy
@@ -37,7 +37,6 @@ class Ability
       
       can    :show,              Member
       can    :crud,              member
-      can    :show,              User
       can    :crud,              user      
     end
 

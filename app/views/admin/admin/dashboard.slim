@@ -15,7 +15,7 @@
           td.id= member.id
           td.image= image_tag(member.image, size: '50x50')
           td.name
-            = link_to member.name, send("admin_member_path", (member.id))
+            = link_to member.full_name, send("admin_member_path", (member.id))
           td.email
             span = mail_to member.email
           td.authorizations

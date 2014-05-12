@@ -17,7 +17,7 @@ table.responsive
               li= link_to activate_admin_item_path(resource), method: :put, class: 'button small', title: t('workflow_state_actions.approve')
                 i.fa.fa-check
                 |  
-                = t('workflow_state_actions.approve')
+                = t('workflow_state_actions.activate')
             - unless resource.paused?
               li= link_to pause_admin_item_path(resource), method: :put, class: 'button small', title: t('workflow_state_actions.approve')
                 i.fa.fa-pause
@@ -34,7 +34,7 @@ table.responsive
               i.fa.fa-info
             li= link_to edit_resource_path(resource), class: 'button small', title: t('forms.edit')
               i.fa.fa-edit
-            li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
-              i.fa.fa-trash-o
+            / li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
+            /   i.fa.fa-trash-o
 
 = will_paginate collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

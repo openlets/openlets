@@ -8,7 +8,7 @@
     = f.input :domain,        required: true, label: t('forms.domain'),as: :url
     = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: [['Community', 'community'], ['Cooperative', 'cooperative'], ['Business', 'business'], ['Non Profit', 'non_profit']]
     = f.input :currency_name, required: true, label: t('forms.currency_name')
-    = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: [['Mututal Credit', 'mutual_credit'], ['Fiat', 'fiat'], ['Backed by', 'backed']]
+    = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: [['Time Bank', 'time_bank'], ['Mututal Credit', 'mutual_credit'], ['Fiat', 'fiat'], ['Backed by', 'backed']]
   .clear-both
   .form-actions
     = f.button :submit, t('forms.update')  

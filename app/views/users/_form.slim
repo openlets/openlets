@@ -1,7 +1,18 @@
-= simple_form_for(current_user, wrapper: :foundation_inline) do |f|
+= simple_form_for(current_user, wrapper: :foundation_inline, defaults: { label_html: { class: "text-#{top_bar_direction}" }}) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message
   - attributes.each do |attr|
     - if attr == 'locale'
       = f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']
+    - elsif attr == 'birth_date'
+      = f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string
+    - elsif attr == 'image'
+      .row
+        .large-3.columns
+        .large-9.columns
+          = image_tag(f.object.image, size: '50x50') unless f.object.image.blank?
+      = f.input attr, label: t("forms.#{attr}")
     -else 
       = f.input attr, label: t("forms.#{attr}")
   .row

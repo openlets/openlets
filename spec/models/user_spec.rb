@@ -17,7 +17,6 @@ describe User do
   end
 
   describe 'Gifts' do
-    binding.pry
     it 'should have 100 in budget after registration'
   end
 

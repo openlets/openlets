@@ -2,5 +2,5 @@ table
   - conversations.each do |conversation|
     tr
       td= image_tag(conversation.other_user(current_user).image, size: '50x50')
-      td= conversation.other_user(current_user).name
+      td= conversation.other_user(current_user).full_name
       td= link_to ('common.show'), conversation_messages_path(conversation), class: 'button radius tiny'

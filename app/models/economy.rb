@@ -24,4 +24,8 @@ class Economy < ActiveRecord::Base
     self.user.add_role :manager, self
   end
 
+  def self.attributes_for_table
+    [:id, :logo, :bg_image, :title, :user_id, :domain, :economy_type]
+  end
+
 end

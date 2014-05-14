@@ -300,7 +300,9 @@ en:
         other: Economies
       admin: Admin
       admin_user: Admin Users
-      category: Categories
+      category: 
+        one: Category
+        other: Categories
       item: Items
       item_comment: Item Comments
       setting: Settings

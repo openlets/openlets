@@ -1,7 +1,7 @@
 module Admin::ResourceHelper
 
   def attributes
-    (resource_class.attribute_names - %w(created_at updated_at state_changed_at)).map &:to_sym
+    (resource_class.attribute_names - %w(created_at updated_at state_changed_at)).map(&:to_sym)
   end
 
   def table_attribute_cell(name, resource, attribute = nil)
@@ -10,9 +10,10 @@ module Admin::ResourceHelper
       return attribute.map { |a| content_tag(:span, a.titleize, class: 'label radius') }.join(" ").html_safe if name == :allowed_currency_types or name == :allowed_economy_types
       return attribute == 0 ? "False" : "True"                                                               if name == :allow_anyone_to_create_economy
       return link_to attribute, attribute, target: :blank                                                    if name == :domain
-      return image_tag(attribute, size: '50x50')                                                             if name == :image
+      return link_to resource.economy.title, resource.economy.domain, target: :blank                                         if name == :economy_id && resource.class.name == "Category"
+      return image_tag(attribute, size: '65x65')                                                             if [:image, :logo, :bg_image].include?(name)
       return t("admin.settings.#{attribute}")                                                                if name == :name && resource_class.name == 'Setting'
-      return attribute.strftime("%d/%m/%Y")                                                                  if name == :created_at
+      return attribute.strftime("%d/%m/%Y")                                                                  if [:created_at, :updated_at, :state_changed_at].include?(name)
       if name == :workflow_state && params[:controller] == 'admin/users'
         state = resource.member_for_economy(current_economy).workflow_state
         return content_tag(:span, state.titleize, class: "label radius #{workflow_label_color_for(state)}") 

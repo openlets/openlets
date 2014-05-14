@@ -24,7 +24,5 @@ table.responsive
               i.fa.fa-info
             li= link_to edit_resource_path(resource), class: 'button small', title: t('forms.edit')
               i.fa.fa-edit
-            li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
-              i.fa.fa-trash-o
 
 = will_paginate collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

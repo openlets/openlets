@@ -10,26 +10,17 @@
     section.top-bar-section
       ul class=(top_bar_direction)
         - if user_signed_in?
-          - unless params[:controller].split('/').include?('admin')
-            li=link_to current_user
-              i.fa.fa-user
-              = t('top_bar.profile')
+          li=link_to current_user
+            i.fa.fa-user
+            = t('top_bar.profile')
+          - if current_user.has_role?(:admin)
+            li= link_to admin_dashboard_path
+              i.fa.fa-dashboard
+              = t('top_bar.admin')
             li.divider
-            - if current_user.has_role?(:admin) or current_user.has_role?(:manager, current_economy)
-              li= link_to admin_dashboard_path
-                i.fa.fa-dashboard
-                = t('top_bar.admin')
-              li.divider          
           li= link_to destroy_user_session_path
             i.fa.fa-sign-out
             = t('common.logout')
-        - elsif user_signed_in? && current_user.has_role?(:admin)
-          li= link_to admin_dashboard_path
-            i.fa.fa-dashboard
-            = t('top_bar.admin')
-          li= link_to destroy_user_session_path
-            i.fa.fa-sign-out
-            = t('common.logout')            
         - else
           li= link_to new_user_session_path
             i.fa.fa-sign-in

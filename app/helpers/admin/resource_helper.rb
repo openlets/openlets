@@ -24,7 +24,7 @@ module Admin::ResourceHelper
       return link_to Member.find(attribute).full_name, admin_user_path(Member.find(attribute).user)                if name == :member_id
       return link_to Wish.find(attribute).title, admin_wish_path(attribute)                                  if name == :wish_id
       return link_to Item.find(attribute).title, admin_item_path(attribute)                                  if name == :item_id
-      return link_to User.find(attribute).name,  admin_user_path(attribute)                                  if [:user_id, :buyer_id, :seller_id].include?(name)
+      return link_to User.find(attribute).full_name,  admin_user_path(attribute)                                  if [:user_id, :buyer_id, :seller_id].include?(name)
       return attribute
     end
   end

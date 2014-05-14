@@ -2,7 +2,9 @@
   - attributes.each do |attr|
     - if attr == :locale
       = f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']
-    -else 
+    - elsif attr == 'birth_date'
+      = f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string
+    - else 
       = f.input attr, label: t("forms.#{attr}")
   .row
     .large-3.columns

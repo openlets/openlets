@@ -13,7 +13,7 @@
         .large-9.columns
           = image_tag(f.object.image, size: '50x50') unless f.object.image.blank?
       = f.input attr, label: t("forms.#{attr}")
-    -else 
+    - else 
       = f.input attr, label: t("forms.#{attr}")
   .row
     .large-3.columns

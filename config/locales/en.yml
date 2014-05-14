@@ -560,7 +560,7 @@ en:
     submit: Submit
     pause: Pause
     activate: Activate
-    delete_confirm: 
+    delete_confirm: Are you sure?
     delete: Delete
     show: Show
     edit_resource: 'Edit %{name}'

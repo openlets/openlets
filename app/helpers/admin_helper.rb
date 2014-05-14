@@ -1,8 +1,7 @@
 module AdminHelper
 
-  def sidebar_link_class(controller)
-    'active' if params[:controller].include?(controller) or
-    params[:controller].include?('users') && controller == 'members'
+  def sidebar_link_class(controller, action)
+    'active' if params[:controller] == controller and action == params[:action]
   end
 
 end

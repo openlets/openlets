@@ -6,4 +6,4 @@
     = " "
     = t("forms.create_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
 .large-12.columns
-  = render 'table', attributes: attributes
+  = render 'table', attributes: resource.editable_attribute_names

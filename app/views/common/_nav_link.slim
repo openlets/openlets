@@ -1,0 +1,6 @@
+li.divider
+li class=(sidebar_link_class(controller, action))
+  = link_to path
+    - if icon
+      i.fa class=("fa-#{icon}")
+    = text

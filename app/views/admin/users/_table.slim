@@ -26,7 +26,7 @@ table.responsive
                 |  
                 = t('workflow_state_actions.approve')
             - unless resource.member_for_economy(current_economy).banned?
-              li= link_to ban_admin_user_path(resource), method: :put, class: 'button small alert', title: t('workflow_state.ban')
+              li= link_to ban_admin_user_path(resource), method: :put, class: 'button small alert', title: t('workflow_state_actions.ban')
                 i.fa.fa-exclamation-circle
                 |  
                 = t('workflow_state_actions.ban')

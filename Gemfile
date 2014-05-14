@@ -49,7 +49,7 @@ group :production do
 end
 
 group :development do
-  gem 'localeapp'
+  # gem 'localeapp'
   gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'

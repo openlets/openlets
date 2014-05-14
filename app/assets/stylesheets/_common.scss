@@ -18,7 +18,6 @@
 .chzn-container-single .chzn-single span { font-size: 18px; padding: 0 10px; }
 .chzn-container-active.chzn-with-drop .chzn-single div b { background-position: -16px 14px; }
 .chzn-container-single .chzn-single div b { background: url(/assets/chosen-sprite.png) no-repeat 0px 13px; }
-
 #item_category_ids_chzn { margin-bottom: 14px; }
 
 .clear-both { clear: both;}
@@ -111,3 +110,33 @@ fa.fa-search { font-size: 25px; }
 }
 
 .button { margin-right: 5px; margin-left: 5px; }
+
+
+.top-bar-section .has-dropdown > a:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 5px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.4);
+  border-left-style: solid;
+  margin-right: 15px;
+  margin-top: -4px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .top-bar-section .has-dropdown > a:after { 
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 5px;
+    border-color: rgba(255, 255, 255, 0.4) transparent transparent transparent;
+    border-top-style: solid;
+    margin-top: -1px;
+    top: 30px;
+  }      
+}

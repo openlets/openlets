@@ -698,6 +698,7 @@ he:
     comment: תגובה
   admin:
     sidebar:
+      members: חברים
       managers: הרשאות
       comments: תגובות
       economies: כלכלות
@@ -709,6 +710,8 @@ he:
       dashboard: לוח בקרה
       categories: קטגוריות
       admin_panel: פנל ניהול
+      configurations: קונפיגורציות
+      custom_member_fields: שדות מותאמים
     settings:
       community_name: שם הקהילה
       currency_name: שם המטבע

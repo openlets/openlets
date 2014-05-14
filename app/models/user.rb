@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   has_many :authorizations
-  
   has_many :user_conversations, class_name: 'Conversation', foreign_key: 'user_id'
   has_many :managed_members, class_name: 'Member', foreign_key: 'manager_id'
   has_many :messages, dependent: :destroy
@@ -35,6 +34,7 @@ class User < ActiveRecord::Base
   scope :awaiting_approval, lambda { where(workflow_state: 'awaiting_approval') }
   scope :approved,          lambda { where(workflow_state: 'approved') }
   scope :banned,            lambda { where(workflow_state: 'banned') }
+
 
   LOCALES = ['en', 'he']
 

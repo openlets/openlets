@@ -36,4 +36,14 @@ module Admin::ResourceHelper
     return "alert"     if state == "banned"
   end
 
+  def html_select_filter_for(collection, prompt, attr_name, attr_id, method_name)
+    collection_select(:filter, attr_name, collection, attr_id, method_name, 
+      { prompt: prompt, selected: filter_params[attr_name] }, 
+      class: "chzn-select auto-submit #{attr_name.downcase}")
+  end
+
+  def html_select_tag(collection, attr_name, prompt)
+    select_tag "filter[#{attr_name}]", options_for_select(collection, filter_params[attr_name]), class: 'chzn-select auto-submit', include_blank: true, prompt: prompt
+  end
+
 end

@@ -4,37 +4,17 @@
 
 @import 'variables';
 
-.large-1.columns.sideabar { 
-  padding: 0; 
+.large-2.columns.sidebar {
   height: 100%;
-  background: #efefef;
-  .accordion {
-    dd {
-      a { font-weight: bold; }
-      &.active a { background: $light-blue; color: white; }
-      &.title a  { 
-        background: $dark-blue; color: white; 
-        font-size: 1.2em; padding: 7px 16px;
-      }
-    }
-    .content {
-      padding: 0;
-      dd.active { 
-        border-right: 4px solid black; 
-        a { 
-          background: #204D5C; 
-          color: white; 
-        }
-      }
-      dd  {
-        line-height: 1em;
-        a { 
-          background: #efefef;
-          color: black; 
-        }
-      }
+  background: $light-blue;
+  h3 { color: white; }
+}
 
-    }
+.chzn-container-single .chzn-single {
+  height: 42px;
+  margin: 10px 0 0 0;
+  span {
+    line-height: 2.2em;
   }
 }
 
@@ -69,5 +49,13 @@ table {
 
   form#settings_form {
     input { margin: 0; }
+  }
+}
+
+#managers-page {
+  form .chzn-container a {
+    width: 100% !important;
+    padding: 3px 0 0 5px !important;
+    margin: 0;
   }
 }

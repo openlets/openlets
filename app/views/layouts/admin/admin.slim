@@ -21,8 +21,16 @@ html#admin lang=(current_locale)
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  body[class="#{locale_direction}" ]
+  body class=("#{locale_direction}") id=(unique_body_class(params))
     = render (current_economy ? 'top_bar' : 'realm_top_bar')
-    .large-12.columns
+    
+    - if show_sidebar?
+      .large-2.columns.sidebar
+        = render (current_economy ? 'sidebar' : 'realm_sidebar')
+      .large-10.columns
+        = render 'layouts/flash_messages'
+        = yield
+    - else
+      .large-12.columns
         = render 'layouts/flash_messages'
         = yield

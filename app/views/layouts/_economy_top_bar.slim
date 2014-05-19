@@ -11,15 +11,10 @@
       ul class=(top_bar_other_direction)
         - if user_signed_in?
           - if current_economy.allow_anyone_to_create_items
-            li.divider
             = nav_link('items', 'new', new_item_path, t('top_bar.add_item'), 'plus')
-            li.divider
           - if current_economy.allow_anyone_to_create_wishes
-            li= link_to t('top_bar.make_a_wish'), new_wish_path
-            li.divider
-
+            = nav_link('wishes', 'new', new_wish_path, t('top_bar.make_a_wish'), 'magic')
           = nav_link('items', 'index', items_path, t('top_bar.market'), 'shopping-cart')
-          li.divider
           = nav_link('wishes', 'index', wishes_path, t('top_bar.wishes'), 'magic')
           li.divider
 
@@ -27,9 +22,7 @@
         - if user_signed_in?
           - if current_user.has_role?(:admin) or current_user.has_role?(:manager, current_economy)
             = nav_link('admin/admin', 'dashboard', admin_dashboard_path, t('top_bar.admin'), 'dashboard')
-            li.divider
           = nav_link('members', 'show', current_member, t('top_bar.profile'), 'user')
-          li.divider
           = nav_link('', '', destroy_user_session_path, t('common.logout'), 'sign-out')
         - else
           = nav_link('', '', new_user_session_path, t('common.login'), 'sign-in')
@@ -40,4 +33,3 @@
 / li= link_to conversations_path
 /   i.fa.fa-inbox
 /   = t('top_bar.inbox')
-/ li.divider

@@ -16,6 +16,10 @@ class Economy < ActiveRecord::Base
 
   after_create :add_admin_role
 
+  def items
+    Item.where(member_id: self.member_ids)
+  end
+
   def transactions
     Transaction.where('receiving_wallet_id IN (:wallet_ids) OR sending_wallet_id IN (:wallet_ids)', wallet_ids: wallet_ids)
   end

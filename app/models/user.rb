@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   rolify
   include Workflow
   include WorkflowExtended
+  include Filterable
 
   devise  :database_authenticatable, :registerable, :recoverable, 
           :rememberable, :trackable, :validatable, :omniauthable, 
@@ -35,7 +36,6 @@ class User < ActiveRecord::Base
   scope :approved,          lambda { where(workflow_state: 'approved') }
   scope :banned,            lambda { where(workflow_state: 'banned') }
 
-
   LOCALES = ['en', 'he']
 
   workflow do
@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     state :banned do
       event :approve, transitions_to: :approved
     end
+  end
+
+  def self.admin_filter_attr_names
+    [:id, :username, :workflow_state, :email]
   end
 
   def editable_attribute_names
@@ -116,5 +120,6 @@ class User < ActiveRecord::Base
     end
     authorization.user
   end
+
 
 end

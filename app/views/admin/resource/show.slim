@@ -3,6 +3,10 @@
     = t("activerecord.models.#{resource_class.name.downcase}", count: 1)
     |  Details
 .large-2.columns
+  = link_to edit_resource_path, class: 'button expand radius new-button'
+    i.fa.fa-edit
+    = " "
+    = t("forms.edit_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
 
 .large-12.columns
   table.responsive

@@ -1,6 +1,6 @@
 class Admin::AdminController < ApplicationController
   before_filter :authenticate_admin_user!
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :show_sidebar?
 
   def dashboard
     @members = current_economy.members
@@ -21,6 +21,10 @@ class Admin::AdminController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def show_sidebar?
+    !['admin/admin', 'admin/settings'].include?(params[:controller])
   end
 
 end

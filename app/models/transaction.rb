@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-  include MonetaryModels::MutualCredit
+  include Filterable
   include Workflow
   include WorkflowExtended
 
@@ -25,6 +25,12 @@ class Transaction < ActiveRecord::Base
     state :canceled
   end
 
+  before_validation :load_economy_validations
+
+  def load_economy_validations
+    self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}".constantize)
+  end
+
   def buyer
     sending_wallet.walletable
   end
@@ -45,8 +51,12 @@ class Transaction < ActiveRecord::Base
   end
 
   def self.transfer(buyer, seller, item)
-    t = self.new(sending_wallet_id: buyer.wallet.id, receiving_wallet_id: seller.wallet.id, item_id: item.id, amount: item.price)
-  	t.save ? true : false
+    t = self.new
+    t.sending_wallet_id   = buyer.wallet.id
+    t.receiving_wallet_id = seller.wallet.id
+    t.item_id             = item.id
+    t.amount              = item.price
+  	t.valid? && t.save ? true : false
   end
 
   def transaction_type_name(user)

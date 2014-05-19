@@ -5,7 +5,7 @@
     .large-6.small-8.columns
       h1= current_user.full_name
       - if can? :update, current_user
-        = link_to t('user.edit_profile'),  edit_user_path(@user),       class: 'button radius tiny'
+        = link_to t('user.edit_profile'), edit_user_path(@user), class: 'button radius tiny'
         = link_to t('user.edit_password'), edit_user_registration_path, class: 'button radius tiny'
     .large-4.columns
     .clear-both

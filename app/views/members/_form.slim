@@ -1,35 +1,9 @@
-= simple_form_for @user do |f|
+= simple_form_for @member, wrapper: :foundation_inline do |f|
   = f.error_notification
-  .form-inputs
-    .row
-      .large-6.columns
-        = f.input :name, :required => true, :autofocus => true
-        = f.input :locale, :required => true, collection: User::LOCALES
-      .large-6.columns
-        = f.simple_fields_for :locations do |l|
-          = l.input :address
-        .panel.callout#map
+
+  = f.association :receiving_categories, label_method: :full_name, collection: current_economy.categories, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
+  = f.association :giving_categories, label_method: :full_name, collection: current_economy.categories, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }  
+
 
   .form-actions
     = f.button :submit
-
-.row.social-links
-  h1= t('user.connect_social_networks')
-  - [:facebook, :linkedin, :google_oauth2].each do |provider|
-    - if provider == :facebook
-      .large-4.small-4.columns
-        = link_to (current_user.connected_with?(provider) ? "#" : omniauth_authorize_path('user', provider)), class: "social-login expand #{current_user.connected_with?(provider.to_s) ? 'disabled button radius' : 'facebook-button'}"
-          .i.fa.fa-facebook-square
-          span= " Facebook"
-
-    - if provider == :linkedin
-      .large-4.small-4.columns
-        = link_to (current_user.connected_with?(provider) ? "#" : omniauth_authorize_path('user', provider)), class: "social-login expand #{current_user.connected_with?(provider.to_s) ? 'disabled button radius' : 'linkedin-button'}"
-          .i.fa.fa-linkedin-square
-          span= " Linkedin"
-
-    - if provider == :google_oauth2
-      .large-4.small-4.columns
-        = link_to (current_user.connected_with?(provider) ? "#" : omniauth_authorize_path('user', provider)), class: "social-login expand #{current_user.connected_with?(provider.to_s) ? 'disabled button radius' : 'google-button'}"
-          .i.fa.fa-google-plus-square
-          span= " Google"    

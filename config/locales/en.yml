@@ -37,6 +37,7 @@ en:
   user:
     items_for_sale: Items for Sale
     edit_profile: Edit Profile
+    edit_member_preferences: Edit Your Prefereneces
     edit_password: Edit Password
     balance: Balance
     connect_social_networks: Connect your social networks
@@ -477,7 +478,11 @@ en:
   market:
     title: Marketplace
   filter:
+    username: By Username
+    manager_id: By Manager
+    user_id: By User
     by_user: By User
+    workflow_state: Status
     search: Search
     select_categories: Select Categories
   tables:
@@ -557,6 +562,7 @@ en:
     currency_type: Currency Type
     economy_type: Economy Type
     create_button: 'Create %{name}'
+    edit_button: 'Edit %{name}'
     send: Send
     edit: Edit
     submit: Submit

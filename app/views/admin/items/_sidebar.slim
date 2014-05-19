@@ -1,0 +1,8 @@
+h3.bold Filters
+= form_tag filter_path_helper, method: :get do
+  = html_select_filter_for(collection, t('filter.title'), :title, :title, :title)
+  = html_select_filter_for(collection, t('filter.description'), :description, :description, :description)
+  = html_select_filter_for(collection, t('filter.price'), :price, :price, :price)
+  = html_select_tag(resource_class.workflow_spec.states.keys.map(&:to_s).map(&:titleize), 'workflow_state', 'Status')
+  = html_select_filter_for(collection, t('filter.wish'), :wish_id, :wish_id, :wish_name)
+  = html_select_filter_for(current_economy.members, t('filter.member'), :member_id, :id, :full_name)

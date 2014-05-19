@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   before_filter :validate_authorization_for_user, only: [:edit, :update]
 
   def items
-    @items = @user.items
+    @items = @member.items
   end
 
   def show
@@ -15,12 +15,12 @@ class MembersController < ApplicationController
   end
 
   def edit
-    @user.locations.build unless @user.locations.any?
   end
 
   def update
-    if @user.update_attributes(params[:user])
-      redirect_to @user, notice: 'User was successfully updated.'
+    binding.pry
+    if @member.update_attributes(params[:member])
+      redirect_to @member, notice: 'User was successfully updated.'
     else
       render action: 'edit'
     end
@@ -31,11 +31,11 @@ class MembersController < ApplicationController
   end
 
   def direct_transfer
-    @transaction = @user.sales.new(params[:transaction])
+    @transaction = @member.sales.new(params[:transaction])
     @transaction.buyer_id = current_member.id
     if @transaction.save
       flash[:notice] = "successfully transfered funds"
-      redirect_to @user
+      redirect_to @member
     else
       render 'transfer'
     end
@@ -44,11 +44,11 @@ class MembersController < ApplicationController
   private
 
     def set_user
-      @user = Member.find(params[:id])
+      @member = Member.find(params[:id])
     end
 
     def validate_authorization_for_user
-      redirect_to root_path unless @user == current_member
+      redirect_to root_path unless @member == current_member
     end
 
 end

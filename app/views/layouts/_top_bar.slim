@@ -10,18 +10,9 @@
     section.top-bar-section
       ul class=(top_bar_direction)
         - if user_signed_in?
-          li=link_to current_user
-            i.fa.fa-user
-            = t('top_bar.profile')
+          = nav_link('users', 'show', current_user, t('top_bar.profile'), 'user')
           - if current_user.has_role?(:admin)
-            li= link_to admin_dashboard_path
-              i.fa.fa-dashboard
-              = t('top_bar.admin')
-            li.divider
-          li= link_to destroy_user_session_path
-            i.fa.fa-sign-out
-            = t('common.logout')
+            = nav_link('', '', admin_dashboard_path, t('top_bar.admin'), 'dashboard')
+          = nav_link('', '', destroy_user_session_path, t('common.logout'), 'sign-out')
         - else
-          li= link_to new_user_session_path
-            i.fa.fa-sign-in
-            = t('common.login')
+          = nav_link('', '', new_user_session_path, t('common.login'), 'sign-in')

@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  helper_method :filter_params, :set_filter_param, :current_economy, :current_member, :member_signed_in?
+  helper_method :filter_params, :set_filter_param, :current_economy, :current_member, 
+                :member_signed_in?, :filter_params
 
   def set_filter_param(k,v)
     filter_params[k] = v
@@ -37,6 +38,10 @@ class ApplicationController < ActionController::Base
   def member_signed_in?
     # current_member.blank?
     current_user.memberships.map(&:economy_id).include?(current_economy.id)
-  end  
+  end
+
+  def filter_params
+    params["filter"] ||= {}
+  end
 
 end

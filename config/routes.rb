@@ -68,12 +68,15 @@ OpenLets::Application.routes.draw do
         put :ban
       end
       collection do
-        get 'managers'
-        put 'add_manager'
         put 'add_admin'
-        delete 'remove_manager'
         delete 'remove_admin'
       end      
+    end
+    resources :managers do
+      collection do
+        put 'add'
+        delete 'remove'
+      end 
     end
     resources :items do
       member do

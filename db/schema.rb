@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512112627) do
+ActiveRecord::Schema.define(:version => 20140514161102) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20140512112627) do
     t.integer  "category_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "interest_type"
   end
 
   add_index "category_connections", ["categoriable_id"], :name => "index_category_connections_on_categoriable_id"

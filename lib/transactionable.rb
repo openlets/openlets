@@ -5,6 +5,8 @@ module Transactionable
   included do
     include Workflow
     include WorkflowExtended
+    include Filterable
+    
     mount_uploader :image, ImageUploader
 
     attr_accessible :title, :description, :image, :category_ids
@@ -41,27 +43,4 @@ module Transactionable
     workflow_scopes
 
   end
-
-  module ClassMethods
-
-    def filter_by(filter_params)
-      collection = self.of_approved_users.active
-      collection = collection.by_economy_id(filter_params[:economy_id])     unless filter_params[:economy_id].blank?
-      collection = collection.by_category_ids(filter_params[:category_ids]) unless filter_params[:category_ids].blank?
-      collection = collection.where(member_id: filter_params[:member_id])   unless filter_params[:member_id].blank?
-      collection.search(filter_params[:search])                             unless filter_params[:search].blank?
-      collection
-    end
-
-    def search(search)
-      if search
-        find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
-      else
-        find(:all)
-      end
-    end
-
-  end
-
-
 end

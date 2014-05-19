@@ -41,22 +41,6 @@ class Admin::UsersController < Admin::ResourceController
     end
   end
 
-  def add_manager
-    unless params[:chosen_user_id].blank?
-      @user = User.find(params[:chosen_user_id])
-      @user.add_role :manager, current_economy
-    end
-    redirect_to managers_admin_users_path
-  end
-
-  def remove_manager
-    unless params[:chosen_user_id].blank?
-      @user = User.find(params[:chosen_user_id])
-      @user.remove_role :manager, current_economy
-    end
-    redirect_to managers_admin_users_path
-  end
-
   def add_admin
     unless params[:chosen_user_id].blank?  
       @user = User.find(params[:chosen_user_id])

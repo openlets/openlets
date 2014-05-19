@@ -1,0 +1,6 @@
+h3.bold Filters
+
+= form_tag filter_path_helper, method: :get do
+  - if resource_class.class == Class
+    - resource_class.admin_filter_attr_names.each do |attr|
+      = html_select_filter_for(collection, t("filter.#{attr}"), attr, attr, attr)

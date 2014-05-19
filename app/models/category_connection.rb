@@ -1,5 +1,5 @@
 class CategoryConnection < ActiveRecord::Base
-  attr_accessible :categoriable_id, :categoriable_type, :category_id
+  attr_accessible :categoriable_id, :categoriable_type, :category_id, :interest_type
   belongs_to :categoriable, polymorphic: true
   belongs_to :category
   

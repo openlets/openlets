@@ -1,11 +1,11 @@
 = simple_form_for [:admin, resource], wrapper: :foundation_inline do |f|
 
-  = f.input :name, label: t("forms.name")
   - if current_economy
     = f.input :parent_id, as: :select, collection: current_economy.categories - [f.object], label: t("forms.parent_id")
     = f.input :economy_id, as: :hidden, input_html: { value: current_economy.id}
   - else
     = f.input :parent_id, as: :select, collection: Category.all - [f.object], label: t("forms.parent_id")
     = f.input :economy_id, as: :select, collection: Economy.all, label: t("forms.economy_id")
+  = f.input :name, label: t("forms.name")
 
   = f.button :submit, t('forms.save'), class: 'button'

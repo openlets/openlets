@@ -182,10 +182,10 @@ $button-disabled-opacity: 0.4;
 
 // We use these to control border styles.
 // $crumb-function-factor: 10%;
-// $crumb-border-size: 1px;
+$crumb-border-size: 0 0 1px 0;
 // $crumb-border-style: solid;
 // $crumb-border-color: darken($crumb-bg, $crumb-function-factor);
-// $crumb-radius: $global-radius;
+$crumb-radius: 0;
 
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: rem-calc(11);

@@ -19,21 +19,14 @@ class Admin::ItemsController < Admin::ResourceController
   end
 
   private
-    
-    def collection
-      if current_economy
-        @collection ||= end_of_association_chain.where(member_id: current_economy.member_ids).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      else
-        @collection ||= end_of_association_chain.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      end 
-    end
 
     def filtered_collection
-      if current_economy
-        @filtered_collection ||= end_of_association_chain.where(member_id: current_economy.member_ids).filter_for(filter_params).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      else
-        @filtered_collection ||= end_of_association_chain.filter_for(filter_params).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      end 
+      unless @filtered_collection
+        result = Item.filter_for(filter_params)
+        result = result.by_economy_id(current_economy.id) if current_economy
+        @filtered_collection = result.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
+      end
+      @filtered_collection
     end
 
 end

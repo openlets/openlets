@@ -10,18 +10,17 @@ class Economy < ActiveRecord::Base
 
   belongs_to :user
   has_many :members
+  has_many :items,  through: :members
+  has_many :wishes, through: :members
+  has_many :users,  through: :members
   has_many :categories
-  has_many :users, through: :members
   has_many :wallets
+  has_many :transactions
 
   after_create :add_admin_role
 
-  def items
-    Item.where(member_id: self.member_ids)
-  end
-
-  def transactions
-    Transaction.where('receiving_wallet_id IN (:wallet_ids) OR sending_wallet_id IN (:wallet_ids)', wallet_ids: wallet_ids)
+  def managers
+    users.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", id).uniq
   end
 
   def add_admin_role

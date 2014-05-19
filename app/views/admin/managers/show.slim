@@ -1,6 +1,6 @@
 .large-10.columns
   h1.bold
-    = t("activerecord.models.#{resource_class.name.downcase}", count: 1)
+    = t("activerecord.models.manager", count: 1)
     |  Details
 .large-2.columns
   = link_to edit_resource_path(resource), class: 'button expand radius new-button'
@@ -11,7 +11,7 @@
 .large-12.columns
   table.responsive
     tbody
-      - resource_class.attribute_names.each do |attr|
+      - [:id, :image, :first_name, :last_name, :username, :email].each do |attr|
         tr
           th= resource_class.human_attribute_name(attr)
           td= table_attribute_cell(attr.to_sym, resource)

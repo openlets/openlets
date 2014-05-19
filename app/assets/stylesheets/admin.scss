@@ -5,10 +5,13 @@
 @import 'variables';
 
 .large-2.columns.sidebar {
-  height: 100%;
+  padding-bottom: 15px;
   background: $light-blue;
+  border-radius: 0 0 15px 0;
   h3 { color: white; }
 }
+
+.chzn-container.chzn-container-single { width: 100% !important; }
 
 .chzn-container-single .chzn-single {
   height: 42px;
@@ -50,6 +53,9 @@ table {
   form#settings_form {
     input { margin: 0; }
   }
+  .alert-box {
+    margin: 15px 15px 0px 15px;
+  }
 }
 
 #managers-page {
@@ -58,4 +64,9 @@ table {
     padding: 3px 0 0 5px !important;
     margin: 0;
   }
+}
+
+// MOBILE //
+@media only screen and (max-width: 767px) {
+  .large-2.columns.sidebar { border-radius: 0; }
 }

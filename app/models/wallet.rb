@@ -12,6 +12,8 @@ class Wallet < ActiveRecord::Base
   validates_uniqueness_of :walletable_id, scope: [:walletable_type, :economy_id]
   validates_presence_of   :walletable_id, :walletable_type, :economy_id
 
+  delegate :user, to: :walletable
+
   def transactions
     Transaction.where("sending_wallet_id = ? OR receiving_wallet_id = ?", id, id)
   end
@@ -19,5 +21,9 @@ class Wallet < ActiveRecord::Base
   def account_balance
     sales.sum(&:amount) - purchases.sum(&:amount)
   end
+
+  def user_name
+    "#{user.full_name} (#{user.id})"
+  end  
 
 end

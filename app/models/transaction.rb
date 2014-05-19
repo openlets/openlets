@@ -3,12 +3,13 @@ class Transaction < ActiveRecord::Base
   include Workflow
   include WorkflowExtended
 
-  attr_accessible :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type
+  attr_accessible :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, 
+                  :transaction_type, :economy_id
   belongs_to :item
   belongs_to :receiving_wallet, class_name: 'Wallet'
   belongs_to :sending_wallet,   class_name: 'Wallet'
 
-  validates_presence_of :receiving_wallet_id, :amount, :sending_wallet_id
+  validates_presence_of :receiving_wallet_id, :amount, :sending_wallet_id, :economy_id
   validates_numericality_of :amount
 
   validate :not_self
@@ -50,17 +51,17 @@ class Transaction < ActiveRecord::Base
     result
   end
 
-  def self.transfer(buyer, seller, item)
-    t = self.new
-    t.sending_wallet_id   = buyer.wallet.id
-    t.receiving_wallet_id = seller.wallet.id
-    t.item_id             = item.id
-    t.amount              = item.price
-  	t.valid? && t.save ? true : false
+  def self.transfer(params = {})
+    t = self.new(params)
+  	t.valid? && t.save
   end
 
   def transaction_type_name(user)
     receiving_wallet_id == user.id ? "Sale" : "Purchase"
+  end
+
+  def self.admin_filter_attr_names
+    [:id, :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type, :workflow_state]
   end
 
   private

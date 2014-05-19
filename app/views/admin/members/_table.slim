@@ -25,10 +25,9 @@ table.responsive
               i.fa.fa-info
             li= link_to edit_admin_user_path(resource.user), class: 'button small', title: t('forms.edit')
               i.fa.fa-edit
-            li= link_to resource_path(resource), method: :delete, confirm: t('forms.delete_confirm'), class: 'button small alert', title: t('forms.delete')
-              i.fa.fa-trash-o
         td.approve-ban
           = link_to 'Approve', admin_member_approve_path(resource), method: :put, class: 'button tiny' unless resource.approved?
           = link_to 'Disapprove', admin_member_ban_path(resource), method: :put,  class: 'button alert tiny' unless resource.banned?
+          = link_to 'Edit Manager', edit_admin_member_path(resource),  class: 'button tiny'
 
 = will_paginate collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

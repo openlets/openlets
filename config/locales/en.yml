@@ -296,6 +296,9 @@ en:
       wish:
         categories: 
     models:
+      manager:
+        one: Manager
+        other: Managers
       economy:
         one: economy
         other: Economies
@@ -304,7 +307,9 @@ en:
       category: 
         one: Category
         other: Categories
-      item: Items
+      item: 
+        one: Item
+        other: Items
       item_comment: Item Comments
       setting: Settings
       transaction: Transactions
@@ -314,7 +319,9 @@ en:
       member:
         one: Member
         other: Members
-      wish: Wishes
+      wish: 
+        one: Wish
+        other: Wishes
       comment: Comments
     model:
       user: User
@@ -478,6 +485,9 @@ en:
   market:
     title: Marketplace
   filter:
+    sending_wallet_id: By Buyer
+    receiving_wallet_id: By Seller
+    item_id: By Item
     username: By Username
     manager_id: By Manager
     user_id: By User
@@ -486,6 +496,8 @@ en:
     search: Search
     select_categories: Select Categories
   tables:
+    sending_wallet_id: Buyer
+    receiving_wallet_id: Seller
     member_id: Member
     economy_id: Economy
     roles: Roles

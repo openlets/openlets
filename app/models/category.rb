@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+  include Filterable
   attr_accessible :name, :parent_id, :economy_id
 
   has_many :subcategories, class_name: "Category", foreign_key: "parent_id", dependent: :destroy

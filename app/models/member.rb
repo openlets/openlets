@@ -32,7 +32,7 @@ class Member < ActiveRecord::Base
 
   delegate :image, :email, :authorizations, :unique_authorizations, :full_name, to: :user
 
-  attr_accessible :user_id, :member_id, :receiving_category_ids, :giving_category_ids
+  attr_accessible :user_id, :member_id, :receiving_category_ids, :giving_category_ids, :manager_id
 
   workflow do
     state :awaiting_approval do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140514161102) do
+ActiveRecord::Schema.define(:version => 20140519134403) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -181,8 +181,10 @@ ActiveRecord::Schema.define(:version => 20140514161102) do
     t.string   "transaction_type"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "economy_id"
   end
 
+  add_index "transactions", ["economy_id"], :name => "index_transactions_on_economy_id"
   add_index "transactions", ["item_id"], :name => "index_transactions_on_item_id"
   add_index "transactions", ["receiving_wallet_id"], :name => "index_transactions_on_seller_id"
   add_index "transactions", ["sending_wallet_id"], :name => "index_transactions_on_buyer_id"

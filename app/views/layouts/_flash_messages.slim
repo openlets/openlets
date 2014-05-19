@@ -1,12 +1,12 @@
 - if flash[:notice]
-  .alert-box.success data-alert=""
+  .alert-box.radius.success data-alert=""
     = flash[:notice]
     a.close href="" x
 - if flash[:error]
-  .notice
+  .alert-box.radius.alert data-alert=""
     = flash[:error]
     a.close href="" x
 - if flash[:alert]
-  .alert-box.alert data-alert=""
+  .alert-box.radius.alert data-alert=""
     = flash[:alert]
     a.close href="" x

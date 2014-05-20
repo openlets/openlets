@@ -57,7 +57,8 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.filter_for(filter_params).by_economy_id(current_economy.id).active
+    @items = Item.filter_for(filter_params).active
+    @items = @items.by_economy_id(current_economy.id) if current_economy
   end
 
   private

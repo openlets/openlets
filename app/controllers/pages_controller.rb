@@ -11,9 +11,8 @@ class PagesController < ApplicationController
   end
 
   def economy_home
-    filter_params
-    set_filter_param('economy_id', current_economy.id) if current_economy
-    @items = Item.filter_for(filter_params)
+    @items = Item.filter_for(filter_params).active
+    @items = @items.by_economy_id(current_economy.id) if current_economy
   end
 
 end

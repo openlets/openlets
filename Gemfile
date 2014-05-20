@@ -7,7 +7,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  # gem 'font-awesome-sass'
+  gem 'font-awesome-sass'
 end
 
 gem 'geocomplete_rails'
@@ -29,7 +29,6 @@ gem 'rmagick'
 gem 'simple_form'
 gem 'pg'
 gem 'thin'
-gem 'sextant'
 gem 'workflow'
 gem 'coderay', '1.0.5'
 gem 'carrierwave'
@@ -51,6 +50,7 @@ end
 group :development do
   # gem 'localeapp'
   gem 'letter_opener'
+  gem 'sextant'
   gem 'better_errors'
   gem 'binding_of_caller'
 end

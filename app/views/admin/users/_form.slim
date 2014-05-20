@@ -1,4 +1,7 @@
 = simple_form_for([:admin, resource], wrapper: :foundation_inline) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message
   - attributes.each do |attr|
     = form_input(f, attr)
   .row

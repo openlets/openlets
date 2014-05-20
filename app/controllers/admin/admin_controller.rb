@@ -1,8 +1,6 @@
 class Admin::AdminController < ApplicationController
   before_filter :authenticate_admin_user!
-  helper_method :sort_column, :sort_direction, :show_sidebar?, 
-                :all_items, :all_wishes, :all_users, :all_transactions,
-                :all_wallets, :all_members
+  helper_method :sort_column, :sort_direction, :show_sidebar?
 
   def dashboard
     @members = current_economy.members
@@ -28,29 +26,5 @@ class Admin::AdminController < ApplicationController
   def show_sidebar?
     !['admin/admin', 'admin/settings'].include?(params[:controller]) and !["show", "new", "edit"].include?(params[:action])
   end
-
-  def all_items
-    @all_items ||= (current_economy ? current_economy.items : Item.all)
-  end
-
-  def all_wishes
-    @all_wishes ||= (current_economy ? current_economy.wishes : Item.all)
-  end
-
-  def all_users
-    @all_users ||= (current_economy ? current_economy.users : User.all)
-  end
-
-  def all_members
-    @all_members ||= (current_economy ? current_economy.members : Member.all)
-  end
-
-  def all_wallets
-    @all_wallets ||= (current_economy ? current_economy.wallets : Wallet.all)
-  end
-
-  def all_transactions
-    @all_transactions ||= (current_economy ? current_economy.transactions : Transaction.all)
-  end  
 
 end

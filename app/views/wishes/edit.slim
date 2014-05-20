@@ -1,8 +1,4 @@
-h1 Editing Wish
-
-== render 'form'
-
-= link_to 'Show', @wish
-'|
-= link_to 'Back', wishes_path
-
+.row
+  .large-12.columns
+    h1.bold.text-center= t('wishes.edit_wish')
+    = render 'form'

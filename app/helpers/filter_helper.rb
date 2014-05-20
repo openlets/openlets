@@ -6,14 +6,6 @@ module FilterHelper
     return root_path   if params[:controller] == "pages"
   end
 
-  def users_for_filter
-    @users ||= (current_economy.blank? ? User.all : current_economy.users)
-  end
-
-  def categories_for_filter
-    @categories ||= (current_economy.blank? ? Category.all : current_economy.categories )
-  end
-
   def resource_class
     params[:controller].singularize.classify
   end

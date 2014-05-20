@@ -17,14 +17,6 @@ module Filterable
       collection
     end
 
-    def search(search)
-      if search
-        find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
-      else
-        find(:all)
-      end
-    end
-
     def admin_filter_attr_names
       attribute_names - %w(created_at updated_at state_changed_at)
     end

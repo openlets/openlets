@@ -1,4 +1,8 @@
 class Admin::UsersController < Admin::ResourceController
+  load_and_authorize_resource
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to admin_members_path, :alert => exception.message
+  end
 
   def show
   end
@@ -7,7 +11,7 @@ class Admin::UsersController < Admin::ResourceController
     create! do |success, failure|
       success.html do
         current_economy.members.create(user_id: resource.id)
-        redirect_to admin_user_path(resource)
+        redirect_to admin_member_path(resource.member_for_economy(current_economy))
       end
     end
   end
@@ -26,19 +30,11 @@ class Admin::UsersController < Admin::ResourceController
 
   def managers
     users = User
-    if current_economy
-      @users = current_economy.users.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", current_economy.id).uniq
-      @admins_for_removal = @users - users.with_role(:admin)
-      @rest_of_users = current_economy.users - @users
-      @users = @users.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      render 'managers'
-    else
-      @users = users.with_role(:admin).uniq
-      @admins_for_removal = @users
-      @rest_of_users = User.all - @users
-      @users = @users.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      render 'admins'
-    end
+    @users = users.with_role(:admin).uniq
+    @admins_for_removal = @users
+    @rest_of_users = User.all - @users
+    @users = @users.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
+    render 'admins'
   end
 
   def add_admin

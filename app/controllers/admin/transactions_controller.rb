@@ -1,5 +1,11 @@
 class Admin::TransactionsController < Admin::ResourceController
 
+  def cancel
+    resource.cancel!
+    flash[:notice] = "Transaction was canceled"
+    redirect_to admin_transaction_path(resource)
+  end
+
   private
 
     def collection

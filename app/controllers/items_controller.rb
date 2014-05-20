@@ -57,8 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    set_filter_param('economy_id', current_economy.id) if current_economy
-    @items = Item.filter_for(filter_params)
+    @items = Item.filter_for(filter_params).by_economy_id(current_economy.id).active
   end
 
   private

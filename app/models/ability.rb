@@ -53,8 +53,18 @@ class Ability
       can    :transfer, Member.all { |u| u != member }
     end
 
-    # if user.has_role :admin
-    # end
+    if economy
+      if user.has_role? :manager, economy
+        can :create, User
+        can :crud,   economy.users { |u| u.manager_id = user.id }
+      end
+      if user.has_role? :admin
+        can :create, User
+        can :crud,   economy.users { true }
+      end
+      cannot :index, User
+    end
+
 
   end
 end

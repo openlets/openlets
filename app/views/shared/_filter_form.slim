@@ -3,11 +3,11 @@
     br
     = form_tag filter_path_helper, method: :get, id: 'search-form' do
       .large-5.columns
-        = select_tag "filter[category_ids]", options_from_collection_for_select(categories_for_filter, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => t('filter.select_categories')
+        = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => t('filter.select_categories')
       .large-3.columns
-        = collection_select(:filter, :user_id, users_for_filter, :id, :full_name, {prompt: t('filter.by_user'), selected: filter_params[:user_id] })
+        = collection_select(:filter, :member_id, all_members, :id, :full_name, {prompt: t('filter.by_user'), selected: filter_params[:member_id] })
       .large-3.columns
-        = text_field_tag 'filter[search]', filter_params[:search], placeholder: t('filter.search')
+        = text_field_tag 'filter[search_query]', filter_params[:search_query], placeholder: t('filter.search')
       .large-1.columns
         a.button.round.expand.search-button.auto-submit href= "#"
           i.fa.fa-search

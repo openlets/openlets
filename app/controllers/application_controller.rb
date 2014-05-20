@@ -7,11 +7,8 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :filter_params, :set_filter_param, :current_economy, :current_member, 
-                :member_signed_in?, :filter_params
-
-  def set_filter_param(k,v)
-    filter_params[k] = v
-  end
+                :member_signed_in?, :filter_params, :all_items, :all_wishes, :all_users, 
+                :all_transactions, :all_wallets, :all_members, :all_categories
 
   def filter_params
     params["filter"] ||= {}
@@ -43,5 +40,33 @@ class ApplicationController < ActionController::Base
   def filter_params
     params["filter"] ||= {}
   end
+
+  def all_items
+    @all_items ||= (current_economy ? current_economy.items : Item.all)
+  end
+
+  def all_wishes
+    @all_wishes ||= (current_economy ? current_economy.wishes : Item.all)
+  end
+
+  def all_users
+    @all_users ||= (current_economy ? current_economy.users : User.all)
+  end
+
+  def all_members
+    @all_members ||= (current_economy ? current_economy.members : Member.all)
+  end
+
+  def all_wallets
+    @all_wallets ||= (current_economy ? current_economy.wallets : Wallet.all)
+  end
+
+  def all_categories
+    @all_categories ||= (current_economy ? current_economy.categories : Category.all)
+  end
+
+  def all_transactions
+    @all_transactions ||= (current_economy ? current_economy.transactions : Transaction.all)
+  end  
 
 end

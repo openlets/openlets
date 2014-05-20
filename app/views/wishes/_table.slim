@@ -5,7 +5,11 @@
         = image_tag(wish.image)
       .large-6.small-6.columns  
         h3= wish.title
-        = link_to wish.member.try(:name), wish.member
+        p= wish.description
+        = category_labels_for(wish)
+
+        br
+        = link_to wish.member.full_name, wish.member
       .large-3.small-3.columns
         .row
           .large-12.columns

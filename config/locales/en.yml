@@ -303,7 +303,6 @@ en:
         one: economy
         other: Economies
       admin: Admin
-      admin_user: Admin Users
       category: 
         one: Category
         other: Categories
@@ -312,7 +311,9 @@ en:
         other: Items
       item_comment: Item Comments
       setting: Settings
-      transaction: Transactions
+      transaction: 
+        one: Transaction
+        other: Transactions
       user: 
         one: User
         other: Users
@@ -474,6 +475,7 @@ en:
     show: Show
     title: Wishes
     make_a_wish: Make a Wish
+    edit_wish: Edit Wish
     new: 
     fulfill: Fulfill the wish
     propositions: Wish Propositions

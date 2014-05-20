@@ -37,7 +37,7 @@ module Admin::ResourceHelper
   def workflow_label_color_for(state)
     return "secondary" if state == "awaiting_approval"
     return "success"   if state == "approved"
-    return "alert"     if state == "banned"
+    return "alert"     if ["banned", "canceled"].include?(state)
   end
 
   def html_select_filter_for(collection, prompt, attr_name, attr_id, method_name)

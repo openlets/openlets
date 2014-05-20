@@ -5,6 +5,8 @@
         = image_tag(item.image)
       .large-6.small-6.columns  
         h3= link_to item.title, item
+        p= item.description
+        = category_labels_for(item)
         p= "#{t('common.price')}: #{item.price} #{current_economy.currency_name}"
         = link_to item.member.try(:full_name), item.member
       .large-3.small-3.columns

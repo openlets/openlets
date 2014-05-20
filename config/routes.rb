@@ -93,7 +93,11 @@ OpenLets::Application.routes.draw do
         put 'mass_update'
       end
     end
-    resources :transactions
+    resources :transactions do
+      member do
+        put :cancel
+      end
+    end
     resources :categories
   end
 

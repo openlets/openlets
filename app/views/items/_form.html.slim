@@ -6,7 +6,7 @@
   .field
     = f.input :title, placeholder: t('items.title')
   .field
-    = f.input :description, placeholder: t('items.description')
+    = f.input :description, placeholder: t('items.description'), input_html: { rows: 4 }
   .field
     = f.association :categories, label_method: :full_name, collection: current_economy.categories, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
   .field

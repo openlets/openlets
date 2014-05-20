@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :username, :email, :about, 
                   :locale, :image, :password, :password_confirmation,
                   :national_id, :address, :phone, :cellphone, :fax,
-                  :birth_date, :profession, :job, :relationship_status
+                  :birth_date, :profession, :job, :relationship_status,
+                  :location
   
   validates_presence_of :email
   
@@ -59,6 +60,12 @@ class User < ActiveRecord::Base
     %w(image first_name last_name username email about national_id 
        address phone cellphone fax birth_date profession job 
        relationship_status locale)
+  end
+
+  def self.admin_attribute_names
+    %w(first_name last_name username email image about national_id 
+      address phone cellphone fax birth_date profession job 
+      relationship_status location locale password password_confirmation)
   end
 
   def unique_authorizations

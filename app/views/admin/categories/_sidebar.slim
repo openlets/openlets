@@ -1,0 +1,5 @@
+h3.bold= t("filter.filter")
+= form_tag filter_path_helper, method: :get do
+  = html_select_filter_for(all_categories, t('filter.id'), :id, :id, :id)
+  = html_select_filter_for(all_categories, t('filter.name'), :name, :name, :name)
+  = html_select_filter_for(all_categories, t('filter.parent_id'), :parent_id, :parent_id, :parent_id)

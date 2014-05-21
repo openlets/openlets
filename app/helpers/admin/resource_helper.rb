@@ -17,10 +17,12 @@ module Admin::ResourceHelper
       if name == :workflow_state
         if params[:controller] == 'admin/users'
           state = resource.member_for_economy(current_economy).workflow_state
+          text  = t("workflow_states.#{state}")
         else
           state = resource.workflow_state
+          text  = t("workflow_states.#{state}")
         end
-        return content_tag(:span, state.titleize, class: "label radius #{workflow_label_color_for(state)}") 
+        return content_tag(:span, text, class: "label radius #{workflow_label_color_for(state)}") 
       end
       return content_tag(:span, state.titleize, class: "label radius #{workflow_label_color_for(state)}")    if name == :workflow_state
       return link_to Member.find(attribute).full_name, admin_user_path(Member.find(attribute).user)          if name == :member_id

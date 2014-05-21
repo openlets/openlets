@@ -418,6 +418,9 @@ he:
     models:
       admin_user: משתמש מנהל
       admin: מנהל
+      member:
+        one: חבר
+        other: חברים
       category:
         one: קטגוריה
         other: קטגוריות
@@ -622,6 +625,11 @@ he:
     search: חיפוש
     select_categories: סנן לפי קטגוריות
   tables:
+    sending_wallet_id: קונה
+    receiving_wallet_id: מוכר
+    member_id: חבר
+    manager_id: מנהל
+    full_name: שם מלא
     authorizations: התחבר עם
     economy_id: כלכלה
     workflow_actions: פעולות סטטוס
@@ -663,6 +671,10 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    parent_id: קטגוריית על
+    name: שם
+    edit_manager: עריכת מנהל
+    create_button: 'צור %{name}'
     true: כן
     false: לא
     image: תמונה
@@ -775,6 +787,7 @@ he:
     banned: מבוטל
     canceled: בוטל
     approved: מאושר
+    done: בוצע
   breadcrumbs:
     show: '%{name} #%{id}'
     index: '%{name}'
@@ -785,4 +798,25 @@ he:
     pause: השהיה
     ban: החרמה
     approve: אישור
-    activate: הפעלה    
+    activate: הפעלה
+    disapprove: החרמה
+    cancel: ביטול
+  filter:
+    title: לפי כותרת
+    description: לפי תיאור
+    email: לפי מייל
+    wish: לפי משאלה
+    wish_id: לפי משאלה
+    member: לפי חבר
+    sending_wallet_id: לפי קונה
+    receiving_wallet_id: לפי מוכר
+    item_id: לפי מודעה
+    user_id: לפי משתמש
+    manager_id: לפי מנהל
+    id: לפי מספר מזהה
+    username: לפי שם משתמש
+    filter: פילטרים
+    status: לפי סטטוס
+    price: לפי מחיר
+    name: לפי שם
+    parent_id: לפי קטגוריית על

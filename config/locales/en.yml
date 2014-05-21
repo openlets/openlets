@@ -487,6 +487,8 @@ en:
   market:
     title: Marketplace
   filter:
+    economy_id: By Economy
+    parent_id : By Parent
     sending_wallet_id: By Buyer
     receiving_wallet_id: By Seller
     item_id: By Item

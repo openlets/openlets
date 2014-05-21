@@ -12,6 +12,9 @@ he:
     user:
       signed_out: 
   common:
+    purchase_for_price:
+      one: 'קנה במחיר %{price} %{currency_name}'
+      other: 'קנה במחיר %{price} %{currency_name}'
     are_you_sure: את\ה בטוח\ה?
     login: כניסה
     marketplace: לוח מכירות
@@ -33,6 +36,10 @@ he:
     edit_profile: ערוך פרופיל
     balance: מאזן
     connect_social_networks: התחבר עם עוד חשבונות
+    receiving_categories: מעוניין לקבל בקטגוריות
+    giving_categories: מעוניין לתת בקטגוריות
+    edit_preferences: ערוך העדפות
+    edit_password: עריכת סיסמא
   simple_form:
     labels:
       user:
@@ -615,6 +622,7 @@ he:
     search: חיפוש
     select_categories: סנן לפי קטגוריות
   tables:
+    authorizations: התחבר עם
     economy_id: כלכלה
     workflow_actions: פעולות סטטוס
     economy_type: סוג כלכלה
@@ -655,6 +663,8 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    true: כן
+    false: לא
     image: תמונה
     first_name: שם פרטי
     last_name: שם משפחה
@@ -679,7 +689,18 @@ he:
     delete_confirm: האם אתה בטוח שברצונך למחוק?
     delete: מחיקה
     show: פרטים
-    edit_resource: עריכת %{name}
+    edit_resource: 'עריכת %{name}'
+    edit_economy_settings: ערוך הגדרות הכלכלה
+    allow_anyone_to_create_wishes: כל אחד יכול לייצר משאלה?
+    allow_anyone_to_create_items: כל אחד יכול להעלות מודעה?
+    currency_name: שם המטבע
+    domain: דומיין
+    currency_type: מודל מוניטרי
+    economy_type: סוג כלכלה
+    maximum_debit: חוב מקסימלי
+    logo: לוגו
+    bg_image: תמונת רקע 
+    invite_only: הרשמה עם הזמנה בלבד?    
     description: תיאור
     price: מחיר
     title: כותרת
@@ -688,8 +709,8 @@ he:
     workflow_state: סטטוס
     save: שמירה
     user: משתמש
-    create_button: צור %{name}
-    new_resource: צור %{name}
+    create_button: 'צור %{name}'
+    new_resource: 'צור %{name}'
   inbox:
     send_message: שלח הודעה ל%{name}
     title: הודעות
@@ -697,18 +718,30 @@ he:
     title: תגובות
     comment: תגובה
   admin:
+    dashboard:
+      members_awaiting_approval: משתמשים שמחכים לאישור  
     sidebar:
       members: חברים
-      managers: הרשאות
+      member: חבר
+      managers: מנהלים
+      manager: מנהל
       comments: תגובות
+      comment: תגובה
       economies: כלכלות
+      economy: כלכלה
       items: מודעות
+      item: מודעה
       settings: הגדרות
+      setting: הגדרה
       transactions: עסקאות
+      transaction: עסקא
       users: משתמשים
+      user: משתמש
       wishes: משאלות
+      wish: משאלה
       dashboard: לוח בקרה
       categories: קטגוריות
+      category: קטגוריה
       admin_panel: פנל ניהול
       configurations: קונפיגורציות
       custom_member_fields: שדות מותאמים
@@ -736,3 +769,20 @@ he:
   workflow_state:
     approve: אישור
     ban: השהייה
+  workflow_states:
+    active: מופעל
+    paused: מושהה
+    banned: מבוטל
+    canceled: בוטל
+    approved: מאושר
+  breadcrumbs:
+    show: '%{name} #%{id}'
+    index: '%{name}'
+    new: '%{name} חדש'
+    edit: 'עריכת %{name}'
+    dashboard: פנל ניהול
+  workflow_state_actions:
+    pause: השהיה
+    ban: החרמה
+    approve: אישור
+    activate: הפעלה    

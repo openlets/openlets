@@ -18,6 +18,9 @@ en:
     title: Welcome to the OpenLETS Demo!
     p1: OpenLETS is an open source platform built to allow communities to easily start and manage a marketplace to trade goods and services with their own currency.
   common:
+    purchase_for_price:
+      one: 'Purchase for %{price} %{currency_name}'
+      other: 'Purchase for %{price} %{currency_name}'
     are_you_sure: Are you sure?
     login: Login
     marketplace: Marketplace
@@ -41,6 +44,8 @@ en:
     edit_password: Edit Password
     balance: Balance
     connect_social_networks: Connect your social networks
+    receiving_categories: Receiving Categories
+    giving_categories: Giving Categories
   simple_form:
     labels:
       user:
@@ -547,6 +552,7 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    edit_economy_settings: Edit Economy Settings
     image: Profile Image
     national_id: National ID
     address: Address
@@ -602,6 +608,8 @@ en:
     title: Comments
     comment: Comment
   admin:
+    dashboard:
+      members_awaiting_approval: Members Awaiting Approval
     sidebar:
       managers: Managers
       economies: Economies
@@ -645,3 +653,15 @@ en:
     ban: Ban
     approve: Approve
     activate: Activate
+  workflow_states:
+    active: Active
+    paused: Paused
+    banned: Banned
+    Canceled: Canceled
+    approved: Approved
+  breadcrumbs:
+    show: '%{name} #%{id}'
+    index: '%{name}'
+    new: 'New %{name}'
+    edit: 'Edit %{name}'
+    dashboard: Dashboard

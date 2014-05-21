@@ -54,7 +54,8 @@ class WishesController < ApplicationController
 
 	def fulfill
 		@item = current_member.items.new(title: @wish.title, image: @wish.image.url, 
-														description: @wish.description, wish_id: @wish.id)
+														         description: @wish.description, wish_id: @wish.id, 
+                                     category_ids: @wish.category_ids)
 	end
 
 	def create_wish_offer

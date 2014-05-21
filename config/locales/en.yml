@@ -478,6 +478,7 @@ en:
     edit_wish: Edit Wish
     new: 
     fulfill: Fulfill the wish
+    fulfill: 'Fulfill %{name}s Wish'
     propositions: Wish Propositions
   items:
     add_an_item: Add An Item

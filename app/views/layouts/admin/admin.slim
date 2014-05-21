@@ -22,10 +22,10 @@ html#admin lang=(current_locale)
     = csrf_meta_tags
 
   body class=("#{locale_direction}") id=(unique_body_class(params))
-    = render (current_economy ? 'top_bar' : 'realm_top_bar')
+    = render 'top_bar'
     - if show_sidebar?
       .large-2.columns.sidebar
-        = render (current_economy ? 'sidebar' : 'realm_sidebar')
+        = render 'sidebar'
       = render 'breadcrumbs'
       .large-10.columns
         = render 'layouts/flash_messages'

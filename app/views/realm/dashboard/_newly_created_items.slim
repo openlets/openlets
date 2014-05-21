@@ -1,0 +1,18 @@
+h3= "Last 10 Items"
+.panel_contents
+  table border="0" cellpadding="0" cellspacing="0"
+    thead
+      tr
+        th Id
+        th Image
+        th Title
+        th User
+        th Actions
+    tbody
+      - Item.last(10).reverse.each_with_index do |item, i|
+        tr class=["#{i.odd? ? 'even' : 'odd'}"]
+          td= item.id
+          td= image_tag(item.image, height: 50)
+          td= link_to item.title, admin_item_path(item)
+          td= link_to item.user.full_name, admin_user_path(item.user)
+          td= link_to 'Ban', ban_admin_item_path(item.id), class: 'button alert', confirm: 'Are you sure?' if item.active?

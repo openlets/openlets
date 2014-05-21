@@ -1,0 +1,7 @@
+= simple_form_for [:admin, resource] do |f|
+
+  - if f.object.value.blank?
+    = f.input :array, label: f.object.name
+  - else
+    = f.input :value, label: f.object.name
+  = f.button :submit, t('forms.update'), class: 'button'

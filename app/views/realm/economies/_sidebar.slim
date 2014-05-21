@@ -1,0 +1,8 @@
+h3.bold Filters
+= form_tag filter_path_helper, method: :get do
+  = html_select_filter_for(all_economies, t('filter.title'), :title, :title, :title)
+  = html_select_filter_for(all_economies, t('filter.description'), :description, :description, :description)
+  = html_select_filter_for(all_economies, t('filter.currency_name'), :currency_name, :currency_name, :currency_name)
+  = html_select_filter_for(all_economies, t('filter.domain'), :domain, :domain, :domain)  
+  = html_select_tag(collection_for_array(Economy::ECONOMY_TYPES), :economy_type, :economy_type)
+  = html_select_tag(collection_for_array(Economy::CURRENCY_TYPES), :currency_type, :currency_type)

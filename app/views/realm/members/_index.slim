@@ -1,0 +1,9 @@
+.large-10.columns
+  h1.bold= t("activerecord.models.#{resource_class.name.downcase}", count: 2)
+.large-2.columns
+  = link_to new_admin_user_path, class: 'button expand radius new-button'
+    i.fa.fa-plus
+    = " "
+    = t("forms.create_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
+.large-12.columns
+  = render 'table', attributes: attributes

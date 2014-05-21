@@ -1,0 +1,33 @@
+table border="0" cellpadding="0" cellspacing="0"
+  thead
+    tr
+      th.id             Id
+      th.image          Image
+      th.name           Name
+      th.email          Email
+      th.authorizations Authorizations
+      th.actions        Actions
+  tbody
+    - current_economy.members.awaiting_approval.each_with_index do |member, i|
+      tr class=["#{i.odd? ? 'even' : 'odd'}"]
+        td.id= member.id
+        td.image= image_tag(member.image, size: '50x50')
+        td.name
+          = link_to member.full_name, send("admin_member_path", (member.id))
+        td.email
+          span = mail_to member.email
+        td.authorizations
+          - member.unique_authorizations.each do |auth|
+            - if auth.provider == 'facebook'
+              span
+                = link_to auth.provider, "http://www.facebook.com/#{auth.username}", target: :blank
+                | , 
+            - elsif auth.provider == 'linkedin'
+              span
+                = link_to auth.provider, " http://www.linkedin.com/x/profile/#{GLOBAL[:linkedin_key]}/#{auth.uid}", target: :blank
+                | , 
+            - elsif auth.provider == 'google_oauth2'
+              span= link_to 'google', " https://plus.google.com/#{auth.uid}", target: :blank
+        td.actions
+          = link_to 'Approve', admin_member_approve_path(member.id), method: :put, class: 'button tiny'
+          = link_to 'Disapprove', admin_member_ban_path(member.id), method: :put,  class: 'button alert tiny'

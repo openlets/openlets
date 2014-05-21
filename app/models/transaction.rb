@@ -64,6 +64,10 @@ class Transaction < ActiveRecord::Base
     [:id, :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type, :workflow_state]
   end
 
+  def admin_form_attribute_names
+    [:economy_id, :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type]
+  end
+
   private
 
     def not_self

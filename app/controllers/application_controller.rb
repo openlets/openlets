@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :filter_params, :set_filter_param, :current_economy, :current_member, 
                 :member_signed_in?, :filter_params, :all_items, :all_wishes, :all_users, 
-                :all_transactions, :all_wallets, :all_members, :all_categories
+                :all_transactions, :all_wallets, :all_members, :all_categories, :all_managers,
+                :all_admins, :all_economies, :collection_for_array
 
   def filter_params
     params["filter"] ||= {}
@@ -68,5 +69,21 @@ class ApplicationController < ActionController::Base
   def all_transactions
     @all_transactions ||= (current_economy ? current_economy.transactions : Transaction.all)
   end  
+
+  def all_managers
+    @all_transactions ||= (current_economy ? User.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", current_economy.id).uniq : User.with_role(:admin))
+  end  
+
+  def all_admins
+    @all_transactions ||= User.with_role(:admin)
+  end  
+
+  def all_economies
+    @all_economies ||= Economy.all
+  end  
+
+  def collection_for_array(array)
+    array.map { |c| [c.titleize, c] }
+  end
 
 end

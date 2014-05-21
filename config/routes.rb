@@ -1,12 +1,4 @@
 OpenLets::Application.routes.draw do
-  
-  constraints DomainConstraint.new do
-    root to: 'pages#economy_home'
-
-    namespace :admin do
-      root to: "admin#dashboard", as: :dashboard
-    end
-  end
 
   root to: 'pages#home'
 
@@ -16,34 +8,34 @@ OpenLets::Application.routes.draw do
 
   resources :users do
     member do
-      post 'direct_transfer'
-      get  'transfer'
+      post :direct_transfer
+      get  :transfer
     end
   end
 
   resources :members do
     member do
-      post 'direct_transfer'
-      get  'transfer'
+      post :direct_transfer
+      get  :transfer
     end
   end
   
   resources :items do
     member do
-      post 'purchase'
-      put  'pause'
-      put  'activate'
+      post :purchase
+      put  :pause
+      put  :activate
     end
     resources :comments, only: [:create]
   end
   
   resources :wishes do
     member do
-      put  'pause'
-      put  'activate'
-      get  'fulfill'
-      put  'close'
-      post 'create_wish_offer'
+      put  :pause
+      put  :activate
+      get  :fulfill
+      put  :close
+      post :create_wish_offer
     end
   end
 
@@ -55,50 +47,100 @@ OpenLets::Application.routes.draw do
     end
   end
 
-  namespace :admin do
-    root to: "admin#realm_dashboard", as: :realm_dashboard
-    resources :economies
-    resources :members do
-      put :approve
-      put :ban
-    end
-    resources :users do
-      member do
+
+  constraints DomainConstraint.new do
+    root to: 'pages#economy_home'
+
+    namespace :admin do
+      root to: "admin#dashboard", as: :dashboard
+      resources :members do
         put :approve
         put :ban
       end
+      resources :users do
+        member do
+          put :approve
+          put :ban
+        end
+        collection do
+          put 'add_admin'
+          delete 'remove_admin'
+        end      
+      end
+      resources :managers do
+        collection do
+          put 'add'
+          delete 'remove'
+        end 
+      end
+      resources :items do
+        member do
+          put :activate
+          put :pause
+          put :ban
+        end
+      end
+      resources :wishes
+      resources :comments
+      resources :settings do
+        collection do
+          get 'mass_edit'
+          put 'mass_update'
+        end
+      end
+      resources :transactions do
+        member do
+          put :cancel
+        end
+      end
+      resources :categories
+    end
+
+  end
+
+  namespace :realm do
+    root to: "realm#dashboard"
+    
+    resources :admins do
       collection do
-        put 'add_admin'
-        delete 'remove_admin'
+        put    :add
+        delete :remove
       end      
     end
-    resources :managers do
-      collection do
-        put 'add'
-        delete 'remove'
-      end 
-    end
-    resources :items do
-      member do
-        put :activate
-        put :pause
+
+    resources :economies do 
+      resources :members do
+        put :approve
         put :ban
       end
-    end
-    resources :wishes
-    resources :comments
-    resources :settings do
-      collection do
-        get 'mass_edit'
-        put 'mass_update'
+      resources :managers do
+        collection do
+          put    :add
+          delete :remove
+        end 
       end
-    end
-    resources :transactions do
-      member do
-        put :cancel
+      resources :items do
+        member do
+          put :activate
+          put :pause
+          put :ban
+        end
       end
+      resources :wishes
+      resources :comments
+      resources :settings do
+        collection do
+          get :mass_edit
+          put :mass_update
+        end
+      end
+      resources :transactions do
+        member do
+          put :cancel
+        end
+      end
+      resources :categories
     end
-    resources :categories
   end
 
   get "pages/terms"

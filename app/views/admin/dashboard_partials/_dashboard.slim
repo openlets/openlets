@@ -1,0 +1,23 @@
+#main_content
+  .columns
+    .column style="width: 49.0%; margin-right: 2%;"
+      h1 User Management
+      .panel
+        = render 'users_awaiting_approval'
+
+    .column style="width: 49.0%;"
+      h1 Latest Items
+      .panel
+        = render 'newly_created_items'
+    
+    div style="clear:both;"
+
+  .columns
+    .column style="width: 49.0%; margin-right: 2%;"
+      h1 Velocity
+      .panel
+        = render 'market_velocity'
+
+    .column style="width: 49.0%;"
+      h1 Another Something
+      .panel

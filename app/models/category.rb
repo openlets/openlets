@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent_category, class_name: "Category", foreign_key: "parent_id"
   belongs_to :economy
   
-  has_many :category_connections
+  has_many :category_connections, dependent: :restrict
   has_many :items, through: :category_connections, source: :categoriable, source_type: 'Item'
   has_many :giving_category_connections,    class_name: 'CategoryConnection', as: :categoriable, conditions: { interest_type: 'giving'    }
   has_many :reiciving_category_connections, class_name: 'CategoryConnection', as: :categoriable, conditions: { interest_type: 'receiving' }
@@ -17,6 +17,14 @@ class Category < ActiveRecord::Base
 
   def full_name
     name
+  end
+
+  def self.economy_table_attribute_names
+    [:id, :name, :parent_id]
+  end
+
+  def self.realm_table_attribute_names
+    [:id, :name, :parent_id, :economy_id]
   end
 
 end

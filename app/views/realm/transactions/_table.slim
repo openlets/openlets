@@ -1,0 +1,25 @@
+table.responsive
+  thead
+    tr
+      - attributes.each do |name|
+        th= sortable(name, t("tables.#{name.to_s}"))
+      th= t('tables.actions')
+  tbody
+    - filtered_collection.each do |resource|
+      tr
+        - attributes.each do |name|
+          - name = name.to_sym
+          td= table_attribute_cell(name, resource)
+        - if current_user.has_role?(:admin) && params[:controller] =='admin/users'
+          td.roles
+            - resource.roles.each do |role|
+              span.label.radius
+                = role.name
+
+
+        td.actions
+          = link_to cancel_admin_transaction_path(resource), method: :put, class: 'button tiny alert radius', title: t('forms.show')
+            i.fa.fa-trash-o
+            = " Cancel"
+
+= will_paginate filtered_collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

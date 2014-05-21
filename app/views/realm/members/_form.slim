@@ -1,0 +1,7 @@
+= simple_form_for([:admin, resource], wrapper: :foundation_inline) do |f|
+  - [:manager_id].each do |attr|
+    = form_input(f, attr)
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit, t('forms.update')

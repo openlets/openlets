@@ -27,6 +27,8 @@ module Admin::ResourceHelper
       return link_to Wish.find(attribute).title, admin_wish_path(attribute)                                  if name == :wish_id
       return link_to Item.find(attribute).title, admin_item_path(attribute)                                  if name == :item_id
       return link_to Category.find(attribute).name, admin_category_path(attribute)                           if name == :parent_id
+      return attribute.titleize                                                                              if name == :economy_type
+      return attribute.titleize                                                                              if name == :currency_type
       return link_to User.find(attribute).full_name,  admin_user_path(attribute)                             if [:user_id, :buyer_id, :seller_id].include?(name)
       return link_to User.find(attribute).full_name,  admin_manager_path(attribute)                          if name == :manager_id
       return link_to Wallet.find(attribute).user.full_name, admin_user_path(Wallet.find(attribute).user.id)  if [:receiving_wallet_id, :sending_wallet_id].include?(name)
@@ -47,20 +49,19 @@ module Admin::ResourceHelper
   end
 
   def html_select_tag(collection, attr_name, prompt)
-    select_tag "filter[#{attr_name}]", options_for_select(collection, filter_params[attr_name]), class: 'chzn-select auto-submit', include_blank: true, prompt: prompt
+    select_tag "filter[#{attr_name}]", options_for_select(collection, filter_params[attr_name]), class: 'chzn-select auto-submit', include_blank: true, prompt: prompt.to_s.titleize
   end
 
   def form_input(f, attr)
-    attr = attr.to_s
-    if attr == 'locale'
-      f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']
-    elsif attr == 'birth_date'
-      f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string
-    elsif attr == 'manager_id'
-      f.input attr, collection: current_economy.managers, prompt: "Select a Manager", label_method: :full_name, include_blank: true
-    else 
-      f.input attr, label: t("forms.#{attr}")
-    end
+    attr = attr.to_sym
+    return f.input attr, collection: current_economy.managers, prompt: "Select a Manager", label_method: :full_name, include_blank: true if attr == :manager_id
+    return f.input attr, collection: all_economies, prompt: "Select an Economy", label_method: :title                                    if attr == :economy_id
+    return f.input attr, collection: all_wallets,   prompt: "Buyer",             label_method: :user_name                                if attr == :sending_wallet_id
+    return f.input attr, collection: all_wallets,   prompt: "Seller",            label_method: :user_name                                if attr == :receiving_wallet_id
+    return f.input attr, collection: all_items,     prompt: "Item",              label_method: :title                                    if attr == :item_id
+    return f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']                                                             if attr == :locale
+    return f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string                                     if attr == :birth_date
+    return f.input attr, label: t("forms.#{attr}")
   end
 
 end

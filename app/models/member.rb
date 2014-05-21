@@ -8,7 +8,7 @@ class Member < ActiveRecord::Base
   belongs_to :economy
   belongs_to :manager, class_name: 'User', foreign_key: 'manager_id'
 
-  has_one  :wallet, as: :walletable
+  has_one  :wallet, as: :walletable, dependent: :destroy
   has_many :items
   has_many :wishes
   has_many :giving_category_connections,    class_name: 'CategoryConnection', as: :categoriable, conditions: { interest_type: 'giving'}

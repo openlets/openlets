@@ -1,0 +1,19 @@
+table.responsive
+  thead
+    tr
+      - attributes.each do |name|
+        th= sortable(name, t("tables.#{name.to_s}"))
+      th= t('tables.actions')
+  tbody
+    - @managers.each do |resource|
+      tr
+        - attributes.each do |name|
+          td= table_attribute_cell(name, resource)
+        td.actions
+          ul.button-group.radius.tiny
+            li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')
+              i.fa.fa-info
+            li= link_to edit_resource_path(resource), class: 'button small', title: t('forms.edit')
+              i.fa.fa-edit
+
+= will_paginate @managers, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

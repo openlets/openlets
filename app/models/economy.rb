@@ -1,5 +1,7 @@
 class Economy < ActiveRecord::Base
-  attr_accessible :currency_name, :description, :economy_type, :title, :currency_type, 
+  include Filterable
+
+  attr_accessible :currency_name, :description, :economy_type, :title, :currency_type,
                   :domain, :max_debit, :allow_anyone_to_create_items,
                   :allow_anyone_to_create_wishes, :invite_only, :logo, :bg_image
   
@@ -19,6 +21,9 @@ class Economy < ActiveRecord::Base
 
   after_create :add_admin_role
 
+  ECONOMY_TYPES  = %w(community cooperative business non_profit)
+  CURRENCY_TYPES = %w(time_bank mutual_credit fiat backed derived_from)
+
   def managers
     users.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", id).uniq
   end
@@ -27,8 +32,16 @@ class Economy < ActiveRecord::Base
     self.user.add_role :manager, self
   end
 
+  def self.realm_attributes_for_table
+    [:id, :logo, :bg_image, :title, :user_id, :domain, :economy_type, :currency_type]
+  end
+
   def self.attributes_for_table
     [:id, :logo, :bg_image, :title, :user_id, :domain, :economy_type]
+  end
+
+  def self.admin_filter_attr_names
+    [:id, :title, :description, :currency_name, :currency_type, :domain, :economy_type]
   end
 
 end

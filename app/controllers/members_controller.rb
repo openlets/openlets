@@ -18,7 +18,6 @@ class MembersController < ApplicationController
   end
 
   def update
-    binding.pry
     if @member.update_attributes(params[:member])
       redirect_to @member, notice: 'User was successfully updated.'
     else

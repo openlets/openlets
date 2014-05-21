@@ -1,0 +1,3 @@
+h3= "Market Velocity"
+- unless Transaction.all.empty?
+  = line_chart Transaction.market_velocity

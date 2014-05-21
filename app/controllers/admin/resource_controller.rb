@@ -26,11 +26,17 @@ class Admin::ResourceController < Admin::AdminController
   alias :update! :update
 
   def destroy(options={}, &block)
-    object = resource
-    options[:location] ||= smart_collection_url
 
-    destroy_resource(object)
-    respond_with_dual_blocks(object, options, &block)
+    begin
+      resource.destroy
+    rescue ActiveRecord::DeleteRestrictionError => e
+      resource.errors.add(:base, e)
+      flash[:error] = "Can't delete #{resource.class.name}"
+      return redirect_to resource_path
+    end
+
+    flash[:notice] = "#{resource.class.name} Successfuly deleted."
+    redirect_to send("admin_#{resource.class.name.underscore.pluralize}_path")
   end
   alias :destroy! :destroy
 

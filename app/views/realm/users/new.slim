@@ -1,0 +1,4 @@
+.row
+  .large-12.columns
+    h1.bold.text-center= t('forms.new_resource', name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
+    = render "form", attributes: resource_class.admin_attribute_names

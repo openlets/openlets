@@ -3,10 +3,16 @@ class Admin::ManagersController < Admin::ResourceController
   helper_method :resource_class, :all_managers
 
   def index
-    users = User
-    @managers = current_economy.users.filter_for(filter_params).joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", current_economy.id).uniq
-    @admins_for_removal = @managers - users.with_role(:admin)
-    @rest_of_users = current_economy.users - @managers
+    if current_economy
+      @managers = User.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", current_economy.id).uniq
+      @admins_for_removal = @managers - User.with_role(:admin)
+      @rest_of_users = current_economy.users - @managers
+    else
+      @managers = User.with_role(:admin)
+      @admins_for_removal = @managers
+      @rest_of_users = User.all - @managers
+    end
+    
     @managers = @managers.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
   end
 
@@ -30,10 +36,6 @@ class Admin::ManagersController < Admin::ResourceController
 
     def resource_class
       User
-    end
-
-    def all_managers
-      @all_managers ||= current_economy.users.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", current_economy.id).uniq
     end
 
 end

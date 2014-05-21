@@ -65,6 +65,12 @@ class Ability
       cannot :index, User
     end
 
+    if user.has_role? :admin
+      can :crud, User
+      can :crud, Transaction
+      can :crud, Member
+      can :crud, Economy
+    end
 
   end
 end

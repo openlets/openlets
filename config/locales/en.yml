@@ -504,6 +504,7 @@ en:
     search: Search
     select_categories: Select Categories
   tables:
+    resource_details: '%{name} Details'
     sending_wallet_id: Buyer
     receiving_wallet_id: Seller
     member_id: Member

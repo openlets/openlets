@@ -281,7 +281,6 @@ he:
     empty: ריק
     ends_with: 
     equal_to: 
-    filter: 
     filters:
       buttons:
         clear: איפוס שדות
@@ -424,15 +423,27 @@ he:
       category:
         one: קטגוריה
         other: קטגוריות
-      item: מודעות
+      item: 
+        one: מודעה
+        other: מודעות
       item_comment: תגובו
       setting: הגדרות
-      transaction: עסקאות
+      transaction: 
+        one: עסקא
+        other: עסקאות
+        types:
+          direct_transfer: העברה ישירה
+          item_purchase: רכשית הצעה
+          wish_fulfillment: מילוי משאלה
       user: 
         one: משתמש
         other: משתמשים
-      wish: משאלות
-      comment: תגובות
+      wish: 
+        one: משאלה
+        other: משאלות
+      comment: 
+        one: תגובה
+        other: תגובות
       economy:
         one: כלכלה
         other: כלכלות
@@ -620,11 +631,8 @@ he:
     edit_item: עריכת מודעה
   market:
     title: שוק
-  filter:
-    by_user: לפי משתמש
-    search: חיפוש
-    select_categories: סנן לפי קטגוריות
   tables:
+    resource_details: 'פרטי %{name}'
     sending_wallet_id: קונה
     receiving_wallet_id: מוכר
     member_id: חבר
@@ -642,7 +650,7 @@ he:
     id: מספר
     item: מודעה
     price: מחיר
-    amount: כמות
+    amount: מחיר
     seller: מוכר
     type: סוג עסקא
     image: תמונה
@@ -671,10 +679,19 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    select_transaction_type: בחר סוג עסקא
+    select_item: בחר מודעה
+    select_seller: בחר מוכר
+    select_buyer: בחר קונה
+    amount: מחיר
+    sending_wallet_id: קונה
+    receiving_wallet_id: מוכר
+    item_id: מודעה
+    transaction_type: סוג עסקא
+    create_button: 'צור %{name}'
     parent_id: קטגוריית על
     name: שם
     edit_manager: עריכת מנהל
-    create_button: 'צור %{name}'
     true: כן
     false: לא
     image: תמונה
@@ -767,7 +784,7 @@ he:
       add_manager: הוסף מנהל
       remove_managers: הסר מנהלים
       remove_manager: הסר מנהל
-      title: הרשאות מנהל
+      title: מנהלים
       choose_user: בחירת משתמש
   flash:
     admin:
@@ -802,6 +819,9 @@ he:
     disapprove: החרמה
     cancel: ביטול
   filter:
+    by_user: לפי משתמש
+    search: חיפוש
+    select_categories: סנן לפי קטגוריות  
     title: לפי כותרת
     description: לפי תיאור
     email: לפי מייל

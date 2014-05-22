@@ -53,16 +53,16 @@ module Admin::ResourceHelper
   end
 
   def form_input(f, attr)
-    attr = attr.to_s
-    if attr == 'locale'
-      f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']
-    elsif attr == 'birth_date'
-      f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string
-    elsif attr == 'manager_id'
-      f.input attr, collection: current_economy.managers, prompt: "Select a Manager", label_method: :full_name, include_blank: true
-    else 
-      f.input attr, label: t("forms.#{attr}")
-    end
+    attr = attr.to_sym
+    return f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']                                                                                      if attr == :locale
+    return f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string                                                              if attr == :birth_date
+    return f.input attr, label: t("forms.#{attr}"), collection: all_managers, prompt: t('forms.select_manager'), label_method: :full_name,   include_blank: true  if attr == :manager_id
+    return f.input attr, label: t("forms.#{attr}"), collection: all_items,    prompt: t('forms.select_item'),    label_method: :title,       include_blank: true  if attr == :item_id
+    return f.input attr, label: t("forms.#{attr}"), collection: all_wallets,  prompt: t('forms.select_seller'),  label_method: :user_name,   include_blank: false if attr == :receiving_wallet_id
+    return f.input attr, label: t("forms.#{attr}"), collection: all_wallets,  prompt: t('forms.select_buyer'),   label_method: :user_name,   include_blank: false if attr == :sending_wallet_id
+    return f.input attr, label: t("forms.#{attr}"), collection: Transaction::TRANSACTION_TYPES.map { |type| [t("activerecord.models.transaction.types.#{type}"), type] }, 
+                         prompt: t('forms.select_transaction_type'), include_blank: false if attr == :transaction_type
+    return f.input attr, label: t("forms.#{attr}")
   end
 
 end

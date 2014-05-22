@@ -43,7 +43,10 @@ table.responsive {
   }
 }
 
-select { background-position-x: 2%; }
+select { 
+  background-position-x: 2%; 
+  &:hover { background-position-x:  2%; }
+}
 
 .breadcrumbs > *:first-child:after {
   content: " ";

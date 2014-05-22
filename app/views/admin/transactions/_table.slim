@@ -18,8 +18,9 @@ table.responsive
 
 
         td.actions
-          = link_to cancel_admin_transaction_path(resource), method: :put, class: 'button tiny alert radius', title: t('forms.show')
-            i.fa.fa-trash-o
-            = " Cancel"
+          - if resource.done?
+            = link_to cancel_admin_transaction_path(resource), method: :put, class: 'button tiny alert radius', title: t('forms.show')
+              i.fa.fa-trash-o
+              = t("workflow_state_actions.cancel")
 
 = will_paginate filtered_collection, next_label: '»', previous_label: '«', renderer: FoundationPagination::Rails

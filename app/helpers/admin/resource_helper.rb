@@ -17,10 +17,12 @@ module Admin::ResourceHelper
       if name == :workflow_state
         if params[:controller] == 'admin/users'
           state = resource.member_for_economy(current_economy).workflow_state
+          text  = t("workflow_states.#{state}")
         else
           state = resource.workflow_state
+          text  = t("workflow_states.#{state}")
         end
-        return content_tag(:span, state.titleize, class: "label radius #{workflow_label_color_for(state)}") 
+        return content_tag(:span, text, class: "label radius #{workflow_label_color_for(state)}") 
       end
       return content_tag(:span, state.titleize, class: "label radius #{workflow_label_color_for(state)}")    if name == :workflow_state
       return link_to Member.find(attribute).full_name, admin_user_path(Member.find(attribute).user)          if name == :member_id
@@ -29,8 +31,7 @@ module Admin::ResourceHelper
       return link_to Category.find(attribute).name, admin_category_path(attribute)                           if name == :parent_id
       return attribute.titleize                                                                              if name == :economy_type
       return attribute.titleize                                                                              if name == :currency_type
-      return link_to User.find(attribute).full_name,  admin_user_path(attribute)                             if [:user_id, :buyer_id, :seller_id].include?(name)
-      return link_to User.find(attribute).full_name,  admin_manager_path(attribute)                          if name == :manager_id
+      return link_to User.find(attribute).full_name, admin_user_path(attribute)                              if [:manager_id, :user_id, :buyer_id, :seller_id].include?(name)
       return link_to Wallet.find(attribute).user.full_name, admin_user_path(Wallet.find(attribute).user.id)  if [:receiving_wallet_id, :sending_wallet_id].include?(name)
       return attribute
     end
@@ -54,13 +55,15 @@ module Admin::ResourceHelper
 
   def form_input(f, attr)
     attr = attr.to_sym
-    return f.input attr, collection: current_economy.managers, prompt: "Select a Manager", label_method: :full_name, include_blank: true if attr == :manager_id
-    return f.input attr, collection: all_economies, prompt: "Select an Economy", label_method: :title                                    if attr == :economy_id
-    return f.input attr, collection: all_wallets,   prompt: "Buyer",             label_method: :user_name                                if attr == :sending_wallet_id
-    return f.input attr, collection: all_wallets,   prompt: "Seller",            label_method: :user_name                                if attr == :receiving_wallet_id
-    return f.input attr, collection: all_items,     prompt: "Item",              label_method: :title                                    if attr == :item_id
-    return f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']                                                             if attr == :locale
-    return f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string                                     if attr == :birth_date
+    return f.input attr, collection: all_economies, prompt: "Select an Economy", label_method: :title                                                             if attr == :economy_id
+    return f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']                                                                                      if attr == :locale
+    return f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string                                                              if attr == :birth_date
+    return f.input attr, label: t("forms.#{attr}"), collection: all_managers, prompt: t('forms.select_manager'), label_method: :full_name,   include_blank: true  if attr == :manager_id
+    return f.input attr, label: t("forms.#{attr}"), collection: all_items,    prompt: t('forms.select_item'),    label_method: :title,       include_blank: true  if attr == :item_id
+    return f.input attr, label: t("forms.#{attr}"), collection: all_wallets,  prompt: t('forms.select_seller'),  label_method: :user_name,   include_blank: false if attr == :receiving_wallet_id
+    return f.input attr, label: t("forms.#{attr}"), collection: all_wallets,  prompt: t('forms.select_buyer'),   label_method: :user_name,   include_blank: false if attr == :sending_wallet_id
+    return f.input attr, label: t("forms.#{attr}"), collection: Transaction::TRANSACTION_TYPES.map { |type| [t("activerecord.models.transaction.types.#{type}"), type] }, 
+                         prompt: t('forms.select_transaction_type'), include_blank: false if attr == :transaction_type
     return f.input attr, label: t("forms.#{attr}")
   end
 

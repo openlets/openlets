@@ -43,4 +43,38 @@ table.responsive {
   }
 }
 
-select { background-position-x: 2%; }
+select { 
+  background-position-x: 2%; 
+  &:hover { background-position-x:  2%; }
+}
+
+.breadcrumbs > *:first-child:after {
+  content: " ";
+  margin: 0;
+}
+
+.breadcrumbs > *:first-child:before {
+  content: "";
+}
+
+.breadcrumbs > *:after {
+  content: "/";
+  color: #aaaaaa;
+  margin: 0 0.75rem;
+  position: relative;
+  top: 1px;
+}
+
+.breadcrumbs > *:before {
+  content: "";
+  color: #aaaaaa;
+  margin: 0;
+  position: relative;
+  top: 0;
+}
+
+
+
+.large-2.columns.sidebar {
+  border-radius: 0 0 0 15px !important;
+}

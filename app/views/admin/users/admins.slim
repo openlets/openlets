@@ -1,7 +1,7 @@
 .large-10.columns
   h1.bold= t("admin.managers.title")
 .large-2.columns
-  = link_to new_resource_path, class: 'button expand radius new-button'
+  = link_to new_resource_path, class: 'button expand radius action-button'
     i.fa.fa-plus
     = " "
     = t("forms.create_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))

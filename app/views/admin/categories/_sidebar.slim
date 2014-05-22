@@ -1,6 +1,5 @@
-h3.bold Filters
+h3.bold= t("filter.filter")
 = form_tag filter_path_helper, method: :get do
-  = html_select_filter_for(collection, t('filter.id'), :id, :id, :id)
-  = html_select_filter_for(collection, t('filter.name'), :name, :name, :name)
-  = html_select_filter_for(all_categories, t('filter.parent_id'), :parent_id, :id, :name)
-  = html_select_filter_for(all_economies, t('filter.economy_id'), :economy_id, :id, :title)
+  = html_select_filter_for(all_categories, t('filter.id'), :id, :id, :id)
+  = html_select_filter_for(all_categories, t('filter.name'), :name, :name, :name)
+  = html_select_filter_for(all_categories, t('filter.parent_id'), :parent_id, :parent_id, :parent_id)

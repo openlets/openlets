@@ -3,7 +3,7 @@
     = t("activerecord.models.manager", count: 1)
     |  Details
 .large-2.columns
-  = link_to edit_resource_path(resource), class: 'button expand radius new-button'
+  = link_to edit_resource_path(resource), class: 'button expand radius action-button'
     i.fa.fa-edit
     = " "
     = t("forms.edit_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))

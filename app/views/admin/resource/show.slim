@@ -1,9 +1,8 @@
 .large-10.columns
   h1.bold
-    = t("activerecord.models.#{resource_class.name.downcase}", count: 1)
-    |  Details
+    = t("tables.resource_details", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1 ))
 .large-2.columns
-  = link_to edit_resource_path(resource), class: 'button expand radius new-button'
+  = link_to edit_resource_path(resource), class: 'button expand radius action-button'
     i.fa.fa-edit
     = " "
     = t("forms.edit_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
@@ -13,5 +12,5 @@
     tbody
       - resource_class.attribute_names.each do |attr|
         tr
-          th= resource_class.human_attribute_name(attr)
+          th= t("activerecord.attributes.#{resource_class.name.underscore}.#{attr}")
           td= table_attribute_cell(attr.to_sym, resource)

@@ -24,7 +24,7 @@ class WishesController < ApplicationController
 	end
 
 	def index
-		@wishes = Wish.filter_for(filter_params).by_economy_id(current_economy.id).active
+		@wishes = Wish.filter_for(filter_params).by_economy_id(current_economy.id).active.of_approved_members
 	end
 
 	def edit
@@ -54,7 +54,8 @@ class WishesController < ApplicationController
 
 	def fulfill
 		@item = current_member.items.new(title: @wish.title, image: @wish.image.url, 
-														description: @wish.description, wish_id: @wish.id)
+														         description: @wish.description, wish_id: @wish.id, 
+                                     category_ids: @wish.category_ids)
 	end
 
 	def create_wish_offer

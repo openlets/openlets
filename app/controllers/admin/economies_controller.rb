@@ -1,5 +1,10 @@
 class Admin::EconomiesController < Admin::ResourceController
 
+  def update
+    resource.update_attributes(params[:economy])
+    redirect_to admin_settings_path
+  end
+
   private
     
     def filtered_collection

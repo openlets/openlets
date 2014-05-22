@@ -1,8 +1,12 @@
 .large-10.columns
   h1.bold
-    = t("activerecord.models.#{resource_class.name.downcase}", count: 1)
-    |  Details
+    = t("tables.resource_details", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1 ))
 .large-2.columns
+  - if resource.done?
+    = link_to cancel_admin_transaction_path(resource), method: :put, class: 'button alert radius expand action-button', title: t('forms.show')
+      i.fa.fa-trash-o
+      = t("workflow_state_actions.cancel")
+
 
 .large-12.columns
   table.responsive

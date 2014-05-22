@@ -21,7 +21,7 @@ module Transactionable
 
     delegate :user, to: :member
 
-    scope :of_approved_users, lambda { where(member_id: User.approved.pluck(:id)) }
+    scope :of_approved_members, lambda { where(member_id: Member.approved.pluck(:id)) }
     scope :by_economy_id,     lambda { |id| joins(:member).where("members.economy_id = ?", id) }
     scope :by_search_query,   lambda { |query| where("title || description ILIKE '%#{query}%'") }
     scope :by_category_ids,   lambda { |category_ids| joins(:category_connections).where("category_connections.category_id in(?)", category_ids) }

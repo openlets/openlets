@@ -1,9 +1,10 @@
 = simple_form_for([:admin, resource], wrapper: :foundation_inline) do |f|
   = f.error_notification
   - f.object.errors.full_messages.each do |message|
-    p= message  
-  - resource.admin_form_attribute_names.each do |attr|
+    p= message
+  - resource_class.admin_form_attr_names.each do |attr|
     = form_input(f, attr)
+  = f.input :economy_id, as: :hidden, input_html: { value: current_economy.id   }
   .row
     .large-3.columns
     .large-9.columns

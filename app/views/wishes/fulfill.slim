@@ -1,7 +1,4 @@
-h1= "Fulfill #{@wish.member.try(:name)} Wish"
-h3= "Wish Title: #{@wish.title}"
-h3= "Wish Title: #{@wish.description}"
-
-== render 'wish_offer_form' 
-
-= link_to 'Back', wish_path(@wish), class: 'button radius small'
+.row
+  .large-12.columns
+    h1.bold.text-center= t('wishes.fulfill_wish', name: @wish.member.full_name)
+    = render 'wish_offer_form'

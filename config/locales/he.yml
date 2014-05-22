@@ -12,6 +12,9 @@ he:
     user:
       signed_out: 
   common:
+    purchase_for_price:
+      one: 'קנה במחיר %{price} %{currency_name}'
+      other: 'קנה במחיר %{price} %{currency_name}'
     are_you_sure: את\ה בטוח\ה?
     login: כניסה
     marketplace: לוח מכירות
@@ -33,6 +36,10 @@ he:
     edit_profile: ערוך פרופיל
     balance: מאזן
     connect_social_networks: התחבר עם עוד חשבונות
+    receiving_categories: מעוניין לקבל בקטגוריות
+    giving_categories: מעוניין לתת בקטגוריות
+    edit_preferences: ערוך העדפות
+    edit_password: עריכת סיסמא
   simple_form:
     labels:
       user:
@@ -274,7 +281,6 @@ he:
     empty: ריק
     ends_with: 
     equal_to: 
-    filter: 
     filters:
       buttons:
         clear: איפוס שדות
@@ -348,42 +354,44 @@ he:
         updated_at: 
         value: 
       transaction:
-        amount: 
-        buyer: 
-        cancel: 
-        created_at: 
-        id: 
-        item: 
-        seller: 
-        state_changed_at: 
-        transaction_type: 
-        updated_at: 
-        workflow_state: 
+        id: מספר מזהה
+        amount: מחיר
+        buyer: קונה
+        cancel: ביטול
+        created_at: תאריך יצירה
+        item: מודעה
+        seller: מוכר
+        state_changed_at: סטטוס השתנה בתאריך
+        transaction_type: סוג עסקה
+        updated_at: תאריך עידכון אחרון
+        workflow_state: סטטוס
+        sending_wallet_id: קונה
+        receiving_wallet_id: מוכר
+        item_id: מודעה
       user:
-        about: 
-        account_balance: 
-        approve: 
+        about: אודות
+        account_balance: מאזן
+        approve: אישור
         authentication_token: 
         authorizations: 
-        comments: 
+        comments: תגובות
         confirmation_sent_at: 
         confirmation_token: 
         confirmed_at: 
-        created_at: 
+        created_at: תאריך יצירה
         current_sign_in_at: 
         current_sign_in_ip: 
-        email: 
+        email: אימייל
         encrypted_password: 
-        id: 
-        image: 
-        items: 
+        id: מספר
+        image: תמונה
+        items: מודעות
         last_sign_in_at: 
         last_sign_in_ip: 
-        locale: 
-        location: 
+        locale: שפה מועדפת
+        location: מיקום
         locations: 
-        messages: 
-        name: 
+        messages: הודעות
         purchases: 
         remember_created_at: 
         reset_password_sent_at: 
@@ -396,33 +404,75 @@ he:
         unconfirmed_email: 
         updated_at: 
         user_conversations: 
-        username: 
+        username: שם משתמש
         wishes: 
-        workflow_state: 
+        workflow_state:
+        first_name: שם פרטי
+        last_name: שם משפחה
+        national_id: תעודת זהות
+        address: כתובת
+        phone: טלפון
+        fax: פקס
+        birth_date: תאריך לידה
+        profession: מקצוע
+        job: עבודה
+        relationship_status: מצב משפחתי
+        cellphone: פלאפון
       item:
+        id: מספר מזהה
         categories: 
-        description: 
-        price: 
-        title: 
-        wish: 
-        workflow_state: 
+        description: תיאור
+        price: מחיר
+        title: כותרת
+        wish: משאלה
+        workflow_state: סטטוס
+        image: תמונה
+        member_id: משתמש
+        state_changed_at: סטטוס השתנה בתאריך
+        created_at: תאריך יצירה
+        updated_at: תאריך עידכון
+        wish_id: משאלה
       wish:
         categories: 
+        id: מספר מזהה
+        title: כותרת
+        image: תמונה
+        member_id: משתמש
+        created_at: תאריך יצירה
+        updated_at: תאריך עידכון
+        workflow_state: סטטוס
+        state_changed_at: סטטוס השתנה בתאריך
+        description: תיאור
     models:
       admin_user: משתמש מנהל
       admin: מנהל
+      member:
+        one: חבר
+        other: חברים
       category:
         one: קטגוריה
         other: קטגוריות
-      item: מודעות
+      item: 
+        one: מודעה
+        other: מודעות
       item_comment: תגובו
       setting: הגדרות
-      transaction: עסקאות
+      transaction: 
+        one: עסקה
+        other: עסקאות
+        types:
+          direct_transfer: העברה ישירה
+          item_purchase: רכשית הצעה
+          wish_fulfillment: מילוי משאלה
       user: 
         one: משתמש
         other: משתמשים
-      wish: משאלות
-      comment: תגובות
+      wish: 
+        one: משאלה
+        other: משאלות
+      comment: 
+        one: תגובה
+        other: תגובות
       economy:
         one: כלכלה
         other: כלכלות
@@ -601,7 +651,7 @@ he:
     title: משאלות
     make_a_wish: בקש משאלה
     new: 
-    fulfill: הגשם את המשאלה
+    fulfill: 'הגשם את המשאלה'
     propositions: הצעות להגשמת המשאלה
   items:
     add_an_item: הוספת מודעה
@@ -610,11 +660,14 @@ he:
     edit_item: עריכת מודעה
   market:
     title: שוק
-  filter:
-    by_user: לפי משתמש
-    search: חיפוש
-    select_categories: סנן לפי קטגוריות
   tables:
+    resource_details: 'פרטי %{name}'
+    sending_wallet_id: קונה
+    receiving_wallet_id: מוכר
+    member_id: חבר
+    manager_id: מנהל
+    full_name: שם מלא
+    authorizations: התחבר עם
     economy_id: כלכלה
     workflow_actions: פעולות סטטוס
     economy_type: סוג כלכלה
@@ -626,9 +679,9 @@ he:
     id: מספר
     item: מודעה
     price: מחיר
-    amount: כמות
+    amount: מחיר
     seller: מוכר
-    type: סוג עסקא
+    type: סוג עסקה
     image: תמונה
     name: שם
     email: אימייל
@@ -655,6 +708,27 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    maximum_debit: חוב מקסימלי
+    maximum_credit: פלוס מקסימלי
+    edit_manager_for: 'בחירת מנהל עבור %{name}'
+    edit_button: 'ערוך %{name}'
+    select_transaction_type: בחר סוג עסקה
+    select_item: בחר מודעה
+    select_seller: בחר מוכר
+    select_buyer: בחר קונה
+    select_manager: בחר מנהל
+    manager_id: מנהל
+    amount: מחיר
+    sending_wallet_id: קונה
+    receiving_wallet_id: מוכר
+    item_id: מודעה
+    transaction_type: סוג עסקה
+    create_button: 'צור %{name}'
+    parent_id: קטגוריית על
+    name: שם
+    edit_manager: עריכת מנהל
+    true: כן
+    false: לא
     image: תמונה
     first_name: שם פרטי
     last_name: שם משפחה
@@ -679,7 +753,18 @@ he:
     delete_confirm: האם אתה בטוח שברצונך למחוק?
     delete: מחיקה
     show: פרטים
-    edit_resource: עריכת %{name}
+    edit_resource: 'עריכת %{name}'
+    edit_economy_settings: ערוך הגדרות הכלכלה
+    allow_anyone_to_create_wishes: כל אחד יכול לייצר משאלה?
+    allow_anyone_to_create_items: כל אחד יכול להעלות מודעה?
+    currency_name: שם המטבע
+    domain: דומיין
+    currency_type: מודל מוניטרי
+    economy_type: סוג כלכלה
+    maximum_debit: חוב מקסימלי
+    logo: לוגו
+    bg_image: תמונת רקע 
+    invite_only: הרשמה עם הזמנה בלבד?    
     description: תיאור
     price: מחיר
     title: כותרת
@@ -688,8 +773,8 @@ he:
     workflow_state: סטטוס
     save: שמירה
     user: משתמש
-    create_button: צור %{name}
-    new_resource: צור %{name}
+    create_button: 'צור %{name}'
+    new_resource: 'צור %{name}'
   inbox:
     send_message: שלח הודעה ל%{name}
     title: הודעות
@@ -697,18 +782,30 @@ he:
     title: תגובות
     comment: תגובה
   admin:
+    dashboard:
+      members_awaiting_approval: משתמשים שמחכים לאישור  
     sidebar:
       members: חברים
-      managers: הרשאות
+      member: חבר
+      managers: מנהלים
+      manager: מנהל
       comments: תגובות
+      comment: תגובה
       economies: כלכלות
+      economy: כלכלה
       items: מודעות
+      item: מודעה
       settings: הגדרות
+      setting: הגדרה
       transactions: עסקאות
+      transaction: עסקה
       users: משתמשים
+      user: משתמש
       wishes: משאלות
+      wish: משאלה
       dashboard: לוח בקרה
       categories: קטגוריות
+      category: קטגוריה
       admin_panel: פנל ניהול
       configurations: קונפיגורציות
       custom_member_fields: שדות מותאמים
@@ -722,7 +819,7 @@ he:
       add_manager: הוסף מנהל
       remove_managers: הסר מנהלים
       remove_manager: הסר מנהל
-      title: הרשאות מנהל
+      title: מנהלים
       choose_user: בחירת משתמש
   flash:
     admin:
@@ -736,3 +833,49 @@ he:
   workflow_state:
     approve: אישור
     ban: השהייה
+  workflow_states:
+    active: מופעל
+    paused: מושהה
+    banned: מבוטל
+    canceled: בוטל
+    approved: מאושר
+    done: בוצע
+  breadcrumbs:
+    show: '%{name} #%{id}'
+    index: '%{name}'
+    new: '%{name} חדש'
+    edit: 'עריכת %{name}'
+    dashboard: פנל ניהול
+  workflow_state_actions:
+    pause: השהיה
+    ban: החרמה
+    approve: אישור
+    activate: הפעלה
+    disapprove: החרמה
+    cancel: ביטול
+  filter:
+    by_user: לפי משתמש
+    search: חיפוש
+    select_categories: סנן לפי קטגוריות  
+    title: לפי כותרת
+    description: לפי תיאור
+    email: לפי מייל
+    wish: לפי משאלה
+    wish_id: לפי משאלה
+    member: לפי חבר
+    sending_wallet_id: לפי קונה
+    receiving_wallet_id: לפי מוכר
+    item_id: לפי מודעה
+    user_id: לפי משתמש
+    manager_id: לפי מנהל
+    id: לפי מספר מזהה
+    username: לפי שם משתמש
+    filter: פילטרים
+    status: לפי סטטוס
+    price: לפי מחיר
+    name: לפי שם
+    parent_id: לפי קטגוריית על
+  mutual_credit:
+    validations:
+      maximum_debit: לא ניתן לבצע את העסקה הזו בשל גודל החוב שלך
+      max_credit: הגעת לפלוס המקסימלי

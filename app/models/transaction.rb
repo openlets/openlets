@@ -3,6 +3,8 @@ class Transaction < ActiveRecord::Base
   include Workflow
   include WorkflowExtended
 
+  TRANSACTION_TYPES = [:direct_transfer, :item_purchase, :wish_fulfillment]
+
   attr_accessible :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, 
                   :transaction_type, :economy_id
   belongs_to :item
@@ -16,7 +18,7 @@ class Transaction < ActiveRecord::Base
 
   delegate :economy, to: :buyer
 
-  scope :commerce, lambda { where(transaction_type: ['purchase', 'direct_transfer']) }
+  scope :commerce, lambda { where(transaction_type: ['item_purchase', 'direct_transfer']) }
   scope :for_economy, lambda { |economy| where('receiving_wallet_id IN (:wallet_ids) OR sending_wallet_id IN (:wallet_ids)', wallet_ids: economy.wallet_ids) }
 
   workflow do
@@ -64,8 +66,13 @@ class Transaction < ActiveRecord::Base
     [:id, :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type, :workflow_state]
   end
 
+
   def admin_form_attribute_names
     [:economy_id, :amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type]
+  end
+
+  def self.admin_form_attr_names
+    [:amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type]
   end
 
   private

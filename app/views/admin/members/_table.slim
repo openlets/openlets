@@ -21,7 +21,7 @@ table.responsive
 
         td.actions
           ul.button-group.radius.tiny
-            li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')
+            li= link_to admin_user_path(resource.user), class: 'button small success', title: t('forms.show')
               i.fa.fa-info
             li= link_to edit_admin_user_path(resource.user), class: 'button small', title: t('forms.edit')
               i.fa.fa-edit

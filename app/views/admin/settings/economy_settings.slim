@@ -15,7 +15,8 @@ h1.bold.text-center= t('forms.edit_economy_settings')
     = f.input :currency_type, required: true, label: t('forms.currency_type'), disabled: true, input_html: { value: f.object.currency_type.titleize }
     = f.input :economy_type,  required: true, label: t('forms.economy_type'), disabled: true, input_html: { value: f.object.economy_type.titleize }
     - if f.object.currency_type == "mutual_credit"
-      = f.input :max_debit
+      = f.input :max_debit, label: t('forms.max_debit')
+      = f.input :max_credit, label: t('forms.max_credit')
   - else
     = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: [['Mututal Credit', 'mutual_credit'], ['Fiat', 'fiat'], ['Backed by', 'backed']]
     = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: [['Community', 'community'], ['Cooperative', 'cooperative'], ['Business', 'business'], ['Non Profit', 'non_profit']]

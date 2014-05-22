@@ -29,8 +29,7 @@ module Admin::ResourceHelper
       return link_to Wish.find(attribute).title, admin_wish_path(attribute)                                  if name == :wish_id
       return link_to Item.find(attribute).title, admin_item_path(attribute)                                  if name == :item_id
       return link_to Category.find(attribute).name, admin_category_path(attribute)                           if name == :parent_id
-      return link_to User.find(attribute).full_name,  admin_user_path(attribute)                             if [:user_id, :buyer_id, :seller_id].include?(name)
-      return link_to User.find(attribute).full_name,  admin_manager_path(attribute)                          if name == :manager_id
+      return link_to User.find(attribute).full_name, admin_user_path(attribute)                              if [:manager_id, :user_id, :buyer_id, :seller_id].include?(name)
       return link_to Wallet.find(attribute).user.full_name, admin_user_path(Wallet.find(attribute).user.id)  if [:receiving_wallet_id, :sending_wallet_id].include?(name)
       return attribute
     end

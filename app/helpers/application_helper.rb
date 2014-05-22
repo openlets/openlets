@@ -4,22 +4,6 @@ module ApplicationHelper
     @currency_name ||= current_economy.currency_name
   end
 
-  def current_locale
-    @locale ||= I18n.locale
-  end
-
-  def rtl?
-    @rtl ||= current_locale == :he
-  end
-
-  def top_bar_direction
-    @dir ||= current_locale == :he ? 'left' : 'right'
-  end
-
-  def top_bar_other_direction
-    @other_dir ||= current_locale == :he ? 'right' : 'left'
-  end
-
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil

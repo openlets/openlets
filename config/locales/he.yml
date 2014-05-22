@@ -354,42 +354,44 @@ he:
         updated_at: 
         value: 
       transaction:
-        amount: 
-        buyer: 
-        cancel: 
-        created_at: 
-        id: 
-        item: 
-        seller: 
-        state_changed_at: 
-        transaction_type: 
-        updated_at: 
-        workflow_state: 
+        id: מספר מזהה
+        amount: מחיר
+        buyer: קונה
+        cancel: ביטול
+        created_at: תאריך יצירה
+        item: מודעה
+        seller: מוכר
+        state_changed_at: סטטוס השתנה בתאריך
+        transaction_type: סוג עסקה
+        updated_at: תאריך עידכון אחרון
+        workflow_state: סטטוס
+        sending_wallet_id: קונה
+        receiving_wallet_id: מוכר
+        item_id: מודעה
       user:
-        about: 
-        account_balance: 
-        approve: 
+        about: אודות
+        account_balance: מאזן
+        approve: אישור
         authentication_token: 
         authorizations: 
-        comments: 
+        comments: תגובות
         confirmation_sent_at: 
         confirmation_token: 
         confirmed_at: 
-        created_at: 
+        created_at: תאריך יצירה
         current_sign_in_at: 
         current_sign_in_ip: 
-        email: 
+        email: אימייל
         encrypted_password: 
-        id: 
-        image: 
-        items: 
+        id: מספר
+        image: תמונה
+        items: מודעות
         last_sign_in_at: 
         last_sign_in_ip: 
-        locale: 
-        location: 
+        locale: שפה מועדפת
+        location: מיקום
         locations: 
-        messages: 
-        name: 
+        messages: הודעות
         purchases: 
         remember_created_at: 
         reset_password_sent_at: 
@@ -402,18 +404,45 @@ he:
         unconfirmed_email: 
         updated_at: 
         user_conversations: 
-        username: 
+        username: שם משתמש
         wishes: 
-        workflow_state: 
+        workflow_state:
+        first_name: שם פרטי
+        last_name: שם משפחה
+        national_id: תעודת זהות
+        address: כתובת
+        phone: טלפון
+        fax: פקס
+        birth_date: תאריך לידה
+        profession: מקצוע
+        job: עבודה
+        relationship_status: מצב משפחתי
+        cellphone: פלאפון
       item:
+        id: מספר מזהה
         categories: 
-        description: 
-        price: 
-        title: 
-        wish: 
-        workflow_state: 
+        description: תיאור
+        price: מחיר
+        title: כותרת
+        wish: משאלה
+        workflow_state: סטטוס
+        image: תמונה
+        member_id: משתמש
+        state_changed_at: סטטוס השתנה בתאריך
+        created_at: תאריך יצירה
+        updated_at: תאריך עידכון
+        wish_id: משאלה
       wish:
         categories: 
+        id: מספר מזהה
+        title: כותרת
+        image: תמונה
+        member_id: משתמש
+        created_at: תאריך יצירה
+        updated_at: תאריך עידכון
+        workflow_state: סטטוס
+        state_changed_at: סטטוס השתנה בתאריך
+        description: תיאור
     models:
       admin_user: משתמש מנהל
       admin: מנהל
@@ -429,7 +458,7 @@ he:
       item_comment: תגובו
       setting: הגדרות
       transaction: 
-        one: עסקא
+        one: עסקה
         other: עסקאות
         types:
           direct_transfer: העברה ישירה
@@ -622,7 +651,7 @@ he:
     title: משאלות
     make_a_wish: בקש משאלה
     new: 
-    fulfill: הגשם את המשאלה
+    fulfill: 'הגשם את המשאלה'
     propositions: הצעות להגשמת המשאלה
   items:
     add_an_item: הוספת מודעה
@@ -652,7 +681,7 @@ he:
     price: מחיר
     amount: מחיר
     seller: מוכר
-    type: סוג עסקא
+    type: סוג עסקה
     image: תמונה
     name: שם
     email: אימייל
@@ -679,15 +708,21 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
-    select_transaction_type: בחר סוג עסקא
+    maximum_debit: חוב מקסימלי
+    maximum_credit: פלוס מקסימלי
+    edit_manager_for: 'בחירת מנהל עבור %{name}'
+    edit_button: 'ערוך %{name}'
+    select_transaction_type: בחר סוג עסקה
     select_item: בחר מודעה
     select_seller: בחר מוכר
     select_buyer: בחר קונה
+    select_manager: בחר מנהל
+    manager_id: מנהל
     amount: מחיר
     sending_wallet_id: קונה
     receiving_wallet_id: מוכר
     item_id: מודעה
-    transaction_type: סוג עסקא
+    transaction_type: סוג עסקה
     create_button: 'צור %{name}'
     parent_id: קטגוריית על
     name: שם
@@ -763,7 +798,7 @@ he:
       settings: הגדרות
       setting: הגדרה
       transactions: עסקאות
-      transaction: עסקא
+      transaction: עסקה
       users: משתמשים
       user: משתמש
       wishes: משאלות
@@ -840,3 +875,7 @@ he:
     price: לפי מחיר
     name: לפי שם
     parent_id: לפי קטגוריית על
+  mutual_credit:
+    validations:
+      maximum_debit: לא ניתן לבצע את העסקה הזו בשל גודל החוב שלך
+      max_credit: הגעת לפלוס המקסימלי

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :filter_params, :set_filter_param, :current_economy, :current_member, 
                 :member_signed_in?, :filter_params, :all_items, :all_wishes, :all_users, 
-                :all_transactions, :all_wallets, :all_members, :all_categories
+                :all_transactions, :all_wallets, :all_members, :all_categories, :all_managers
 
   def filter_params
     params["filter"] ||= {}
@@ -67,6 +67,10 @@ class ApplicationController < ActionController::Base
 
   def all_transactions
     @all_transactions ||= (current_economy ? current_economy.transactions : Transaction.all)
+  end  
+
+  def all_managers
+    @all_managers ||= (current_economy ? current_economy.managers : User.with_role(:admin))
   end  
 
 end

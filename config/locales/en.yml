@@ -292,12 +292,13 @@ en:
         wishes: Wishes
         workflow_state: Workflow State
       item:
+        id: מספר מזהה
         categories: 
-        description: 
-        price: 
-        title: 
-        wish: 
-        workflow_state: 
+        description: תיאור
+        price: מחיר
+        title: כותרת
+        wish: משאלה
+        workflow_state: סטטוס
       wish:
         categories: 
     models:
@@ -483,7 +484,6 @@ en:
     edit_wish: Edit Wish
     new: 
     fulfill: Fulfill the wish
-    fulfill: 'Fulfill %{name}s Wish'
     propositions: Wish Propositions
   items:
     add_an_item: Add An Item

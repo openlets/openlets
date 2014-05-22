@@ -13,7 +13,7 @@ table border="0" cellpadding="0" cellspacing="0"
         td.id= member.id
         td.image= image_tag(member.image, size: '50x50')
         td.name
-          = link_to member.full_name, send("admin_member_path", (member.id))
+          = link_to member.full_name, send("admin_user_path", (member.user.id))
         td.email
           span = mail_to member.email
         td.authorizations
@@ -29,5 +29,5 @@ table border="0" cellpadding="0" cellspacing="0"
             - elsif auth.provider == 'google_oauth2'
               span= link_to 'google', " https://plus.google.com/#{auth.uid}", target: :blank
         td.actions
-          = link_to 'Approve', admin_member_approve_path(member.id), method: :put, class: 'button tiny'
-          = link_to 'Disapprove', admin_member_ban_path(member.id), method: :put,  class: 'button alert tiny'
+          = link_to t("workflow_state_actions.approve"), admin_member_approve_path(member.id), method: :put, class: 'button tiny'
+          = link_to t("workflow_state_actions.disapprove"), admin_member_ban_path(member.id), method: :put,  class: 'button alert tiny'

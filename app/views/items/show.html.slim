@@ -24,6 +24,8 @@
         - if can? :activate, @item
           td = link_to t('forms.activate'), activate_item_path(@item), method: :put, class: 'button radius tiny'
 
-.row#comments
-  .large-12.columns
-    = render 'comments/list'
+
+- if current_user.approved?
+  .row#comments
+    .large-12.columns
+      = render 'comments/list'

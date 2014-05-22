@@ -24,7 +24,7 @@ class WishesController < ApplicationController
 	end
 
 	def index
-		@wishes = Wish.filter_for(filter_params).by_economy_id(current_economy.id).active
+		@wishes = Wish.filter_for(filter_params).by_economy_id(current_economy.id).active.of_approved_members
 	end
 
 	def edit

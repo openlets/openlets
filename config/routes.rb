@@ -1,7 +1,5 @@
 OpenLets::Application.routes.draw do
 
-  root to: 'pages#home'
-
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: "registrations" }
 
   resources :economies
@@ -46,7 +44,6 @@ OpenLets::Application.routes.draw do
       post '/:user_id/create', to: 'conversations#create', as: :create
     end
   end
-
 
   constraints DomainConstraint.new do
     root to: 'pages#economy_home'
@@ -112,4 +109,5 @@ OpenLets::Application.routes.draw do
   get "pages/terms"
   get "pages/welcome"
 
+  root to: 'pages#home'
 end

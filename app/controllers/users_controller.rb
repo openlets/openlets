@@ -19,7 +19,11 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      redirect_to @user.member_for_economy(current_economy), notice: 'Profile was successfully updated.'
+      if current_economy
+        redirect_to @user.member_for_economy(current_economy), notice: 'Profile was successfully updated.'
+      else
+        redirect_to @user, notice: 'Profile was successfully updated.'
+      end
     else
       render action: 'edit'
     end

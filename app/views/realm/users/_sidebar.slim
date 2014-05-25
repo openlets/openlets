@@ -1,0 +1,6 @@
+h3.bold= t("filter.filter")
+= form_tag filter_path_helper, method: :get do
+  = html_select_filter_for(collection, t('filter.id'), :id, :id, :id)
+  = html_select_filter_for(collection, t('filter.first_name'), :first_name, :first_name, :first_name)
+  = html_select_filter_for(collection, t('filter.last_name'), :last_name, :last_name, :last_name)
+  = html_select_filter_for(collection, t('filter.email'), :email, :email, :email)

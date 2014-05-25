@@ -22,6 +22,12 @@ class Economy < ActiveRecord::Base
 
   after_create :add_admin_role
 
+  before_validation :load_economy_validations
+
+  def load_economy_validations
+    self.class.send(:include, "MonetaryModels::#{self.currency_type.camelcase}::Economy".constantize)
+  end
+
   ECONOMY_TYPES  = %w(community cooperative business non_profit)
   CURRENCY_TYPES = %w(time_bank mutual_credit fiat backed derived_from)
 

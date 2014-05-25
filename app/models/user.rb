@@ -68,6 +68,10 @@ class User < ActiveRecord::Base
       relationship_status location locale password password_confirmation)
   end
 
+  def self.admin_table_attribute_names
+    %w(image first_name last_name username email locale)
+  end
+
   def unique_authorizations
     authorizations.inject({}) {|h,e| h[e.provider]=e; h}.values
   end

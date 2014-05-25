@@ -3,34 +3,12 @@ table.responsive
     tr
       - attributes.each do |name|
         th= sortable(name, t("tables.#{name.to_s}"))
-      - if current_user.has_role?(:admin)
-        th= t('tables.roles')
-      th= t('tables.workflow_actions')
       th= t('tables.actions')
   tbody
     - collection.each do |resource|
       tr
         - attributes.each do |name|
           td= table_attribute_cell(name, resource)
-          
-        - if current_user.has_role?(:admin)
-          td.roles
-            - resource.roles.each do |role|
-              span.label.radius
-                = role.name.titleize
-              |   
-        td.workflow_actions.actions
-          ul.button-group.radius.tiny
-            - unless resource.approved?
-              li= link_to approve_admin_user_path(resource), method: :put, class: 'button small', title: t('workflow_state.approve')
-                i.fa.fa-check
-                |  
-                = t('workflow_state_actions.approve')
-            - unless resource.banned?
-              li= link_to ban_admin_user_path(resource), method: :put, class: 'button small alert', title: t('workflow_state_actions.ban')
-                i.fa.fa-exclamation-circle
-                |  
-                = t('workflow_state_actions.ban')
         td.actions
           ul.button-group.radius.tiny
             li= link_to resource_path(resource), class: 'button small success', title: t('forms.show')

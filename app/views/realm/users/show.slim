@@ -1,0 +1,12 @@
+.large-10.columns
+  h1.bold
+    = t("tables.resource_details", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1 ))
+.large-2.columns
+
+.large-12.columns
+  table.responsive
+    tbody
+      - resource.editable_attribute_names.each do |attr|
+        tr
+          th= t("activerecord.attributes.#{resource_class.name.underscore}.#{attr}")
+          td= table_attribute_cell(attr.to_sym, resource)

@@ -24,7 +24,7 @@ class Admin::AdminController < ApplicationController
   end
 
   def show_sidebar?
-    !['admin/admin', 'admin/settings'].include?(params[:controller]) and !["show", "new", "edit"].include?(params[:action])
+    !['admin/admin', 'admin/settings'].include?(params[:controller]) and !["show", "new", "edit", "update"].include?(params[:action])
   end
 
   def table_attribute_names_for(resource)

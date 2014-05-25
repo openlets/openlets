@@ -5,6 +5,7 @@ module Admin::ResourceHelper
   end
 
   def table_attribute_cell(name, resource, attribute = nil)
+    name = name.to_sym
     attribute ||= resource.send(name)
     if attribute
       return attribute.map { |a| content_tag(:span, a.titleize, class: 'label radius') }.join(" ").html_safe if name == :allowed_currency_types or name == :allowed_economy_types

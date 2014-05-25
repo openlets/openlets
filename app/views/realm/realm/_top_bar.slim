@@ -10,17 +10,19 @@
 
     section.top-bar-section
       ul class=(top_bar_other_direction)
-        li= link_to "ADMIN PANEL", "#"
-        = nav_link('admin/admin', 'dashboard', admin_dashboard_path, t('admin.sidebar.dashboard'), 'dashboard')
-        = nav_link('admin/settings', 'index', admin_settings_path, t('admin.sidebar.settings'), 'gears')
-        = nav_link('admin/users', 'managers', admin_managers_path, t('admin.sidebar.managers'), 'suitcase')
-        = nav_link('admin/members', 'index', admin_members_path, t('admin.sidebar.members'), 'users')
-        = nav_link('admin/items', 'index', admin_items_path, t('admin.sidebar.items'), 'shopping-cart')
-        = nav_link('admin/wishes', 'index', admin_wishes_path, t('admin.sidebar.wishes'), 'magic')
-        = nav_link('admin/transactions', 'index', admin_transactions_path, t('admin.sidebar.transactions'), 'money')
-        = nav_link('admin/categories', 'index', admin_categories_path, t('admin.sidebar.categories'), 'folder-open')
+        = nav_link('realm/admin', 'dashboard', realm_dashboard_path, t('admin.sidebar.dashboard'), 'dashboard')
+
+        = nav_link('realm/users', 'admins', realm_admins_path, t('admin.sidebar.admins'), 'suitcase')
+        = nav_link('realm/users', 'index', realm_users_path, t('admin.sidebar.users'), 'users')
+        
+        = nav_link('realm/economies', 'index', realm_economies_path, t('admin.sidebar.economies'), 'globe')
+        - if (resource_class == Economy and params[:action] == "show") or params[:economy_id].present?
+          = nav_link('realm/members', 'index', realm_economy_members_path(resource), t('admin.sidebar.members'), 'users')
+          = nav_link('realm/items', 'index', realm_economy_items_path(resource), t('admin.sidebar.items'), 'shopping-cart')
+          = nav_link('realm/wishes', 'index', realm_economy_wishes_path(resource), t('admin.sidebar.wishes'), 'magic')
+          = nav_link('realm/transactions', 'index', realm_economy_transactions_path(resource), t('admin.sidebar.transactions'), 'money')
+          = nav_link('realm/categories', 'index', realm_economy_categories_path(resource), t('admin.sidebar.categories'), 'folder-open')
 
       ul class=(top_bar_direction)
         - if user_signed_in?
-          = nav_link('members', 'show', current_member, t('top_bar.profile'), 'user')
           = nav_link('', '', destroy_user_session_path, t('common.logout'), 'sign-out')

@@ -61,62 +61,12 @@ OpenLets::Application.routes.draw do
         member do
           put :approve
           put :ban
-        end
-        collection do
-          put 'add_admin'
-          delete 'remove_admin'
-        end      
+        end    
       end
       resources :managers do
         collection do
           put 'add'
           delete 'remove'
-        end 
-      end
-      resources :items do
-        member do
-          put :activate
-          put :pause
-          put :ban
-        end
-      end
-      resources :wishes
-      resources :comments
-      resources :settings do
-        collection do
-          get 'mass_edit'
-          put 'mass_update'
-        end
-      end
-      resources :transactions do
-        member do
-          put :cancel
-        end
-      end
-      resources :categories
-    end
-
-  end
-
-  namespace :realm do
-    root to: "realm#dashboard"
-    
-    resources :admins do
-      collection do
-        put    :add
-        delete :remove
-      end      
-    end
-
-    resources :economies do 
-      resources :members do
-        put :approve
-        put :ban
-      end
-      resources :managers do
-        collection do
-          put    :add
-          delete :remove
         end 
       end
       resources :items do
@@ -140,7 +90,23 @@ OpenLets::Application.routes.draw do
         end
       end
       resources :categories
+      resources :economies, only: :update
     end
+
+  end
+
+  namespace :realm do
+    root to: "realm#dashboard", as: :dashboard
+    
+    resources :admins do
+      collection do
+        put    :add
+        delete :remove
+      end      
+    end
+
+    resources :users
+    resources :economies
   end
 
   get "pages/terms"

@@ -785,6 +785,7 @@ he:
     dashboard:
       members_awaiting_approval: משתמשים שמחכים לאישור  
     sidebar:
+      admins: מנהלים
       members: חברים
       member: חבר
       managers: מנהלים
@@ -854,6 +855,10 @@ he:
     disapprove: החרמה
     cancel: ביטול
   filter:
+    currency_name: לפי שם מטבע
+    domain: לפי דומיין
+    economy_type: לפי סוג כלכלה
+    currency_type: לפי מודל מוניטרי
     by_user: לפי משתמש
     search: חיפוש
     select_categories: סנן לפי קטגוריות  
@@ -875,7 +880,20 @@ he:
     price: לפי מחיר
     name: לפי שם
     parent_id: לפי קטגוריית על
+    first_name: לפי שם פרטי
+    last_name: לפי שם משפחה
   mutual_credit:
     validations:
       maximum_debit: לא ניתן לבצע את העסקה הזו בשל גודל החוב שלך
       max_credit: הגעת לפלוס המקסימלי
+  realm:
+    admins:
+      title: מנהלים
+      add_admins: הוספת מנהלים
+      add_admin: הוסף מנהל
+      choose_user: בחר משתמש
+      remove_admins: הסרת מנהלים
+      remove_admin: הסר מנהל
+  flash_messages:
+    economy_updated_successfully: הגדרות עודכנו בהצלחה
+    something_went_wrong: משהו לא 

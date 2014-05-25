@@ -3,11 +3,7 @@ class Admin::SettingsController < Admin::ResourceController
   before_filter :clean_select_multiple_params, only: :mass_update
 
   def index
-    if current_economy
-      render 'economy_settings'
-    else
-      render 'app_settings'
-    end
+    render 'economy_settings'
   end
 
   def mass_edit

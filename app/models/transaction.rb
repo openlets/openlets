@@ -31,7 +31,7 @@ class Transaction < ActiveRecord::Base
   before_validation :load_economy_validations
 
   def load_economy_validations
-    self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}".constantize)
+    self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}::Transaction".constantize)
   end
 
   def buyer

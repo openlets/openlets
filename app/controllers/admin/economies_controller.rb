@@ -1,8 +1,13 @@
 class Admin::EconomiesController < Admin::ResourceController
 
   def update
-    resource.update_attributes(params[:economy])
-    redirect_to admin_settings_path
+    @economy = resource
+    if @economy.update_attributes(params[:economy])
+      flash[:notice] = t('flash_messages.economy_updated_successfully')
+      redirect_to admin_settings_path
+    else
+      render 'admin/settings/economy_settings'
+    end
   end
 
   private

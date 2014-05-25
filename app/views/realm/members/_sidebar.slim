@@ -1,6 +1,0 @@
-h3.bold Filters
-= form_tag filter_path_helper, method: :get do
-  = html_select_filter_for(collection, t('filter.id'), :id, :id, :id)
-  = html_select_filter_for(collection, t('filter.user_id'), :user_id, :id, :full_name)
-  = html_select_tag(resource_class.workflow_spec.states.keys.map(&:to_s).map(&:titleize), 'workflow_state', 'Status')
-  = html_select_filter_for(all_managers, t('filter.manager_id'), :manager_id, :id, :full_name)

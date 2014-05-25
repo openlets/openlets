@@ -493,6 +493,7 @@ en:
   market:
     title: Marketplace
   filter:
+    status: Status
     economy_id: By Economy
     parent_id : By Parent
     sending_wallet_id: By Buyer
@@ -668,3 +669,11 @@ en:
     new: 'New %{name}'
     edit: 'Edit %{name}'
     dashboard: Dashboard
+  realm:
+    admins:
+      title: Admin Users
+      add_admins: Add Admin Users
+      add_admin: Add Admin
+      choose_user: Choose User
+      remove_admins: Remove Admins
+      remove_admin: Remove Admin

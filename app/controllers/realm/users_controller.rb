@@ -1,5 +1,6 @@
 class Realm::UsersController < Realm::ResourceController
   load_and_authorize_resource
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to admin_members_path, :alert => exception.message
   end
@@ -10,8 +11,7 @@ class Realm::UsersController < Realm::ResourceController
   def create
     create! do |success, failure|
       success.html do
-        current_economy.members.create(user_id: resource.id)
-        redirect_to admin_member_path(resource.member_for_economy(current_economy))
+        redirect_to realm_user_path(resource)
       end
     end
   end
@@ -56,11 +56,7 @@ class Realm::UsersController < Realm::ResourceController
   private
 
     def collection
-      if current_economy
-        @collection ||= end_of_association_chain.by_economy_id(current_economy.id).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      else
-        @collection ||= end_of_association_chain.order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
-      end 
+      @collection ||= end_of_association_chain.filter_for(filter_params).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 10)
     end
 
 end

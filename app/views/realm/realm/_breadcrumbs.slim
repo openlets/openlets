@@ -1,8 +1,8 @@
 nav.breadcrumbs
   - controller = params[:controller].dup ; controller["/"] = "_"
-  = link_to "Dashboard", admin_dashboard_path, class: ('current' if params[:action] == 'dashboard')
-  - unless ['dashboard', 'realm_dashboard'].include?(params[:action])
-    = link_to resource_class.name.pluralize, send("#{controller}_path"), class: ('current' if params[:action] == 'index')
-    = link_to "#{resource_class.name} ##{resource.id}", "#", class: 'current' if params[:action] == "show"
-    = link_to "New #{resource_class.name}", "#", class: 'current' if params[:action] == "new"
-    = link_to "Edit #{resource_class.name}", "#", class: 'current' if params[:action] == "edit"
+  = link_to t("breadcrumbs.dashboard"), admin_dashboard_path, class: ('current' if params[:action] == 'dashboard')
+  - unless params[:action] == 'dashboard' or params[:controller] == "admin/economies"
+    = link_to t("breadcrumbs.index", name: t("admin.sidebar.#{resource_class.name.pluralize.underscore}")),       send("#{controller}_path"), class: ('current' if params[:action] == 'index')
+    = link_to t("breadcrumbs.show", name: t("admin.sidebar.#{resource_class.name.underscore}"), id: resource.id), "#", class: 'current' if params[:action] == "show"
+    = link_to t("breadcrumbs.new", name: t("admin.sidebar.#{resource_class.name.underscore}")),                   "#", class: 'current' if params[:action] == "new"
+    = link_to t("breadcrumbs.edit", name: t("admin.sidebar.#{resource_class.name.underscore}")),                  "#", class: 'current' if params[:action] == "edit"    

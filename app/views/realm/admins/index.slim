@@ -1,0 +1,22 @@
+.large-10.columns
+  h1.bold= t("realm.admins.title")
+.large-2.columns
+.large-12.columns
+  = render 'table', attributes: [:id, :image, :full_name, :email, :username]
+
+.large-4.columns#managers-page
+  h3.bold= t('realm.admins.add_admins')
+  .row
+    = form_tag add_realm_admins_path, method: :put do |f|
+      .small-8.columns
+        = select_tag "chosen_user_id", options_from_collection_for_select(@rest_of_users, "id", "full_name"), class: 'chzn-select', prompt: t('realm.admins.choose_user')
+      .small-4.columns
+        = submit_tag t('realm.admins.add_admin'), class: 'button radius small'
+.large-4.columns#managers-page
+  h3.bold= t('realm.admins.remove_admins')
+  .row
+    = form_tag remove_realm_admins_path, method: :delete do |f|
+      .small-8.columns
+        = select_tag "chosen_user_id", options_from_collection_for_select(@admins_for_removal, "id", "full_name"), class: 'chzn-select', prompt: t('realm.admins.choose_user')
+      .small-4.columns
+        = submit_tag t('realm.admins.remove_admin'), class: 'button radius small alert', confirm: t('forms.delete_confirm')

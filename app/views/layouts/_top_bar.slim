@@ -11,8 +11,8 @@
       ul class=(top_bar_direction)
         - if user_signed_in?
           = nav_link('users', 'show', current_user, t('top_bar.profile'), 'user')
-          - if current_user.has_role?(:admin)
-            = nav_link('', '', admin_dashboard_path, t('top_bar.admin'), 'dashboard')
+          - unless (current_user.roles.map(&:name) & ["admin", "manager"]).empty?
+            = nav_link('', '', send("#{current_economy ? "admin" : "realm"}_dashboard_path"), t('top_bar.admin'), 'dashboard')
           = nav_link('', '', destroy_user_session_path, t('common.logout'), 'sign-out')
         - else
           = nav_link('', '', new_user_session_path, t('common.login'), 'sign-in')

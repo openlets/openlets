@@ -3,10 +3,6 @@ class Realm::RealmController < ApplicationController
   before_filter :authenticate_admin_user!
   helper_method :sort_column, :sort_direction, :show_sidebar?, :table_attribute_names_for
 
-  def dashboard
-    @members = current_economy.members
-  end
-
   def realm_dashboard
   end
 
@@ -25,7 +21,7 @@ class Realm::RealmController < ApplicationController
   end
 
   def show_sidebar?
-    !['admin/admin', 'admin/settings'].include?(params[:controller]) and !["show", "new", "edit"].include?(params[:action])
+    !['admin/admin', 'admin/settings'].include?(params[:controller]) and !["show", "new", "edit", "dashboard"].include?(params[:action])
   end
 
   def table_attribute_names_for(resource)

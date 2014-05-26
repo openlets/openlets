@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
                 :all_transactions, :all_wallets, :all_members, :all_categories, :all_managers,
                 :all_admins, :all_economies, :collection_for_array
 
+  before_filter :set_locale
+
   def filter_params
     params["filter"] ||= {}
   end
@@ -84,6 +86,10 @@ class ApplicationController < ActionController::Base
 
   def collection_for_array(array)
     array.map { |c| [c.titleize, c] }
+  end
+
+  def set_locale
+    I18n.locale = (current_user.locale unless current_user.try(:locale).blank?) || I18n.default_locale
   end
 
 end

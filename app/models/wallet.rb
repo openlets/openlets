@@ -22,6 +22,10 @@ class Wallet < ActiveRecord::Base
     sales.sum(&:amount) - purchases.sum(&:amount)
   end
 
+  def hour_balance
+    (account_balance.to_f / 60).round(2)
+  end
+
   def user_name
     "#{user.full_name} (#{user.id})"
   end  

@@ -5,8 +5,13 @@ class Item < ActiveRecord::Base
 
   belongs_to :wish
 
-  validates_presence_of :price
-  validates_numericality_of :price
+  before_validation :load_economy_validations
+
+  delegate :economy, to: :member
+
+  def load_economy_validations
+    self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}::Item".constantize)
+  end
 
   def purchase(buyer)
     Transaction.transfer({

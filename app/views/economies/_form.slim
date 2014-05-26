@@ -9,6 +9,8 @@
     = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: Economy::ECONOMY_TYPES.map { |c| [c.titleize, c] }
     = f.input :currency_name, required: true, label: t('forms.currency_name')
     = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: Economy::CURRENCY_TYPES.map { |c| [c.titleize, c] }
+    = f.input :max_debit, required: true, label: t('forms.max_debit')
+    = f.input :max_credit, required: true, label: t('forms.max_credit')
   .clear-both
   .form-actions
     = f.button :submit, t('forms.update')  

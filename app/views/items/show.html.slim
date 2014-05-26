@@ -7,13 +7,16 @@
       p= link_to @item.member.full_name, @item.member
       p
         strong= @item.description
-      p
-        strong= "#{t('common.price')}: #{@item.price}"
+
+      - unless current_economy.currency_type_is?(:time_bank)
+        p
+          strong= "#{t('common.price')}: #{@item.price}"
+          
       p
         strong= "#{t('common.status')}: #{@item.workflow_state}"
     .large-4.columns
       - if @item.member != current_member
-        = link_to t('common.purchase_for_price', price: @item.price, count: @item.price, currency_name: current_economy.currency_name), purchase_item_path(@item), class: 'button radius right expand large', method: :post, id: 'purchase-button'
+        = purchase_button_for(@item)
     
     .row
       .large-12.columns

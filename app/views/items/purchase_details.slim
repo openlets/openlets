@@ -1,0 +1,25 @@
+.row
+  .item-panel
+    .large-3.columns
+      p= image_tag(@item.image)
+    .large-5.columns
+      h1= @item.title
+      p= link_to @item.member.full_name, @item.member
+      p
+        strong= @item.description
+
+    .clear-both
+
+  h1.bold.text-center= t('forms.make_a_time_purchase')
+  .large-12.columns
+    = form_tag time_purchase_item_path, method: :post do |f|
+      .row
+        .small-2.columns
+          = label_tag :hours, t('forms.hours'), class: "inline #{top_bar_direction}"
+        .small-4.columns
+          = select_tag :hours, options_for_select(0..5)
+        .small-2.columns
+          = label_tag :minutes, t('forms.minutes'), class: "inline #{top_bar_direction}"
+        .small-4.columns
+          = select_tag :minutes, options_for_select((0..3).map { |i| i * 15 })
+      = submit_tag t('purchase'), class: 'button radius expand'

@@ -41,6 +41,8 @@ class Ability
     end
 
     if member.persisted? and member.approved? 
+      can    :purchase_details, Item
+      can    :time_purchase,    Item
       can    :purchase, Item.active                  { |i| i.member != member }
       cannot :purchase, member.items                 { true }
       can    :fulfill,  Wish.active.not_mine(member) { |w| w.member != member }
@@ -49,6 +51,7 @@ class Ability
       can    :crud,     Message
       can    :create,   Comment
       can    :view,     Comment
+      can    :view,     Item
       can    :direct_transfer, Member.all              { |u| u != member }
       can    :transfer, Member.all { |u| u != member }
     end

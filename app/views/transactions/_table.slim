@@ -3,7 +3,7 @@ table
     th= t('tables.id')
     th= t('tables.buyer')
     th= t('tables.seller')
-    th= t('tables.price')
+    th= current_economy.time_bank? ? t('tables.hours') : t('tables.price')
     th= t('tables.type')
     th= t('tables.item')
 
@@ -13,6 +13,6 @@ table
       td= t.id
       td= t.buyer.try(:full_name)
       td= t.seller.try(:full_name)
-      td= t.amount
+      td= t.final_amount
       td= t.transaction_type_name(current_user)
       td= link_to t.item.try(:title), t.item if t.item

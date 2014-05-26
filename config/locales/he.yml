@@ -1,4 +1,5 @@
 he:
+  purchase: קנה
   splash:
     title: ברוכים הבאים לדמו של OpenLETS
     p1: OpenLETS הינה תוכנה שנוצרה על מנת לאפשר לקהילות להקים לעצמם מטבע מקומי למסחר של שירותים ומוצרים.
@@ -443,6 +444,9 @@ he:
         workflow_state: סטטוס
         state_changed_at: סטטוס השתנה בתאריך
         description: תיאור
+      economy:
+        time_bank:
+          currency_name: שעות
     models:
       admin_user: משתמש מנהל
       admin: מנהל
@@ -661,6 +665,7 @@ he:
   market:
     title: שוק
   tables:
+    hours: שעות
     resource_details: 'פרטי %{name}'
     sending_wallet_id: קונה
     receiving_wallet_id: מוכר
@@ -708,6 +713,10 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    make_a_time_purchase: כמה זמן קיבלת?
+    hours: שעות
+    minutes: דקות
+    amount: כמות
     maximum_debit: חוב מקסימלי
     maximum_credit: פלוס מקסימלי
     edit_manager_for: 'בחירת מנהל עבור %{name}'
@@ -897,3 +906,5 @@ he:
   flash_messages:
     economy_updated_successfully: הגדרות עודכנו בהצלחה
     something_went_wrong: משהו לא 
+    payment_was_successful: התשלום התבצע בהצלחה
+    insufficient_funds: אין לך אפשרות לבצע את התשלום הזה

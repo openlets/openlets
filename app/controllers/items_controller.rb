@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :load_item, :only => [:edit, :update, :show, :purchase, :pause, :activate]
+  before_filter :load_item, :only => [:edit, :update, :show, :purchase, :pause, :activate, :purchase_details]
 
   def purchase
     if @item.purchase(current_member)
@@ -14,6 +14,23 @@ class ItemsController < ApplicationController
       flash[:alert] = "Insufficient Funds."
       render 'show'
     end
+  end
+
+  def purchase_details
+  end
+
+  def time_purchase
+    @item.price = (params[:hours].to_i * 60) + params[:minutes].to_i
+    if @item.purchase(current_member)
+      flash[:notice] = t('items.payment_was_successful')
+      Mailer.item_purchased(@item, current_member).deliver
+      redirect_to @item
+    else
+      @comments = @item.comments.order(:created_at)
+      @comment  = @item.comments.new
+      flash[:alert] = t('flash_messages.something_went_wrong')
+      render 'purchase_details'
+    end    
   end
 
   def show

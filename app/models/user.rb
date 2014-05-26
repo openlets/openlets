@@ -33,10 +33,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :locations
 
   scope :by_economy_id,     lambda { |id| joins(:memberships).where('members.economy_id = ?', id)}
-  scope :awaiting_approval, lambda { where(workflow_state: 'awaiting_approval') }
-  scope :approved,          lambda { where(workflow_state: 'approved') }
-  scope :banned,            lambda { where(workflow_state: 'banned') }
-
+  
   LOCALES = ['en', 'he']
 
   workflow do
@@ -51,6 +48,7 @@ class User < ActiveRecord::Base
       event :approve, transitions_to: :approved
     end
   end
+  workflow_scopes
 
   def self.admin_filter_attr_names
     [:id, :username, :workflow_state, :email]

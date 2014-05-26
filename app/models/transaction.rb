@@ -12,7 +12,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :sending_wallet,   class_name: 'Wallet'
 
   validates_presence_of :receiving_wallet_id, :amount, :sending_wallet_id, :economy_id
-  validates_numericality_of :amount
+  validates_numericality_of :amount, greater_than: 0
 
   validate :not_self
 
@@ -28,9 +28,10 @@ class Transaction < ActiveRecord::Base
     state :canceled
   end
 
-  before_validation :load_economy_validations
+  before_validation :load_economy_concerns
+  after_find :load_economy_concerns
 
-  def load_economy_validations
+  def load_economy_concerns
     self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}::Transaction".constantize)
   end
 
@@ -74,6 +75,14 @@ class Transaction < ActiveRecord::Base
   def self.admin_form_attr_names
     [:amount, :sending_wallet_id, :receiving_wallet_id, :item_id, :transaction_type]
   end
+
+  def final_amount
+    economy.time_bank? ? amount_in_hours : amount
+  end
+
+  def amount_in_hours
+    (amount.to_f / 60).round(2)
+  end  
 
   private
 

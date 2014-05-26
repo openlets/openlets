@@ -1,4 +1,5 @@
 en:
+  purchase: Purchase
   unauthorized:
     create:
       economy: You signup in order to create an economy
@@ -220,6 +221,9 @@ en:
             workflow_state: 
   activerecord:
     attributes:
+      economy:
+        time_bank:
+          currency_name: Hours
       admin_user:
         email: Email
         password: Password
@@ -490,6 +494,7 @@ en:
     description: Descriptioמ
     title: Title
     edit_item: Edit Item Details
+    payment_was_successful: Payment was successful
   market:
     title: Marketplace
   filter:
@@ -507,6 +512,7 @@ en:
     search: Search
     select_categories: Select Categories
   tables:
+    hours: Hours
     resource_details: '%{name} Details'
     sending_wallet_id: Buyer
     receiving_wallet_id: Seller
@@ -556,6 +562,8 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    make_a_time_purchase: How much time did you receive?
+    amount: Amount
     edit_economy_settings: Edit Economy Settings
     image: Profile Image
     national_id: National ID
@@ -677,3 +685,8 @@ en:
       choose_user: Choose User
       remove_admins: Remove Admins
       remove_admin: Remove Admin
+  flash_messages:
+    economy_updated_successfully: Economy settings successfuly updated
+    something_went_wrong: Something went wrong
+    payment_was_successful: Payment was successful
+    insufficient_funds: Insufficient Funds

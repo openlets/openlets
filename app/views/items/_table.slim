@@ -7,13 +7,17 @@
         h3= link_to item.title, item
         p= item.description
         = category_labels_for(item)
-        p= "#{t('common.price')}: #{item.price} #{current_economy.currency_name}"
+        
+        - unless current_economy.currency_type_is?(:time_bank)
+          p= "#{t('common.price')}: #{item.price} #{current_economy.currency_name}"
+        
         = link_to item.member.try(:full_name), item.member
       .large-3.small-3.columns
         .row
           .large-12.columns
           - if item.member != current_member
-              = link_to t('common.purchase'), purchase_item_path(item), class: 'button radius right small', method: :post, confirm: t('common.are_you_sure')
+            = purchase_button_for(item)
+
         .row
           .large-12.columns
             - if can? :update, item

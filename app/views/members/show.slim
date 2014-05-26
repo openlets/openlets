@@ -8,7 +8,9 @@
 		.large-6.small-8.columns
 			h1= current_user.full_name
 			- if can? :update, current_member
-				h3= "#{t('user.balance')}: #{current_member.account_balance}"
+				h3
+					= "#{t('user.balance')}: #{current_member.balance} "
+					= currency_name
 				= link_to t('user.edit_profile'), edit_user_path(current_user), class: 'button radius tiny'
 				= link_to t('user.edit_preferences'), edit_member_path(current_user.member_for_economy(current_economy)), class: 'button radius tiny'
 				= link_to t('user.edit_password'), edit_user_registration_path, class: 'button radius tiny'

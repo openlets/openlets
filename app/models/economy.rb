@@ -29,7 +29,7 @@ class Economy < ActiveRecord::Base
   end
 
   ECONOMY_TYPES  = %w(community cooperative business non_profit)
-  CURRENCY_TYPES = %w(time_bank mutual_credit fiat backed derived_from)
+  CURRENCY_TYPES = %w(time_bank mutual_credit fiat backed linked)
 
   def managers
     users.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", id).uniq
@@ -49,6 +49,14 @@ class Economy < ActiveRecord::Base
 
   def self.admin_filter_attr_names
     [:id, :title, :description, :currency_name, :currency_type, :domain, :economy_type]
+  end
+
+  def currency_type_is?(model)
+    currency_type == model.to_s
+  end
+
+  def time_bank?
+    currency_type == "time_bank"
   end
 
 end

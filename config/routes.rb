@@ -20,6 +20,8 @@ OpenLets::Application.routes.draw do
   
   resources :items do
     member do
+      get  :purchase_details
+      post :time_purchase
       post :purchase
       put  :pause
       put  :activate

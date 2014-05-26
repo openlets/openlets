@@ -9,8 +9,11 @@
     = f.input :description, placeholder: t('items.description'), input_html: { rows: 4 }
   .field
     = f.association :categories, label_method: :full_name, collection: current_economy.categories, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
-  .field
-    = f.input :price, placeholder: t('common.price')
+
+  - unless current_economy.currency_type_is?(:time_bank)
+    .field
+      = f.input :price, placeholder: t('common.price')
+
   - unless @item.new_record?
     .field
       = image_tag(@item.image, size: "50x50")

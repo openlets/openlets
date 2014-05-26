@@ -24,6 +24,7 @@ class Member < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: [:economy_id]
 
   delegate :account_balance, to: :wallet
+  delegate :hour_balance, to: :wallet
   delegate :full_name, to: :user
 
   after_create do
@@ -47,6 +48,10 @@ class Member < ActiveRecord::Base
     end
   end
   workflow_scopes
+
+  def balance
+    economy.time_bank? ? hour_balance : account_balance
+  end
 
   def conversations
     Conversation.where("user_id = ? OR second_user_id = ?", id, id)

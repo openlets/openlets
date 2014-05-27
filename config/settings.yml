@@ -3,7 +3,7 @@ common: &common
 
 production:
   <<: *common
-  site_url:        'http://openlets.herokuapp.com'
+  site_url:        'http://openlets-saas.herokuapp.com'
   storage_type:    :fog
   aws_bucket:      <%= (ENV['OPENLETS_AWS_BUCKET']         || 'your_aws_key').to_s %>
   aws_key:         <%= (ENV['OPENLETS_AWS_KEY']            || 'your_aws_key').to_s %>

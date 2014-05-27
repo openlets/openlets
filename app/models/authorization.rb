@@ -17,10 +17,11 @@ class Authorization < ActiveRecord::Base
     facebook_data = graph.get_object("me")
 		self.username = facebook_data['username']
 		self.save
-		self.user.username = facebook_data['username'] if self.user.username.blank?
-		self.user.remote_image_url = "http://graph.facebook.com/" + self.username + "/picture?type=large" if self.user.image.blank?
-		self.user.location = facebook_data['location'] if self.user.location.blank?
 		self.user.save
+    self.user.username = facebook_data['username'] if self.user.username.blank?
+    self.user.remote_image_url = "http://graph.facebook.com/" + self.username + "/picture?type=large" if self.user.image.blank?
+    self.user.location = facebook_data['location'] if self.user.location.blank?
+    self.user.save
 	end
 
 	def fetch_details_from_linkedin

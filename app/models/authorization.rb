@@ -13,8 +13,9 @@ class Authorization < ActiveRecord::Base
   end
 
 	def fetch_details_from_facebook
-		graph = Koala::Facebook::API.new(self.token)
-		facebook_data = graph.get_object("me")
+    graph = Koala::Facebook::API.new(self.token)
+    facebook_data = graph.get_object("me")
+    puts facebook_data
 		self.username = facebook_data['username']
 		self.save
 		self.user.username = facebook_data['username'] if self.user.username.blank?

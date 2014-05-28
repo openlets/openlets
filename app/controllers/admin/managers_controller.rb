@@ -5,7 +5,7 @@ class Admin::ManagersController < Admin::ResourceController
   def index
     if current_economy
       @managers = User.joins(:roles).where("roles.resource_id = ? OR roles.name='admin'", current_economy.id).uniq
-      @admins_for_removal = @managers - User.with_role(:admin)
+      @admins_for_removal = @managers - User.with_role(:admin) - [current_economy.user]
       @rest_of_users = current_economy.users - @managers
     else
       @managers = User.with_role(:admin)

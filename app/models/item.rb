@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
   attr_accessible :price, :wish_id, :wish
 
   belongs_to :wish
+  has_many   :transactions
 
   before_validation :load_economy_validations
 
@@ -37,6 +38,10 @@ class Item < ActiveRecord::Base
 
   def title_with_id
     "#{title} (#{id})"
+  end
+
+  def last_transaction_amount
+    transactions.last.final_amount
   end
 
 end

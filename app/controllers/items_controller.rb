@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   def purchase
     if @item.purchase(current_member)
       flash[:notice] = "Payment was successful"
-      Mailer.item_purchased(@item, current_member).deliver
+      Mailer.item_purchased(@item, current_member, @item.last_transaction_amount).deliver
       redirect_to @item
     else
       @comments = @item.comments.order(:created_at)
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     @item.price = (params[:hours].to_i * 60) + params[:minutes].to_i
     if @item.purchase(current_member)
       flash[:notice] = t('items.payment_was_successful')
-      Mailer.item_purchased(@item, current_member).deliver
+      Mailer.item_purchased(@item, current_member, @item.last_transaction_amount).deliver
       redirect_to @item
     else
       @comments = @item.comments.order(:created_at)

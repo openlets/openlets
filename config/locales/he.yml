@@ -713,12 +713,13 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    new_economy: הגדרות הכלכלה
     make_a_time_purchase: כמה זמן קיבלת?
     hours: שעות
     minutes: דקות
     amount: כמות
-    maximum_debit: חוב מקסימלי
-    maximum_credit: פלוס מקסימלי
+    max_debit: חוב מקסימלי
+    max_credit: פלוס מקסימלי
     edit_manager_for: 'בחירת מנהל עבור %{name}'
     edit_button: 'ערוך %{name}'
     select_transaction_type: בחר סוג עסקה

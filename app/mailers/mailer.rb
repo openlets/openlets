@@ -1,7 +1,7 @@
 class Mailer < ActionMailer::Base
   default from: "info@openlets.org"
 
-  def item_purchased(item, buyer)
+  def item_purchased(item, buyer, transaction)
   	@item = item
   	@buyer = buyer
   	mail(to: @item.user.email, subject: "#{buyer.full_name} just purchased your item - #{item.title}")

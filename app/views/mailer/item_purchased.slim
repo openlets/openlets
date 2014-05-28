@@ -1,4 +1,3 @@
 h1= "Hey #{@item.user.full_name},"
 
-p= "#{@buyer.full_name} just purchased your item - #{@item.title} and transfered you #{@item.price} points"
-
+p= "#{@buyer.full_name} just purchased your item - #{@item.title} and transfered you #{@item.last_transaction_amount} #{@buyer.economy.currency_name}"

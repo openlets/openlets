@@ -562,6 +562,7 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    new_economy: Launch an Economy!
     make_a_time_purchase: How much time did you receive?
     amount: Amount
     edit_economy_settings: Edit Economy Settings
@@ -623,6 +624,8 @@ en:
     dashboard:
       members_awaiting_approval: Members Awaiting Approval
     sidebar:
+      wish: Wish
+      member: Member
       category: Category
       managers: Managers
       economies: Economies

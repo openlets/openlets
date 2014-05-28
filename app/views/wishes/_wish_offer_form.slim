@@ -9,10 +9,11 @@
     = f.input :description, placeholder: t('items.description')
   .field
     = f.association :categories, collection: current_economy.categories, input_html: { class: 'chzn-select' }
-  .field
-    = f.input :price, placeholder: t('common.price')
+  - unless current_economy.currency_type_is?(:time_bank)
+    .field
+      = f.input :price, placeholder: t('common.price')
   .field
     = image_tag(@wish.image, size: "50x50")
   .field
     = f.input :image
-  .actions = f.submit t('common.save')
+  .actions = f.submit t('common.save'), class: 'button radius expand'

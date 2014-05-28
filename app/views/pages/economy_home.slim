@@ -2,8 +2,9 @@
   .hero
     .row
       .large-12.columns.center
-        h1= economy_title
-        h4= economy_description
+        h1.bold.title_color= economy_title
+        .panel.callout.radius
+          h3= economy_description
         br
         .center
           - unless invite_only

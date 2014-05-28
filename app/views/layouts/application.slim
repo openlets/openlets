@@ -24,6 +24,19 @@ html lang=(current_locale)
     = render 'layouts/dynamic_css' if current_economy
     = render "layouts/#{'economy_' if current_economy}top_bar"
     .large-12.columns
-        br
-        = render 'layouts/flash_messages'
+      br
+      = render 'layouts/flash_messages'
     = yield
+
+  footer
+    .large-12.columns
+      
+      .large-6.columns
+        p 
+          | Built with 
+          = link_to "OpenLETS", "http://www.openlets.org", target: :blank
+
+      .large-6.columns
+        ul.inline-list.right
+          li
+            = link_to t("forms.faq"), pages_faq_path

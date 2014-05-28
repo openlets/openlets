@@ -19,11 +19,15 @@ class Wallet < ActiveRecord::Base
   end
 
   def account_balance
-    sales.sum(&:amount) - purchases.sum(&:amount)
+    sales.sum(&:amount) - purchases.sum(&:amount) + final_zero_point
   end
 
   def hour_balance
     (account_balance.to_f / 60).round(2)
+  end
+
+  def final_zero_point
+    economy.time_bank? ? economy.zero_point * 60 : economy.zero_point
   end
 
   def user_name

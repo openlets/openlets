@@ -10,6 +10,10 @@ class PagesController < ApplicationController
   def welcome
   end
 
+  def faq
+    
+  end
+
   def economy_home
     @items = Item.filter_for(filter_params).active
     @items = @items.of_approved_members

@@ -4,6 +4,7 @@ h1.bold.text-center= t('forms.edit_economy_settings')
 
   = f.input :title,         required: true, autofocus: true, label: t('forms.title')
   = f.input :description,   required: true, label: t('forms.description')
+  = f.input :faq,   required: true, label: t('forms.faq')
   = f.input :currency_name, required: true, label: t('forms.currency_name')
   
   = render 'boolean', attribute: "allow_anyone_to_create_items", f: f
@@ -17,10 +18,12 @@ h1.bold.text-center= t('forms.edit_economy_settings')
     - if ["mutual_credit", "time_bank"].include?(f.object.currency_type)
       = f.input :max_debit, label: t('forms.max_debit')
       = f.input :max_credit, label: t('forms.max_credit')
+      = f.input :zero_point, label: t('forms.zero_point')
   - else
     = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: [['Mututal Credit', 'mutual_credit'], ['Fiat', 'fiat'], ['Backed by', 'backed']]
     = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: [['Community', 'community'], ['Cooperative', 'cooperative'], ['Business', 'business'], ['Non Profit', 'non_profit']]
-    
+  
+  = f.input :title_color  
   = f.input :logo
   = f.input :bg_image
   .row

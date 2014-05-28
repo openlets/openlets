@@ -1,16 +1,29 @@
-= simple_form_for(@economy, wrapper: :foundation_inline) do |f|
+= simple_form_for @economy, wrapper: :foundation_inline do |f|
   = f.error_notification
-  - f.object.errors.full_messages.each do |message|
-    p= message
-  .form-inputs
-    = f.input :title,         required: true, autofocus: true, label: t('forms.title')
-    = f.input :description,   required: true, label: t('forms.description')
-    = f.input :domain,        required: true, label: t('forms.domain'),as: :url
-    = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: Economy::ECONOMY_TYPES.map { |c| [c.titleize, c] }
-    = f.input :currency_name, required: true, label: t('forms.currency_name')
+
+  = f.input :title,         required: true, autofocus: true, label: t('forms.title')
+  = f.input :description,   required: true, label: t('forms.description')
+  = f.input :currency_name, required: true, label: t('forms.currency_name')
+  
+  = render 'partials/boolean', attribute: "allow_anyone_to_create_items", f: f
+  = render 'partials/boolean', attribute: "allow_anyone_to_create_wishes", f: f
+  = render 'partials/boolean', attribute: "invite_only", f: f
+
+  = f.input :domain,        required: true, label: t('forms.domain'),as: :url
+  - if f.object.persisted?
+    = f.input :currency_type, required: true, label: t('forms.currency_type'), disabled: true, input_html: { value: f.object.currency_type.titleize }
+    = f.input :economy_type,  required: true, label: t('forms.economy_type'), disabled: true, input_html: { value: f.object.economy_type.titleize }
+  - else
     = f.input :currency_type, required: true, label: t('forms.currency_type'), collection: Economy::CURRENCY_TYPES.map { |c| [c.titleize, c] }
-    = f.input :max_debit, required: true, label: t('forms.max_debit')
-    = f.input :max_credit, required: true, label: t('forms.max_credit')
-  .clear-both
-  .form-actions
-    = f.button :submit, t('forms.update')  
+    = f.input :economy_type,  required: true, label: t('forms.economy_type'), collection: Economy::ECONOMY_TYPES.map { |c| [c.titleize, c] }
+  - if ["mutual_credit", "time_bank"].include?(f.object.currency_type)
+    = f.input :max_debit, label: t('forms.max_debit')
+    = f.input :max_credit, label: t('forms.max_credit')
+    = f.input :zero_point, label: t('forms.zero_point')
+    
+  = f.input :logo
+  = f.input :bg_image
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit, t('forms.update')

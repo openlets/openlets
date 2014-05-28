@@ -562,6 +562,7 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    faq: FAQ
     member_id: Member
     member: Member
     new_economy: Launch an Economy!
@@ -626,6 +627,7 @@ en:
     dashboard:
       members_awaiting_approval: Members Awaiting Approval
     sidebar:
+      transaction: Transaction
       user: User
       wish: Wish
       item: Item
@@ -640,7 +642,7 @@ en:
       users: Users
       wishes: Wishes
       dashboard: Dashboard
-      categories: Catgories
+      categories: Categories
       admin_panel: Admin Panel
       members: Members
     settings:

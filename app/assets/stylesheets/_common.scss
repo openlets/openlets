@@ -128,6 +128,15 @@ fa.fa-search { font-size: 25px; }
   right: 0;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 42px;
+    background: rgb(235, 235, 235);
+    padding: 10px 0px 0px 0px;
+}
+
 @media only screen and (min-width: 40.063em) {
   .top-bar-section .has-dropdown > a:after { 
     content: "";

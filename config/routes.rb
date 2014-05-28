@@ -110,6 +110,7 @@ OpenLets::Application.routes.draw do
 
   get "pages/terms"
   get "pages/welcome"
+  get "pages/faq"
 
   root to: 'pages#home'
 end

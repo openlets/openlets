@@ -3,10 +3,11 @@ class Economy < ActiveRecord::Base
 
   attr_accessible :currency_name, :description, :economy_type, :title, :currency_type,
                   :domain, :max_debit, :max_credit, :allow_anyone_to_create_items,
-                  :allow_anyone_to_create_wishes, :invite_only, :logo, :bg_image
+                  :allow_anyone_to_create_wishes, :invite_only, :logo, :bg_image,
+                  :zero_point, :faq, :title_color
   
   validates_presence_of :title, :economy_type, :currency_name, :currency_type, 
-                        :domain, :user_id, :max_credit
+                        :domain, :user_id
 
   mount_uploader :bg_image, ImageUploader
   mount_uploader :logo,     ImageUploader

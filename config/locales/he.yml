@@ -713,6 +713,8 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    faq: שאלות נפוצות
+    zero_point: נקודת אפס
     member_id: משתמש
     member: משתמש
     new_economy: הגדרות הכלכלה

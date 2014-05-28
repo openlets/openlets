@@ -1,0 +1,11 @@
+.row
+  .large-3.small-3.columns
+    label.text-right.inline
+      = t("forms.#{attribute}")
+  .large-9.small-9.columns
+    .switch.large.round
+      input#x name=("economy[#{attribute}]") type="radio" checked=(!f.object.send(attribute)) value="false"
+        label for="x" onclick="" לא
+      input#x1 name=("economy[#{attribute}]") type="radio" checked=(f.object.send(attribute)) value="true"
+        label for="x1" onclick="" כן
+        span

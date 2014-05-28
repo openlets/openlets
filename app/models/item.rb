@@ -1,9 +1,11 @@
 class Item < ActiveRecord::Base
   include Transactionable
+  include Paramable
 
   attr_accessible :price, :wish_id, :wish
 
   belongs_to :wish
+  belongs_to :member
   has_many   :transactions
 
   before_validation :load_economy_validations
@@ -11,7 +13,9 @@ class Item < ActiveRecord::Base
   delegate :economy, to: :member
 
   def load_economy_validations
-    self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}::Item".constantize)
+    if self.member
+      self.class.send(:include, "MonetaryModels::#{self.economy.currency_type.camelcase}::Item".constantize)
+    end
   end
 
   def purchase(buyer)

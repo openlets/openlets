@@ -9,7 +9,7 @@ module Transactionable
     
     mount_uploader :image, ImageUploader
 
-    attr_accessible :title, :description, :image, :category_ids
+    attr_accessible :title, :description, :image, :category_ids, :member_id
 
     belongs_to :member
     has_many   :category_connections, as: :categoriable, dependent: :destroy

@@ -713,6 +713,8 @@ he:
     transaction_type: סוג
     value: ערך
   forms:
+    member_id: משתמש
+    member: משתמש
     new_economy: הגדרות הכלכלה
     make_a_time_purchase: כמה זמן קיבלת?
     hours: שעות

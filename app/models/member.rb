@@ -57,4 +57,8 @@ class Member < ActiveRecord::Base
     Conversation.where("user_id = ? OR second_user_id = ?", id, id)
   end
 
+  def full_name_with_id
+    full_name + " (#{self.id})"
+  end
+
 end

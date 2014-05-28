@@ -1,5 +1,12 @@
 = simple_form_for [:admin, resource], wrapper: :foundation_inline do |f|
   = f.error_notification
+
+  - unless f.object.persisted?
+    = f.association :member, collection: current_economy.members, label_method: :full_name, input_html: { class: 'chzn-select', "data-placeholder" => t('forms.member_id') }
+    br
+  - else
+    = f.input :member, label: t('forms.member_id'), disabled: true, input_html: { value: f.object.member.full_name_with_id }
+
   = f.input :title, required: true, autofocus: true, label: t('forms.title')
   = f.input :description, required: true, label: t('forms.description')
   = f.input :image, required: true, label: t('forms.image')

@@ -562,6 +562,8 @@ en:
     '[:wish_id, "Wish"]': 
     '[:workflow_state, "Status"]': 
   forms:
+    member_id: Member
+    member: Member
     new_economy: Launch an Economy!
     make_a_time_purchase: How much time did you receive?
     amount: Amount
@@ -624,7 +626,9 @@ en:
     dashboard:
       members_awaiting_approval: Members Awaiting Approval
     sidebar:
+      user: User
       wish: Wish
+      item: Item
       member: Member
       category: Category
       managers: Managers

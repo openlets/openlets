@@ -4,7 +4,7 @@ h1.bold.text-center= t('forms.edit_economy_settings')
 
   = f.input :title,         required: true, autofocus: true, label: t('forms.title')
   = f.input :description,   required: true, label: t('forms.description')
-  = f.input :faq, as: :text    required: true, label: t('forms.faq')
+  = f.input :faq, as: :text,    required: true, label: t('forms.faq')
   = f.input :currency_name, required: true, label: t('forms.currency_name')
   
   = render 'boolean', attribute: "allow_anyone_to_create_items", f: f

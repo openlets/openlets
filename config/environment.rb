@@ -1,6 +1,9 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
+# Initialize the rails application
+OpenLets::Application.initialize!
+
 ActionMailer::Base.smtp_settings = {
     :port =>           '587',
     :address =>        'smtp.mandrillapp.com',
@@ -10,6 +13,3 @@ ActionMailer::Base.smtp_settings = {
     :authentication => :plain
 }
 ActionMailer::Base.delivery_method = :smtp
-
-# Initialize the rails application
-OpenLets::Application.initialize!

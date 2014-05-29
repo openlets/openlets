@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
                 :all_transactions, :all_wallets, :all_members, :all_categories, :all_managers,
                 :all_admins, :all_economies, :collection_for_array
 
-  before_filter :set_locale
+  before_filter :set_locale, :set_email_host
+
+  def set_email_host
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
 
   def filter_params
     params["filter"] ||= {}

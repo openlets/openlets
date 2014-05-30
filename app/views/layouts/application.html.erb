@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="<%= current_locale %>">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= meta_title %></title>
+    <meta name="author" content="<%= current_economy.title %>" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta property="og:image" content=(image_for_sharing) >
+
+    <%= stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+
+  <body class="<%= locale_direction %>">
+    <%= render 'layouts/dynamic_css' if current_economy %>
+    <%= render "layouts/#{'economy_' if current_economy}top_bar" %>
+
+    <div class="large-12 columns">
+      <br>
+      <%= render 'layouts/flash_messages' %>
+    </div>
+
+    <%= yield %>
+
+    <footer>
+      <div class="large-12 columns">
+        <div class="large-6 columns">
+          <p>
+            Built With 
+            <%= link_to "OpenLETS", "http://www.openlets.org", target: :blank %>
+          </p>
+        </div>
+        <div class="large-6 columns">
+            <ul class="inline-list right">
+              <li>
+                <%= link_to t("forms.faq"), pages_faq_path %>
+              </li>
+              
+            </ul>
+        </div>  
+      </div>
+
+    </footer>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

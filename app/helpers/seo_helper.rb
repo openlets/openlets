@@ -12,14 +12,10 @@ module SeoHelper
 
   def image_for_sharing
     if current_economy
-      return image_url_with_host(@item.image) if @item && @item.image.present?
-      return image_url_with_host(@wish.image) if @wish && @wish.image.present?
-      return image_url_with_host(current_economy.big_logo)
+      return @item.image.url if @item && @item.image.present?
+      return @wish.image.url if @wish && @wish.image.present?
+      return current_economy.big_logo.url
     end
-  end
-
-  def image_url_with_host(image)
-    "http://" + current_host + image.url
   end
 
 end

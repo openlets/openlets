@@ -2,8 +2,10 @@ h1.bold.text-center= t('forms.edit_economy_settings')
 = simple_form_for [:admin, current_economy], wrapper: :foundation_inline do |f|
   = f.error_notification
 
-  = f.input :title,         required: true, autofocus: true, label: t('forms.title')
-  = f.input :description,   required: true, label: t('forms.description')
+  = f.input :title, required: true, autofocus: true, label: t('forms.title')
+  = f.input :description, required: true, label: t('forms.description')
+  = f.input :seo_title, label: t('forms.seo_title')
+  = f.input :seo_description, label: t('forms.seo_description')
   = f.input :faq, as: :text,    required: true, label: t('forms.faq')
   = f.input :currency_name, required: true, label: t('forms.currency_name')
   
@@ -25,6 +27,7 @@ h1.bold.text-center= t('forms.edit_economy_settings')
   
   = f.input :title_color  
   = f.input :logo
+  = f.input :big_logo
   = f.input :bg_image
   .row
     .large-3.columns

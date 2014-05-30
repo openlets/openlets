@@ -1,3 +1,6 @@
+- content_for :meta_title do
+  = "#{current_economy.title} - #{@item.title}"
+
 .row
   .item-panel
     .large-3.columns
@@ -28,7 +31,7 @@
           td = link_to t('forms.activate'), activate_item_path(@item), method: :put, class: 'button radius tiny'
 
 
-- if current_user.approved?
+- if current_member && current_member.approved?
   .row#comments
     .large-12.columns
       = render 'comments/list'

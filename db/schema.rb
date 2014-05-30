@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140528160557) do
+ActiveRecord::Schema.define(:version => 20140530084518) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -89,6 +89,9 @@ ActiveRecord::Schema.define(:version => 20140528160557) do
     t.integer  "zero_point",                    :default => 0
     t.text     "faq"
     t.string   "title_color"
+    t.string   "seo_title"
+    t.string   "seo_description"
+    t.string   "big_logo"
   end
 
   add_index "economies", ["user_id"], :name => "index_economies_on_user_id"

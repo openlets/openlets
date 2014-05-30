@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :filter_params, :set_filter_param, :current_economy, :current_member, 
                 :member_signed_in?, :filter_params, :all_items, :all_wishes, :all_users,
                 :all_transactions, :all_wallets, :all_members, :all_categories, :all_managers,
-                :all_admins, :all_economies, :collection_for_array
+                :all_admins, :all_economies, :collection_for_array, :current_host
 
   before_filter :set_locale, :set_email_host
 
@@ -94,6 +94,10 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = (current_user.locale unless current_user.try(:locale).blank?) || I18n.default_locale
+  end
+
+  def current_host
+    @current_host ||= request.host
   end
 
 end

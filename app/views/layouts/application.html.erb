@@ -3,11 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= meta_title %></title>
     <meta name="author" content="<%= current_economy.try(:title) %>" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <meta property="og:image" content=(image_for_sharing) >
+    <meta property="og:image" content="<%= image_for_sharing %>" >
+    <title><%= meta_title %></title>
 
     <%= stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}" %>
     <%= javascript_include_tag "vendor/modernizr" %>

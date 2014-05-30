@@ -10,6 +10,16 @@ module SeoHelper
     end
   end
 
+  def meta_description
+    if current_economy
+      return content_for(:meta_description)  if content_for(:meta_description).present?
+      return current_economy.seo_description if current_economy.seo_description.present?
+      return current_economy.description
+    else 
+      Setting[:app_name]
+    end    
+  end
+
   def image_for_sharing
     if current_economy
       return @item.image.url if @item && @item.image.present?

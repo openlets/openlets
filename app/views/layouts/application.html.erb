@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="<%= current_economy.try(:title) %>" >
     <meta property="og:image" content="<%= image_for_sharing %>" >
+    <meta property="og:title" content="<%= meta_title %>" >
+    <meta property="og:description" content="<%= meta_description %>" >
     <title><%= meta_title %></title>
 
     <%= stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}" %>

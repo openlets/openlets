@@ -17,8 +17,7 @@ html#admin lang=(current_locale)
     = stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}"
     = stylesheet_link_tag "admin"
 
-    / script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
-    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
 
   body class=("#{locale_direction}") id=(unique_body_class(params))
@@ -35,3 +34,5 @@ html#admin lang=(current_locale)
       .large-12.columns
         = render 'layouts/flash_messages'
         = yield
+
+    = javascript_include_tag "application"

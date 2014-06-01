@@ -511,6 +511,7 @@ en:
     workflow_state: Status
     search: Search
     select_categories: Select Categories
+    select_category: Select Category
   tables:
     hours: Hours
     resource_details: '%{name} Details'

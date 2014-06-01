@@ -15,9 +15,7 @@ class PagesController < ApplicationController
   end
 
   def economy_home
-    @items = Item.filter_for(filter_params).active
-    @items = @items.of_approved_members
-    @items = @items.by_economy_id(current_economy.id) if current_economy
+    @items = current_economy.items.filter_for(filter_params).active.of_approved_members
   end
 
 end

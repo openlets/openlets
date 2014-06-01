@@ -47,52 +47,52 @@ OpenLets::Application.routes.draw do
     end
   end
 
-  # constraints DomainConstraint.new do
-  #   root to: 'pages#economy_home'
+  constraints DomainConstraint.new do
+    root to: 'pages#economy_home'
 
-  #   namespace :admin do
-  #     root to: "admin#dashboard", as: :dashboard
-  #     resources :members do
-  #       put :approve
-  #       put :ban
-  #     end
-  #     resources :users do
-  #       member do
-  #         put :approve
-  #         put :ban
-  #       end    
-  #     end
-  #     resources :managers do
-  #       collection do
-  #         put 'add'
-  #         delete 'remove'
-  #       end 
-  #     end
-  #     resources :items do
-  #       member do
-  #         put :activate
-  #         put :pause
-  #         put :ban
-  #       end
-  #     end
-  #     resources :wishes
-  #     resources :comments
-  #     resources :settings do
-  #       collection do
-  #         get :mass_edit
-  #         put :mass_update
-  #       end
-  #     end
-  #     resources :transactions do
-  #       member do
-  #         put :cancel
-  #       end
-  #     end
-  #     resources :categories
-  #     resources :economies, only: :update
-  #   end
+    namespace :admin do
+      root to: "admin#dashboard", as: :dashboard
+      resources :members do
+        put :approve
+        put :ban
+      end
+      resources :users do
+        member do
+          put :approve
+          put :ban
+        end    
+      end
+      resources :managers do
+        collection do
+          put 'add'
+          delete 'remove'
+        end 
+      end
+      resources :items do
+        member do
+          put :activate
+          put :pause
+          put :ban
+        end
+      end
+      resources :wishes
+      resources :comments
+      resources :settings do
+        collection do
+          get :mass_edit
+          put :mass_update
+        end
+      end
+      resources :transactions do
+        member do
+          put :cancel
+        end
+      end
+      resources :categories
+      resources :economies, only: :update
+    end
 
-  # end
+  end
 
   namespace :realm do
     root to: "realm#dashboard", as: :dashboard

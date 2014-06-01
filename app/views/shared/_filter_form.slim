@@ -3,7 +3,10 @@
     br
     = form_tag filter_path_helper, method: :get, id: 'search-form' do
       .large-5.columns
-        = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => t('filter.select_categories')
+        - if is_mobile?
+          = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids'])
+        - else
+          = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => t('filter.select_categories')
       .large-3.columns
         = collection_select(:filter, :member_id, all_members, :id, :full_name, {prompt: t('filter.by_user'), selected: filter_params[:member_id] })
       .large-3.columns

@@ -9,9 +9,22 @@ class ApplicationController < ActionController::Base
   helper_method :filter_params, :set_filter_param, :current_economy, :current_member, 
                 :member_signed_in?, :filter_params, :all_items, :all_wishes, :all_users,
                 :all_transactions, :all_wallets, :all_members, :all_categories, :all_managers,
-                :all_admins, :all_economies, :collection_for_array
+                :all_admins, :all_economies, :collection_for_array, :is_mobile?
 
-  before_filter :set_locale, :set_email_host
+  before_filter :set_locale, :set_email_host, :detect_browser
+
+  MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+
+  def detect_browser
+    unless request.headers["HTTP_USER_AGENT"].nil?
+      agent = request.headers["HTTP_USER_AGENT"].downcase
+      @is_mobile_device = MOBILE_BROWSERS.any? {|m|  agent.match(m) }
+    end
+  end
+
+  def is_mobile?
+    @is_mobile_device
+  end
 
   def set_email_host
     ActionMailer::Base.default_url_options[:host] = request.host_with_port

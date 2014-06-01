@@ -3,28 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="<%= current_economy.try(:title) %>" >
-    <meta property="og:image" content="<%= image_for_sharing %>" >
-    <meta property="og:title" content="<%= meta_title %>" >
-    <meta property="og:description" content="<%= meta_description %>" >
     <title><%= meta_title %></title>
 
     <%= stylesheet_link_tag "application#{rtl? ? '-rtl' : ''}" %>
+    <%= stylesheet_link_tag "admin" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
 
-  <body class="<%= locale_direction %>">
-    <%= render 'layouts/dynamic_css' if current_economy %>
-    <%= render "layouts/#{'economy_' if current_economy}top_bar" %>
+  <body class="<%= locale_direction %>" id="<%= unique_body_class(params) %>" >
+    <%= render 'top_bar' %>
 
-    <div class="large-12 columns">
-      <br>
-      <%= render 'layouts/flash_messages' %>
-    </div>
-
-    <%= yield %>
+    <% if show_sidebar? %>
+      <div class="large-2 columns sidebar">
+        <%= render 'sidebar' %>
+      </div>
+      <%= render 'breadcrumbs' %>
+      <div class="large-10 columns" >
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= render 'breadcrumbs' %>
+      <div class="large-12 columns">
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </div>
+    <% end %>
 
     <footer>
       <div class="large-12 columns">
@@ -55,6 +61,6 @@
         });
       </script>
     <% end %>
-
+        
   </body>
 </html>

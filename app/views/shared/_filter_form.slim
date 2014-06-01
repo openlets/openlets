@@ -4,7 +4,7 @@
     = form_tag filter_path_helper, method: :get, id: 'search-form' do
       .large-5.columns
         - if is_mobile?
-          = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids']), multiple: true, include_blank: true
+          = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids']), include_blank: true
         - else
           = select_tag "filter[category_ids]", options_from_collection_for_select(all_categories, "id", "name", filter_params['category_ids']), multiple: true, class: 'chzn-select', "data-placeholder" => t('filter.select_categories')
       .large-3.columns

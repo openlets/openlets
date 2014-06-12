@@ -7,7 +7,7 @@
         br
         .center
           = link_to t('common.login'), new_user_session_path, class: 'button radius large'
-          | or 
+          |  or  
           - unless invite_only
             = link_to t('common.signup'), new_user_registration_path, class: 'button radius signup-button'
 

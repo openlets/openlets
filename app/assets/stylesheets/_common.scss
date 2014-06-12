@@ -5,10 +5,16 @@
   margin: 10px 5px 5px 10px;
 }
 
+.button {
+  @include openlets-button(#0fae65);
+  font-size: 1.4em;
+}
+
 .signup-button {
   @include openlets-button(#FF9900);
   font-size: 1.4em;
 }
+
 
 .facebook-button { @include social-button(#4b67a1); }
 .linkedin-button { @include social-button(#1b86bc); }

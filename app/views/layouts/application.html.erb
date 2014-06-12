@@ -16,6 +16,7 @@
 
 
   <body class="<%= locale_direction %>">
+    <div class="page-wrap">
     <%= render 'layouts/dynamic_css' if current_economy %>
     <%= render "layouts/#{'economy_' if current_economy}top_bar" %>
 
@@ -55,6 +56,6 @@
         });
       </script>
     <% end %>
-
+    </div>
   </body>
 </html>

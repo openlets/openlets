@@ -2,7 +2,10 @@
   .hero
     .row
       .large-12.columns.center
-        h1.bold.title_color= economy_title
+        - if current_economy.big_logo
+          = image_tag(current_economy.big_logo)
+        - else
+          h1.bold.title_color= economy_title
         h2= economy_description
         br
         .center

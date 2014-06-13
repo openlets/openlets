@@ -1,13 +1,18 @@
 .row
 	.item-panel
 		.large-2.small-4.columns
-			= (image_tag current_user.image_url(:thumb).to_s)
-			p
-				= "#{t('common.status')}: "
-				= t("workflow_states.#{current_member.workflow_state}")
+			- if @member.user.image.present?
+				= (image_tag @member.user.image_url(:thumb).to_s)
+			- else
+				= image_tag(current_economy.big_logo)
+
+			- if @member == current_member
+				p
+					= "#{t('common.status')}: "
+					= t("workflow_states.#{current_member.workflow_state}")
 		.large-6.small-8.columns
-			h1= current_user.full_name
-			- if can? :update, current_member
+			h1= @member.full_name
+			- if @member.id == current_member.id
 				h3
 					= "#{t('user.balance')}: #{current_member.balance} "
 					= currency_name
@@ -39,11 +44,11 @@
 .row
 	.large-12.columns
 		h1.text-center= t('user.items_for_sale')
-		= render 'items/table', items: current_member.items
+		= render 'items/table', items: @member.items
 
 		h1.text-center= t('common.wishes')
-		= render 'wishes/table', wishes: current_member.wishes
+		= render 'wishes/table', wishes: @member.wishes
 
-		- if can? :update, current_user
+		- if @member.id == current_member.id
 			h1.text-center= t('common.transactions')
-			= render 'transactions/table', transactions: current_member.wallet.transactions
+			= render 'transactions/table', transactions: @member.wallet.transactions

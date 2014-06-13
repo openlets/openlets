@@ -98,9 +98,13 @@ label.right {
 
 #map { height: 400px; }
 
-.marketplace {
-  .item-panel img { max-height: 150px; background-color: #1A3F37; }
+
+.item-panel img { 
+  max-height: 150px; 
+  background-color: #1A3F37; 
+  border-radius: 3px;
 }
+
 .button.tiny { margin: 5px; }
 
 #comments {

@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
 
   def current_member
     if current_user
-      @member ||= (current_economy ? current_user.memberships.where(economy_id: current_economy.id).first : current_user)
+      current_economy ? current_user.memberships.where(economy_id: current_economy.id).first : current_user
     end
   end
 

@@ -13,15 +13,19 @@ class Authorization < ActiveRecord::Base
   end
 
 	def fetch_details_from_facebook
+    binding.pry
     graph = Koala::Facebook::API.new(self.token)
     facebook_data = graph.get_object("me")
-		self.username = facebook_data['username']
-		self.save
-		self.user.username = facebook_data['username'] if self.user.username.blank?
-    unless self.username.nil?
-		  self.user.remote_image_url = "http://graph.facebook.com/" + self.username + "/picture?type=large" if self.user.image.blank?
+    if facebook_data['username']
+      self.user.username ||= facebook_data['username']
+      if self.user.image.blank?
+        image_url = "http://graph.facebook.com/" + facebook_data['username'] + "/picture?type=large&redirect=false"
+        result = Net::HTTP.get(URI.parse(image_url))
+        self.user.remote_image_url = JSON.parse(result)["data"]["url"]
+      end
     end
-		self.user.location = facebook_data['location'] if self.user.location.blank?
+    self.user.location ||= facebook_data['location']
+    self.save
 		self.user.save
 	end
 

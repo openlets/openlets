@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def economy_home
-    @items = current_economy.items.filter_for(filter_params).active.of_approved_members
+    @items = current_economy.items.filter_for(filter_params).active.of_approved_members.order("updated_at desc")
   end
 
 end

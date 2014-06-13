@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = current_economy.items.filter_for(filter_params).active.of_approved_members
+    @items = current_economy.items.filter_for(filter_params).active.of_approved_members.order("updated_at desc")
   end
 
   private

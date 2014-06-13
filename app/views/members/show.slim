@@ -12,6 +12,8 @@
 					= t("workflow_states.#{current_member.workflow_state}")
 		.large-6.small-8.columns
 			h1= @member.full_name
+			= mail_to @member.email, @member.email, target: :top
+
 			- if @member.id == current_member.id
 				h3
 					= "#{t('user.balance')}: #{current_member.balance} "

@@ -17,45 +17,47 @@
 
   <body class="<%= locale_direction %>">
     <div class="page-wrap">
-    <%= render 'layouts/dynamic_css' if current_economy %>
-    <%= render "layouts/#{'economy_' if current_economy}top_bar" %>
+      
+      <%= render 'layouts/dynamic_css' if current_economy %>
+      <%= render "layouts/#{'economy_' if current_economy}top_bar" %>
 
-    <div class="large-12 columns">
-      <br>
-      <%= render 'layouts/flash_messages' %>
-    </div>
-
-    <%= yield %>
-
-    <footer>
       <div class="large-12 columns">
-        <div class="large-6 columns">
-          <p>
-            Built With 
-            <%= link_to "OpenLETS", "http://www.openlets.org", target: :blank %>
-          </p>
-        </div>
-        <div class="large-6 columns">
-            <ul class="inline-list right">
-              <li><%= link_to t("forms.faq"), pages_faq_path %></li>
-            </ul>
-        </div>  
+        <br>
+        <%= render 'layouts/flash_messages' %>
       </div>
 
-    </footer>
+      <%= yield %>
 
-    <%= javascript_include_tag "application" %>
+      <footer>
+        <div class="large-12 columns">
+          <div class="large-6 columns">
+            <p>
+              Built With 
+              <%= link_to "OpenLETS", "http://www.openlets.org", target: :blank %>
+            </p>
+          </div>
+          <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><%= link_to t("forms.faq"), pages_faq_path %></li>
+              </ul>
+          </div>  
+        </div>
 
-    <% unless is_mobile? %>
-      <script type="text/javascript">
-        jQuery(document).ready(function($) {
-          $('.chzn-select').chosen({
-            allow_single_deselect: true,
-            no_results_text: 'No results matched'
+      </footer>
+
+      <%= javascript_include_tag "application" %>
+
+      <% unless is_mobile? %>
+        <script type="text/javascript">
+          jQuery(document).ready(function($) {
+            $('.chzn-select').chosen({
+              allow_single_deselect: true,
+              no_results_text: 'No results matched'
+            });
           });
-        });
-      </script>
-    <% end %>
+        </script>
+      <% end %>
+
     </div>
   </body>
 </html>

@@ -13,54 +13,55 @@
 
 
   <body class="<%= locale_direction %>" id="<%= unique_body_class(params) %>" >
-    <%= render 'top_bar' %>
+    <div class="page-wrap">
+      <%= render 'top_bar' %>
 
-    <% if show_sidebar? %>
-      <div class="large-2 columns sidebar">
-        <%= render 'sidebar' %>
-      </div>
-      <%= render 'breadcrumbs' %>
-      <div class="large-10 columns" >
-        <%= render 'layouts/flash_messages' %>
-        <%= yield %>
-      </div>
-    <% else %>
-      <%= render 'breadcrumbs' %>
-      <div class="large-12 columns">
-        <%= render 'layouts/flash_messages' %>
-        <%= yield %>
-      </div>
-    <% end %>
-
-    <footer>
-      <div class="large-12 columns">
-        <div class="large-6 columns">
-          <p>
-            Built With 
-            <%= link_to "OpenLETS", "http://www.openlets.org", target: :blank %>
-          </p>
+      <% if show_sidebar? %>
+        <div class="large-2 columns sidebar">
+          <%= render 'sidebar' %>
         </div>
-        <div class="large-6 columns">
-            <ul class="inline-list right">
-              <li><%= link_to t("forms.faq"), pages_faq_path %></li>
-            </ul>
-        </div>  
-      </div>
+        <%= render 'breadcrumbs' %>
+        <div class="large-10 columns main-table" >
+          <%= render 'layouts/flash_messages' %>
+          <%= yield %>
+        </div>
+      <% else %>
+        <%= render 'breadcrumbs' %>
+        <div class="large-12 columns">
+          <%= render 'layouts/flash_messages' %>
+          <%= yield %>
+        </div>
+      <% end %>
 
-    </footer>
+      <footer>
+        <div class="large-12 columns">
+          <div class="large-6 columns">
+            <p>
+              <span>Powered By </span> 
+              <%= link_to "OpenLETS", "http://www.openlets.org", target: :blank %>
+            </p>
+          </div>
+          <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><%= link_to t("forms.faq"), pages_faq_path %></li>
+              </ul>
+          </div>  
+        </div>
 
-    <%= javascript_include_tag "application" %>
+      </footer>
 
-    <% unless is_mobile? %>
-      <script type="text/javascript">
-        jQuery(document).ready(function($) {
-          $('.chzn-select').chosen({
-            allow_single_deselect: true,
-            no_results_text: 'No results matched'
+      <%= javascript_include_tag "application" %>
+
+      <% unless is_mobile? %>
+        <script type="text/javascript">
+          jQuery(document).ready(function($) {
+            $('.chzn-select').chosen({
+              allow_single_deselect: true,
+              no_results_text: 'No results matched'
+            });
           });
-        });
-      </script>
-    <% end %>
-        
+        </script>
+      <% end %>
+    </div>
   </body>
 </html>

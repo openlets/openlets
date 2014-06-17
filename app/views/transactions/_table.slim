@@ -5,6 +5,7 @@ table
     th= t('tables.seller')
     th= current_economy.time_bank? ? t('tables.hours') : t('tables.price')
     th= t('tables.type')
+    th= t('tables.status')
     th= t('tables.item')
 
 
@@ -15,4 +16,5 @@ table
       td= t.seller.try(:full_name)
       td= t.final_amount
       td= t.transaction_type_name(current_user)
+      td= t.workflow_state.titleize
       td= link_to t.item.try(:title), t.item if t.item

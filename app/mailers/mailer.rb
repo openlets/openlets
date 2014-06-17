@@ -4,7 +4,7 @@ class Mailer < ActionMailer::Base
   def item_purchased(item, buyer, transaction)
   	@item = item
   	@buyer = buyer
-  	mail(to: @item.user.email, subject: "#{buyer.full_name} just purchased your item - #{item.title}")
+  	mail(to: @item.user.email, from: buyer.email, subject: "#{buyer.full_name} just purchased your item - #{item.title}")
   end
 
   def wish_fulfilled(item)

@@ -12,6 +12,12 @@
 					= t("workflow_states.#{current_member.workflow_state}")
 		.large-6.small-8.columns
 			h1= @member.full_name
+
+      - if @member.try(:company_site)
+        = link_to @member.try(:company_name), @member.try(:company_site), target: :blank
+      - else
+        = @member.try(:company_name)
+
 			= link_to @member.company_name, @member.company_site, target: :blank
 			span= ", Office #{@member.office_number}, "
 			= mail_to @member.email, @member.email, target: :top

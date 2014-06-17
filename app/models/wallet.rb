@@ -19,7 +19,7 @@ class Wallet < ActiveRecord::Base
   end
 
   def account_balance
-    sales.sum(&:amount) - purchases.sum(&:amount) + final_zero_point
+    sales.done.sum(&:amount) - purchases.done.sum(&:amount) + final_zero_point
   end
 
   def hour_balance

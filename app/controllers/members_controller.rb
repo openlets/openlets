@@ -9,10 +9,6 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    # if current_member
-    #   id = current_member.id
-    #   @conversation = Conversation.where("user_id = ? AND second_user_id = ? OR user_id = ? AND second_user_id = ?", id, id, id, id).first
-    # end
   end
 
   def edit

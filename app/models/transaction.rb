@@ -27,6 +27,7 @@ class Transaction < ActiveRecord::Base
     end
     state :canceled
   end
+  workflow_scopes
 
   before_validation :load_economy_concerns
   after_find :load_economy_concerns

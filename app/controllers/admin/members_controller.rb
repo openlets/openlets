@@ -5,13 +5,13 @@ class Admin::MembersController < Admin::ResourceController
   def approve
     @member.approve!
     flash[:notice] = "Member has was approved"
-    redirect_to admin_member_path(@member)
+    redirect_to admin_dashboard_path
   end
 
   def ban
     @member.ban!
     flash[:notice] = "Member has was banned"
-    redirect_to admin_member_path(@member)
+    redirect_to admin_dashboard_path
   end
 
   private

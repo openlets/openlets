@@ -5,7 +5,14 @@
         = image_tag(item.image)
       .large-6.small-6.columns  
         h3= link_to item.title, item
+
         = link_to item.member.try(:full_name), item.member
+        span= ", "
+        = link_to item.member.try(:company_name), item.member.try(:company_site), target: :blank
+        span= ", Office #{item.member.try(:office_number)}"
+        br
+        br
+        
         p= item.description
         = category_labels_for(item)
         

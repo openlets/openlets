@@ -52,6 +52,13 @@ class User < ActiveRecord::Base
   end
   workflow_scopes
 
+  def company_site_with_http
+    unless self.company_site[/\Ahttp:\/\//] || self.company_site[/\Ahttps:\/\//]
+      self.company_site = "http://#{self.company_site}"
+    end
+    self.company_site
+  end
+
   def profile_complete?
     first_name.present? && last_name.present? && 
     company_name.present? && office_number.present?

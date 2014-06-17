@@ -9,7 +9,7 @@
         = link_to item.member.try(:full_name), item.member
         span= ", "
         - if item.member.try(:company_site)
-          = link_to item.member.try(:company_name), item.member.try(:company_site), target: :blank
+          = link_to item.member.try(:company_name), item.member.try(:company_site_with_http), target: :blank
         - else
           = item.member.try(:company_name)
         span= ", Office #{item.member.try(:office_number)}"

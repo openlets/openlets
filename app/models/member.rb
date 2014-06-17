@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
 
   delegate :account_balance, to: :wallet
   delegate :hour_balance, to: :wallet
-  delegate :full_name, :company_name, :company_site, :office_number, to: :user
+  delegate :full_name, :company_name, :company_site, :company_site_with_http, :office_number, to: :user
 
   after_create do
     Wallet.create(walletable_type: 'Member', walletable_id: self.id, economy_id: self.economy_id)

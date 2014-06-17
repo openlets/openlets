@@ -22,14 +22,8 @@
         - if user_signed_in?
           - if current_user.has_role?(:admin) or current_user.has_role?(:manager, current_economy)
             = nav_link('admin/admin', 'dashboard', admin_dashboard_path, t('top_bar.admin'), 'dashboard')
+          = nav_link('', '', pages_faq_path, t('top_bar.faq'), 'info-circle')
           = nav_link('members', 'show', current_member, t('top_bar.profile'), 'user')
           = nav_link('', '', destroy_user_session_path, t('common.logout'), 'sign-out')
         - else
           = nav_link('', '', new_user_session_path, t('common.login'), 'sign-in')
-
-
-/ Messages
-
-/ li= link_to conversations_path
-/   i.fa.fa-inbox
-/   = t('top_bar.inbox')

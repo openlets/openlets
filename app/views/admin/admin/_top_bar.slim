@@ -11,7 +11,7 @@
     section.top-bar-section
       ul class=(top_bar_other_direction)
         li.divider
-        li= link_to t("admin.sidebar.admin_panel").upcase, "#"
+        li= link_to t("admin.sidebar.admin_panel").upcase, admin_dashboard_path
         = nav_link('admin/admin', 'dashboard', admin_dashboard_path, t('admin.sidebar.dashboard'), 'dashboard')
         = nav_link('admin/settings', 'index', admin_settings_path, t('admin.sidebar.settings'), 'gears')
         = nav_link('admin/users', 'managers', admin_managers_path, t('admin.sidebar.managers'), 'suitcase')

@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
 
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
 
+  def complete_profile
+    if current_user && !current_user.profile_complete?
+      render complete_profile_users_path
+      return
+    end
+  end
+
   def detect_browser
     unless request.headers["HTTP_USER_AGENT"].nil?
       agent = request.headers["HTTP_USER_AGENT"].downcase

@@ -9,6 +9,9 @@ OpenLets::Application.routes.draw do
       post :direct_transfer
       get  :transfer
     end
+    collection do
+      get :complete_profile
+    end
   end
 
   resources :members do

@@ -12,6 +12,11 @@ class Ability
     can    :read,              Wish
     cannot :create,            Item
 
+    can    :complete_profile,  user
+    can    :crud,              member
+    can    :crud,              user
+
+
     if user.persisted?
       can :create, Economy
       can :crud,                 user.economies       { |i| i.user == user }
@@ -34,10 +39,7 @@ class Ability
       cannot :activate,          Wish.active          { |i| i.active? }
       can    :fulfill,           Wish
       can    :create_wish_offer, Wish
-      
       can    :show,              Member
-      can    :crud,              member
-      can    :crud,              user      
     end
 
     if member.persisted? and member.approved? 

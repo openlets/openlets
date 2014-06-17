@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   before_filter :set_user
 
+  def complete_profile
+  end
+
   def items
     @items = @user.items
   end

@@ -1,5 +1,6 @@
 class WishesController < ApplicationController
 	load_and_authorize_resource
+  before_filter :complete_profile
 	before_filter :load_wish, :only => [:show, :create_wish_offer, :fulfill, :pause, :activate]
 
 	def new

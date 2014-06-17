@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
                   :locale, :image, :password, :password_confirmation,
                   :national_id, :address, :phone, :cellphone, :fax,
                   :birth_date, :profession, :job, :relationship_status,
-                  :location
-  
+                  :location, :company_name, :company_site, :office_number
+
   validates_presence_of :email
   
   mount_uploader :image, ImageUploader
@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
 
   scope :by_economy_id,     lambda { |id| joins(:memberships).where('members.economy_id = ?', id)}
   
+  validate :validate_complete_profile
+
   LOCALES = ['en', 'he']
 
   workflow do
@@ -49,6 +51,11 @@ class User < ActiveRecord::Base
     end
   end
   workflow_scopes
+
+  def profile_complete?
+    first_name.present? && last_name.present? && 
+    company_name.present? && office_number.present?
+  end
 
   def self.admin_filter_attr_names
     [:id, :username, :workflow_state, :email]
@@ -130,5 +137,8 @@ class User < ActiveRecord::Base
     authorization.user
   end
 
-
+  def validate_complete_profile
+    errors.add :base, "User Profile is incomplete" if self.persisted? && !profile_complete?
+  end
+  
 end

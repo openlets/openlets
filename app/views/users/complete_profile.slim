@@ -1,0 +1,15 @@
+h1.bold.text-center Complete your Profile
+= simple_form_for(current_user, wrapper: :foundation_inline, defaults: { label_html: { class: "text-#{top_bar_direction}" }}) do |f|
+  = f.error_notification
+  - f.object.errors.full_messages.each do |message|
+    p= message
+  = f.input :first_name,   required: true, label: t("forms.first_name")
+  = f.input :last_name,    required: true, label: t("forms.last_name")
+  = f.input :company_name, required: true, label: t("forms.company_name")
+  = f.input :company_site, label: t("forms.company_site")
+  = f.input :office_number, collection: ["Open Space"] + (100..199).to_a, include_blank: false, required: true, label: t("forms.office_number")
+
+  .row
+    .large-3.columns
+    .large-9.columns
+      = f.button :submit, t('forms.update')

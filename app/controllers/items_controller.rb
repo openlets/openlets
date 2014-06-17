@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   load_and_authorize_resource
+  before_filter :complete_profile
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :load_item, :only => [:edit, :update, :show, :purchase, :pause, :activate, :purchase_details]
 

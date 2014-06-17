@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :complete_profile
 
   def home
     @economies = Economy.all

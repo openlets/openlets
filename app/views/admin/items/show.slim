@@ -1,0 +1,38 @@
+.large-9.columns
+  h1.bold
+    = t("tables.resource_details", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1 ))
+.large-3.columns
+  br
+  = link_to edit_resource_path(resource), class: 'button radius small action-button secondary'
+    i.fa.fa-edit
+    = " "
+    = t("forms.edit_button", name: t("activerecord.models.#{resource_class.name.downcase}", count: 1))
+
+
+  - unless resource.active?
+    = link_to activate_admin_item_path(resource), method: :put, class: 'button small', title: t('workflow_state_actions.approve')
+      i.fa.fa-check
+      |  
+      = t('workflow_state_actions.activate')
+  - unless resource.paused?
+    = link_to pause_admin_item_path(resource), method: :put, class: 'button small', title: t('workflow_state_actions.approve')
+      i.fa.fa-pause
+      |  
+      = t('workflow_state_actions.pause')
+  - unless resource.banned?
+    = link_to ban_admin_item_path(resource), method: :put, class: 'button small alert', title: t('workflow_state_actions.ban')
+      i.fa.fa-exclamation-circle
+      |  
+      = t('workflow_state_actions.ban')
+
+.large-12.columns
+  table.responsive
+    tbody
+      - resource_class.attribute_names.each do |attr|
+        tr
+          th= t("activerecord.attributes.#{resource_class.name.underscore}.#{attr}")
+          td= table_attribute_cell(attr.to_sym, resource)
+
+
+
+

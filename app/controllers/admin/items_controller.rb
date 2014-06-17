@@ -1,7 +1,7 @@
 class Admin::ItemsController < Admin::ResourceController
 
   def activate
-    resource.approve!
+    resource.activate!
     flash[:notice] = "Item was approved"
     redirect_to admin_item_path(resource)
   end

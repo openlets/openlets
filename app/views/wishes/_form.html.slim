@@ -4,9 +4,9 @@
     p= message
 
   .field
-    = f.input :title, placeholder: t('items.title') 
+    = f.input :title, placeholder: current_economy.wish_title_placeholder
   .field
-    = f.input :description, placeholder: t('items.description'), input_html: { rows: 4 }
+    = f.input :description, placeholder: current_economy.wish_description_placeholder, input_html: { rows: 4 }
   .field
     = f.association :categories, label_method: :full_name, collection: current_economy.categories, input_html: { class: 'chzn-select', "data-placeholder" => t('common.categories') }
   - unless @wish.new_record?

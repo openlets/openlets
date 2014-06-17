@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140617142201) do
+ActiveRecord::Schema.define(:version => 20140617152813) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20140617142201) do
     t.string   "economy_type"
     t.string   "currency_name"
     t.string   "currency_type"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "domain"
     t.string   "name"
     t.integer  "max_debit",                     :default => -100
@@ -92,6 +92,12 @@ ActiveRecord::Schema.define(:version => 20140617142201) do
     t.string   "seo_title"
     t.string   "seo_description"
     t.string   "big_logo"
+    t.string   "add_item_form_title",           :default => "Add a Item"
+    t.string   "add_wish_form_title",           :default => "Add a Wish"
+    t.string   "item_title_placeholder",        :default => "Title"
+    t.string   "item_description_placeholder",  :default => "Description"
+    t.string   "wish_title_placeholder",        :default => "Title"
+    t.string   "wish_description_placeholder",  :default => "Description"
   end
 
   add_index "economies", ["user_id"], :name => "index_economies_on_user_id"

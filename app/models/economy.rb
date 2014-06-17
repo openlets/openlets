@@ -4,10 +4,16 @@ class Economy < ActiveRecord::Base
   attr_accessible :currency_name, :description, :economy_type, :title, :currency_type,
                   :domain, :max_debit, :max_credit, :allow_anyone_to_create_items,
                   :allow_anyone_to_create_wishes, :invite_only, :logo, :bg_image,
-                  :zero_point, :faq, :title_color, :seo_title, :big_logo, :seo_description
+                  :zero_point, :faq, :title_color, :seo_title, :big_logo, :seo_description,
+                  :item_title_placeholder, :item_description_placeholder, 
+                  :wish_title_placeholder, :wish_description_placeholder,
+                  :add_item_form_title, :add_wish_form_title
   
   validates_presence_of :title, :economy_type, :currency_name, :currency_type, 
-                        :domain, :user_id
+                        :domain, :user_id, :item_title_placeholder, 
+                        :item_description_placeholder, :wish_title_placeholder, 
+                        :wish_description_placeholder, :add_item_form_title,
+                        :add_wish_form_title
 
   mount_uploader :bg_image, ImageUploader
   mount_uploader :logo,     ImageUploader

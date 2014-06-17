@@ -4,6 +4,14 @@ h1.bold.text-center= t('forms.edit_economy_settings')
 
   = f.input :title, required: true, autofocus: true, label: t('forms.title')
   = f.input :description, required: true, label: t('forms.description')
+
+  = f.input :add_item_form_title, label: t('forms.add_item_form_title')
+  = f.input :add_wish_form_title, label: t('forms.add_wish_form_title')
+  = f.input :item_title_placeholder, label: t('forms.item_title_placeholder')
+  = f.input :item_description_placeholder, label: t('forms.item_description_placeholder')
+  = f.input :wish_title_placeholder, label: t('forms.wish_title_placeholder')
+  = f.input :wish_description_placeholder, label: t('forms.wish_description_placeholder')
+
   = f.input :seo_title, label: t('forms.seo_title')
   = f.input :seo_description, label: t('forms.seo_description')
   = f.input :faq, as: :text,    required: true, label: t('forms.faq')

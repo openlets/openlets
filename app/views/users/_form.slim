@@ -5,6 +5,8 @@
   - attributes.each do |attr|
     - if attr == 'locale'
       = f.input attr, label: t("forms.#{attr}"), collection: ['en', 'he']
+    - elsif attr == 'office_number'
+      = f.input attr, collection: ["Open Space"] + (100..199).to_a, include_blank: false, required: true, label: t("forms.#{attr}")
     - elsif attr == 'birth_date'
       = f.input attr, label: t("forms.#{attr}"), input_html: { class: 'datepicker' }, as: :string
     - elsif attr == 'image'

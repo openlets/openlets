@@ -69,7 +69,8 @@ class User < ActiveRecord::Base
   end
 
   def editable_attribute_names
-    %w(image first_name last_name username email company_name company_site office_number about national_id 
+    %w(image first_name last_name username email company_name 
+       company_site office_number about national_id 
        address phone cellphone fax birth_date profession job 
        relationship_status locale)
   end

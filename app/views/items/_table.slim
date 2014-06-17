@@ -8,7 +8,7 @@
 
         = link_to item.member.try(:full_name), item.member
         span= ", "
-        - if item.member.try(:company_site)
+        - if item.member.try(:company_site).present?
           = link_to item.member.try(:company_name), item.member.try(:company_site_with_http), target: :blank
         - else
           = item.member.try(:company_name)

@@ -4,7 +4,7 @@
       .large-3.small-3.columns      
         = image_tag(item.image)
       .large-6.small-6.columns  
-        h3= link_to item.title, item
+        h2= link_to item.title, item
 
         = link_to item.member.try(:full_name), item.member
         span= ", "

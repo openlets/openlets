@@ -50,7 +50,18 @@ html, body { height: 100%; }
   text-align: center;
 }
 
-.item-panel h2 { font-weight: 400; font-family: 'Roboto Slab', serif; }
+.item-panel h2 { 
+  font-weight: 400; 
+  font-family: 'Roboto Slab', serif; 
+  letter-spacing: -1px;
+}
+
+.no-items .button { margin: 0px; }
+
+.profile-page {
+  .button.radius.tiny.first { margin-left: 0; }
+}
+
 
 h1 {
   font-family: 'Roboto Slab', serif;

@@ -1,4 +1,4 @@
-.row
+.row.profile-page
 	.item-panel
 		.large-2.small-4.columns
 			- if @member.user.image.present?
@@ -27,7 +27,7 @@
 				h3
 					= "#{t('user.balance')}: #{current_member.balance} "
 					= currency_name
-				= link_to t('user.edit_profile'), edit_user_path(current_user), class: 'button radius tiny'
+				= link_to t('user.edit_profile'), edit_user_path(current_user), class: 'button radius tiny first'
 				= link_to t('user.edit_preferences'), edit_member_path(current_user.member_for_economy(current_economy)), class: 'button radius tiny'
 				= link_to t('user.edit_password'), edit_user_registration_path, class: 'button radius tiny'
 
@@ -43,12 +43,20 @@
 	  
 .row
 	.large-12.columns
-		h1.text-center= t('user.items_for_sale')
+		h1= t('user.items_for_sale')
 		= render 'items/table', items: @member.items
+		- if @member.items.blank?
+			.panel.radius.no-items
+				h3 You don't have any items!
+				= link_to "Create Your First Item", new_item_path, class: 'button large radius'
 
-		h1.text-center= t('common.wishes')
+		h1= t('common.wishes')
 		= render 'wishes/table', wishes: @member.wishes
+		- if @member.wishes.blank?
+			.panel.radius.no-items
+				h3 You didn't make any wishes!
+				= link_to "Create Your First Wish", new_wish_path, class: 'button large radius'
 
 		- if @member.id == current_member.id
-			h1.text-center= t('common.transactions')
+			h1= t('common.transactions')
 			= render 'transactions/table', transactions: @member.wallet.transactions

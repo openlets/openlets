@@ -1,5 +1,7 @@
 html, body { height: 100%; }
 
+.label { background-color: #00557a; }
+
 .page-wrap {
   min-height: 100%;
   margin-bottom: -42px; 
@@ -19,12 +21,12 @@ html, body { height: 100%; }
 }
 
 .button {
-  @include openlets-button(#0fae65);
+  @include openlets-button(#0180b7);
   font-size: 1.4em;
 }
 
 .signup-button {
-  @include openlets-button(#FF9900);
+  @include openlets-button(#00557a);
   font-size: 1.4em;
 }
 
@@ -57,7 +59,7 @@ h1#logo {
 }
 
 .hero {
-  background-color: #1A3F37;
+  background-color: #202020;
   width: 100%;
   background-size: 100%;
   -webkit-background-size: cover;
@@ -78,7 +80,7 @@ h1#logo {
     padding: 15px;
     color: white;
   }
-  h2 { color: white; }
+  h2 { color: white; line-height: 45px; }
   &.login-signup { height: 400px; }
 }
 

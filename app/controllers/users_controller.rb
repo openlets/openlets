@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  before_filter :set_user
+  before_filter :set_user, only: [:complete_profile, :update_complete_profile, :show, :edit, :direct_transfer]
 
   def complete_profile
   end
@@ -23,12 +23,21 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       if current_economy
-        redirect_to @user.member_for_economy(current_economy), notice: 'Profile was successfully updated.'
+        if params[:complete_profile] == "true"
+          redirect_to root_path, notice: 'Thanks for completing your profile!'
+        else
+          redirect_to @user.member_for_economy(current_economy), notice: 'Profile was successfully updated.'
+        end
       else
         redirect_to @user, notice: 'Profile was successfully updated.'
       end
     else
-      render action: 'edit'
+      if params[:complete_profile] == "true"
+        flash[:error] = "Your missing some details"
+        render action: 'complete_profile'
+      else
+        render action: 'edit'
+      end
     end
   end
 

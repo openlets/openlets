@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
                 :all_admins, :all_economies, :collection_for_array, :is_mobile?
 
   before_filter :set_locale, :set_email_host, :detect_browser
+  before_filter :complete_profile
 
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
 

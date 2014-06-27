@@ -9,6 +9,8 @@ h1.bold.text-center Complete your Profile
   = f.input :company_site, label: t("forms.company_site")
   = f.input :office_number, collection: ["Open Space"] + (100..199).to_a, include_blank: false, required: true, label: t("forms.office_number")
 
+  = hidden_field_tag 'complete_profile', 'true'
+
   .row
     .large-3.columns
     .large-9.columns

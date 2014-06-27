@@ -7,6 +7,7 @@ table
     th= t('tables.type')
     th= t('tables.status')
     th= t('tables.item')
+    th= Date
 
 
   - transactions.each do |t|
@@ -18,3 +19,4 @@ table
       td= t.transaction_type_name(current_user)
       td= t.workflow_state.titleize
       td= link_to t.item.try(:title), t.item if t.item
+      td= t.created_at.strftime("%B %d, %H:%M")
